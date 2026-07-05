@@ -14,8 +14,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import markUrl from "@/assets/paisley-mark.png";
-import wordmarkUrl from "@/assets/paisley-wordmark.png";
+import logoAsset from "@/assets/paisley-mos-logo.png.asset.json";
+const wordmarkUrl = logoAsset.url;
 
 export const NAV: {
   to: string;
