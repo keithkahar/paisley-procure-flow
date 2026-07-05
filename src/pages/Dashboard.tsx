@@ -76,8 +76,8 @@ export default function Dashboard() {
             delta="+1.62%"
             positive
             data={spark2}
-            stroke="hsl(30 36% 55%)"
-            fill="hsl(30 36% 68% / 0.22)"
+            stroke="hsl(214 60% 50%)"
+            fill="hsl(214 60% 50% / 0.14)"
           />
         </div>
 
