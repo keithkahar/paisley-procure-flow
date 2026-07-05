@@ -51,7 +51,7 @@ export default function QuoteReview() {
                   {q.missing.length > 0 && (
                     <div className="mt-1 flex flex-wrap gap-1">
                       {q.missing.map((m) => (
-                        <StatusBadge key={m} tone="warning">Missing: {m}</StatusBadge>
+                        <MissingFieldBadge key={m} field={m} />
                       ))}
                     </div>
                   )}
@@ -59,14 +59,14 @@ export default function QuoteReview() {
                 <td className="px-4 py-3 font-display font-semibold">{q.price}</td>
                 <td className="px-4 py-3">{q.moq}</td>
                 <td className="px-4 py-3">{q.lead}</td>
-                <td className="px-4 py-3"><StatusBadge tone="gold">{q.basis}</StatusBadge></td>
+                <td className="px-4 py-3"><DeliveryBasisBadge>{q.basis}</DeliveryBasisBadge></td>
                 <td className="px-4 py-3">{q.validity}</td>
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2">
                     <div className="h-1.5 w-20 overflow-hidden rounded-full bg-border">
-                      <div className={`h-full rounded-full ${q.conf > 85 ? "bg-success" : q.conf > 70 ? "bg-primary" : "bg-warning"}`} style={{ width: `${q.conf}%` }} />
+                      <div className={`h-full rounded-full bg-${confidenceTone(q.conf).tone === "danger" ? "destructive" : confidenceTone(q.conf).tone}`} style={{ width: `${q.conf}%` }} />
                     </div>
-                    <span className="text-caption font-medium">{q.conf}%</span>
+                    <ConfidenceBadge value={q.conf} />
                   </div>
                 </td>
                 <td className="px-4 py-3">
