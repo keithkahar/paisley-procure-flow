@@ -10,11 +10,20 @@ import {
   Receipt,
   Package,
   Settings as SettingsIcon,
+  LogOut,
+  type LucideIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import logoUrl from "@/assets/paisley-mos-logo.png";
+import markUrl from "@/assets/paisley-mark.png";
+import wordmarkUrl from "@/assets/paisley-wordmark.png";
 
-export const NAV = [
+export const NAV: {
+  to: string;
+  label: string;
+  full: string;
+  icon: LucideIcon;
+  step: number | null;
+}[] = [
   { to: "/dashboard", label: "Today", full: "Dashboard", icon: LayoutDashboard, step: null },
   { to: "/intake", label: "Intake", full: "Purchase Intake", icon: Inbox, step: 1 },
   { to: "/discovery", label: "Discovery", full: "Supplier Discovery", icon: Search, step: 2 },
@@ -29,33 +38,46 @@ export const NAV = [
 
 export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
   return (
-    <nav aria-label="Primary" className="flex h-full flex-col items-stretch py-5">
-      <div className="mb-6 flex items-center justify-center px-2">
-        <BrandMark />
+    <nav aria-label="Primary" className="flex h-full flex-col items-center py-6">
+      {/* Brand mark only — no card, no wordmark */}
+      <div className="mb-8 flex items-center justify-center">
+        <img src={markUrl} alt="Paisley MOS" className="h-9 w-9 object-contain" />
       </div>
-      <ul className="flex flex-1 flex-col gap-1.5 pl-3">
+
+      <ul className="flex flex-1 flex-col items-center gap-2">
         {NAV.map((item) => (
-          <li key={item.to}>
+          <li key={item.to} className="w-full px-3">
             <NavLink
               to={item.to}
               onClick={onNavigate}
               end
               className={({ isActive }) =>
                 cn(
-                  "group flex flex-col items-center gap-1 py-3 pl-1 pr-1 text-[10.5px] font-medium transition-colors",
+                  "group flex flex-col items-center gap-1.5 rounded-xl py-2.5 text-[10.5px] font-medium tracking-tight transition-colors",
                   isActive
-                    ? "rail-pill-active"
-                    : "text-rail-foreground/85 hover:text-white rounded-xl hover:bg-rail-hover mr-3",
+                    ? "text-white"
+                    : "text-white/70 hover:text-white",
                 )
               }
             >
               {({ isActive }) => (
                 <>
-                  <item.icon
-                    className={cn("h-[19px] w-[19px]", isActive ? "text-primary" : "text-current")}
-                    strokeWidth={2}
-                  />
-                  <span className={cn("leading-tight tracking-tight", isActive ? "font-semibold" : "")}>
+                  <span
+                    className={cn(
+                      "flex h-10 w-10 items-center justify-center rounded-xl transition-all",
+                      isActive
+                        ? "bg-white text-primary shadow-[0_6px_16px_-6px_rgba(0,0,0,0.35)]"
+                        : "bg-white/10 text-white group-hover:bg-white/20",
+                    )}
+                  >
+                    <item.icon
+                      className="h-[18px] w-[18px]"
+                      strokeWidth={2.25}
+                      fill="currentColor"
+                      fillOpacity={isActive ? 0.15 : 0.2}
+                    />
+                  </span>
+                  <span className={cn("leading-tight", isActive && "font-semibold")}>
                     {item.label}
                   </span>
                 </>
@@ -64,31 +86,27 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
           </li>
         ))}
       </ul>
-      <div className="mt-3 flex items-center justify-center pr-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-[11px] font-semibold text-white ring-1 ring-white/25 backdrop-blur">
-          LK
-        </div>
-      </div>
+
+      {/* Logout replaces avatar */}
+      <button
+        type="button"
+        aria-label="Log out"
+        className="mt-4 flex flex-col items-center gap-1.5 rounded-xl px-3 py-2.5 text-[10.5px] font-medium text-white/70 transition-colors hover:text-white"
+      >
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 hover:bg-white/20">
+          <LogOut className="h-[18px] w-[18px]" strokeWidth={2.25} />
+        </span>
+        <span>Logout</span>
+      </button>
     </nav>
   );
 }
 
-export function BrandMark({ compact = true }: { compact?: boolean }) {
-  if (compact) {
-    return (
-      <div
-        className="flex h-11 w-11 items-center justify-center rounded-xl bg-white shadow-md"
-        aria-label="Paisley MOS"
-      >
-        <img src={logoUrl} alt="" className="h-8 w-8 object-contain" />
-      </div>
-    );
+export function BrandMark({ variant = "mark" }: { variant?: "mark" | "wordmark" }) {
+  if (variant === "wordmark") {
+    return <img src={wordmarkUrl} alt="Paisley MOS" className="h-7 w-auto object-contain" />;
   }
-  return (
-    <div className="flex items-center gap-2">
-      <img src={logoUrl} alt="Paisley MOS" className="h-8 w-auto" />
-    </div>
-  );
+  return <img src={markUrl} alt="Paisley MOS" className="h-9 w-9 object-contain" />;
 }
 
 export function useActiveNav() {
