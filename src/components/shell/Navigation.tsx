@@ -102,7 +102,17 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
 }
 
 export function BrandMark({ variant = "wordmark" }: { variant?: "mark" | "wordmark" }) {
-  return <img src={wordmarkUrl} alt="Paisley MOS" className={variant === "wordmark" ? "h-16 w-auto object-contain md:h-[88px] lg:h-[104px]" : "h-12 w-auto object-contain"} />;
+  return (
+    <img
+      src={wordmarkUrl}
+      alt="Paisley MOS"
+      className={
+        variant === "wordmark"
+          ? "h-11 w-auto object-contain md:h-14 lg:h-16"
+          : "h-9 w-auto object-contain"
+      }
+    />
+  );
 }
 
 export function useActiveNav() {
