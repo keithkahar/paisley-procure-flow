@@ -26,8 +26,8 @@ export default function FirstContact() {
       />
 
       <div className="mb-4 rounded-xl border border-primary/20 bg-primary-soft p-4">
-        <div className="text-[11px] font-semibold uppercase tracking-widest text-primary">Rule</div>
-        <p className="mt-1 text-[13px] text-foreground/85">
+        <div className="text-label uppercase text-primary">Rule</div>
+        <p className="mt-1 text-body text-foreground/85">
           First email must combine a <strong>real product inquiry</strong> and a <strong>light background request</strong>
           (factory type, main product line, export markets). It should read like an inquiry from a real buyer's agency, not a compliance survey.
         </p>
@@ -46,12 +46,12 @@ export default function FirstContact() {
             <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-mono text-[11px] text-muted-foreground">{e.id}</span>
+                  <span className="font-mono text-mono text-muted-foreground">{e.id}</span>
                   <StatusBadge tone="info">{e.rfq}</StatusBadge>
                   <StatusBadge tone={e.tone} dot>{e.status}</StatusBadge>
                 </div>
-                <h4 className="mt-1.5 font-display text-[15px] font-semibold">{e.subject}</h4>
-                <div className="mt-1 text-[12.5px] text-muted-foreground">
+                <h4 className="mt-1.5 font-display text-subtitle font-semibold">{e.subject}</h4>
+                <div className="mt-1 text-caption text-muted-foreground">
                   To: {e.supplier} <span className="divider-dot" /> {e.item}
                 </div>
                 {e.missing.length > 0 && (

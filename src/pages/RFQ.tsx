@@ -56,8 +56,8 @@ export default function RFQ() {
               ["Buyer landed price", "$ 7.83"],
             ].map(([k, v], i) => (
               <div key={k} className={"rounded-lg border border-border p-3 " + (i === 7 ? "bg-primary-soft border-primary/20" : "bg-surface-muted")}>
-                <div className="text-[10.5px] font-semibold uppercase tracking-widest text-muted-foreground">{k}</div>
-                <div className={"mt-1 font-display text-[15px] font-bold " + (i === 7 ? "text-primary" : "text-foreground")}>{v}</div>
+                <div className="text-label uppercase text-muted-foreground">{k}</div>
+                <div className={"mt-1 font-display text-subtitle font-bold " + (i === 7 ? "text-primary" : "text-foreground")}>{v}</div>
               </div>
             ))}
           </div>
@@ -69,7 +69,7 @@ export default function RFQ() {
               <span
                 key={t}
                 className={
-                  "rounded-md px-2.5 py-1 text-[12px] font-semibold " +
+                  "rounded-md px-2.5 py-1 text-caption font-semibold " +
                   (i === 1 ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground")
                 }
               >
@@ -78,7 +78,7 @@ export default function RFQ() {
             ))}
           </div>
           <div className="mt-4 section-title mb-2">Port / Warehouse</div>
-          <div className="text-[13px] text-foreground/85">
+          <div className="text-body text-foreground/85">
             FOB Ningbo Beilun · Backup FOB Shanghai Yangshan
           </div>
         </Card>
@@ -93,7 +93,7 @@ export default function RFQ() {
                   <StatusBadge tone="info">{it.rfq}</StatusBadge>
                   <StatusBadge tone="gold">{it.basis}</StatusBadge>
                 </div>
-                <h4 className="mt-1 font-display text-[15px] font-semibold">{it.item}</h4>
+                <h4 className="mt-1 font-display text-subtitle font-semibold">{it.item}</h4>
               </div>
               <div className="flex items-center gap-2">
                 <Button size="sm" variant="outline">Add supplier</Button>
@@ -103,7 +103,7 @@ export default function RFQ() {
 
             {/* Table for md+, cards for mobile */}
             <div className="hidden md:block">
-              <table className="w-full text-[13px]">
+              <table className="w-full text-body">
                 <thead className="bg-surface-muted text-muted-foreground">
                   <tr>
                     <th className="px-4 py-2 text-left font-medium">Supplier</th>
@@ -118,7 +118,7 @@ export default function RFQ() {
                     <tr key={s.id} className="border-t border-border/70">
                       <td className="px-4 py-2.5">
                         <div className="font-medium text-foreground">{s.name}</div>
-                        <div className="font-mono text-[11px] text-muted-foreground">{s.id}</div>
+                        <div className="font-mono text-mono text-muted-foreground">{s.id}</div>
                       </td>
                       {s.rounds.map((r, i) => (
                         <td key={i} className="px-3 py-2.5 text-center">
@@ -138,14 +138,14 @@ export default function RFQ() {
                 <div key={s.id} className="p-3">
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="font-medium text-foreground text-[13px]">{s.name}</div>
-                      <div className="font-mono text-[11px] text-muted-foreground">{s.id}</div>
+                      <div className="font-medium text-foreground text-body">{s.name}</div>
+                      <div className="font-mono text-mono text-muted-foreground">{s.id}</div>
                     </div>
                     <Button size="sm" variant="ghost">Details</Button>
                   </div>
                   <div className="mt-2 grid grid-cols-6 gap-1">
                     {s.rounds.map((r, i) => (
-                      <div key={i} className="flex flex-col items-center text-[10px] text-muted-foreground">
+                      <div key={i} className="flex flex-col items-center text-mono text-muted-foreground">
                         <span className={`mb-0.5 inline-block h-2 w-2 rounded-full ${dot(r)}`} />
                         R{Math.floor(i / 2) + 1}{i % 2 ? "↩" : "→"}
                       </div>

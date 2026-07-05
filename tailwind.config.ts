@@ -14,6 +14,17 @@ export default {
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         display: ['Manrope', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+      },
+      /* ============ TYPE SCALE — semantic tokens ============ */
+      fontSize: {
+        display:  ["28px",   { lineHeight: "1.15", letterSpacing: "-0.02em",  fontWeight: "700" }],
+        title:    ["20px",   { lineHeight: "1.25", letterSpacing: "-0.015em", fontWeight: "600" }],
+        subtitle: ["16px",   { lineHeight: "1.4",  letterSpacing: "-0.01em",  fontWeight: "600" }],
+        body:     ["14px",   { lineHeight: "1.55" }],
+        caption:  ["12.5px", { lineHeight: "1.5" }],
+        label:    ["11px",   { lineHeight: "1.4",  letterSpacing: "0.12em",   fontWeight: "600" }],
+        mono:     ["12px",   { lineHeight: "1.4" }],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -91,11 +102,17 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
+      /* ============ RADIUS — 4-step token scale ============ */
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 3px)",
-        sm: "calc(var(--radius) - 6px)",
+        DEFAULT: "10px",
+        sm: "6px",
+        md: "10px",
+        lg: "14px",
+        xl: "18px",
+        "2xl": "18px",   // legacy uses snap to xl token
+        "3xl": "22px",
       },
+      /* ============ SHADOW — 3 tiers + focus ============ */
       boxShadow: {
         sm: "var(--shadow-sm)",
         md: "var(--shadow-md)",
