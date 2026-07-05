@@ -1,6 +1,14 @@
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
+/* ============================================================
+ * MOS Primitives — the ONLY sanctioned source of visual style.
+ * All pages should compose these instead of writing raw
+ * text-[..px] / rounded-xl / p-4 utility classes directly.
+ * ============================================================ */
+
+/* --------- Page-level ---------- */
+
 export function PageHeader({
   title,
   description,
@@ -13,12 +21,33 @@ export function PageHeader({
   showSearch?: boolean; // deprecated, ignored
 }) {
   return (
-    <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+    <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
       <div className="min-w-0">
-        <h2 className="font-display text-[22px] font-semibold tracking-tight text-foreground md:text-[24px]">{title}</h2>
-        {description && <p className="mt-1.5 max-w-2xl text-sm text-muted-foreground">{description}</p>}
+        <h1 className="font-display text-display text-foreground">{title}</h1>
+        {description && (
+          <p className="mt-2 max-w-2xl text-body text-muted-foreground">
+            {description}
+          </p>
+        )}
       </div>
       {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
+    </div>
+  );
+}
+
+export function SectionTitle({
+  children,
+  aside,
+  className,
+}: {
+  children: ReactNode;
+  aside?: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={cn("mb-4 flex items-center justify-between", className)}>
+      <h2 className="font-display text-title text-foreground">{children}</h2>
+      {aside}
     </div>
   );
 }
@@ -35,17 +64,32 @@ export function Section({
   className?: string;
 }) {
   return (
-    <section className={cn("mb-6", className)}>
-      {(title || aside) && (
-        <div className="mb-3 flex items-center justify-between">
-          {title && <h3 className="font-display text-[15px] font-semibold text-foreground">{title}</h3>}
-          {aside}
-        </div>
-      )}
+    <section className={cn("mb-8", className)}>
+      {(title || aside) && <SectionTitle aside={aside}>{title}</SectionTitle>}
       {children}
     </section>
   );
 }
+
+/* --------- Text primitives ---------- */
+
+export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
+  return (
+    <div className={cn("text-eyebrow", className)}>{children}</div>
+  );
+}
+
+export function Muted({ children, className }: { children: ReactNode; className?: string }) {
+  return <span className={cn("text-caption text-muted-foreground", className)}>{children}</span>;
+}
+
+export function Mono({ children, className }: { children: ReactNode; className?: string }) {
+  return (
+    <span className={cn("font-mono text-mono text-muted-foreground", className)}>{children}</span>
+  );
+}
+
+/* --------- Status / chip primitives ---------- */
 
 export type StatusTone =
   | "primary"
@@ -93,6 +137,36 @@ export function StatusBadge({
   );
 }
 
+export function Chip({
+  active = false,
+  onClick,
+  children,
+  className,
+}: {
+  active?: boolean;
+  onClick?: () => void;
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        "inline-flex items-center rounded-full border px-3 py-1.5 text-caption font-medium transition-colors",
+        active
+          ? "border-primary bg-primary text-primary-foreground"
+          : "border-border bg-surface text-foreground hover:border-border-strong hover:bg-surface-muted",
+        className,
+      )}
+    >
+      {children}
+    </button>
+  );
+}
+
+/* --------- KPI ---------- */
+
 export function KpiTile({
   label,
   value,
@@ -103,20 +177,18 @@ export function KpiTile({
   value: string | number;
   delta?: string;
   hint?: string;
-  // legacy props — ignored for visual consistency
+  // legacy props — kept for API compatibility
   icon?: ReactNode;
   tone?: "primary" | "warning" | "success" | "muted";
 }) {
   return (
-    <div className="rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-border-strong">
-      <div className="text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
-        {label}
-      </div>
+    <div className="kpi-tile">
+      <div className="text-eyebrow">{label}</div>
       <div className="mt-3 font-display text-[30px] font-semibold leading-none tracking-tight text-foreground">
         {value}
       </div>
       {(delta || hint) && (
-        <div className="mt-3 flex items-center gap-2 text-[11.5px] text-muted-foreground">
+        <div className="mt-3 flex items-center gap-2 text-caption text-muted-foreground">
           {delta && <span className="font-medium text-success">{delta}</span>}
           {hint && <span>{hint}</span>}
         </div>
@@ -125,6 +197,28 @@ export function KpiTile({
   );
 }
 
-export function Card({ children, className }: { children: ReactNode; className?: string }) {
-  return <div className={cn("card-surface p-5", className)}>{children}</div>;
+/* --------- Card ---------- */
+
+export function Card({
+  children,
+  className,
+  padded = true,
+  elevated = false,
+}: {
+  children: ReactNode;
+  className?: string;
+  padded?: boolean;
+  elevated?: boolean;
+}) {
+  return (
+    <div
+      className={cn(
+        elevated ? "card-elevated" : "card-surface",
+        padded && "p-6",
+        className,
+      )}
+    >
+      {children}
+    </div>
+  );
 }
