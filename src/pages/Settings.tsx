@@ -111,10 +111,10 @@ export default function Settings() {
 
         <SettingsCard icon={<ShieldCheck className="h-4 w-4" />} title="Approval rules" desc="When AI auto-approves vs. requires human.">
           <ul className="space-y-2 text-body">
-            <li className="flex items-start gap-2"><StatusBadge tone="success">Auto</StatusBadge><span>Quote parse confidence &ge; 90% and no missing fields</span></li>
-            <li className="flex items-start gap-2"><StatusBadge tone="warning">Human</StatusBadge><span>Supplier is a trading company or new to database</span></li>
-            <li className="flex items-start gap-2"><StatusBadge tone="danger">Human</StatusBadge><span>Buyer quotation total &gt; € 50,000</span></li>
-            <li className="flex items-start gap-2"><StatusBadge tone="warning">Human</StatusBadge><span>Delivery basis is DDP</span></li>
+            <li className="flex items-start gap-2"><WorkflowBadge state="auto" /><span>Quote parse confidence &ge; 90% and no missing fields</span></li>
+            <li className="flex items-start gap-2"><WorkflowBadge state="human" /><span>Supplier is a trading company or new to database</span></li>
+            <li className="flex items-start gap-2"><WorkflowBadge state="human" /><span>Buyer quotation total &gt; € 50,000</span></li>
+            <li className="flex items-start gap-2"><WorkflowBadge state="human" /><span>Delivery basis is DDP</span></li>
           </ul>
         </SettingsCard>
 
