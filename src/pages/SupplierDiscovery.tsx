@@ -59,17 +59,7 @@ export default function SupplierDiscovery() {
           </div>
           <div className="flex flex-wrap gap-1.5">
             {cats.map((c, i) => (
-              <button
-                key={c}
-                className={
-                  "rounded-full border px-3 py-1.5 text-caption font-medium transition-colors " +
-                  (i === 0
-                    ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border bg-surface text-foreground/70 hover:bg-muted")
-                }
-              >
-                {c}
-              </button>
+              <Chip key={c} active={i === 0}>{c}</Chip>
             ))}
           </div>
         </div>
