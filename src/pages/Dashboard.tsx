@@ -1,201 +1,340 @@
-import { KpiTile, StatusBadge, Card } from "@/components/mos/Primitives";
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
 import {
-  CheckCircle2,
-  ClipboardList,
-  Clock,
-  FileCheck2,
-  Send,
-  UserCheck,
-  ArrowRight,
-} from "lucide-react";
+  Area,
+  AreaChart,
+  Cell,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
+import { ArrowUpRight, ArrowDownRight, Search } from "lucide-react";
+import { Slider } from "@/components/ui/slider";
 
-const today = new Date().toLocaleDateString("en-US", {
-  weekday: "long",
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
+/* ----------------------------- mock data ----------------------------- */
 
-const actions = [
-  {
-    id: "SUP-CN-0083",
-    kind: "Supplier Approval",
-    title: "Approve supplier Ningbo Ocean Fittings Co., Ltd",
-    meta: "RFQ-011 • Marine hardware • Ningbo, CN",
-    due: "Due today",
-    priority: "High",
-    confidence: 92,
-    primary: "Approve",
-    tone: "primary" as const,
-    icon: UserCheck,
-  },
-  {
-    id: "Q-2038",
-    kind: "Quote Review",
-    title: "Review parsed quote from Shenzhen Boya Electronics",
-    meta: "RFQ-014 • LED navigation kits • 3 items",
-    due: "Due in 4h",
-    priority: "Medium",
-    confidence: 78,
-    primary: "Review",
-    tone: "gold" as const,
-    icon: FileCheck2,
-  },
-  {
-    id: "RFQ-016",
-    kind: "RFQ Execution",
-    title: "Send RFQ batch to 6 shortlisted suppliers",
-    meta: "PH-004 • Industrial valves • FOB Shanghai",
-    due: "Scheduled 15:00",
-    priority: "Normal",
-    confidence: 84,
-    primary: "Execute",
-    tone: "info" as const,
-    icon: Send,
-  },
+const spark1 = [12, 18, 14, 22, 19, 26, 24, 31, 28, 34, 33, 42].map((v, i) => ({ i, v }));
+const spark2 = [8, 10, 9, 12, 11, 14, 13, 15, 14, 17, 16, 19].map((v, i) => ({ i, v }));
+
+const pipeline = [
+  { name: "RFQ in progress", value: 42, color: "hsl(214 99% 37%)" },
+  { name: "Quotes under review", value: 18, color: "hsl(214 90% 62%)" },
+  { name: "Awaiting supplier", value: 23, color: "hsl(30 36% 68%)" },
+  { name: "Orders in production", value: 14, color: "hsl(218 24% 88%)" },
+];
+const pipelineTotal = pipeline.reduce((s, p) => s + p.value, 0);
+
+const history = [
+  { day: "12", mo: "NOV", label: "RFQ-014 · Quote approved", value: "$ 24,800" },
+  { day: "12", mo: "NOV", label: "SUP-CN-0083 · Supplier onboarded", value: "—" },
+  { day: "11", mo: "NOV", label: "PO-2041 · Sent to Nordic Marine", value: "$ 18,320" },
+  { day: "11", mo: "NOV", label: "RFQ-011 · 6 suppliers contacted", value: "—" },
+  { day: "10", mo: "NOV", label: "Q-2038 · Parsed & staged", value: "$ 9,470" },
 ];
 
+/* ----------------------------- page ----------------------------- */
+
 export default function Dashboard() {
+  const [qty, setQty] = useState([1200]);
+  const [target, setTarget] = useState([18]);
+  const [lead, setLead] = useState([35]);
+
+  const estOrder = qty[0] * target[0];
+  const estMargin = Math.max(8, Math.round(28 - (target[0] - 12) * 0.6));
+
   return (
-    <>
-      {/* Hero banner — brand-blue billboard inspired by reference */}
-      <div className="relative mb-6 overflow-hidden rounded-3xl bg-gradient-brand p-6 text-primary-foreground md:p-8">
-        <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" aria-hidden />
-        <div className="absolute right-10 bottom-0 h-40 w-40 rounded-full bg-gold/25 blur-2xl" aria-hidden />
-        <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-          <div className="max-w-xl">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70">{today}</div>
-            <h2 className="mt-2 font-display text-[26px] font-bold leading-tight md:text-[30px]">
-              Good morning, Lena. 12 decisions are waiting for you.
-            </h2>
-            <p className="mt-2 max-w-lg text-[13.5px] leading-relaxed text-white/80">
-              Paisley AI has pre-ranked today's queue by impact and confidence. Start with the review queue to close the highest-value items first.
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <Button size="sm" variant="secondary" className="bg-white text-primary hover:bg-white/90">
-              <ClipboardList className="mr-1.5 h-4 w-4" /> Start review queue
-            </Button>
-            <Button size="sm" variant="outline" className="border-white/30 bg-white/10 text-white hover:bg-white/20 hover:text-white">
-              Export daily log
-            </Button>
-          </div>
+    <div className="space-y-6">
+      {/* Top: search bar row (kept subtle to match template feel) */}
+      <div className="flex items-center justify-between">
+        <h1 className="font-display text-[22px] font-semibold tracking-tight text-foreground">
+          Dashboard
+        </h1>
+        <div className="relative hidden md:block">
+          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <input
+            placeholder="Search RFQs, suppliers, orders…"
+            className="h-11 w-[380px] rounded-full border border-transparent bg-surface-muted pl-11 pr-4 text-[13px] text-foreground placeholder:text-muted-foreground/70 outline-none focus:border-primary/30 focus:bg-surface focus:ring-2 focus:ring-primary/15"
+          />
         </div>
       </div>
 
+      {/* Row 1: two sparkline KPIs (left, stacked) + donut (right) */}
+      <div className="grid gap-5 lg:grid-cols-5">
+        <div className="lg:col-span-2 space-y-5">
+          <SparkKpi
+            label="Active RFQs"
+            value="42"
+            delta="+3.56%"
+            positive
+            data={spark1}
+            stroke="hsl(214 99% 37%)"
+            fill="hsl(214 99% 37% / 0.14)"
+          />
+          <SparkKpi
+            label="Quotes parsed · MTD"
+            value="19"
+            delta="+1.62%"
+            positive
+            data={spark2}
+            stroke="hsl(30 36% 55%)"
+            fill="hsl(30 36% 68% / 0.22)"
+          />
+        </div>
 
-      <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-        <KpiTile label="Need decision" value={12} delta="+3 vs yesterday" icon={<UserCheck className="h-4 w-4" />} tone="primary" />
-        <KpiTile label="Need review" value={7} hint="3 quotes • 4 emails" icon={<FileCheck2 className="h-4 w-4" />} tone="warning" />
-        <KpiTile label="Waiting on supplier" value={23} hint="Across 8 RFQs" icon={<Clock className="h-4 w-4" />} tone="muted" />
-        <KpiTile label="Completed today" value={31} delta="+18%" icon={<CheckCircle2 className="h-4 w-4" />} tone="success" />
-      </div>
-
-      <div className="grid gap-5 lg:grid-cols-3">
-        <div className="lg:col-span-2">
-          <div className="mb-3 flex items-center justify-between">
-            <h3 className="font-display text-[15px] font-semibold">Action required</h3>
-            <div className="flex items-center gap-2 text-[12px]">
-              <StatusBadge tone="muted" dot>Auto-sorted by priority</StatusBadge>
-            </div>
+        <div className="lg:col-span-3 rounded-2xl border border-border/70 bg-surface p-6 shadow-[var(--shadow-sm)]">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+            Pipeline status
           </div>
 
-          <div className="space-y-3">
-            {actions.map((a) => (
-              <article key={a.id} className="card-surface p-4 md:p-5 hover:shadow-md transition-shadow">
-                <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                  <div className="flex items-start gap-3 md:gap-4">
-                    <div className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary md:flex">
-                      <a.icon className="h-5 w-5" />
-                    </div>
-                    <div className="min-w-0">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <StatusBadge tone={a.tone}>{a.kind}</StatusBadge>
-                        <span className="text-[11px] font-mono text-muted-foreground">{a.id}</span>
-                        <StatusBadge tone={a.priority === "High" ? "danger" : a.priority === "Medium" ? "warning" : "muted"} dot>
-                          {a.priority}
-                        </StatusBadge>
-                      </div>
-                      <h4 className="mt-1.5 text-[15px] font-semibold text-foreground">{a.title}</h4>
-                      <div className="mt-1 text-[12.5px] text-muted-foreground">
-                        {a.meta} <span className="divider-dot" /> {a.due}
-                      </div>
-                      <div className="mt-3 flex items-center gap-2">
-                        <div className="h-1.5 w-32 overflow-hidden rounded-full bg-border">
-                          <div className="h-full rounded-full bg-gradient-brand" style={{ width: `${a.confidence}%` }} />
-                        </div>
-                        <span className="text-[11.5px] font-medium text-muted-foreground">
-                          {a.confidence}% AI confidence
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 md:shrink-0">
-                    <Button size="sm">{a.primary}</Button>
-                    <Button size="sm" variant="outline">View</Button>
-                    <Button size="sm" variant="ghost" className="text-muted-foreground">Defer</Button>
-                  </div>
+          <div className="mt-4 flex flex-col items-center gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="relative h-[220px] w-[220px] shrink-0">
+              <ResponsiveContainer>
+                <PieChart>
+                  <Pie
+                    data={pipeline}
+                    dataKey="value"
+                    innerRadius={80}
+                    outerRadius={104}
+                    paddingAngle={2}
+                    stroke="none"
+                    startAngle={90}
+                    endAngle={-270}
+                  >
+                    {pipeline.map((p) => (
+                      <Cell key={p.name} fill={p.color} />
+                    ))}
+                  </Pie>
+                  <Tooltip
+                    contentStyle={{
+                      borderRadius: 10,
+                      border: "1px solid hsl(var(--border))",
+                      fontSize: 12,
+                    }}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+              <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
+                <div className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                  Active items
                 </div>
-              </article>
-            ))}
-          </div>
-        </div>
+                <div className="mt-1 font-display text-[30px] font-bold text-foreground">
+                  {pipelineTotal}
+                </div>
+              </div>
+            </div>
 
-        <div className="space-y-4">
-          <Card>
-            <div className="section-title mb-3">Pipeline flow</div>
-            <ul className="space-y-2.5">
-              {[
-                ["Intake", 4, "primary"],
-                ["Discovery", 9, "primary"],
-                ["Candidates", 12, "gold"],
-                ["First contact", 18, "info"],
-                ["RFQ rounds", 23, "info"],
-                ["Quote review", 7, "warning"],
-                ["Buyer quotation", 5, "gold"],
-                ["Orders", 14, "success"],
-              ].map(([label, n, tone]) => (
-                <li key={label as string} className="flex items-center justify-between text-[13px]">
-                  <div className="flex items-center gap-2 text-foreground/80">
-                    <span className="h-1.5 w-1.5 rounded-full bg-primary/60" />
-                    {label}
+            <ul className="w-full space-y-3 md:max-w-[240px]">
+              {pipeline.map((p) => (
+                <li key={p.name} className="flex items-center justify-between text-[13px]">
+                  <div className="flex items-center gap-2.5 text-foreground/85">
+                    <span
+                      className="h-2.5 w-2.5 rounded-full"
+                      style={{ background: p.color }}
+                    />
+                    {p.name}
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-semibold text-foreground">{n as number}</span>
-                    <StatusBadge tone={tone as any}>active</StatusBadge>
-                  </div>
+                  <span className="font-display text-[13px] font-semibold text-foreground">
+                    {p.value}
+                  </span>
                 </li>
               ))}
             </ul>
-            <Button variant="ghost" size="sm" className="mt-3 h-8 w-full justify-between">
-              Open workflow board <ArrowRight className="h-3.5 w-3.5" />
-            </Button>
-          </Card>
-
-          <Card>
-            <div className="section-title mb-3">This week</div>
-            <div className="space-y-3">
-              <RowStat label="RFQs sent" value="42" trend="+12" />
-              <RowStat label="Quotes parsed" value="61" trend="+8" />
-              <RowStat label="Avg turnaround" value="1.8 d" trend="-0.4 d" positive />
-              <RowStat label="Auto-approvals" value="27" trend="+5" />
-            </div>
-          </Card>
+          </div>
         </div>
       </div>
-    </>
+
+      {/* Row 2: sourcing simulator + recent activity */}
+      <div className="grid gap-5 lg:grid-cols-5">
+        <div className="lg:col-span-3 rounded-2xl border border-border/70 bg-surface p-6 shadow-[var(--shadow-sm)]">
+          <div className="flex items-center justify-between">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+              Sourcing simulator
+            </div>
+            <span className="text-[11px] text-muted-foreground">
+              Estimates for planning · non-binding
+            </span>
+          </div>
+
+          <div className="mt-5 space-y-5">
+            <SliderRow
+              label="Order quantity"
+              value={`${qty[0].toLocaleString()} units`}
+              min={100}
+              max={5000}
+              step={100}
+              val={qty}
+              onChange={setQty}
+            />
+            <SliderRow
+              label="Target unit price"
+              value={`$ ${target[0].toFixed(2)}`}
+              min={5}
+              max={80}
+              step={1}
+              val={target}
+              onChange={setTarget}
+            />
+            <SliderRow
+              label="Lead time"
+              value={`${lead[0]} days`}
+              min={14}
+              max={90}
+              step={1}
+              val={lead}
+              onChange={setLead}
+            />
+          </div>
+
+          <div className="mt-6 grid grid-cols-2 gap-3">
+            <SoftStat label="Estimated order value" value={`$ ${estOrder.toLocaleString()}`} />
+            <SoftStat label="Projected gross margin" value={`${estMargin}%`} />
+          </div>
+        </div>
+
+        <div className="lg:col-span-2 rounded-2xl border border-border/70 bg-surface p-6 shadow-[var(--shadow-sm)]">
+          <div className="flex items-center justify-between">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+              Recent activity
+            </div>
+            <button className="text-[11.5px] font-medium text-primary hover:underline">
+              View all
+            </button>
+          </div>
+          <ul className="mt-4 space-y-2.5">
+            {history.map((h, i) => (
+              <li
+                key={i}
+                className="flex items-center gap-3 rounded-xl bg-primary-soft/60 px-3 py-2.5"
+              >
+                <div className="flex h-10 w-10 shrink-0 flex-col items-center justify-center rounded-lg bg-surface text-primary shadow-[var(--shadow-sm)]">
+                  <span className="font-display text-[13px] font-bold leading-none">{h.day}</span>
+                  <span className="text-[9px] font-semibold tracking-wider text-muted-foreground">
+                    {h.mo}
+                  </span>
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="truncate text-[12.5px] font-medium text-foreground">
+                    {h.label}
+                  </div>
+                </div>
+                <div className="shrink-0 font-display text-[13px] font-semibold text-foreground">
+                  {h.value}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
   );
 }
 
-function RowStat({ label, value, trend, positive }: { label: string; value: string; trend: string; positive?: boolean }) {
+/* ----------------------------- pieces ----------------------------- */
+
+function SparkKpi({
+  label,
+  value,
+  delta,
+  positive,
+  data,
+  stroke,
+  fill,
+}: {
+  label: string;
+  value: string;
+  delta: string;
+  positive?: boolean;
+  data: { i: number; v: number }[];
+  stroke: string;
+  fill: string;
+}) {
+  const id = label.replace(/\s+/g, "-");
   return (
-    <div className="flex items-center justify-between border-b border-border/60 pb-2 last:border-0 last:pb-0">
-      <span className="text-[13px] text-muted-foreground">{label}</span>
-      <div className="flex items-baseline gap-2">
-        <span className="font-display text-[15px] font-semibold">{value}</span>
-        <span className={`text-[11px] font-medium ${positive ? "text-success" : "text-primary"}`}>{trend}</span>
+    <div className="rounded-2xl border border-border/70 bg-surface p-5 shadow-[var(--shadow-sm)]">
+      <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+        {label}
       </div>
+      <div className="mt-3 flex items-end justify-between gap-4">
+        <div className="h-[54px] flex-1">
+          <ResponsiveContainer>
+            <AreaChart data={data} margin={{ top: 6, right: 0, left: 0, bottom: 0 }}>
+              <defs>
+                <linearGradient id={`g-${id}`} x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor={stroke} stopOpacity={0.35} />
+                  <stop offset="100%" stopColor={stroke} stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              <Area
+                type="monotone"
+                dataKey="v"
+                stroke={stroke}
+                strokeWidth={2}
+                fill={`url(#g-${id})`}
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="text-right">
+          <div className="font-display text-[28px] font-bold leading-none tracking-tight text-foreground">
+            {value}
+          </div>
+          <div
+            className={`mt-2 inline-flex items-center gap-1 text-[11.5px] font-semibold ${
+              positive ? "text-success" : "text-destructive"
+            }`}
+          >
+            {positive ? (
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            ) : (
+              <ArrowDownRight className="h-3.5 w-3.5" />
+            )}
+            {delta}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SliderRow({
+  label,
+  value,
+  val,
+  onChange,
+  min,
+  max,
+  step,
+}: {
+  label: string;
+  value: string;
+  val: number[];
+  onChange: (v: number[]) => void;
+  min: number;
+  max: number;
+  step: number;
+}) {
+  return (
+    <div className="rounded-xl bg-surface-muted px-4 py-3.5">
+      <div className="flex items-center justify-between">
+        <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+          {label}
+        </span>
+        <span className="font-display text-[13px] font-semibold text-foreground">{value}</span>
+      </div>
+      <div className="mt-2.5">
+        <Slider value={val} onValueChange={onChange} min={min} max={max} step={step} />
+      </div>
+    </div>
+  );
+}
+
+function SoftStat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-xl bg-primary-soft px-4 py-4 text-center">
+      <div className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-primary/80">
+        {label}
+      </div>
+      <div className="mt-1.5 font-display text-[22px] font-bold text-primary">{value}</div>
     </div>
   );
 }
