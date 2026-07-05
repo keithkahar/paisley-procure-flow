@@ -36,7 +36,7 @@ export default function BuyerQuotation() {
                 <h3 className="mt-1 font-display text-subtitle font-semibold">Nordic Marine AB — Project PH-004</h3>
                 <div className="text-caption text-muted-foreground">CIF Gothenburg · EUR · Valid 30 days</div>
               </div>
-              <StatusBadge tone="warning" dot>Draft</StatusBadge>
+              <WorkflowBadge state="draft" />
             </div>
 
             {/* Internal cost builder — hidden from buyer */}
