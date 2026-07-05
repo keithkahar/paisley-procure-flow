@@ -30,8 +30,8 @@ export default function Settings() {
             {mailboxes.map((m) => (
               <li key={m.addr} className="flex items-center justify-between rounded-lg border border-border p-3">
                 <div>
-                  <div className="font-mono text-[13px] font-semibold">{m.addr}</div>
-                  <div className="text-[12px] text-muted-foreground">{m.purpose}</div>
+                  <div className="font-mono text-body font-semibold">{m.addr}</div>
+                  <div className="text-caption text-muted-foreground">{m.purpose}</div>
                 </div>
                 <StatusBadge tone={m.tone} dot>Active</StatusBadge>
               </li>
@@ -41,7 +41,7 @@ export default function Settings() {
             <div className="section-title mb-1.5">Aliases</div>
             <ul className="space-y-1.5">
               {aliases.map((a) => (
-                <li key={a.alias} className="flex items-center justify-between text-[13px]">
+                <li key={a.alias} className="flex items-center justify-between text-body">
                   <span className="font-mono">{a.alias}</span>
                   <span className="text-muted-foreground">→ {a.forwards}</span>
                 </li>
@@ -51,7 +51,7 @@ export default function Settings() {
         </SettingsCard>
 
         <SettingsCard icon={<Warehouse className="h-4 w-4" />} title="Port / Warehouse master" desc="Canonical origin and destination points.">
-          <div className="grid grid-cols-2 gap-2 text-[13px]">
+          <div className="grid grid-cols-2 gap-2 text-body">
             {[
               ["Ningbo Beilun", "CN"],
               ["Shanghai Yangshan", "CN"],
@@ -64,7 +64,7 @@ export default function Settings() {
             ].map(([n, c]) => (
               <div key={n} className="flex items-center justify-between rounded-md border border-border px-3 py-2">
                 <span>{n}</span>
-                <span className="text-[11px] text-muted-foreground">{c}</span>
+                <span className="text-caption text-muted-foreground">{c}</span>
               </div>
             ))}
           </div>
@@ -81,7 +81,7 @@ export default function Settings() {
               ["Packaging", "18%"],
               ["Buffer", "3%"],
             ].map(([k, v]) => (
-              <div key={k} className="flex items-center justify-between rounded-md border border-border px-3 py-2 text-[13px]">
+              <div key={k} className="flex items-center justify-between rounded-md border border-border px-3 py-2 text-body">
                 <span>{k}</span>
                 <Input defaultValue={v as string} className="h-8 w-20 text-right" />
               </div>
@@ -90,7 +90,7 @@ export default function Settings() {
         </SettingsCard>
 
         <SettingsCard icon={<Coins className="h-4 w-4" />} title="Currency settings" desc="Base currency, rate source and lock policy.">
-          <div className="space-y-2 text-[13px]">
+          <div className="space-y-2 text-body">
             <RowLine label="Base currency">USD</RowLine>
             <RowLine label="Buyer-facing default">EUR</RowLine>
             <RowLine label="Rate source">ECB · daily</RowLine>
@@ -99,7 +99,7 @@ export default function Settings() {
         </SettingsCard>
 
         <SettingsCard icon={<FileText className="h-4 w-4" />} title="Email templates" desc="Templates for each workflow stage.">
-          <ul className="space-y-1.5 text-[13px]">
+          <ul className="space-y-1.5 text-body">
             {["First contact — combined inquiry + background", "RFQ round 1 / 2 / 3", "Quote clarification", "Buyer quotation cover email", "Order confirmation", "Shipment notification"].map((t) => (
               <li key={t} className="flex items-center justify-between rounded-md border border-border px-3 py-2">
                 <span>{t}</span>
@@ -110,7 +110,7 @@ export default function Settings() {
         </SettingsCard>
 
         <SettingsCard icon={<ShieldCheck className="h-4 w-4" />} title="Approval rules" desc="When AI auto-approves vs. requires human.">
-          <ul className="space-y-2 text-[13px]">
+          <ul className="space-y-2 text-body">
             <li className="flex items-start gap-2"><StatusBadge tone="success">Auto</StatusBadge><span>Quote parse confidence &ge; 90% and no missing fields</span></li>
             <li className="flex items-start gap-2"><StatusBadge tone="warning">Human</StatusBadge><span>Supplier is a trading company or new to database</span></li>
             <li className="flex items-start gap-2"><StatusBadge tone="danger">Human</StatusBadge><span>Buyer quotation total &gt; € 50,000</span></li>
@@ -119,7 +119,7 @@ export default function Settings() {
         </SettingsCard>
 
         <SettingsCard icon={<Library className="h-4 w-4" />} title="Supplier sourcing library" desc="Connected sources for discovery.">
-          <ul className="space-y-1.5 text-[13px]">
+          <ul className="space-y-1.5 text-body">
             {["Alibaba Verified", "Made-in-China", "Global Sources", "Internal supplier CRM", "Historical order suppliers"].map((s) => (
               <li key={s} className="flex items-center justify-between rounded-md border border-border px-3 py-2">
                 <span>{s}</span>
@@ -130,7 +130,7 @@ export default function Settings() {
         </SettingsCard>
 
         <SettingsCard icon={<Star className="h-4 w-4" />} title="Rating rules" desc="How supplier ratings are computed.">
-          <ul className="space-y-1.5 text-[13px]">
+          <ul className="space-y-1.5 text-body">
             <li>• On-time delivery — 30%</li>
             <li>• Quote accuracy — 25%</li>
             <li>• Response speed — 15%</li>
@@ -150,8 +150,8 @@ function SettingsCard({ icon, title, desc, children }: { icon: ReactNode; title:
         <div className="flex items-start gap-3">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-soft text-primary">{icon}</div>
           <div>
-            <h3 className="font-display text-[15px] font-semibold">{title}</h3>
-            <p className="text-[12px] text-muted-foreground">{desc}</p>
+            <h3 className="font-display text-subtitle font-semibold">{title}</h3>
+            <p className="text-caption text-muted-foreground">{desc}</p>
           </div>
         </div>
       </div>

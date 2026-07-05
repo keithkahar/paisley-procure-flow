@@ -72,13 +72,13 @@ export default function Orders() {
             <div className="flex flex-col gap-3 border-b border-border p-4 md:flex-row md:items-center md:justify-between">
               <div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-mono text-[12px] font-semibold text-foreground">{o.id}</span>
+                  <span className="font-mono text-mono font-semibold text-foreground">{o.id}</span>
                   <StatusBadge tone="info">{o.project}</StatusBadge>
                   <StatusBadge tone="gold">{o.basis}</StatusBadge>
                   <StatusBadge tone={o.tone} dot>{o.shipment}</StatusBadge>
                 </div>
-                <h4 className="mt-1.5 font-display text-[16px] font-semibold">{o.buyer}</h4>
-                <div className="mt-0.5 text-[12.5px] text-muted-foreground">
+                <h4 className="mt-1.5 font-display text-subtitle font-semibold">{o.buyer}</h4>
+                <div className="mt-0.5 text-caption text-muted-foreground">
                   Suppliers: {o.suppliers.join(", ")} <span className="divider-dot" /> {o.port}
                 </div>
               </div>
@@ -113,7 +113,7 @@ export default function Orders() {
                             <div className={"h-0.5 flex-1 " + (i < o.stage - 1 ? "bg-primary" : "bg-border")} />
                           )}
                         </div>
-                        <div className="mt-2 max-w-[110px] text-[11px] leading-tight text-muted-foreground">
+                        <div className="mt-2 max-w-[110px] text-caption leading-tight text-muted-foreground">
                           <div className={done || current ? "font-semibold text-foreground" : ""}>{m}</div>
                         </div>
                       </li>

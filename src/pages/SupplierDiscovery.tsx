@@ -40,9 +40,9 @@ export default function SupplierDiscovery() {
           <div key={l.name} className="card-surface p-4">
             <div className="flex items-start justify-between">
               <div>
-                <div className="text-[12px] font-medium text-muted-foreground">{l.name}</div>
+                <div className="text-caption font-medium text-muted-foreground">{l.name}</div>
                 <div className="mt-1 font-display text-xl font-bold">{l.results}</div>
-                <div className="text-[11px] text-muted-foreground">matches this week</div>
+                <div className="text-caption text-muted-foreground">matches this week</div>
               </div>
               <StatusBadge tone="success" dot>{l.status}</StatusBadge>
             </div>
@@ -61,7 +61,7 @@ export default function SupplierDiscovery() {
               <button
                 key={c}
                 className={
-                  "rounded-full border px-3 py-1.5 text-[12px] font-medium transition-colors " +
+                  "rounded-full border px-3 py-1.5 text-caption font-medium transition-colors " +
                   (i === 0
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border bg-surface text-foreground/70 hover:bg-muted")
@@ -80,17 +80,17 @@ export default function SupplierDiscovery() {
             <div className="flex items-start justify-between">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-[11px] text-muted-foreground">{s.id}</span>
+                  <span className="font-mono text-mono text-muted-foreground">{s.id}</span>
                   <StatusBadge tone={s.type === "Factory" ? "primary" : "gold"}>{s.type}</StatusBadge>
                 </div>
-                <h4 className="mt-1 font-display text-[15px] font-semibold leading-snug">{s.name}</h4>
+                <h4 className="mt-1 font-display text-subtitle font-semibold leading-snug">{s.name}</h4>
               </div>
               <div className="text-right">
                 <div className="font-display text-lg font-bold text-primary">{s.conf}%</div>
-                <div className="text-[10px] uppercase tracking-widest text-muted-foreground">CN factory</div>
+                <div className="text-label uppercase text-muted-foreground">CN factory</div>
               </div>
             </div>
-            <div className="mt-2 space-y-1 text-[12px] text-muted-foreground">
+            <div className="mt-2 space-y-1 text-caption text-muted-foreground">
               <div className="flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5" /> {s.city}</div>
               <div className="flex items-center gap-1.5"><Globe className="h-3.5 w-3.5" /> {s.site}</div>
               <div className="flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5" /> Contact: {s.contact} · Risk: {s.risk}</div>

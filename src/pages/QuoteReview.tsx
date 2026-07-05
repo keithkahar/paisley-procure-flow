@@ -30,7 +30,7 @@ export default function QuoteReview() {
 
       {/* Table on desktop */}
       <div className="card-surface hidden overflow-hidden md:block">
-        <table className="w-full text-[13px]">
+        <table className="w-full text-body">
           <thead className="bg-surface-muted text-muted-foreground">
             <tr>
               {["Quote", "Supplier / Item", "Price", "MOQ", "Lead", "Basis", "Validity", "Confidence", "Actions"].map((h) => (
@@ -42,12 +42,12 @@ export default function QuoteReview() {
             {quotes.map((q) => (
               <tr key={q.id} className="border-t border-border/70 hover:bg-surface-muted/50">
                 <td className="px-4 py-3">
-                  <div className="font-mono text-[12px] font-semibold text-foreground">{q.id}</div>
-                  <div className="text-[11px] text-muted-foreground">{q.currency}</div>
+                  <div className="font-mono text-mono font-semibold text-foreground">{q.id}</div>
+                  <div className="text-caption text-muted-foreground">{q.currency}</div>
                 </td>
                 <td className="px-4 py-3">
                   <div className="font-medium">{q.item}</div>
-                  <div className="text-[11.5px] text-muted-foreground">{q.supplier}</div>
+                  <div className="text-caption text-muted-foreground">{q.supplier}</div>
                   {q.missing.length > 0 && (
                     <div className="mt-1 flex flex-wrap gap-1">
                       {q.missing.map((m) => (
@@ -66,7 +66,7 @@ export default function QuoteReview() {
                     <div className="h-1.5 w-20 overflow-hidden rounded-full bg-border">
                       <div className={`h-full rounded-full ${q.conf > 85 ? "bg-success" : q.conf > 70 ? "bg-primary" : "bg-warning"}`} style={{ width: `${q.conf}%` }} />
                     </div>
-                    <span className="text-[11.5px] font-medium">{q.conf}%</span>
+                    <span className="text-caption font-medium">{q.conf}%</span>
                   </div>
                 </td>
                 <td className="px-4 py-3">
@@ -88,13 +88,13 @@ export default function QuoteReview() {
           <article key={q.id} className="card-surface p-4">
             <div className="flex items-start justify-between">
               <div>
-                <div className="font-mono text-[11px] text-muted-foreground">{q.id}</div>
+                <div className="font-mono text-mono text-muted-foreground">{q.id}</div>
                 <div className="mt-1 font-semibold">{q.item}</div>
-                <div className="text-[12px] text-muted-foreground">{q.supplier}</div>
+                <div className="text-caption text-muted-foreground">{q.supplier}</div>
               </div>
               <div className="text-right">
                 <div className="font-display text-lg font-bold">{q.price}</div>
-                <div className="text-[11px] text-muted-foreground">MOQ {q.moq}</div>
+                <div className="text-caption text-muted-foreground">MOQ {q.moq}</div>
               </div>
             </div>
             <div className="mt-3 flex flex-wrap gap-1.5">

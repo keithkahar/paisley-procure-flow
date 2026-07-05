@@ -46,14 +46,14 @@ export default function Dashboard() {
     <div className="space-y-6">
       {/* Top: search bar row (kept subtle to match template feel) */}
       <div className="flex items-center justify-between">
-        <h1 className="font-display text-[22px] font-semibold tracking-tight text-foreground">
+        <h1 className="font-display text-title font-semibold tracking-tight text-foreground">
           Dashboard
         </h1>
         <div className="relative hidden md:block">
           <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <input
             placeholder="Search RFQs, suppliers, orders…"
-            className="h-11 w-[380px] rounded-full border border-transparent bg-surface-muted pl-11 pr-4 text-[13px] text-foreground placeholder:text-muted-foreground/70 outline-none focus:border-primary/30 focus:bg-surface focus:ring-2 focus:ring-primary/15"
+            className="h-11 w-[380px] rounded-full border border-transparent bg-surface-muted pl-11 pr-4 text-body text-foreground placeholder:text-muted-foreground/70 outline-none focus:border-primary/30 focus:bg-surface focus:ring-2 focus:ring-primary/15"
           />
         </div>
       </div>
@@ -82,7 +82,7 @@ export default function Dashboard() {
         </div>
 
         <div className="lg:col-span-3 rounded-2xl border border-border/70 bg-surface p-6 shadow-[var(--shadow-sm)]">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+          <div className="text-label uppercase text-muted-foreground">
             Pipeline status
           </div>
 
@@ -114,10 +114,10 @@ export default function Dashboard() {
                 </PieChart>
               </ResponsiveContainer>
               <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
-                <div className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                <div className="text-label uppercase text-muted-foreground">
                   Active items
                 </div>
-                <div className="mt-1 font-display text-[30px] font-bold text-foreground">
+                <div className="mt-1 font-display text-display font-bold text-foreground">
                   {pipelineTotal}
                 </div>
               </div>
@@ -125,7 +125,7 @@ export default function Dashboard() {
 
             <ul className="w-full space-y-3 md:max-w-[240px]">
               {pipeline.map((p) => (
-                <li key={p.name} className="flex items-center justify-between text-[13px]">
+                <li key={p.name} className="flex items-center justify-between text-body">
                   <div className="flex items-center gap-2.5 text-foreground/85">
                     <span
                       className="h-2.5 w-2.5 rounded-full"
@@ -133,7 +133,7 @@ export default function Dashboard() {
                     />
                     {p.name}
                   </div>
-                  <span className="font-display text-[13px] font-semibold text-foreground">
+                  <span className="font-display text-body font-semibold text-foreground">
                     {p.value}
                   </span>
                 </li>
@@ -147,10 +147,10 @@ export default function Dashboard() {
       <div className="grid gap-5 lg:grid-cols-5">
         <div className="lg:col-span-3 rounded-2xl border border-border/70 bg-surface p-6 shadow-[var(--shadow-sm)]">
           <div className="flex items-center justify-between">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+            <div className="text-label uppercase text-muted-foreground">
               Sourcing simulator
             </div>
-            <span className="text-[11px] text-muted-foreground">
+            <span className="text-caption text-muted-foreground">
               Estimates for planning · non-binding
             </span>
           </div>
@@ -193,10 +193,10 @@ export default function Dashboard() {
 
         <div className="lg:col-span-2 rounded-2xl border border-border/70 bg-surface p-6 shadow-[var(--shadow-sm)]">
           <div className="flex items-center justify-between">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+            <div className="text-label uppercase text-muted-foreground">
               Recent activity
             </div>
-            <button className="text-[11.5px] font-medium text-primary hover:underline">
+            <button className="text-caption font-medium text-primary hover:underline">
               View all
             </button>
           </div>
@@ -207,17 +207,17 @@ export default function Dashboard() {
                 className="flex items-center gap-3 rounded-xl bg-primary-soft/60 px-3 py-2.5"
               >
                 <div className="flex h-10 w-10 shrink-0 flex-col items-center justify-center rounded-lg bg-surface text-primary shadow-[var(--shadow-sm)]">
-                  <span className="font-display text-[13px] font-bold leading-none">{h.day}</span>
-                  <span className="text-[9px] font-semibold tracking-wider text-muted-foreground">
+                  <span className="font-display text-body font-bold leading-none">{h.day}</span>
+                  <span className="text-mono font-semibold tracking-wider text-muted-foreground">
                     {h.mo}
                   </span>
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="truncate text-[12.5px] font-medium text-foreground">
+                  <div className="truncate text-caption font-medium text-foreground">
                     {h.label}
                   </div>
                 </div>
-                <div className="shrink-0 font-display text-[13px] font-semibold text-foreground">
+                <div className="shrink-0 font-display text-body font-semibold text-foreground">
                   {h.value}
                 </div>
               </li>
@@ -251,7 +251,7 @@ function SparkKpi({
   const id = label.replace(/\s+/g, "-");
   return (
     <div className="rounded-2xl border border-border/70 bg-surface p-5 shadow-[var(--shadow-sm)]">
-      <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+      <div className="text-label uppercase text-muted-foreground">
         {label}
       </div>
       <div className="mt-3 flex items-end justify-between gap-4">
@@ -275,11 +275,11 @@ function SparkKpi({
           </ResponsiveContainer>
         </div>
         <div className="text-right">
-          <div className="font-display text-[28px] font-bold leading-none tracking-tight text-foreground">
+          <div className="font-display text-display font-bold leading-none tracking-tight text-foreground">
             {value}
           </div>
           <div
-            className={`mt-2 inline-flex items-center gap-1 text-[11.5px] font-semibold ${
+            className={`mt-2 inline-flex items-center gap-1 text-caption font-semibold ${
               positive ? "text-success" : "text-destructive"
             }`}
           >
@@ -316,10 +316,10 @@ function SliderRow({
   return (
     <div className="rounded-xl bg-surface-muted px-4 py-3.5">
       <div className="flex items-center justify-between">
-        <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+        <span className="text-label uppercase text-muted-foreground">
           {label}
         </span>
-        <span className="font-display text-[13px] font-semibold text-foreground">{value}</span>
+        <span className="font-display text-body font-semibold text-foreground">{value}</span>
       </div>
       <div className="mt-2.5">
         <Slider value={val} onValueChange={onChange} min={min} max={max} step={step} />
@@ -331,10 +331,10 @@ function SliderRow({
 function SoftStat({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-xl bg-primary-soft px-4 py-4 text-center">
-      <div className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-primary/80">
+      <div className="text-label uppercase text-primary/80">
         {label}
       </div>
-      <div className="mt-1.5 font-display text-[22px] font-bold text-primary">{value}</div>
+      <div className="mt-1.5 font-display text-title font-bold text-primary">{value}</div>
     </div>
   );
 }

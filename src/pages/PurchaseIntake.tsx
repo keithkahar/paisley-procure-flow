@@ -70,16 +70,16 @@ export default function PurchaseIntake() {
               <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="font-mono text-[11px] text-muted-foreground">{l.id}</span>
+                    <span className="font-mono text-mono text-muted-foreground">{l.id}</span>
                     <StatusBadge tone={l.tone} dot>{l.status}</StatusBadge>
                   </div>
-                  <h4 className="mt-1.5 font-display text-[16px] font-semibold">{l.buyer}</h4>
-                  <div className="mt-1 text-[12.5px] text-muted-foreground">
+                  <h4 className="mt-1.5 font-display text-subtitle font-semibold">{l.buyer}</h4>
+                  <div className="mt-1 text-caption text-muted-foreground">
                     {l.country} <span className="divider-dot" /> {l.items} items
                   </div>
                   {l.missing.length > 0 && (
                     <div className="mt-3 rounded-lg border border-warning/30 bg-warning-soft/60 p-3">
-                      <div className="text-[11px] font-semibold uppercase tracking-widest text-warning-foreground/80">
+                      <div className="text-label uppercase text-warning-foreground/80">
                         Missing fields
                       </div>
                       <div className="mt-1.5 flex flex-wrap gap-1.5">
@@ -108,7 +108,7 @@ export default function PurchaseIntake() {
             <Sparkles className="h-4 w-4 text-primary" />
             <div className="section-title">Required intake fields</div>
           </div>
-          <ul className="mt-2 space-y-2 text-[13px]">
+          <ul className="mt-2 space-y-2 text-body">
             {[
               "Buyer company (legal name)",
               "Contact person & email",
@@ -124,7 +124,7 @@ export default function PurchaseIntake() {
               </li>
             ))}
           </ul>
-          <div className="mt-4 rounded-lg bg-primary-soft p-3 text-[12px] text-foreground/80">
+          <div className="mt-4 rounded-lg bg-primary-soft p-3 text-caption text-foreground/80">
             Paisley AI auto-detects 5 of 7 fields from typical buyer emails and PDFs.
           </div>
         </Card>

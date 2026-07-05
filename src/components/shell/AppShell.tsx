@@ -89,7 +89,7 @@ export default function AppShell() {
             </button>
 
             <div className="ml-1 hidden md:flex items-center">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-brand text-[12px] font-semibold text-primary-foreground ring-2 ring-white shadow-sm">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-brand text-caption font-semibold text-primary-foreground ring-2 ring-white shadow-sm">
                 LK
               </div>
             </div>

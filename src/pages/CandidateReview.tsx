@@ -35,12 +35,12 @@ export default function CandidateReview() {
                 </div>
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="font-mono text-[11px] text-muted-foreground">{s.id}</span>
+                    <span className="font-mono text-mono text-muted-foreground">{s.id}</span>
                     <StatusBadge tone={s.type === "Factory" ? "primary" : "gold"}>{s.type}</StatusBadge>
                     <StatusBadge tone="muted">{s.cat}</StatusBadge>
                   </div>
-                  <h4 className="mt-1.5 font-display text-[16px] font-semibold">{s.name}</h4>
-                  <div className="mt-1 flex items-start gap-1.5 text-[12.5px] text-muted-foreground">
+                  <h4 className="mt-1.5 font-display text-subtitle font-semibold">{s.name}</h4>
+                  <div className="mt-1 flex items-start gap-1.5 text-caption text-muted-foreground">
                     <MapPin className="mt-0.5 h-3.5 w-3.5" /> {s.addr}
                   </div>
                   <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-3">
@@ -50,10 +50,10 @@ export default function CandidateReview() {
                   </div>
                   {s.risks.length > 0 && (
                     <div className="mt-3 rounded-lg border border-warning/30 bg-warning-soft/50 p-3">
-                      <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-warning-foreground/80">
+                      <div className="flex items-center gap-1.5 text-label uppercase text-warning-foreground/80">
                         <ShieldAlert className="h-3.5 w-3.5" /> Verification notes
                       </div>
-                      <ul className="mt-1.5 space-y-0.5 text-[12.5px] text-foreground/85">
+                      <ul className="mt-1.5 space-y-0.5 text-caption text-foreground/85">
                         {s.risks.map((r) => (
                           <li key={r}>• {r}</li>
                         ))}
@@ -81,8 +81,8 @@ export default function CandidateReview() {
 function MiniField({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-[10.5px] font-semibold uppercase tracking-widest text-muted-foreground">{label}</div>
-      <div className="mt-0.5 text-[13px] font-medium text-foreground">{value}</div>
+      <div className="text-label uppercase text-muted-foreground">{label}</div>
+      <div className="mt-0.5 text-body font-medium text-foreground">{value}</div>
     </div>
   );
 }

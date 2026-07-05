@@ -184,7 +184,7 @@ export function KpiTile({
   return (
     <div className="kpi-tile">
       <div className="text-eyebrow">{label}</div>
-      <div className="mt-3 font-display text-[30px] font-semibold leading-none tracking-tight text-foreground">
+      <div className="mt-3 font-display text-display font-semibold leading-none tracking-tight text-foreground">
         {value}
       </div>
       {(delta || hint) && (

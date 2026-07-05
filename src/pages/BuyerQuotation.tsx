@@ -33,8 +33,8 @@ export default function BuyerQuotation() {
             <div className="mb-3 flex items-center justify-between">
               <div>
                 <div className="section-title">Quotation Q-2041</div>
-                <h3 className="mt-1 font-display text-[16px] font-semibold">Nordic Marine AB — Project PH-004</h3>
-                <div className="text-[12px] text-muted-foreground">CIF Gothenburg · EUR · Valid 30 days</div>
+                <h3 className="mt-1 font-display text-subtitle font-semibold">Nordic Marine AB — Project PH-004</h3>
+                <div className="text-caption text-muted-foreground">CIF Gothenburg · EUR · Valid 30 days</div>
               </div>
               <StatusBadge tone="warning" dot>Draft</StatusBadge>
             </div>
@@ -42,11 +42,11 @@ export default function BuyerQuotation() {
             {/* Internal cost builder — hidden from buyer */}
             <div className="rounded-lg border border-border bg-surface-muted p-3">
               <div className="mb-2 flex items-center justify-between">
-                <div className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">Internal cost builder</div>
+                <div className="text-label uppercase text-muted-foreground">Internal cost builder</div>
                 <StatusBadge tone="danger">Hidden from buyer</StatusBadge>
               </div>
               <div className="overflow-x-auto">
-                <table className="w-full text-[13px]">
+                <table className="w-full text-body">
                   <thead className="text-muted-foreground">
                     <tr>
                       <th className="py-2 pr-3 text-left font-medium">Item</th>
@@ -64,7 +64,7 @@ export default function BuyerQuotation() {
                         <tr key={l.item} className="border-t border-border/60">
                           <td className="py-2 pr-3">
                             <div className="font-medium">{l.item}</div>
-                            <div className="text-[11px] text-muted-foreground">{l.supplier}</div>
+                            <div className="text-caption text-muted-foreground">{l.supplier}</div>
                           </td>
                           <td className="py-2 pr-3 text-right">${l.cost.toFixed(2)}</td>
                           <td className="py-2 pr-3 text-right">{l.qty}</td>
@@ -92,14 +92,14 @@ export default function BuyerQuotation() {
               <div className="mb-4 flex items-center justify-between">
                 <div>
                   <div className="font-display text-lg font-bold">Quotation Q-2041</div>
-                  <div className="text-[12px] text-muted-foreground">To: Nordic Marine AB · CIF Gothenburg · EUR</div>
+                  <div className="text-caption text-muted-foreground">To: Nordic Marine AB · CIF Gothenburg · EUR</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-[10.5px] uppercase tracking-widest text-muted-foreground">Prepared by</div>
-                  <div className="text-[13px] font-semibold">Paisley Sourcing</div>
+                  <div className="text-label uppercase text-muted-foreground">Prepared by</div>
+                  <div className="text-body font-semibold">Paisley Sourcing</div>
                 </div>
               </div>
-              <table className="w-full text-[13px]">
+              <table className="w-full text-body">
                 <thead className="text-muted-foreground border-b border-border">
                   <tr>
                     <th className="py-2 text-left font-medium">Description</th>
@@ -142,7 +142,7 @@ export default function BuyerQuotation() {
           <Card>
             <div className="section-title mb-3">Global profit settings</div>
             <label className="block">
-              <span className="text-[12px] text-muted-foreground">Default rate (all categories)</span>
+              <span className="text-caption text-muted-foreground">Default rate (all categories)</span>
               <Input defaultValue="22" className="mt-1 h-9" />
             </label>
             <div className="mt-3 space-y-2">
@@ -154,7 +154,7 @@ export default function BuyerQuotation() {
           </Card>
           <Card>
             <div className="section-title mb-3">Currency</div>
-            <div className="text-[13px] space-y-1.5">
+            <div className="text-body space-y-1.5">
               <div className="flex justify-between"><span>USD → EUR</span><span className="font-medium">0.9200</span></div>
               <div className="flex justify-between"><span>CNY → USD</span><span className="font-medium">0.1380</span></div>
               <div className="flex justify-between"><span>Locked at</span><span className="text-muted-foreground">Today, 09:12</span></div>
@@ -164,7 +164,7 @@ export default function BuyerQuotation() {
             <div className="section-title mb-3">Delivery basis</div>
             <div className="flex flex-wrap gap-1.5">
               {["EXW", "FOB", "CIF", "DAP", "DDP"].map((t) => (
-                <span key={t} className={"rounded-md px-2.5 py-1 text-[12px] font-semibold " + (t === "CIF" ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground")}>{t}</span>
+                <span key={t} className={"rounded-md px-2.5 py-1 text-caption font-semibold " + (t === "CIF" ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground")}>{t}</span>
               ))}
             </div>
           </Card>
@@ -176,7 +176,7 @@ export default function BuyerQuotation() {
 
 function RateRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between text-[13px]">
+    <div className="flex items-center justify-between text-body">
       <span className="text-foreground/85">{label}</span>
       <span className="font-semibold text-primary">{value}</span>
     </div>
