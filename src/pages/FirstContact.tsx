@@ -50,8 +50,8 @@ export default function FirstContact() {
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="font-mono text-mono text-muted-foreground">{e.id}</span>
-                  <StatusBadge tone="info">{e.rfq}</StatusBadge>
-                  <StatusBadge tone={e.tone} dot>{e.status}</StatusBadge>
+                  <RefBadge>{e.rfq}</RefBadge>
+                  <WorkflowBadge state={e.state} />
                 </div>
                 <h4 className="mt-1.5 font-display text-subtitle font-semibold">{e.subject}</h4>
                 <div className="mt-1 text-caption text-muted-foreground">
@@ -60,7 +60,7 @@ export default function FirstContact() {
                 {e.missing.length > 0 && (
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {e.missing.map((m) => (
-                      <StatusBadge key={m} tone="warning">Missing: {m}</StatusBadge>
+                      <MissingFieldBadge key={m} field={m} />
                     ))}
                   </div>
                 )}
