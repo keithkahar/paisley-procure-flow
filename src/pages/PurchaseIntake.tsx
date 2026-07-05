@@ -46,7 +46,7 @@ export default function PurchaseIntake() {
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="font-mono text-mono text-muted-foreground">{l.id}</span>
-                    <StatusBadge tone={l.tone} dot>{l.status}</StatusBadge>
+                    <WorkflowBadge state={l.state} />
                   </div>
                   <h4 className="mt-1.5 font-display text-subtitle font-semibold">{l.buyer}</h4>
                   <div className="mt-1 text-caption text-muted-foreground">
@@ -59,7 +59,7 @@ export default function PurchaseIntake() {
                       </div>
                       <div className="mt-1.5 flex flex-wrap gap-1.5">
                         {l.missing.map((m) => (
-                          <StatusBadge key={m} tone="warning">{m}</StatusBadge>
+                          <MissingFieldBadge key={m} field={m} />
                         ))}
                       </div>
                     </div>
@@ -69,7 +69,7 @@ export default function PurchaseIntake() {
                   {l.missing.length > 0 ? (
                     <Button size="sm" variant="outline">Request missing info</Button>
                   ) : null}
-                  <Button size="sm" disabled={l.tone !== "success"}>
+                  <Button size="sm" disabled={l.state !== "ready"}>
                     Start supplier discovery <ArrowRight className="ml-1 h-3.5 w-3.5" />
                   </Button>
                 </div>
