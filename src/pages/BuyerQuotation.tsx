@@ -86,7 +86,7 @@ export default function BuyerQuotation() {
           <Card>
             <div className="mb-3 flex items-center justify-between">
               <div className="section-title">Buyer-facing preview</div>
-              <StatusBadge tone="success">Visible to buyer</StatusBadge>
+              <WorkflowBadge state="visible" />
             </div>
             <div className="rounded-lg border border-border p-4">
               <div className="mb-4 flex items-center justify-between">
