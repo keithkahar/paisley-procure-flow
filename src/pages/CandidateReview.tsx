@@ -1,4 +1,4 @@
-import { PageHeader, StatusBadge, KpiTile } from "@/components/mos/Primitives";
+import { PageHeader, StatusBadge, KpiTile, SupplierTypeBadge } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { Check, X, Pencil, ShieldAlert, MapPin, Factory } from "lucide-react";
 
