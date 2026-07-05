@@ -123,7 +123,7 @@ export default function Settings() {
             {["Alibaba Verified", "Made-in-China", "Global Sources", "Internal supplier CRM", "Historical order suppliers"].map((s) => (
               <li key={s} className="flex items-center justify-between rounded-md border border-border px-3 py-2">
                 <span>{s}</span>
-                <StatusBadge tone="success" dot>Connected</StatusBadge>
+                <WorkflowBadge state="connected" />
               </li>
             ))}
           </ul>
