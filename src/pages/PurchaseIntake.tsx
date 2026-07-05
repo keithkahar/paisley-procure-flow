@@ -1,44 +1,19 @@
-import { PageHeader, KpiTile, StatusBadge, Card } from "@/components/mos/Primitives";
+import { PageHeader, KpiTile, Card, WorkflowBadge, MissingFieldBadge, type WorkflowState } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { AlertCircle, Inbox, Upload, Sparkles, ArrowRight } from "lucide-react";
 
-const lists = [
-  {
-    id: "PH-004",
-    buyer: "Nordic Marine AB",
-    country: "Sweden",
-    items: 18,
-    missing: ["Delivery basis", "Target currency"],
-    status: "Needs info",
-    tone: "warning" as const,
-  },
-  {
-    id: "PH-005",
-    buyer: "Baltic Trawlers OY",
-    country: "Finland",
-    items: 6,
-    missing: [],
-    status: "Ready",
-    tone: "success" as const,
-  },
-  {
-    id: "PH-006",
-    buyer: "Adriatico Naval SRL",
-    country: "Italy",
-    items: 12,
-    missing: ["Contact person", "Delivery location"],
-    status: "Needs info",
-    tone: "warning" as const,
-  },
-  {
-    id: "PH-007",
-    buyer: "Coastline Yachts Ltd",
-    country: "UK",
-    items: 9,
-    missing: ["Buyer company registration"],
-    status: "Blocked",
-    tone: "danger" as const,
-  },
+const lists: Array<{
+  id: string;
+  buyer: string;
+  country: string;
+  items: number;
+  missing: string[];
+  state: WorkflowState;
+}> = [
+  { id: "PH-004", buyer: "Nordic Marine AB",    country: "Sweden",  items: 18, missing: ["Delivery basis", "Target currency"], state: "needs_info" },
+  { id: "PH-005", buyer: "Baltic Trawlers OY",  country: "Finland", items: 6,  missing: [],                                    state: "ready" },
+  { id: "PH-006", buyer: "Adriatico Naval SRL", country: "Italy",   items: 12, missing: ["Contact person", "Delivery location"], state: "needs_info" },
+  { id: "PH-007", buyer: "Coastline Yachts Ltd", country: "UK",     items: 9,  missing: ["Buyer company registration"],        state: "blocked" },
 ];
 
 export default function PurchaseIntake() {
