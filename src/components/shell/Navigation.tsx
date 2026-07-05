@@ -80,13 +80,13 @@ export function BrandMark({ compact = true }: { compact?: boolean }) {
         className="flex h-11 w-11 items-center justify-center rounded-xl bg-white shadow-md"
         aria-label="Paisley MOS"
       >
-        <img src={logoAsset.url} alt="" className="h-8 w-8 object-contain" />
+        <img src={logoUrl} alt="" className="h-8 w-8 object-contain" />
       </div>
     );
   }
   return (
     <div className="flex items-center gap-2">
-      <img src={logoAsset.url} alt="Paisley MOS" className="h-8 w-auto" />
+      <img src={logoUrl} alt="Paisley MOS" className="h-8 w-auto" />
     </div>
   );
 }
