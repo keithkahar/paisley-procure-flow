@@ -316,11 +316,11 @@ function SliderRow({
 }) {
   return (
     <div className="rounded-xl bg-surface-muted px-4 py-3.5">
-      <div className="flex items-center justify-between">
-        <span className="text-label uppercase text-muted-foreground">
+      <div className="flex items-center justify-between gap-4">
+        <span className="whitespace-nowrap text-label uppercase text-muted-foreground">
           {label}
         </span>
-        <span className="font-display text-body font-semibold text-foreground">{value}</span>
+        <span className="whitespace-nowrap font-display text-body font-semibold text-foreground">{value}</span>
       </div>
       <div className="mt-2.5">
         <Slider value={val} onValueChange={onChange} min={min} max={max} step={step} />
