@@ -109,10 +109,10 @@ export default function QuoteReview() {
               </div>
             </div>
             <div className="mt-3 flex flex-wrap gap-1.5">
-              <StatusBadge tone="gold">{q.basis}</StatusBadge>
+              <DeliveryBasisBadge>{q.basis}</DeliveryBasisBadge>
               <StatusBadge tone="muted">Lead {q.lead}</StatusBadge>
               <StatusBadge tone="muted">{q.validity}</StatusBadge>
-              <StatusBadge tone={q.conf > 85 ? "success" : "warning"}>{q.conf}%</StatusBadge>
+              <ConfidenceBadge value={q.conf} />
             </div>
             <div className="mt-3 flex gap-2">
               <Button size="sm" className="flex-1">Approve</Button>
