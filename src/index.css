@@ -131,15 +131,23 @@
 
 @layer components {
   .card-surface {
-    @apply bg-card border border-border rounded-xl;
+    @apply bg-card border border-border/70 rounded-2xl;
     box-shadow: var(--shadow-sm);
   }
   .card-elevated {
-    @apply bg-card border border-border rounded-xl;
+    @apply bg-card border border-border/70 rounded-2xl;
     box-shadow: var(--shadow-md);
   }
+  .card-tinted {
+    @apply rounded-2xl border border-primary/10;
+    background: linear-gradient(180deg, hsl(214 90% 97%) 0%, hsl(214 80% 94%) 100%);
+  }
+  .card-tinted-gold {
+    @apply rounded-2xl border border-gold/25;
+    background: linear-gradient(180deg, hsl(30 50% 97%) 0%, hsl(30 45% 92%) 100%);
+  }
   .kpi-tile {
-    @apply relative overflow-hidden bg-card border border-border rounded-xl p-5 transition-all;
+    @apply relative overflow-hidden bg-card border border-border/70 rounded-2xl p-5 transition-all;
     box-shadow: var(--shadow-sm);
   }
   .kpi-tile:hover {
@@ -155,6 +163,25 @@
     content: "•";
     @apply mx-2 text-border-strong;
   }
+  /* Active rail pill — white pull-out tab like reference image 2 */
+  .rail-pill-active {
+    @apply relative bg-white text-primary shadow-[0_8px_24px_-6px_hsl(214_99%_20%/0.35)];
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .rail-pill-active::before,
+  .rail-pill-active::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    background: hsl(var(--rail));
+  }
+  .rail-pill-active::before { top: -14px; border-bottom-right-radius: 14px; box-shadow: 0 7px 0 0 white; }
+  .rail-pill-active::after { bottom: -14px; border-top-right-radius: 14px; box-shadow: 0 -7px 0 0 white; }
   .scroll-thin::-webkit-scrollbar { width: 8px; height: 8px; }
   .scroll-thin::-webkit-scrollbar-thumb {
     background: hsl(var(--border-strong));
