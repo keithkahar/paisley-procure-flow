@@ -1,4 +1,4 @@
-import { PageHeader, StatusBadge, Card } from "@/components/mos/Primitives";
+import { PageHeader, Card, WorkflowBadge, Chip } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FileDown, Send, Eye } from "lucide-react";
@@ -36,14 +36,14 @@ export default function BuyerQuotation() {
                 <h3 className="mt-1 font-display text-subtitle font-semibold">Nordic Marine AB — Project PH-004</h3>
                 <div className="text-caption text-muted-foreground">CIF Gothenburg · EUR · Valid 30 days</div>
               </div>
-              <StatusBadge tone="warning" dot>Draft</StatusBadge>
+              <WorkflowBadge state="draft" />
             </div>
 
             {/* Internal cost builder — hidden from buyer */}
             <div className="rounded-lg border border-border bg-surface-muted p-3">
               <div className="mb-2 flex items-center justify-between">
                 <div className="text-label uppercase text-muted-foreground">Internal cost builder</div>
-                <StatusBadge tone="danger">Hidden from buyer</StatusBadge>
+                <WorkflowBadge state="hidden" />
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-body">
@@ -86,7 +86,7 @@ export default function BuyerQuotation() {
           <Card>
             <div className="mb-3 flex items-center justify-between">
               <div className="section-title">Buyer-facing preview</div>
-              <StatusBadge tone="success">Visible to buyer</StatusBadge>
+              <WorkflowBadge state="visible" />
             </div>
             <div className="rounded-lg border border-border p-4">
               <div className="mb-4 flex items-center justify-between">
@@ -164,7 +164,7 @@ export default function BuyerQuotation() {
             <div className="section-title mb-3">Delivery basis</div>
             <div className="flex flex-wrap gap-1.5">
               {["EXW", "FOB", "CIF", "DAP", "DDP"].map((t) => (
-                <span key={t} className={"rounded-md px-2.5 py-1 text-caption font-semibold " + (t === "CIF" ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground")}>{t}</span>
+                <Chip key={t} active={t === "CIF"}>{t}</Chip>
               ))}
             </div>
           </Card>

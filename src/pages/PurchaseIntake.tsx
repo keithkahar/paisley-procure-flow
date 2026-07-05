@@ -1,44 +1,19 @@
-import { PageHeader, KpiTile, StatusBadge, Card } from "@/components/mos/Primitives";
+import { PageHeader, KpiTile, Card, WorkflowBadge, MissingFieldBadge, type WorkflowState } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { AlertCircle, Inbox, Upload, Sparkles, ArrowRight } from "lucide-react";
 
-const lists = [
-  {
-    id: "PH-004",
-    buyer: "Nordic Marine AB",
-    country: "Sweden",
-    items: 18,
-    missing: ["Delivery basis", "Target currency"],
-    status: "Needs info",
-    tone: "warning" as const,
-  },
-  {
-    id: "PH-005",
-    buyer: "Baltic Trawlers OY",
-    country: "Finland",
-    items: 6,
-    missing: [],
-    status: "Ready",
-    tone: "success" as const,
-  },
-  {
-    id: "PH-006",
-    buyer: "Adriatico Naval SRL",
-    country: "Italy",
-    items: 12,
-    missing: ["Contact person", "Delivery location"],
-    status: "Needs info",
-    tone: "warning" as const,
-  },
-  {
-    id: "PH-007",
-    buyer: "Coastline Yachts Ltd",
-    country: "UK",
-    items: 9,
-    missing: ["Buyer company registration"],
-    status: "Blocked",
-    tone: "danger" as const,
-  },
+const lists: Array<{
+  id: string;
+  buyer: string;
+  country: string;
+  items: number;
+  missing: string[];
+  state: WorkflowState;
+}> = [
+  { id: "PH-004", buyer: "Nordic Marine AB",    country: "Sweden",  items: 18, missing: ["Delivery basis", "Target currency"], state: "needs_info" },
+  { id: "PH-005", buyer: "Baltic Trawlers OY",  country: "Finland", items: 6,  missing: [],                                    state: "ready" },
+  { id: "PH-006", buyer: "Adriatico Naval SRL", country: "Italy",   items: 12, missing: ["Contact person", "Delivery location"], state: "needs_info" },
+  { id: "PH-007", buyer: "Coastline Yachts Ltd", country: "UK",     items: 9,  missing: ["Buyer company registration"],        state: "blocked" },
 ];
 
 export default function PurchaseIntake() {
@@ -71,7 +46,7 @@ export default function PurchaseIntake() {
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="font-mono text-mono text-muted-foreground">{l.id}</span>
-                    <StatusBadge tone={l.tone} dot>{l.status}</StatusBadge>
+                    <WorkflowBadge state={l.state} />
                   </div>
                   <h4 className="mt-1.5 font-display text-subtitle font-semibold">{l.buyer}</h4>
                   <div className="mt-1 text-caption text-muted-foreground">
@@ -84,7 +59,7 @@ export default function PurchaseIntake() {
                       </div>
                       <div className="mt-1.5 flex flex-wrap gap-1.5">
                         {l.missing.map((m) => (
-                          <StatusBadge key={m} tone="warning">{m}</StatusBadge>
+                          <MissingFieldBadge key={m} field={m} />
                         ))}
                       </div>
                     </div>
@@ -94,7 +69,7 @@ export default function PurchaseIntake() {
                   {l.missing.length > 0 ? (
                     <Button size="sm" variant="outline">Request missing info</Button>
                   ) : null}
-                  <Button size="sm" disabled={l.tone !== "success"}>
+                  <Button size="sm" disabled={l.state !== "ready"}>
                     Start supplier discovery <ArrowRight className="ml-1 h-3.5 w-3.5" />
                   </Button>
                 </div>

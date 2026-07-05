@@ -1,41 +1,14 @@
-import { PageHeader, StatusBadge, KpiTile, Card } from "@/components/mos/Primitives";
+import { PageHeader, KpiTile, Card, WorkflowBadge, RefBadge, DeliveryBasisBadge, type WorkflowState } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, Circle } from "lucide-react";
 
-const orders = [
-  {
-    id: "ORD-0142",
-    project: "PH-004",
-    buyer: "Nordic Marine AB",
-    suppliers: ["Ningbo Ocean Fittings", "Shenzhen Boya"],
-    basis: "CIF Gothenburg",
-    port: "Ningbo → Gothenburg",
-    shipment: "On the water",
-    tone: "primary" as const,
-    stage: 5,
-  },
-  {
-    id: "ORD-0143",
-    project: "PH-003",
-    buyer: "Baltic Trawlers OY",
-    suppliers: ["Qingdao Steel Rig"],
-    basis: "FOB Qingdao",
-    port: "Qingdao",
-    shipment: "In production",
-    tone: "gold" as const,
-    stage: 3,
-  },
-  {
-    id: "ORD-0144",
-    project: "PH-002",
-    buyer: "Adriatico Naval SRL",
-    suppliers: ["Guangzhou Harbor", "Zhuhai Marine LED"],
-    basis: "DDP Trieste",
-    port: "Shanghai → Trieste",
-    shipment: "Delivered",
-    tone: "success" as const,
-    stage: 8,
-  },
+const orders: Array<{
+  id: string; project: string; buyer: string; suppliers: string[];
+  basis: string; port: string; shipment: string; state: WorkflowState; stage: number;
+}> = [
+  { id: "ORD-0142", project: "PH-004", buyer: "Nordic Marine AB",     suppliers: ["Ningbo Ocean Fittings", "Shenzhen Boya"],  basis: "CIF Gothenburg", port: "Ningbo → Gothenburg",  shipment: "On the water",  state: "in_progress", stage: 5 },
+  { id: "ORD-0143", project: "PH-003", buyer: "Baltic Trawlers OY",   suppliers: ["Qingdao Steel Rig"],                       basis: "FOB Qingdao",    port: "Qingdao",              shipment: "In production", state: "in_progress", stage: 3 },
+  { id: "ORD-0144", project: "PH-002", buyer: "Adriatico Naval SRL",  suppliers: ["Guangzhou Harbor", "Zhuhai Marine LED"],   basis: "DDP Trieste",    port: "Shanghai → Trieste",   shipment: "Delivered",     state: "delivered",   stage: 8 },
 ];
 
 const milestones = [
@@ -73,9 +46,9 @@ export default function Orders() {
               <div>
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="font-mono text-mono font-semibold text-foreground">{o.id}</span>
-                  <StatusBadge tone="info">{o.project}</StatusBadge>
-                  <StatusBadge tone="gold">{o.basis}</StatusBadge>
-                  <StatusBadge tone={o.tone} dot>{o.shipment}</StatusBadge>
+                  <RefBadge>{o.project}</RefBadge>
+                  <DeliveryBasisBadge>{o.basis}</DeliveryBasisBadge>
+                  <WorkflowBadge state={o.state} label={o.shipment} />
                 </div>
                 <h4 className="mt-1.5 font-display text-subtitle font-semibold">{o.buyer}</h4>
                 <div className="mt-0.5 text-caption text-muted-foreground">

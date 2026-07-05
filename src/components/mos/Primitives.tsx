@@ -137,6 +137,143 @@ export function StatusBadge({
   );
 }
 
+/* ============================================================
+ * Semantic badge system — the ONLY sanctioned mapping between
+ * domain concepts and visual tone/label. Pages MUST use these
+ * instead of choosing tone= manually.
+ * ============================================================ */
+
+// --- Risk ---
+export type RiskLevel = "low" | "medium" | "high" | "unknown";
+const RISK_MAP: Record<RiskLevel, { tone: StatusTone; label: string }> = {
+  low:     { tone: "success", label: "Low risk" },
+  medium:  { tone: "warning", label: "Medium risk" },
+  high:    { tone: "danger",  label: "High risk" },
+  unknown: { tone: "muted",   label: "Risk unknown" },
+};
+export function normalizeRisk(v: string | RiskLevel | undefined): RiskLevel {
+  const s = (v ?? "").toString().toLowerCase();
+  if (s.startsWith("low")) return "low";
+  if (s.startsWith("med")) return "medium";
+  if (s.startsWith("high")) return "high";
+  return "unknown";
+}
+export function RiskBadge({ level, compact = false }: { level: string | RiskLevel; compact?: boolean }) {
+  const key = normalizeRisk(level);
+  const { tone, label } = RISK_MAP[key];
+  return <StatusBadge tone={tone} dot>{compact ? label.replace(" risk", "") : label}</StatusBadge>;
+}
+
+// --- Priority ---
+export type PriorityLevel = "low" | "normal" | "high" | "urgent";
+const PRIORITY_MAP: Record<PriorityLevel, { tone: StatusTone; label: string }> = {
+  low:    { tone: "muted",   label: "Low priority" },
+  normal: { tone: "info",    label: "Normal" },
+  high:   { tone: "warning", label: "High priority" },
+  urgent: { tone: "danger",  label: "Urgent" },
+};
+export function PriorityBadge({ level }: { level: PriorityLevel }) {
+  const { tone, label } = PRIORITY_MAP[level];
+  return <StatusBadge tone={tone} dot>{label}</StatusBadge>;
+}
+
+// --- Confidence (0-100) ---
+export function confidenceTone(value: number): { tone: StatusTone; label: string } {
+  if (value >= 90) return { tone: "success", label: "High" };
+  if (value >= 75) return { tone: "primary", label: "Good" };
+  if (value >= 60) return { tone: "warning", label: "Fair" };
+  return { tone: "danger", label: "Low" };
+}
+export function ConfidenceBadge({ value, showLabel = false }: { value: number; showLabel?: boolean }) {
+  const { tone, label } = confidenceTone(value);
+  return (
+    <StatusBadge tone={tone}>
+      {showLabel ? `${label} · ${value}%` : `${value}%`}
+    </StatusBadge>
+  );
+}
+
+// --- Workflow state (unified vocabulary across pages) ---
+export type WorkflowState =
+  | "draft"
+  | "pending"       // awaiting approval / awaiting review
+  | "sent"          // in flight
+  | "in_progress"   // active work, on the water, in production
+  | "replied"       // response received
+  | "ready"         // ready to advance
+  | "approved"
+  | "connected"
+  | "delivered"
+  | "active"
+  | "auto"          // AI auto-handled
+  | "human"         // needs human touch (non-critical)
+  | "needs_info"
+  | "needs_edit"
+  | "needs_followup"
+  | "hidden"        // hidden from buyer
+  | "visible"       // visible to buyer
+  | "blocked"
+  | "rejected";
+
+const WORKFLOW_MAP: Record<WorkflowState, { tone: StatusTone; label: string; dot: boolean }> = {
+  draft:          { tone: "muted",   label: "Draft",             dot: true  },
+  pending:        { tone: "warning", label: "Awaiting approval", dot: true  },
+  sent:           { tone: "primary", label: "Sent",              dot: true  },
+  in_progress:    { tone: "primary", label: "In progress",       dot: true  },
+  replied:        { tone: "success", label: "Replied",           dot: true  },
+  ready:          { tone: "success", label: "Ready",             dot: true  },
+  approved:       { tone: "success", label: "Approved",          dot: true  },
+  connected:      { tone: "success", label: "Connected",         dot: true  },
+  delivered:      { tone: "success", label: "Delivered",         dot: true  },
+  active:         { tone: "success", label: "Active",            dot: true  },
+  auto:           { tone: "success", label: "Auto",              dot: false },
+  human:          { tone: "warning", label: "Human",             dot: false },
+  needs_info:     { tone: "warning", label: "Needs info",        dot: true  },
+  needs_edit:     { tone: "warning", label: "Needs edit",        dot: true  },
+  needs_followup: { tone: "warning", label: "Needs follow-up",   dot: true  },
+  hidden:         { tone: "danger",  label: "Hidden from buyer", dot: false },
+  visible:        { tone: "success", label: "Visible to buyer",  dot: false },
+  blocked:        { tone: "danger",  label: "Blocked",           dot: true  },
+  rejected:       { tone: "danger",  label: "Rejected",          dot: true  },
+};
+export function WorkflowBadge({
+  state,
+  label,
+  dot,
+}: {
+  state: WorkflowState;
+  label?: string;      // override display text but keep semantic tone
+  dot?: boolean;
+}) {
+  const cfg = WORKFLOW_MAP[state];
+  return (
+    <StatusBadge tone={cfg.tone} dot={dot ?? cfg.dot}>
+      {label ?? cfg.label}
+    </StatusBadge>
+  );
+}
+
+// --- Domain identity tags ---
+export function SupplierTypeBadge({ type }: { type: "Factory" | "Trader" | string }) {
+  // Factory = primary (verified manufacturer), Trader = gold (intermediary — needs care)
+  const tone: StatusTone = type === "Factory" ? "primary" : type === "Trader" ? "gold" : "muted";
+  return <StatusBadge tone={tone}>{type}</StatusBadge>;
+}
+
+export function DeliveryBasisBadge({ children }: { children: ReactNode }) {
+  // Delivery basis (EXW/FOB/CIF/DAP/DDP + location) — always gold to signal logistics dimension.
+  return <StatusBadge tone="gold">{children}</StatusBadge>;
+}
+
+export function RefBadge({ children }: { children: ReactNode }) {
+  // Project/RFQ reference id — neutral info accent, never colored as status.
+  return <StatusBadge tone="info">{children}</StatusBadge>;
+}
+
+export function MissingFieldBadge({ field }: { field: string }) {
+  return <StatusBadge tone="warning">Missing: {field}</StatusBadge>;
+}
+
 export function Chip({
   active = false,
   onClick,

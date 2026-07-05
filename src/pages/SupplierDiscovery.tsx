@@ -1,4 +1,4 @@
-import { PageHeader, StatusBadge, KpiTile, Card } from "@/components/mos/Primitives";
+import { PageHeader, StatusBadge, Card, WorkflowBadge, SupplierTypeBadge, RiskBadge, ConfidenceBadge, Chip } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, MapPin, Globe, ShieldCheck, Plus } from "lucide-react";
@@ -44,7 +44,8 @@ export default function SupplierDiscovery() {
                 <div className="mt-1 font-display text-xl font-bold">{l.results}</div>
                 <div className="text-caption text-muted-foreground">matches this week</div>
               </div>
-              <StatusBadge tone="success" dot>{l.status}</StatusBadge>
+              <WorkflowBadge state="active" />
+              <span className="sr-only">{l.status}</span>
             </div>
           </div>
         ))}
@@ -58,17 +59,7 @@ export default function SupplierDiscovery() {
           </div>
           <div className="flex flex-wrap gap-1.5">
             {cats.map((c, i) => (
-              <button
-                key={c}
-                className={
-                  "rounded-full border px-3 py-1.5 text-caption font-medium transition-colors " +
-                  (i === 0
-                    ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border bg-surface text-foreground/70 hover:bg-muted")
-                }
-              >
-                {c}
-              </button>
+              <Chip key={c} active={i === 0}>{c}</Chip>
             ))}
           </div>
         </div>
@@ -81,19 +72,20 @@ export default function SupplierDiscovery() {
               <div>
                 <div className="flex items-center gap-2">
                   <span className="font-mono text-mono text-muted-foreground">{s.id}</span>
-                  <StatusBadge tone={s.type === "Factory" ? "primary" : "gold"}>{s.type}</StatusBadge>
+                  <SupplierTypeBadge type={s.type} />
                 </div>
                 <h4 className="mt-1 font-display text-subtitle font-semibold leading-snug">{s.name}</h4>
               </div>
-              <div className="text-right">
-                <div className="font-display text-lg font-bold text-primary">{s.conf}%</div>
-                <div className="text-label uppercase text-muted-foreground">CN factory</div>
+              <div className="flex flex-col items-end gap-1">
+                <ConfidenceBadge value={s.conf} showLabel />
+                <div className="text-label uppercase text-muted-foreground">Match</div>
               </div>
             </div>
             <div className="mt-2 space-y-1 text-caption text-muted-foreground">
               <div className="flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5" /> {s.city}</div>
               <div className="flex items-center gap-1.5"><Globe className="h-3.5 w-3.5" /> {s.site}</div>
-              <div className="flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5" /> Contact: {s.contact} · Risk: {s.risk}</div>
+              <div className="flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5" /> Contact: {s.contact}</div>
+              <div className="flex items-center gap-1.5"><RiskBadge level={s.risk} /></div>
             </div>
             <div className="mt-3 flex items-center justify-between border-t border-border/60 pt-3">
               <StatusBadge tone="muted">{s.cat}</StatusBadge>

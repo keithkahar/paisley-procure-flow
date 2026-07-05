@@ -1,4 +1,15 @@
-import { PageHeader, StatusBadge, KpiTile } from "@/components/mos/Primitives";
+import { PageHeader, StatusBadge, KpiTile, ConfidenceBadge, DeliveryBasisBadge, MissingFieldBadge, confidenceTone, Chip } from "@/components/mos/Primitives";
+
+const CONF_BAR: Record<string, string> = {
+  success: "bg-success",
+  primary: "bg-primary",
+  warning: "bg-warning",
+  danger:  "bg-destructive",
+  muted:   "bg-muted-foreground",
+  gold:    "bg-gold",
+  info:    "bg-primary",
+};
+const confBar = (v: number) => CONF_BAR[confidenceTone(v).tone];
 import { Button } from "@/components/ui/button";
 import { Check, X, Pencil, ClipboardCheck } from "lucide-react";
 
@@ -51,7 +62,7 @@ export default function QuoteReview() {
                   {q.missing.length > 0 && (
                     <div className="mt-1 flex flex-wrap gap-1">
                       {q.missing.map((m) => (
-                        <StatusBadge key={m} tone="warning">Missing: {m}</StatusBadge>
+                        <MissingFieldBadge key={m} field={m} />
                       ))}
                     </div>
                   )}
@@ -59,14 +70,14 @@ export default function QuoteReview() {
                 <td className="px-4 py-3 font-display font-semibold">{q.price}</td>
                 <td className="px-4 py-3">{q.moq}</td>
                 <td className="px-4 py-3">{q.lead}</td>
-                <td className="px-4 py-3"><StatusBadge tone="gold">{q.basis}</StatusBadge></td>
+                <td className="px-4 py-3"><DeliveryBasisBadge>{q.basis}</DeliveryBasisBadge></td>
                 <td className="px-4 py-3">{q.validity}</td>
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2">
                     <div className="h-1.5 w-20 overflow-hidden rounded-full bg-border">
-                      <div className={`h-full rounded-full ${q.conf > 85 ? "bg-success" : q.conf > 70 ? "bg-primary" : "bg-warning"}`} style={{ width: `${q.conf}%` }} />
+                      <div className={`h-full rounded-full ${confBar(q.conf)}`} style={{ width: `${q.conf}%` }} />
                     </div>
-                    <span className="text-caption font-medium">{q.conf}%</span>
+                    <ConfidenceBadge value={q.conf} />
                   </div>
                 </td>
                 <td className="px-4 py-3">
@@ -98,10 +109,10 @@ export default function QuoteReview() {
               </div>
             </div>
             <div className="mt-3 flex flex-wrap gap-1.5">
-              <StatusBadge tone="gold">{q.basis}</StatusBadge>
+              <DeliveryBasisBadge>{q.basis}</DeliveryBasisBadge>
               <StatusBadge tone="muted">Lead {q.lead}</StatusBadge>
               <StatusBadge tone="muted">{q.validity}</StatusBadge>
-              <StatusBadge tone={q.conf > 85 ? "success" : "warning"}>{q.conf}%</StatusBadge>
+              <ConfidenceBadge value={q.conf} />
             </div>
             <div className="mt-3 flex gap-2">
               <Button size="sm" className="flex-1">Approve</Button>
@@ -116,7 +127,7 @@ export default function QuoteReview() {
         <div className="section-title mb-2">Reject reasons</div>
         <div className="flex flex-wrap gap-1.5">
           {rejectReasons.map((r) => (
-            <StatusBadge key={r} tone="muted">{r}</StatusBadge>
+            <Chip key={r}>{r}</Chip>
           ))}
         </div>
       </div>

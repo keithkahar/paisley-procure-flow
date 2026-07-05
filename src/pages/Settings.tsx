@@ -1,13 +1,13 @@
-import { PageHeader, StatusBadge, Card } from "@/components/mos/Primitives";
+import { PageHeader, Card, WorkflowBadge } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Mail, Warehouse, Percent, Coins, FileText, ShieldCheck, Library, Star } from "lucide-react";
 import type { ReactNode } from "react";
 
 const mailboxes = [
-  { addr: "sourcing@paisley-ec.com", purpose: "Supplier inquiry / RFQ correspondence", tone: "primary" as const },
-  { addr: "quotation@paisley-ec.com", purpose: "Buyer quotation delivery", tone: "gold" as const },
-  { addr: "order@paisley-ec.com", purpose: "Order tracking & shipment updates", tone: "success" as const },
+  { addr: "sourcing@paisley-ec.com",  purpose: "Supplier inquiry / RFQ correspondence" },
+  { addr: "quotation@paisley-ec.com", purpose: "Buyer quotation delivery" },
+  { addr: "order@paisley-ec.com",     purpose: "Order tracking & shipment updates" },
 ];
 
 const aliases = [
@@ -33,7 +33,7 @@ export default function Settings() {
                   <div className="font-mono text-body font-semibold">{m.addr}</div>
                   <div className="text-caption text-muted-foreground">{m.purpose}</div>
                 </div>
-                <StatusBadge tone={m.tone} dot>Active</StatusBadge>
+                <WorkflowBadge state="active" />
               </li>
             ))}
           </ul>
@@ -111,10 +111,10 @@ export default function Settings() {
 
         <SettingsCard icon={<ShieldCheck className="h-4 w-4" />} title="Approval rules" desc="When AI auto-approves vs. requires human.">
           <ul className="space-y-2 text-body">
-            <li className="flex items-start gap-2"><StatusBadge tone="success">Auto</StatusBadge><span>Quote parse confidence &ge; 90% and no missing fields</span></li>
-            <li className="flex items-start gap-2"><StatusBadge tone="warning">Human</StatusBadge><span>Supplier is a trading company or new to database</span></li>
-            <li className="flex items-start gap-2"><StatusBadge tone="danger">Human</StatusBadge><span>Buyer quotation total &gt; € 50,000</span></li>
-            <li className="flex items-start gap-2"><StatusBadge tone="warning">Human</StatusBadge><span>Delivery basis is DDP</span></li>
+            <li className="flex items-start gap-2"><WorkflowBadge state="auto" /><span>Quote parse confidence &ge; 90% and no missing fields</span></li>
+            <li className="flex items-start gap-2"><WorkflowBadge state="human" /><span>Supplier is a trading company or new to database</span></li>
+            <li className="flex items-start gap-2"><WorkflowBadge state="human" /><span>Buyer quotation total &gt; € 50,000</span></li>
+            <li className="flex items-start gap-2"><WorkflowBadge state="human" /><span>Delivery basis is DDP</span></li>
           </ul>
         </SettingsCard>
 
@@ -123,7 +123,7 @@ export default function Settings() {
             {["Alibaba Verified", "Made-in-China", "Global Sources", "Internal supplier CRM", "Historical order suppliers"].map((s) => (
               <li key={s} className="flex items-center justify-between rounded-md border border-border px-3 py-2">
                 <span>{s}</span>
-                <StatusBadge tone="success" dot>Connected</StatusBadge>
+                <WorkflowBadge state="connected" />
               </li>
             ))}
           </ul>

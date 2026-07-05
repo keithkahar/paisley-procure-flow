@@ -1,4 +1,4 @@
-import { PageHeader, StatusBadge, Card } from "@/components/mos/Primitives";
+import { PageHeader, Card, RefBadge, DeliveryBasisBadge, Chip } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 
 const items = [
@@ -66,15 +66,7 @@ export default function RFQ() {
           <div className="section-title mb-3">Delivery basis</div>
           <div className="flex flex-wrap gap-1.5">
             {["EXW", "FOB", "CIF", "DAP", "DDP", "Delivered", "Other"].map((t, i) => (
-              <span
-                key={t}
-                className={
-                  "rounded-md px-2.5 py-1 text-caption font-semibold " +
-                  (i === 1 ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground")
-                }
-              >
-                {t}
-              </span>
+              <Chip key={t} active={i === 1}>{t}</Chip>
             ))}
           </div>
           <div className="mt-4 section-title mb-2">Port / Warehouse</div>
@@ -90,8 +82,8 @@ export default function RFQ() {
             <div className="flex flex-col gap-2 border-b border-border p-4 md:flex-row md:items-center md:justify-between">
               <div>
                 <div className="flex items-center gap-2">
-                  <StatusBadge tone="info">{it.rfq}</StatusBadge>
-                  <StatusBadge tone="gold">{it.basis}</StatusBadge>
+                  <RefBadge>{it.rfq}</RefBadge>
+                  <DeliveryBasisBadge>{it.basis}</DeliveryBasisBadge>
                 </div>
                 <h4 className="mt-1 font-display text-subtitle font-semibold">{it.item}</h4>
               </div>

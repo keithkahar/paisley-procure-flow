@@ -1,4 +1,4 @@
-import { PageHeader, StatusBadge, KpiTile } from "@/components/mos/Primitives";
+import { PageHeader, StatusBadge, KpiTile, SupplierTypeBadge } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { Check, X, Pencil, ShieldAlert, MapPin, Factory } from "lucide-react";
 
@@ -36,7 +36,7 @@ export default function CandidateReview() {
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="font-mono text-mono text-muted-foreground">{s.id}</span>
-                    <StatusBadge tone={s.type === "Factory" ? "primary" : "gold"}>{s.type}</StatusBadge>
+                    <SupplierTypeBadge type={s.type} />
                     <StatusBadge tone="muted">{s.cat}</StatusBadge>
                   </div>
                   <h4 className="mt-1.5 font-display text-subtitle font-semibold">{s.name}</h4>

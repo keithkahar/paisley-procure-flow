@@ -1,13 +1,16 @@
-import { PageHeader, StatusBadge, KpiTile } from "@/components/mos/Primitives";
+import { PageHeader, KpiTile, WorkflowBadge, RefBadge, MissingFieldBadge, type WorkflowState } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { Mail, Send, Pencil, Check } from "lucide-react";
 
-const emails = [
-  { id: "FC-2201", rfq: "RFQ-011", supplier: "Ningbo Ocean Fittings", item: "M8 stainless shackles (500 pcs)", subject: "Inquiry: M8 SS316 shackles + brief company intro request", status: "Awaiting approval", tone: "warning" as const, missing: [] },
-  { id: "FC-2202", rfq: "RFQ-011", supplier: "Xiamen Bluewave Marine", item: "M8 stainless shackles (500 pcs)", subject: "Inquiry: M8 SS316 shackles for EU marine buyer", status: "Draft", tone: "muted" as const, missing: ["Direct contact person"] },
-  { id: "FC-2203", rfq: "RFQ-014", supplier: "Shenzhen Boya Electronics", item: "LED navigation light kit, 12V, IP67", subject: "Inquiry: LED nav light kits + company profile", status: "Sent", tone: "primary" as const, missing: [] },
-  { id: "FC-2204", rfq: "RFQ-014", supplier: "Qingdao Steel Rig", item: "3\" bronze ball valve", subject: "Inquiry: bronze ball valves — spec + capability", status: "Replied", tone: "success" as const, missing: [] },
-  { id: "FC-2205", rfq: "RFQ-016", supplier: "Guangzhou Harbor Trading", item: "Marine deck cleats, cast aluminum", subject: "Inquiry: aluminum deck cleats — please confirm factory", status: "Needs follow-up", tone: "danger" as const, missing: ["Factory address"] },
+const emails: Array<{
+  id: string; rfq: string; supplier: string; item: string; subject: string;
+  state: WorkflowState; statusLabel?: string; missing: string[];
+}> = [
+  { id: "FC-2201", rfq: "RFQ-011", supplier: "Ningbo Ocean Fittings",     item: "M8 stainless shackles (500 pcs)",     subject: "Inquiry: M8 SS316 shackles + brief company intro request", state: "pending",        missing: [] },
+  { id: "FC-2202", rfq: "RFQ-011", supplier: "Xiamen Bluewave Marine",    item: "M8 stainless shackles (500 pcs)",     subject: "Inquiry: M8 SS316 shackles for EU marine buyer",           state: "draft",          missing: ["Direct contact person"] },
+  { id: "FC-2203", rfq: "RFQ-014", supplier: "Shenzhen Boya Electronics", item: "LED navigation light kit, 12V, IP67", subject: "Inquiry: LED nav light kits + company profile",            state: "sent",           missing: [] },
+  { id: "FC-2204", rfq: "RFQ-014", supplier: "Qingdao Steel Rig",         item: "3\" bronze ball valve",               subject: "Inquiry: bronze ball valves — spec + capability",          state: "replied",        missing: [] },
+  { id: "FC-2205", rfq: "RFQ-016", supplier: "Guangzhou Harbor Trading",  item: "Marine deck cleats, cast aluminum",   subject: "Inquiry: aluminum deck cleats — please confirm factory",   state: "needs_followup", missing: ["Factory address"] },
 ];
 
 export default function FirstContact() {
@@ -47,8 +50,8 @@ export default function FirstContact() {
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="font-mono text-mono text-muted-foreground">{e.id}</span>
-                  <StatusBadge tone="info">{e.rfq}</StatusBadge>
-                  <StatusBadge tone={e.tone} dot>{e.status}</StatusBadge>
+                  <RefBadge>{e.rfq}</RefBadge>
+                  <WorkflowBadge state={e.state} />
                 </div>
                 <h4 className="mt-1.5 font-display text-subtitle font-semibold">{e.subject}</h4>
                 <div className="mt-1 text-caption text-muted-foreground">
@@ -57,7 +60,7 @@ export default function FirstContact() {
                 {e.missing.length > 0 && (
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {e.missing.map((m) => (
-                      <StatusBadge key={m} tone="warning">Missing: {m}</StatusBadge>
+                      <MissingFieldBadge key={m} field={m} />
                     ))}
                   </div>
                 )}
