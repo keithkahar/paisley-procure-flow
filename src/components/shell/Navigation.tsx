@@ -12,7 +12,7 @@ import {
   Settings as SettingsIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import logoAsset from "@/assets/paisley-mos-logo.png.asset.json";
+import logoUrl from "@/assets/paisley-mos-logo.png";
 
 export const NAV = [
   { to: "/dashboard", label: "Today", full: "Dashboard", icon: LayoutDashboard, step: null },
