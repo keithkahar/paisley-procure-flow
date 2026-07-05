@@ -66,15 +66,7 @@ export default function RFQ() {
           <div className="section-title mb-3">Delivery basis</div>
           <div className="flex flex-wrap gap-1.5">
             {["EXW", "FOB", "CIF", "DAP", "DDP", "Delivered", "Other"].map((t, i) => (
-              <span
-                key={t}
-                className={
-                  "rounded-md px-2.5 py-1 text-caption font-semibold " +
-                  (i === 1 ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground")
-                }
-              >
-                {t}
-              </span>
+              <Chip key={t} active={i === 1}>{t}</Chip>
             ))}
           </div>
           <div className="mt-4 section-title mb-2">Port / Warehouse</div>
