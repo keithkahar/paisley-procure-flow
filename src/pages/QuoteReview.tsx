@@ -64,7 +64,7 @@ export default function QuoteReview() {
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2">
                     <div className="h-1.5 w-20 overflow-hidden rounded-full bg-border">
-                      <div className={`h-full rounded-full bg-${confidenceTone(q.conf).tone === "danger" ? "destructive" : confidenceTone(q.conf).tone}`} style={{ width: `${q.conf}%` }} />
+                      <div className={`h-full rounded-full ${confBar(q.conf)}`} style={{ width: `${q.conf}%` }} />
                     </div>
                     <ConfidenceBadge value={q.conf} />
                   </div>
