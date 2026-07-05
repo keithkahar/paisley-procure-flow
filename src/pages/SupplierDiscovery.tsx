@@ -44,7 +44,8 @@ export default function SupplierDiscovery() {
                 <div className="mt-1 font-display text-xl font-bold">{l.results}</div>
                 <div className="text-caption text-muted-foreground">matches this week</div>
               </div>
-              <StatusBadge tone="success" dot>{l.status}</StatusBadge>
+              <WorkflowBadge state="active" />
+              <span className="sr-only">{l.status}</span>
             </div>
           </div>
         ))}
