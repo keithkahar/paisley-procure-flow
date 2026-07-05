@@ -39,10 +39,9 @@ export const NAV: {
 export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <nav aria-label="Primary" className="flex h-full flex-col items-center py-6">
-      {/* Brand mark only — no card, no wordmark */}
-      <div className="mb-8 flex items-center justify-center">
-        <img src={markUrl} alt="Paisley MOS" className="h-9 w-9 object-contain" />
-      </div>
+      {/* Top spacer — brand appears in top bar */}
+      <div className="mb-6 h-2" aria-hidden />
+
 
       <ul className="flex flex-1 flex-col items-center gap-2">
         {NAV.map((item) => (
@@ -102,11 +101,8 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
   );
 }
 
-export function BrandMark({ variant = "mark" }: { variant?: "mark" | "wordmark" }) {
-  if (variant === "wordmark") {
-    return <img src={wordmarkUrl} alt="Paisley MOS" className="h-7 w-auto object-contain" />;
-  }
-  return <img src={markUrl} alt="Paisley MOS" className="h-9 w-9 object-contain" />;
+export function BrandMark({ variant = "wordmark" }: { variant?: "mark" | "wordmark" }) {
+  return <img src={wordmarkUrl} alt="Paisley MOS" className={variant === "wordmark" ? "h-8 w-auto object-contain" : "h-9 w-auto object-contain"} />;
 }
 
 export function useActiveNav() {
