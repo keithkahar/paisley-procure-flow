@@ -59,21 +59,21 @@
 
     --radius: 0.75rem;
 
-    /* App shell rail */
-    --rail: 220 40% 12%;
-    --rail-foreground: 218 30% 88%;
-    --rail-muted: 220 20% 60%;
-    --rail-active: 214 99% 37%;
-    --rail-hover: 220 30% 20%;
+    /* App shell rail — brand blue with white active pill */
+    --rail: 214 99% 37%;
+    --rail-foreground: 214 60% 94%;
+    --rail-muted: 214 40% 82%;
+    --rail-active: 0 0% 100%;
+    --rail-hover: 214 80% 32%;
 
-    /* Sidebar (shadcn) mapped to rail so components inherit correctly */
-    --sidebar-background: 220 40% 12%;
-    --sidebar-foreground: 218 30% 88%;
-    --sidebar-primary: 214 99% 37%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 30% 18%;
+    /* Sidebar (shadcn) mapped to brand blue rail */
+    --sidebar-background: 214 99% 37%;
+    --sidebar-foreground: 214 60% 94%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 214 99% 37%;
+    --sidebar-accent: 214 80% 32%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 220 30% 20%;
+    --sidebar-border: 214 80% 32%;
     --sidebar-ring: 214 99% 55%;
 
     --shadow-sm: 0 1px 2px 0 hsl(220 40% 12% / 0.04);
