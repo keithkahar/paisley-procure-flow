@@ -109,15 +109,29 @@ export function KpiTile({
   icon?: ReactNode;
   tone?: "primary" | "warning" | "success" | "muted";
 }) {
+  const toneWrap: Record<string, string> = {
+    primary: "card-tinted p-5 relative overflow-hidden transition-all hover:shadow-md",
+    warning: "kpi-tile",
+    success: "kpi-tile",
+    muted: "kpi-tile",
+  };
   const toneBar: Record<string, string> = {
-    primary: "from-primary/70 to-primary",
+    primary: "from-primary/0 to-primary",
     warning: "from-warning/60 to-warning",
     success: "from-success/60 to-success",
     muted: "from-border to-border-strong",
   };
+  const iconWrap: Record<string, string> = {
+    primary: "bg-white text-primary ring-1 ring-primary/15",
+    warning: "bg-warning-soft text-warning-foreground",
+    success: "bg-success-soft text-success",
+    muted: "bg-muted text-muted-foreground",
+  };
   return (
-    <div className="kpi-tile group">
-      <div className={cn("absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r", toneBar[tone])} />
+    <div className={cn(toneWrap[tone], "group")}>
+      {tone !== "primary" && (
+        <div className={cn("absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r", toneBar[tone])} />
+      )}
       <div className="flex items-start justify-between">
         <div>
           <div className="section-title">{label}</div>
@@ -132,7 +146,7 @@ export function KpiTile({
           )}
         </div>
         {icon && (
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-soft text-primary">
+          <div className={cn("flex h-9 w-9 items-center justify-center rounded-lg", iconWrap[tone])}>
             {icon}
           </div>
         )}

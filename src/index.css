@@ -59,21 +59,21 @@
 
     --radius: 0.75rem;
 
-    /* App shell rail */
-    --rail: 220 40% 12%;
-    --rail-foreground: 218 30% 88%;
-    --rail-muted: 220 20% 60%;
-    --rail-active: 214 99% 37%;
-    --rail-hover: 220 30% 20%;
+    /* App shell rail — brand blue with white active pill */
+    --rail: 214 99% 37%;
+    --rail-foreground: 214 60% 94%;
+    --rail-muted: 214 40% 82%;
+    --rail-active: 0 0% 100%;
+    --rail-hover: 214 80% 32%;
 
-    /* Sidebar (shadcn) mapped to rail so components inherit correctly */
-    --sidebar-background: 220 40% 12%;
-    --sidebar-foreground: 218 30% 88%;
-    --sidebar-primary: 214 99% 37%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 30% 18%;
+    /* Sidebar (shadcn) mapped to brand blue rail */
+    --sidebar-background: 214 99% 37%;
+    --sidebar-foreground: 214 60% 94%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 214 99% 37%;
+    --sidebar-accent: 214 80% 32%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 220 30% 20%;
+    --sidebar-border: 214 80% 32%;
     --sidebar-ring: 214 99% 55%;
 
     --shadow-sm: 0 1px 2px 0 hsl(220 40% 12% / 0.04);
@@ -131,15 +131,23 @@
 
 @layer components {
   .card-surface {
-    @apply bg-card border border-border rounded-xl;
+    @apply bg-card border border-border/70 rounded-2xl;
     box-shadow: var(--shadow-sm);
   }
   .card-elevated {
-    @apply bg-card border border-border rounded-xl;
+    @apply bg-card border border-border/70 rounded-2xl;
     box-shadow: var(--shadow-md);
   }
+  .card-tinted {
+    @apply rounded-2xl border border-primary/10;
+    background: linear-gradient(180deg, hsl(214 90% 97%) 0%, hsl(214 80% 94%) 100%);
+  }
+  .card-tinted-gold {
+    @apply rounded-2xl border border-gold/25;
+    background: linear-gradient(180deg, hsl(30 50% 97%) 0%, hsl(30 45% 92%) 100%);
+  }
   .kpi-tile {
-    @apply relative overflow-hidden bg-card border border-border rounded-xl p-5 transition-all;
+    @apply relative overflow-hidden bg-card border border-border/70 rounded-2xl p-5 transition-all;
     box-shadow: var(--shadow-sm);
   }
   .kpi-tile:hover {
@@ -154,6 +162,14 @@
   .divider-dot::before {
     content: "•";
     @apply mx-2 text-border-strong;
+  }
+  /* Active rail pill — white pull-out tab like reference image 2 */
+  .rail-pill-active {
+    @apply relative bg-white text-primary font-semibold;
+    box-shadow: 0 10px 24px -8px hsl(214 99% 20% / 0.35);
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    margin-right: -1px;
   }
   .scroll-thin::-webkit-scrollbar { width: 8px; height: 8px; }
   .scroll-thin::-webkit-scrollbar-thumb {
