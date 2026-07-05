@@ -145,7 +145,7 @@ export default function Dashboard() {
 
       {/* Row 2: sourcing simulator + recent activity */}
       <div className="grid gap-5 lg:grid-cols-5">
-        <div className="lg:col-span-3 rounded-2xl border border-border/70 bg-surface p-6 shadow-[var(--shadow-sm)]">
+        <div className="lg:col-span-3 flex h-full flex-col rounded-2xl border border-border/70 bg-surface p-6 shadow-[var(--shadow-sm)]">
           <div className="flex items-center justify-between">
             <div className="text-label uppercase text-muted-foreground">
               Sourcing simulator
@@ -155,7 +155,7 @@ export default function Dashboard() {
             </span>
           </div>
 
-          <div className="mt-5 space-y-5">
+          <div className="mt-5 flex-1 space-y-5">
             <SliderRow
               label="Order quantity"
               value={`${qty[0].toLocaleString()} units`}
@@ -191,7 +191,7 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="lg:col-span-2 rounded-2xl border border-border/70 bg-surface p-6 shadow-[var(--shadow-sm)]">
+        <div className="lg:col-span-2 flex h-full flex-col rounded-2xl border border-border/70 bg-surface p-6 shadow-[var(--shadow-sm)]">
           <div className="flex items-center justify-between">
             <div className="text-label uppercase text-muted-foreground">
               Recent activity
@@ -200,7 +200,8 @@ export default function Dashboard() {
               View all
             </button>
           </div>
-          <ul className="mt-4 space-y-2.5">
+          <ul className="mt-4 flex-1 space-y-2.5">
+
             {history.map((h, i) => (
               <li
                 key={i}
