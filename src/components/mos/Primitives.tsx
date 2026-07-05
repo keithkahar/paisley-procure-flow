@@ -1,43 +1,24 @@
 import { cn } from "@/lib/utils";
-import { Search } from "lucide-react";
 import type { ReactNode } from "react";
 
 export function PageHeader({
-  eyebrow,
   title,
   description,
   actions,
-  showSearch = true,
 }: {
-  eyebrow?: string;
+  eyebrow?: string; // deprecated, ignored
   title: string;
   description?: string;
   actions?: ReactNode;
-  showSearch?: boolean;
+  showSearch?: boolean; // deprecated, ignored
 }) {
   return (
-    <div className="mb-6 space-y-4">
-      {showSearch && (
-        <div className="flex items-center justify-between gap-4">
-          <div className="min-w-0">
-            {eyebrow && <div className="section-title mb-1">{eyebrow}</div>}
-            <h2 className="font-display text-[22px] font-semibold tracking-tight text-foreground md:text-[24px]">{title}</h2>
-          </div>
-          <div className="relative hidden md:block">
-            <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <input
-              placeholder="Search RFQs, suppliers, orders…"
-              className="h-11 w-[320px] rounded-full border border-transparent bg-surface-muted pl-11 pr-4 text-[13px] text-foreground placeholder:text-muted-foreground/70 outline-none focus:border-primary/30 focus:bg-surface focus:ring-2 focus:ring-primary/15"
-            />
-          </div>
-        </div>
-      )}
-      {(description || actions) && (
-        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-          {description && <p className="max-w-2xl text-sm text-muted-foreground">{description}</p>}
-          {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
-        </div>
-      )}
+    <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+      <div className="min-w-0">
+        <h2 className="font-display text-[22px] font-semibold tracking-tight text-foreground md:text-[24px]">{title}</h2>
+        {description && <p className="mt-1.5 max-w-2xl text-sm text-muted-foreground">{description}</p>}
+      </div>
+      {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
     </div>
   );
 }
