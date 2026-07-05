@@ -19,7 +19,7 @@ const spark2 = [8, 10, 9, 12, 11, 14, 13, 15, 14, 17, 16, 19].map((v, i) => ({ i
 const pipeline = [
   { name: "RFQ in progress", value: 42, color: "hsl(214 99% 37%)" },
   { name: "Quotes under review", value: 18, color: "hsl(214 90% 62%)" },
-  { name: "Awaiting supplier", value: 23, color: "hsl(30 36% 68%)" },
+  { name: "Awaiting supplier", value: 23, color: "hsl(218 20% 72%)" },
   { name: "Orders in production", value: 14, color: "hsl(218 24% 88%)" },
 ];
 const pipelineTotal = pipeline.reduce((s, p) => s + p.value, 0);
@@ -76,8 +76,8 @@ export default function Dashboard() {
             delta="+1.62%"
             positive
             data={spark2}
-            stroke="hsl(30 36% 55%)"
-            fill="hsl(30 36% 68% / 0.22)"
+            stroke="hsl(214 60% 50%)"
+            fill="hsl(214 60% 50% / 0.14)"
           />
         </div>
 

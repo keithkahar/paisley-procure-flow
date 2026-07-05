@@ -26,10 +26,10 @@
     --primary-soft: 214 90% 96%;
     --primary-hover: 214 99% 32%;
 
-    /* Gold accent #cdae8d */
-    --gold: 30 36% 68%;
-    --gold-foreground: 25 40% 20%;
-    --gold-soft: 30 45% 94%;
+    /* Gold accent — desaturated, restrained usage */
+    --gold: 32 20% 62%;
+    --gold-foreground: 28 30% 22%;
+    --gold-soft: 34 28% 95%;
 
     --secondary: 218 28% 94%;
     --secondary-foreground: 220 40% 18%;
