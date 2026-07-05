@@ -127,7 +127,7 @@ export default function QuoteReview() {
         <div className="section-title mb-2">Reject reasons</div>
         <div className="flex flex-wrap gap-1.5">
           {rejectReasons.map((r) => (
-            <StatusBadge key={r} tone="muted">{r}</StatusBadge>
+            <Chip key={r}>{r}</Chip>
           ))}
         </div>
       </div>
