@@ -82,8 +82,8 @@ export default function RFQ() {
             <div className="flex flex-col gap-2 border-b border-border p-4 md:flex-row md:items-center md:justify-between">
               <div>
                 <div className="flex items-center gap-2">
-                  <StatusBadge tone="info">{it.rfq}</StatusBadge>
-                  <StatusBadge tone="gold">{it.basis}</StatusBadge>
+                  <RefBadge>{it.rfq}</RefBadge>
+                  <DeliveryBasisBadge>{it.basis}</DeliveryBasisBadge>
                 </div>
                 <h4 className="mt-1 font-display text-subtitle font-semibold">{it.item}</h4>
               </div>
