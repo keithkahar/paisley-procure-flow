@@ -43,7 +43,7 @@ export default function BuyerQuotation() {
             <div className="rounded-lg border border-border bg-surface-muted p-3">
               <div className="mb-2 flex items-center justify-between">
                 <div className="text-label uppercase text-muted-foreground">Internal cost builder</div>
-                <StatusBadge tone="danger">Hidden from buyer</StatusBadge>
+                <WorkflowBadge state="hidden" />
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-body">
