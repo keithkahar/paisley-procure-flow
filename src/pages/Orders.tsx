@@ -61,7 +61,7 @@ export default function Orders() {
 
       <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4">
         <KpiTile label="Active orders" value={14} tone="primary" />
-        <KpiTile label="In production" value={5} tone="gold" />
+        <KpiTile label="In production" value={5} tone="warning" />
         <KpiTile label="On the water" value={4} tone="primary" />
         <KpiTile label="Delivered (30d)" value={9} tone="success" />
       </div>
