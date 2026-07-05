@@ -46,9 +46,9 @@ export default function Orders() {
               <div>
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="font-mono text-mono font-semibold text-foreground">{o.id}</span>
-                  <StatusBadge tone="info">{o.project}</StatusBadge>
-                  <StatusBadge tone="gold">{o.basis}</StatusBadge>
-                  <StatusBadge tone={o.tone} dot>{o.shipment}</StatusBadge>
+                  <RefBadge>{o.project}</RefBadge>
+                  <DeliveryBasisBadge>{o.basis}</DeliveryBasisBadge>
+                  <WorkflowBadge state={o.state} label={o.shipment} />
                 </div>
                 <h4 className="mt-1.5 font-display text-subtitle font-semibold">{o.buyer}</h4>
                 <div className="mt-0.5 text-caption text-muted-foreground">
