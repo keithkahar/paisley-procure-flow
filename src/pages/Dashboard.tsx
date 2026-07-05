@@ -59,19 +59,31 @@ const actions = [
 export default function Dashboard() {
   return (
     <>
-      <PageHeader
-        eyebrow={today}
-        title="Command center"
-        description="Everything waiting for a decision from you, ranked by impact and confidence."
-        actions={
-          <>
-            <Button variant="outline" size="sm">Export daily log</Button>
-            <Button size="sm">
+      {/* Hero banner — brand-blue billboard inspired by reference */}
+      <div className="relative mb-6 overflow-hidden rounded-3xl bg-gradient-brand p-6 text-primary-foreground md:p-8">
+        <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" aria-hidden />
+        <div className="absolute right-10 bottom-0 h-40 w-40 rounded-full bg-gold/25 blur-2xl" aria-hidden />
+        <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+          <div className="max-w-xl">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70">{today}</div>
+            <h2 className="mt-2 font-display text-[26px] font-bold leading-tight md:text-[30px]">
+              Good morning, Lena. 12 decisions are waiting for you.
+            </h2>
+            <p className="mt-2 max-w-lg text-[13.5px] leading-relaxed text-white/80">
+              Paisley AI has pre-ranked today's queue by impact and confidence. Start with the review queue to close the highest-value items first.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <Button size="sm" variant="secondary" className="bg-white text-primary hover:bg-white/90">
               <ClipboardList className="mr-1.5 h-4 w-4" /> Start review queue
             </Button>
-          </>
-        }
-      />
+            <Button size="sm" variant="outline" className="border-white/30 bg-white/10 text-white hover:bg-white/20 hover:text-white">
+              Export daily log
+            </Button>
+          </div>
+        </div>
+      </div>
+
 
       <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
         <KpiTile label="Need decision" value={12} delta="+3 vs yesterday" icon={<UserCheck className="h-4 w-4" />} tone="primary" />
