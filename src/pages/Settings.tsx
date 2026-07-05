@@ -1,13 +1,13 @@
-import { PageHeader, StatusBadge, Card } from "@/components/mos/Primitives";
+import { PageHeader, Card, WorkflowBadge } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Mail, Warehouse, Percent, Coins, FileText, ShieldCheck, Library, Star } from "lucide-react";
 import type { ReactNode } from "react";
 
 const mailboxes = [
-  { addr: "sourcing@paisley-ec.com", purpose: "Supplier inquiry / RFQ correspondence", tone: "primary" as const },
-  { addr: "quotation@paisley-ec.com", purpose: "Buyer quotation delivery", tone: "gold" as const },
-  { addr: "order@paisley-ec.com", purpose: "Order tracking & shipment updates", tone: "success" as const },
+  { addr: "sourcing@paisley-ec.com",  purpose: "Supplier inquiry / RFQ correspondence" },
+  { addr: "quotation@paisley-ec.com", purpose: "Buyer quotation delivery" },
+  { addr: "order@paisley-ec.com",     purpose: "Order tracking & shipment updates" },
 ];
 
 const aliases = [
