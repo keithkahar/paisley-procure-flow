@@ -33,7 +33,7 @@ export default function Settings() {
                   <div className="font-mono text-body font-semibold">{m.addr}</div>
                   <div className="text-caption text-muted-foreground">{m.purpose}</div>
                 </div>
-                <StatusBadge tone={m.tone} dot>Active</StatusBadge>
+                <WorkflowBadge state="active" />
               </li>
             ))}
           </ul>
