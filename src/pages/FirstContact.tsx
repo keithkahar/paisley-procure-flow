@@ -50,7 +50,7 @@ export default function FirstContact() {
         {emails.map((e) => (
           <article key={e.id} className="card-surface p-4 md:p-5">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              <div className="min-w-0 flex-1">
+              <div className="min-w-0 md:flex-1">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="font-mono text-mono text-muted-foreground">{e.id}</span>
                   <RefBadge>{e.rfq}</RefBadge>
@@ -61,15 +61,13 @@ export default function FirstContact() {
                   To: {e.supplier} <span className="divider-dot" /> {e.item}
                 </div>
               </div>
-              {e.missing.length > 0 && (
-                <div className="min-w-0 md:max-w-[280px] md:flex-1">
-                  <div className="flex flex-wrap items-center gap-1.5">
-                    {e.missing.map((m) => (
-                      <MissingFieldBadge key={m} field={m} />
-                    ))}
-                  </div>
+              <div className="hidden min-w-0 md:flex md:w-[280px] md:shrink-0 md:justify-center">
+                <div className="flex flex-wrap items-center justify-center gap-1.5">
+                  {e.missing.map((m) => (
+                    <MissingFieldBadge key={m} field={m} />
+                  ))}
                 </div>
-              )}
+              </div>
               <div className="flex items-center gap-1 md:shrink-0">
                 <ApproveAction />
                 <EditAction label="Edit draft" />

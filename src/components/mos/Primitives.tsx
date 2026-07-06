@@ -282,9 +282,9 @@ export type WorkflowState =
   | "rejected";
 
 const WORKFLOW_MAP: Record<WorkflowState, { tone: StatusTone; label: string; dot: boolean }> = {
-  draft:          { tone: "muted",   label: "Draft",             dot: true  },
+  draft:          { tone: "violet-muted", label: "Draft",             dot: true  },
   pending:        { tone: "warning", label: "Awaiting approval", dot: true  },
-  sent:           { tone: "primary", label: "Sent",              dot: true  },
+  sent:           { tone: "violet",  label: "Sent",              dot: true  },
   in_progress:    { tone: "primary", label: "In progress",       dot: true  },
   replied:        { tone: "success", label: "Replied",           dot: true  },
   ready:          { tone: "success", label: "Ready",             dot: true  },
@@ -296,7 +296,7 @@ const WORKFLOW_MAP: Record<WorkflowState, { tone: StatusTone; label: string; dot
   human:          { tone: "warning", label: "Human",             dot: false },
   needs_info:     { tone: "warning", label: "Needs info",        dot: true  },
   needs_edit:     { tone: "warning", label: "Needs edit",        dot: true  },
-  needs_followup: { tone: "warning", label: "Needs follow-up",   dot: true  },
+  needs_followup: { tone: "danger",  label: "Needs follow-up",   dot: true  },
   hidden:         { tone: "danger",  label: "Hidden from buyer", dot: false },
   visible:        { tone: "success", label: "Visible to buyer",  dot: false },
   blocked:        { tone: "danger",  label: "Blocked",           dot: true  },
