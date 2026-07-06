@@ -52,7 +52,7 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
               end
               className={({ isActive }) =>
                 cn(
-                  "group relative flex flex-col items-center gap-1.5 py-3 text-caption font-medium tracking-tight transition-colors",
+                  "group relative flex flex-col items-center gap-1 py-3 text-caption font-semibold tracking-tight transition-colors",
                   isActive
                     ? "rail-tab-active"
                     : "mx-3 rounded-xl text-white/70 hover:text-white",
@@ -66,17 +66,15 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
                       "flex h-10 w-10 items-center justify-center rounded-xl transition-all",
                       isActive
                         ? "text-foreground"
-                        : "bg-white/10 text-white group-hover:bg-white/20",
+                        : "text-white",
                     )}
                   >
                     <item.icon
                       className="h-[18px] w-[18px]"
                       strokeWidth={2.25}
-                      fill="currentColor"
-                      fillOpacity={isActive ? 0.15 : 0.2}
                     />
                   </span>
-                  <span className={cn("leading-tight", isActive && "font-semibold")}>
+                  <span className="leading-tight">
                     {item.label}
                   </span>
                 </>
