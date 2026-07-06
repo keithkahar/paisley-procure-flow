@@ -133,6 +133,12 @@
     --border: 220 25% 20%;
     --border-strong: 220 20% 28%;
     --input: 220 25% 20%;
+
+    --violet: 258 70% 70%;
+    --violet-foreground: 220 40% 8%;
+    --violet-soft: 258 35% 18%;
+    --violet-strong: 258 85% 75%;
+    --violet-muted: 258 20% 60%;
   }
 
   * {
