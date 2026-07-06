@@ -50,7 +50,7 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
               end
               className={({ isActive }) =>
                 cn(
-                  "group relative flex flex-col items-center gap-[1px] py-2 text-[11px] font-semibold tracking-tight transition-colors",
+                  "group relative flex flex-col items-center gap-1 py-2 text-[11px] font-semibold tracking-tight transition-colors",
                   isActive
                     ? "rail-tab-active"
                     : "mx-3 rounded-xl text-white hover:text-white",
