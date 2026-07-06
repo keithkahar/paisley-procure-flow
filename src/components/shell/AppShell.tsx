@@ -74,14 +74,6 @@ export default function AppShell() {
       <div className="flex min-w-0 flex-1 flex-col">
         {/* Top bar — logo left, notifications + avatar right. Clean, no greeting text, no redundant search. */}
         <header className="sticky top-0 z-30 flex h-[var(--topbar-h)] items-center gap-4 border-b border-border bg-surface/85 px-[var(--topbar-px)] backdrop-blur">
-          <button
-            className="rounded-md p-2 text-foreground hover:bg-muted md:hidden"
-            onClick={() => setMobileOpen(true)}
-            aria-label="Open menu"
-          >
-            <Menu className="h-5 w-5" />
-          </button>
-
           <div className="flex min-w-0 items-center">
             <BrandMark variant="wordmark" />
           </div>
@@ -92,7 +84,7 @@ export default function AppShell() {
               <div
                 className={cn(
                   "relative overflow-hidden transition-[width,opacity] duration-200 ease-out",
-                  searchOpen ? "w-[220px] md:w-[320px] opacity-100 mr-1" : "w-0 opacity-0",
+                  searchOpen ? "w-[180px] md:w-[320px] opacity-100 mr-1" : "w-0 opacity-0",
                 )}
               >
                 <input
@@ -123,6 +115,15 @@ export default function AppShell() {
             >
               <Bell className="h-[18px] w-[18px]" strokeWidth={2} />
               <span className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-primary" />
+            </button>
+
+            {/* Mobile menu button — right side, after bell */}
+            <button
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground md:hidden"
+              onClick={() => setMobileOpen(true)}
+              aria-label="Open menu"
+            >
+              <Menu className="h-[18px] w-[18px]" />
             </button>
 
             <div className="ml-1 hidden md:flex items-center">
