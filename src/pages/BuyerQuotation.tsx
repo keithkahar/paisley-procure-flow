@@ -28,7 +28,7 @@ export default function BuyerQuotation() {
       />
 
       <div className="grid gap-5 lg:grid-cols-3">
-        <div className="lg:col-span-2 space-y-4">
+        <div className="min-w-0 lg:col-span-2 space-y-4">
           <Card>
             <div className="mb-3 flex items-center justify-between">
               <div>
@@ -140,7 +140,7 @@ export default function BuyerQuotation() {
           </Card>
         </div>
 
-        <div className="space-y-4">
+        <div className="min-w-0 space-y-4">
           <Card>
             <div className="section-title mb-3">Global profit settings</div>
             <label className="block">

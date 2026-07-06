@@ -168,7 +168,7 @@
     background: linear-gradient(180deg, hsl(30 50% 97%) 0%, hsl(30 45% 92%) 100%);
   }
   .kpi-tile {
-    @apply bg-card border border-border/70 rounded-xl p-5 transition-colors hover:border-border-strong;
+    @apply bg-card border border-border/70 rounded-xl p-3.5 transition-colors hover:border-border-strong md:p-5;
   }
 
   /* ============ TYPE TOKENS (utilities) ============ */
