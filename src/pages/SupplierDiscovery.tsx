@@ -1,4 +1,4 @@
-import { PageHeader, StatusBadge, WorkflowBadge, SupplierTypeBadge, RiskBadge, ConfidenceBadge, Chip } from "@/components/mos/Primitives";
+import { PageHeader, SupplierTypeBadge, RiskBadge, ConfidenceBadge, Chip } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, MapPin, Globe, ShieldCheck, Plus } from "lucide-react";
