@@ -65,7 +65,7 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
                     className={cn(
                       "flex h-10 w-10 items-center justify-center rounded-xl transition-all",
                       isActive
-                        ? "text-primary"
+                        ? "text-foreground"
                         : "bg-white/10 text-white group-hover:bg-white/20",
                     )}
                   >
