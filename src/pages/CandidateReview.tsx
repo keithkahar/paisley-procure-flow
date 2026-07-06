@@ -35,8 +35,8 @@ export default function CandidateReview() {
                     <StatusBadge tone="muted">{s.cat}</StatusBadge>
                   </div>
                   <h4 className="mt-1.5 font-display text-subtitle font-semibold">{s.name}</h4>
-                  <div className="mt-1 flex items-start gap-1.5 text-caption text-muted-foreground">
-                    <MapPin className="mt-0.5 h-3.5 w-3.5" /> {s.addr}
+                  <div className="mt-1 text-caption text-muted-foreground">
+                    {s.addr}
                   </div>
                   <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-3">
                     <MiniField label="Export experience" value={s.export} />
