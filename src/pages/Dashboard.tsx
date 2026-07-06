@@ -13,10 +13,10 @@ import { Slider } from "@/components/ui/slider";
 
 function formatToday() {
   const d = new Date();
-  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const mo = months[d.getMonth()];
   const dd = String(d.getDate()).padStart(2, "0");
-  const yy = String(d.getFullYear()).slice(-2);
-  return `${mm}-${dd}-${yy}`;
+  return `${mo} ${dd} ${d.getFullYear()}`;
 }
 
 /* ----------------------------- mock data ----------------------------- */
