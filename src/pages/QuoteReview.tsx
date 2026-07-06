@@ -81,10 +81,10 @@ export default function QuoteReview() {
                   </div>
                 </td>
                 <td className="px-4 py-3">
-                  <div className="flex items-center gap-1">
-                    <Button size="sm" className="h-8 px-2"><Check className="h-3.5 w-3.5" /></Button>
-                    <Button size="sm" variant="outline" className="h-8 px-2"><Pencil className="h-3.5 w-3.5" /></Button>
-                    <Button size="sm" variant="ghost" className="h-8 px-2 text-destructive hover:bg-destructive-soft"><X className="h-3.5 w-3.5" /></Button>
+                  <div className="flex items-center gap-1.5">
+                    <ApproveAction />
+                    <EditAction />
+                    <RejectAction />
                   </div>
                 </td>
               </tr>
