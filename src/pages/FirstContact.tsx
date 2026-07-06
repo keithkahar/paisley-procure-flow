@@ -48,9 +48,9 @@ export default function FirstContact() {
 
       <div className="space-y-3">
         {emails.map((e) => (
-          <article key={e.id} className="card-surface p-3.5 md:p-4">
-            <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-              <div className="min-w-0">
+          <article key={e.id} className="card-surface p-4 md:p-5">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="font-mono text-mono text-muted-foreground">{e.id}</span>
                   <RefBadge>{e.rfq}</RefBadge>
@@ -60,15 +60,17 @@ export default function FirstContact() {
                 <div className="mt-1 text-caption text-muted-foreground">
                   To: {e.supplier} <span className="divider-dot" /> {e.item}
                 </div>
-                {e.missing.length > 0 && (
-                  <div className="mt-2 flex flex-wrap gap-1.5">
+              </div>
+              {e.missing.length > 0 && (
+                <div className="min-w-0 md:max-w-[280px] md:flex-1">
+                  <div className="flex flex-wrap items-center gap-1.5">
                     {e.missing.map((m) => (
                       <MissingFieldBadge key={m} field={m} />
                     ))}
                   </div>
-                )}
-              </div>
-              <div className="flex flex-wrap items-center gap-1 rounded-lg border border-border bg-surface-muted p-1 md:shrink-0">
+                </div>
+              )}
+              <div className="flex items-center gap-1 md:shrink-0">
                 <ApproveAction />
                 <EditAction label="Edit draft" />
                 <PreviewAction />
