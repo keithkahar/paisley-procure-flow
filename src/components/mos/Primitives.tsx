@@ -45,7 +45,7 @@ export function IconAction({
           disabled={disabled}
           aria-label={label}
           className={cn(
-            "inline-flex h-9 w-9 items-center justify-center rounded-lg transition-colors",
+            "inline-flex h-9 w-9 items-center justify-center rounded-full transition-colors",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
             "disabled:pointer-events-none disabled:opacity-50",
             toneMap[tone],
