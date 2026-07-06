@@ -38,7 +38,7 @@ export default function PurchaseIntake() {
     <>
       <PageHeader
         title="Purchase Intake"
-        description="Ingest buyer purchase lists, capture missing information, and hand off to supplier discovery."
+        description="Step 1 of 8"
         actions={
           <>
             <Button variant="outline" size="sm"><Upload className="mr-1.5 h-4 w-4" /> Import CSV</Button>

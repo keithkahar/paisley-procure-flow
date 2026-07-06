@@ -26,9 +26,8 @@ export default function QuoteReview() {
   return (
     <>
       <PageHeader
-        eyebrow="Step 6 of 8"
         title="Quote Review"
-        description="Parsed supplier quotes staged for approval. Approve to promote into quote database, or reject with reason."
+        description="Step 6 of 8"
         actions={<Button size="sm" variant="outline"><ClipboardCheck className="mr-1.5 h-4 w-4" /> Approval rules</Button>}
       />
 

@@ -30,9 +30,8 @@ export default function RFQ() {
   return (
     <>
       <PageHeader
-        eyebrow="Step 5 of 8"
         title="RFQ Rounds"
-        description="Manage multi-round RFQs by item and supplier. Track delivery basis, cost components, and response state."
+        description="Step 5 of 8"
         actions={
           <>
             <Button size="sm" variant="outline">Cost model</Button>
