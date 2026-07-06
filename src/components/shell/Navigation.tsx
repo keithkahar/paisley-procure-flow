@@ -1,9 +1,9 @@
 import { NavLink, useLocation } from "react-router-dom";
 import {
-  LayoutDashboard,
+  LayoutGrid,
   Inbox,
   Search,
-  UserCheck,
+  UserRoundCheck,
   MailPlus,
   FileSpreadsheet,
   ClipboardCheck,
