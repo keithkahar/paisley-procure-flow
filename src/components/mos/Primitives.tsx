@@ -184,24 +184,28 @@ export function StatusBadge({
   dot?: boolean;
   className?: string;
 }) {
+  // Unified 5-tone palette. `info` is an alias of `primary` and `gold` is
+  // reserved for domain identity (logistics basis, trader supplier) only.
+  // Every tone follows the same formula: bg-*-soft / text-* / ring-*/20.
   const map: Record<StatusTone, string> = {
-    primary: "bg-primary-soft text-primary ring-primary/15",
+    primary: "bg-primary-soft text-primary ring-primary/20",
+    info:    "bg-primary-soft text-primary ring-primary/20",
     success: "bg-success-soft text-success ring-success/20",
-    warning: "bg-warning-soft text-warning-foreground ring-warning/30",
-    danger: "bg-destructive-soft text-destructive ring-destructive/20",
-    muted: "bg-muted text-muted-foreground ring-border",
-    gold: "bg-gold-soft text-gold-foreground ring-gold/40",
-    info: "bg-accent text-accent-foreground ring-primary/15",
+    warning: "bg-warning-soft text-warning-foreground ring-warning/25",
+    danger:  "bg-destructive-soft text-destructive ring-destructive/20",
+    muted:   "bg-muted text-muted-foreground ring-border",
+    gold:    "bg-gold-soft text-gold-foreground ring-gold/30",
   };
   const dotMap: Record<StatusTone, string> = {
     primary: "bg-primary",
+    info:    "bg-primary",
     success: "bg-success",
     warning: "bg-warning",
-    danger: "bg-destructive",
-    muted: "bg-muted-foreground",
-    gold: "bg-gold",
-    info: "bg-primary",
+    danger:  "bg-destructive",
+    muted:   "bg-muted-foreground",
+    gold:    "bg-gold",
   };
+
   return (
     <span className={cn("badge-soft ring-1 ring-inset", map[tone], className)}>
       {dot && <span className={cn("h-1.5 w-1.5 rounded-full", dotMap[tone])} />}
