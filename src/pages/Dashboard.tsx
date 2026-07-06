@@ -210,7 +210,7 @@ export default function Dashboard() {
               >
                 <div className="flex h-10 w-10 shrink-0 flex-col items-center justify-center rounded-lg bg-surface text-primary shadow-[var(--shadow-sm)]">
                   <span className="font-display text-body font-bold leading-none">{h.day}</span>
-                  <span className="text-mono font-semibold tracking-wider text-muted-foreground">
+                  <span className="text-label font-semibold uppercase text-muted-foreground">
                     {h.mo}
                   </span>
                 </div>
