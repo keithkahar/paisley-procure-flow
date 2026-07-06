@@ -1,5 +1,78 @@
 import { cn } from "@/lib/utils";
-import type { ReactNode } from "react";
+import type { ReactNode, MouseEventHandler } from "react";
+import { Check, Pencil, X, Eye, type LucideIcon } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+
+/* ============================================================
+ * IconAction — the ONLY sanctioned icon-only action button.
+ * Unified sizing, tone, and tooltip across the whole app so
+ * Approve / Edit / Reject etc. always read the same visually.
+ * ============================================================ */
+
+type IconActionTone = "primary" | "outline" | "ghost" | "destructive";
+
+export function IconAction({
+  icon: Icon,
+  label,
+  tone = "outline",
+  onClick,
+  disabled,
+  className,
+}: {
+  icon: LucideIcon;
+  label: string;                 // accessible + tooltip text
+  tone?: IconActionTone;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
+  className?: string;
+}) {
+  const toneMap: Record<IconActionTone, string> = {
+    primary:
+      "bg-primary text-primary-foreground hover:bg-primary-hover shadow-sm",
+    outline:
+      "bg-surface text-foreground border border-border hover:border-border-strong hover:bg-surface-muted",
+    ghost:
+      "bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground",
+    destructive:
+      "bg-surface text-destructive border border-border hover:border-destructive/40 hover:bg-destructive-soft",
+  };
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <button
+          type="button"
+          onClick={onClick}
+          disabled={disabled}
+          aria-label={label}
+          className={cn(
+            "inline-flex h-9 w-9 items-center justify-center rounded-lg transition-colors",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+            "disabled:pointer-events-none disabled:opacity-50",
+            toneMap[tone],
+            className,
+          )}
+        >
+          <Icon className="h-4 w-4" strokeWidth={2.25} />
+        </button>
+      </TooltipTrigger>
+      <TooltipContent side="top">{label}</TooltipContent>
+    </Tooltip>
+  );
+}
+
+/* Semantic shortcuts — pages MUST use these instead of choosing tone manually. */
+export function ApproveAction(props: { onClick?: MouseEventHandler<HTMLButtonElement>; disabled?: boolean; label?: string }) {
+  return <IconAction icon={Check} tone="primary" label={props.label ?? "Approve"} {...props} />;
+}
+export function EditAction(props: { onClick?: MouseEventHandler<HTMLButtonElement>; disabled?: boolean; label?: string }) {
+  return <IconAction icon={Pencil} tone="outline" label={props.label ?? "Edit"} {...props} />;
+}
+export function RejectAction(props: { onClick?: MouseEventHandler<HTMLButtonElement>; disabled?: boolean; label?: string }) {
+  return <IconAction icon={X} tone="destructive" label={props.label ?? "Reject"} {...props} />;
+}
+export function PreviewAction(props: { onClick?: MouseEventHandler<HTMLButtonElement>; disabled?: boolean; label?: string }) {
+  return <IconAction icon={Eye} tone="ghost" label={props.label ?? "Preview"} {...props} />;
+}
 
 /* ============================================================
  * MOS Primitives — the ONLY sanctioned source of visual style.
