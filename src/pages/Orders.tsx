@@ -72,22 +72,26 @@ export default function Orders() {
                         <div className="flex items-center">
                           <span
                             className={
-                              "z-10 flex h-7 w-7 items-center justify-center rounded-full ring-4 ring-surface " +
+                              "z-10 flex h-5 w-5 items-center justify-center rounded-full transition-colors " +
                               (done
                                 ? "bg-primary text-primary-foreground"
                                 : current
-                                  ? "bg-gold text-gold-foreground"
-                                  : "bg-border text-muted-foreground")
+                                  ? "bg-surface text-primary ring-2 ring-primary"
+                                  : "bg-surface text-muted-foreground ring-1 ring-border")
                             }
                           >
-                            {done ? <CheckCircle2 className="h-4 w-4" /> : <Circle className="h-3 w-3" />}
+                            {done ? (
+                              <Check className="h-3 w-3" strokeWidth={3} />
+                            ) : (
+                              <span className={"h-1.5 w-1.5 rounded-full " + (current ? "bg-primary" : "bg-border-strong")} />
+                            )}
                           </span>
                           {i < milestones.length - 1 && (
-                            <div className={"h-0.5 flex-1 " + (i < o.stage - 1 ? "bg-primary" : "bg-border")} />
+                            <div className={"h-px flex-1 " + (i < o.stage - 1 ? "bg-primary/60" : "bg-border")} />
                           )}
                         </div>
                         <div className="mt-2 max-w-[110px] text-caption leading-tight text-muted-foreground">
-                          <div className={done || current ? "font-semibold text-foreground" : ""}>{m}</div>
+                          <div className={current ? "font-medium text-foreground" : done ? "text-foreground/70" : ""}>{m}</div>
                         </div>
                       </li>
                     );
