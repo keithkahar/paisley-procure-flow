@@ -319,16 +319,8 @@ export function WorkflowBadge({
 
 // --- Domain identity tags ---
 export function SupplierTypeBadge({ type }: { type: "Factory" | "Trader" | string }) {
-  // Factory = slightly deeper gray (solid, established manufacturer)
-  // Trader  = lightest gray (intermediary — visually lighter)
-  const cls =
-    type === "Factory"
-      ? "bg-surface-sunken text-muted-foreground ring-border"
-      : type === "Trader"
-      ? "bg-surface-muted text-muted-foreground ring-border"
-      : "bg-surface text-muted-foreground ring-border";
   return (
-    <span className={cn("badge-soft ring-1 ring-inset", cls)}>{type}</span>
+    <span className={cn("badge-soft ring-1 ring-inset bg-surface text-muted-foreground ring-border")}>{type}</span>
   );
 }
 
