@@ -336,11 +336,11 @@ export function WorkflowBadge({
 
 // --- Domain identity tags ---
 export function SupplierTypeBadge({ type }: { type: "Factory" | "Trader" | string }) {
-  // Factory = light gray fill (solid, established manufacturer)
-  // Trader  = lighter gray fill with muted text (intermediary — visually lighter)
+  // Factory = slightly deeper gray (solid, established manufacturer)
+  // Trader  = lightest gray (intermediary — visually lighter)
   const cls =
     type === "Factory"
-      ? "bg-muted text-foreground ring-muted"
+      ? "bg-surface-sunken text-muted-foreground ring-border"
       : type === "Trader"
       ? "bg-surface-muted text-muted-foreground ring-border"
       : "bg-surface text-muted-foreground ring-border";
