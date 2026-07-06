@@ -263,12 +263,12 @@ export function PriorityBadge({ level }: { level: PriorityLevel }) {
   return <StatusBadge tone={tone} dot>{label}</StatusBadge>;
 }
 
-// --- Confidence (0-100) ---
+// --- Confidence (0-100) — violet-only palette, distinct from type (primary/gold) and risk (success/warning/danger) ---
 export function confidenceTone(value: number): { tone: StatusTone; label: string } {
-  if (value >= 90) return { tone: "success", label: "High" };
-  if (value >= 75) return { tone: "primary", label: "Good" };
-  if (value >= 60) return { tone: "warning", label: "Fair" };
-  return { tone: "danger", label: "Low" };
+  if (value >= 90) return { tone: "violet-strong", label: "High" };
+  if (value >= 75) return { tone: "violet",          label: "Good" };
+  if (value >= 60) return { tone: "violet-muted",    label: "Fair" };
+  return { tone: "violet-muted", label: "Low" };
 }
 export function ConfidenceBadge({ value, showLabel = false }: { value: number; showLabel?: boolean }) {
   const { tone, label } = confidenceTone(value);
