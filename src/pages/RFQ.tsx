@@ -129,12 +129,6 @@ export default function RFQ() {
                 <h4 className="mt-1 font-display text-subtitle font-semibold">{it.item}</h4>
               </div>
               <div className="flex items-center gap-3">
-                <div className="hidden items-center gap-3 text-caption text-muted-foreground md:flex">
-                  <LegendDot className="bg-primary" label="Sent" />
-                  <LegendDot className="bg-success" label="Replied" />
-                  <LegendDot className="bg-destructive" label="Overdue" />
-                  <LegendDot className="bg-border-strong" label="Empty" />
-                </div>
                 <Button size="sm" variant="outline">Add supplier</Button>
                 <Button size="sm">Send next round</Button>
               </div>
@@ -212,14 +206,5 @@ export default function RFQ() {
         ))}
       </div>
     </>
-  );
-}
-
-function LegendDot({ className, label }: { className: string; label: string }) {
-  return (
-    <span className="inline-flex items-center gap-1.5">
-      <span className={`inline-block h-2 w-2 rounded-full ${className}`} />
-      {label}
-    </span>
   );
 }
