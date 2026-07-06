@@ -72,12 +72,12 @@ export default function Orders() {
                         <div className="flex items-center">
                           <span
                             className={
-                              "z-10 flex h-5 w-5 items-center justify-center rounded-full transition-colors " +
+                              "z-10 flex h-5 w-5 shrink-0 items-center justify-center rounded-full transition-colors " +
                               (done
                                 ? "bg-primary text-primary-foreground"
                                 : current
-                                  ? "bg-surface text-primary ring-2 ring-primary"
-                                  : "bg-surface text-muted-foreground ring-1 ring-border")
+                                  ? "bg-surface text-primary ring-2 ring-inset ring-primary"
+                                  : "bg-surface text-muted-foreground ring-1 ring-inset ring-border")
                             }
                           >
                             {done ? (
