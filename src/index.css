@@ -256,8 +256,8 @@
     content: "";
     position: absolute;
     right: 0;
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border-radius: 999px;
     pointer-events: none;
     background: transparent;
@@ -266,12 +266,12 @@
     backface-visibility: hidden;
   }
   .rail-tab-indicator::before {
-    top: -40px;
-    box-shadow: 20px 20px 0 0 hsl(var(--surface-sunken));
+    top: -48px;
+    box-shadow: 24px 24px 0 0 hsl(var(--surface-sunken));
   }
   .rail-tab-indicator::after {
-    bottom: -40px;
-    box-shadow: 20px -20px 0 0 hsl(var(--surface-sunken));
+    bottom: -48px;
+    box-shadow: 24px -24px 0 0 hsl(var(--surface-sunken));
   }
 
   @media (prefers-reduced-motion: reduce) {
