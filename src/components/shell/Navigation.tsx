@@ -70,7 +70,8 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
                   >
                     <item.icon
                       className="h-[18px] w-[18px]"
-                      strokeWidth={2.25}
+                      fill="currentColor"
+                      strokeWidth={1.5}
                     />
                   </span>
                   <span className="text-caption leading-tight">
