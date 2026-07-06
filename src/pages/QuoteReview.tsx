@@ -1,4 +1,4 @@
-import { PageHeader, StatusBadge, KpiTile, ConfidenceBadge, DeliveryBasisBadge, MissingFieldBadge, confidenceTone, Chip } from "@/components/mos/Primitives";
+import { PageHeader, StatusBadge, KpiTile, ConfidenceBadge, DeliveryBasisBadge, MissingFieldBadge, confidenceTone, Chip, ApproveAction, EditAction, RejectAction } from "@/components/mos/Primitives";
 
 const CONF_BAR: Record<string, string> = {
   success: "bg-success",
@@ -11,7 +11,7 @@ const CONF_BAR: Record<string, string> = {
 };
 const confBar = (v: number) => CONF_BAR[confidenceTone(v).tone];
 import { Button } from "@/components/ui/button";
-import { Check, X, Pencil, ClipboardCheck } from "lucide-react";
+import { ClipboardCheck } from "lucide-react";
 
 const quotes = [
   { id: "Q-2038", supplier: "Shenzhen Boya Electronics", item: "LED nav kit 12V IP67", price: "$ 6.20", moq: 300, lead: "22 d", currency: "USD", basis: "FOB Shenzhen", validity: "30 d", conf: 92, missing: [] },
