@@ -23,7 +23,7 @@ export default {
         subtitle: ["16px",   { lineHeight: "1.4",  letterSpacing: "-0.01em",  fontWeight: "600" }],
         body:     ["14px",   { lineHeight: "1.55" }],
         caption:  ["12.5px", { lineHeight: "1.5" }],
-        label:    ["11px",   { lineHeight: "1.4",  letterSpacing: "0.12em",   fontWeight: "600" }],
+        label:    ["11px",   { lineHeight: "1.4",  letterSpacing: "0.06em",   fontWeight: "600" }],
         mono:     ["12px",   { lineHeight: "1.4" }],
       },
       colors: {
