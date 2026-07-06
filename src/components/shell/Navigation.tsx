@@ -43,19 +43,19 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
       <div className="mb-6 h-2" aria-hidden />
 
 
-      <ul className="flex flex-1 flex-col items-center gap-2">
+      <ul className="flex flex-1 flex-col items-stretch gap-1.5 w-full">
         {NAV.map((item) => (
-          <li key={item.to} className="w-full px-3">
+          <li key={item.to} className="w-full">
             <NavLink
               to={item.to}
               onClick={onNavigate}
               end
               className={({ isActive }) =>
                 cn(
-                  "group flex flex-col items-center gap-1.5 rounded-xl py-2.5 text-caption font-medium tracking-tight transition-colors",
+                  "group relative flex flex-col items-center gap-1.5 py-2.5 text-caption font-medium tracking-tight transition-colors",
                   isActive
-                    ? "text-white"
-                    : "text-white/70 hover:text-white",
+                    ? "rail-tab-active ml-3 pl-1 pr-1"
+                    : "mx-3 rounded-xl text-white/70 hover:text-white",
                 )
               }
             >
@@ -65,7 +65,7 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
                     className={cn(
                       "flex h-10 w-10 items-center justify-center rounded-xl transition-all",
                       isActive
-                        ? "bg-white text-primary shadow-[0_6px_16px_-6px_rgba(0,0,0,0.35)]"
+                        ? "text-primary"
                         : "bg-white/10 text-white group-hover:bg-white/20",
                     )}
                   >
@@ -85,6 +85,7 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
           </li>
         ))}
       </ul>
+
 
       {/* Logout replaces avatar */}
       <button
