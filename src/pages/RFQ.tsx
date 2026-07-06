@@ -130,7 +130,6 @@ export default function RFQ() {
                 <h4 className="mt-1 font-display text-subtitle font-semibold">{it.item}</h4>
               </div>
               <div className="flex items-center gap-3">
-                {/* Legend */}
                 <div className="hidden items-center gap-3 text-caption text-muted-foreground md:flex">
                   <LegendDot className="bg-primary" label="Sent" />
                   <LegendDot className="bg-success" label="Replied" />
