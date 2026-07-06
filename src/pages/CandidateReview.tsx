@@ -1,6 +1,5 @@
-import { PageHeader, StatusBadge, KpiTile, SupplierTypeBadge, ApproveAction, EditAction, RejectAction } from "@/components/mos/Primitives";
+import { PageHeader, StatusBadge, KpiTile, SupplierTypeBadge } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
-import { ShieldAlert, MapPin, Factory, CheckCheck } from "lucide-react";
 
 const queue = [
   { id: "SUP-CN-0081", name: "Ningbo Ocean Fittings Co., Ltd", type: "Factory", addr: "No. 128 Zhenhai Rd, Ningbo, Zhejiang, CN", cat: "Marine hardware", export: "12 yrs", contact: "Full", risks: ["No ISO 9001 certificate listed"] },
@@ -14,7 +13,7 @@ export default function CandidateReview() {
       <PageHeader
         title="Candidate Review"
         description="Step 3 of 8"
-        actions={<Button size="sm" variant="outline" className="h-9 leading-none box-border"><CheckCheck className="mr-1.5 h-4 w-4" /> Batch approve safe candidates</Button>}
+        actions={<Button size="sm" variant="outline" className="h-9 leading-none box-border">Batch approve safe candidates</Button>}
       />
 
       <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -29,9 +28,6 @@ export default function CandidateReview() {
           <article key={s.id} className="card-surface p-4 md:p-5">
             <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
               <div className="flex items-start gap-3 md:gap-4 min-w-0">
-                <div className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary md:flex">
-                  <Factory className="h-5 w-5" />
-                </div>
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="font-mono text-mono text-muted-foreground">{s.id}</span>
@@ -39,8 +35,8 @@ export default function CandidateReview() {
                     <StatusBadge tone="muted">{s.cat}</StatusBadge>
                   </div>
                   <h4 className="mt-1.5 font-display text-subtitle font-semibold">{s.name}</h4>
-                  <div className="mt-1 flex items-start gap-1.5 text-caption text-muted-foreground">
-                    <MapPin className="mt-0.5 h-3.5 w-3.5" /> {s.addr}
+                  <div className="mt-1 text-caption text-muted-foreground">
+                    {s.addr}
                   </div>
                   <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-3">
                     <MiniField label="Export experience" value={s.export} />
@@ -49,8 +45,8 @@ export default function CandidateReview() {
                   </div>
                   {s.risks.length > 0 && (
                     <div className="mt-3 rounded-lg border border-warning/30 bg-warning-soft/50 p-3">
-                      <div className="flex items-center gap-1.5 text-label uppercase text-warning-foreground/80">
-                        <ShieldAlert className="h-3.5 w-3.5" /> Verification notes
+                      <div className="text-label uppercase text-warning-foreground/80">
+                        Verification notes
                       </div>
                       <ul className="mt-1.5 space-y-0.5 text-caption text-foreground/85">
                         {s.risks.map((r) => (
@@ -62,10 +58,10 @@ export default function CandidateReview() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center gap-1.5 md:shrink-0">
-                <ApproveAction />
-                <EditAction />
-                <RejectAction />
+              <div className="flex flex-wrap items-center gap-2 md:shrink-0">
+                <Button size="sm">Approve</Button>
+                <Button size="sm" variant="outline">Edit</Button>
+                <Button size="sm" variant="outline" className="text-destructive hover:bg-destructive/10 hover:text-destructive">Reject</Button>
               </div>
             </div>
           </article>
