@@ -99,7 +99,8 @@ export default function BuyerQuotation() {
                   <div className="text-body font-semibold">Paisley Sourcing</div>
                 </div>
               </div>
-              <table className="w-full text-body">
+              <div className="-mx-1 overflow-x-auto">
+              <table className="w-full min-w-[480px] text-body">
                 <thead className="border-b border-border">
                   <tr>
                     <th className="py-2 text-left text-label uppercase text-muted-foreground">Description</th>
@@ -114,10 +115,10 @@ export default function BuyerQuotation() {
                     const buyer = l.cost / (1 - rate);
                     return (
                       <tr key={l.item} className="border-b border-border/60">
-                        <td className="py-2.5">{l.item}</td>
-                        <td className="py-2.5 text-right">{l.qty}</td>
-                        <td className="py-2.5 text-right">€ {(buyer * 0.92).toFixed(2)}</td>
-                        <td className="py-2.5 text-right font-semibold">€ {(buyer * 0.92 * l.qty).toFixed(2)}</td>
+                        <td className="whitespace-nowrap py-2.5">{l.item}</td>
+                        <td className="whitespace-nowrap py-2.5 text-right">{l.qty}</td>
+                        <td className="whitespace-nowrap py-2.5 text-right">€ {(buyer * 0.92).toFixed(2)}</td>
+                        <td className="whitespace-nowrap py-2.5 text-right font-semibold">€ {(buyer * 0.92 * l.qty).toFixed(2)}</td>
                       </tr>
                     );
                   })}
@@ -125,7 +126,7 @@ export default function BuyerQuotation() {
                 <tfoot>
                   <tr>
                     <td colSpan={3} className="py-3 text-right font-semibold">Total (EUR)</td>
-                    <td className="py-3 text-right font-display text-lg font-bold text-primary">
+                    <td className="whitespace-nowrap py-3 text-right font-display text-lg font-bold text-primary">
                       € {lines.reduce((acc, l) => {
                         const rate = (l.override ?? globalRate * 100) / 100;
                         return acc + (l.cost / (1 - rate)) * 0.92 * l.qty;
@@ -134,6 +135,7 @@ export default function BuyerQuotation() {
                   </tr>
                 </tfoot>
               </table>
+              </div>
             </div>
           </Card>
         </div>
