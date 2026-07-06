@@ -1,4 +1,4 @@
-import { PageHeader, SupplierTypeBadge, RiskBadge, ConfidenceBadge, Chip } from "@/components/mos/Primitives";
+import { PageHeader, SupplierTypeBadge, ConfidenceBadge, Chip } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, MapPin, Globe, ShieldCheck, Plus } from "lucide-react";
@@ -13,11 +13,11 @@ const libs = [
 const cats = ["All", "Marine hardware", "Electronics", "Textiles", "Valves & fittings", "Packaging"];
 
 const suppliers = [
-  { id: "SUP-CN-0081", name: "Ningbo Ocean Fittings Co., Ltd", city: "Ningbo, Zhejiang", type: "Factory", conf: 94, contact: "Complete", risk: "High", cat: "Marine hardware", site: "oceanfittings.cn" },
-  { id: "SUP-CN-0082", name: "Xiamen Bluewave Marine Supplies", city: "Xiamen, Fujian", type: "Factory", conf: 88, contact: "Partial", risk: "Unknown", cat: "Marine hardware", site: "bluewave-marine.com" },
-  { id: "SUP-CN-0083", name: "Guangzhou Harbor Trading Co.", city: "Guangzhou, Guangdong", type: "Trader", conf: 71, contact: "Complete", risk: "High", cat: "Marine hardware", site: "gzharbor.com.cn" },
-  { id: "SUP-CN-0084", name: "Qingdao Steel Rig Manufacture", city: "Qingdao, Shandong", type: "Factory", conf: 91, contact: "Complete", risk: "Unknown", cat: "Valves & fittings", site: "qdsteelrig.com" },
-  { id: "SUP-CN-0085", name: "Shenzhen Boya Electronics", city: "Shenzhen, Guangdong", type: "Factory", conf: 89, contact: "Complete", risk: "High", cat: "Electronics", site: "boya-elec.com" },
+  { id: "SUP-CN-0081", name: "Ningbo Ocean Fittings Co., Ltd", city: "Ningbo, Zhejiang", type: "Factory", conf: 94, contact: "Complete", cat: "Marine hardware", site: "oceanfittings.cn" },
+  { id: "SUP-CN-0082", name: "Xiamen Bluewave Marine Supplies", city: "Xiamen, Fujian", type: "Factory", conf: 88, contact: "Partial", cat: "Marine hardware", site: "bluewave-marine.com" },
+  { id: "SUP-CN-0083", name: "Guangzhou Harbor Trading Co.", city: "Guangzhou, Guangdong", type: "Trader", conf: 71, contact: "Complete", cat: "Marine hardware", site: "gzharbor.com.cn" },
+  { id: "SUP-CN-0084", name: "Qingdao Steel Rig Manufacture", city: "Qingdao, Shandong", type: "Factory", conf: 91, contact: "Complete", cat: "Valves & fittings", site: "qdsteelrig.com" },
+  { id: "SUP-CN-0085", name: "Shenzhen Boya Electronics", city: "Shenzhen, Guangdong", type: "Factory", conf: 89, contact: "Complete", cat: "Electronics", site: "boya-elec.com" },
 ];
 
 export default function SupplierDiscovery() {
@@ -73,7 +73,6 @@ export default function SupplierDiscovery() {
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="font-mono text-mono text-muted-foreground">{s.id}</span>
                   <SupplierTypeBadge type={s.type} />
-                  <RiskBadge level={s.risk} compact />
                 </div>
                 <h4 className="mt-3 line-clamp-1 font-display text-subtitle font-semibold leading-snug">{s.name}</h4>
               </div>
