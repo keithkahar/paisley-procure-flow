@@ -126,25 +126,29 @@ export default function RFQ() {
               </table>
             </div>
             <div className="md:hidden divide-y divide-border">
-              {it.suppliers.map((s) => (
-                <div key={s.id} className="p-3">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="font-medium text-foreground text-body">{s.name}</div>
-                      <div className="font-mono text-mono text-muted-foreground">{s.id}</div>
-                    </div>
-                    <Button size="sm" variant="ghost">Details</Button>
-                  </div>
-                  <div className="mt-2 grid grid-cols-6 gap-1">
-                    {s.rounds.map((r, i) => (
-                      <div key={i} className="flex flex-col items-center text-mono text-muted-foreground">
-                        <span className={`mb-0.5 inline-block h-2 w-2 rounded-full ${dot(r)}`} />
-                        R{Math.floor(i / 2) + 1}{i % 2 ? "↩" : "→"}
+              {it.suppliers.map((s) => {
+                const roundLabels = ["1st Email", "1st Reply", "2nd Email", "2nd Reply", "3rd Email", "3rd Reply"];
+                return (
+                  <div key={s.id} className="p-3">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="text-label uppercase text-muted-foreground">Supplier</div>
+                        <div className="mt-0.5 font-medium text-foreground text-body">{s.name}</div>
+                        <div className="font-mono text-mono text-muted-foreground">{s.id}</div>
                       </div>
-                    ))}
+                      <Button size="sm" variant="ghost">Details</Button>
+                    </div>
+                    <div className="mt-3 grid grid-cols-3 gap-2">
+                      {s.rounds.map((r, i) => (
+                        <div key={i} className="flex flex-col items-start">
+                          <div className="text-label uppercase text-muted-foreground">{roundLabels[i]}</div>
+                          <span className={`mt-1 inline-block h-2.5 w-2.5 rounded-full ${dot(r)}`} />
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         ))}
