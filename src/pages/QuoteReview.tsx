@@ -97,23 +97,53 @@ export default function QuoteReview() {
       <div className="space-y-3 md:hidden">
         {quotes.map((q) => (
           <article key={q.id} className="card-surface p-4">
-            <div className="flex items-start justify-between">
-              <div>
-                <div className="font-mono text-mono text-muted-foreground">{q.id}</div>
-                <div className="mt-1 font-semibold">{q.item}</div>
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
+                <div className="text-label uppercase text-muted-foreground">Quote</div>
+                <div className="mt-0.5 font-mono text-mono text-muted-foreground">{q.id}</div>
+                <div className="mt-2 text-label uppercase text-muted-foreground">Supplier / Item</div>
+                <div className="mt-0.5 font-semibold">{q.item}</div>
                 <div className="text-caption text-muted-foreground">{q.supplier}</div>
               </div>
-              <div className="text-right">
-                <div className="font-display text-lg font-bold">{q.price}</div>
-                <div className="text-caption text-muted-foreground">MOQ {q.moq}</div>
+              <div className="text-right shrink-0">
+                <div className="text-label uppercase text-muted-foreground">Price</div>
+                <div className="mt-0.5 font-display text-lg font-bold">{q.price}</div>
               </div>
             </div>
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              <DeliveryBasisBadge>{q.basis}</DeliveryBasisBadge>
-              <StatusBadge tone="muted">Lead {q.lead}</StatusBadge>
-              <StatusBadge tone="muted">{q.validity}</StatusBadge>
-              <ConfidenceBadge value={q.conf} />
+            <div className="mt-3 grid grid-cols-3 gap-3">
+              <div>
+                <div className="text-label uppercase text-muted-foreground">MOQ</div>
+                <div className="mt-0.5 text-body">{q.moq}</div>
+              </div>
+              <div>
+                <div className="text-label uppercase text-muted-foreground">Lead</div>
+                <div className="mt-0.5 text-body">{q.lead}</div>
+              </div>
+              <div>
+                <div className="text-label uppercase text-muted-foreground">Validity</div>
+                <div className="mt-0.5 text-body">{q.validity}</div>
+              </div>
             </div>
+            <div className="mt-3">
+              <div className="text-label uppercase text-muted-foreground">Basis</div>
+              <div className="mt-1"><DeliveryBasisBadge>{q.basis}</DeliveryBasisBadge></div>
+            </div>
+            <div className="mt-3">
+              <div className="text-label uppercase text-muted-foreground">Confidence</div>
+              <div className="mt-1 flex items-center gap-2">
+                <div className="h-1.5 w-24 overflow-hidden rounded-full bg-border">
+                  <div className={`h-full rounded-full ${confBar(q.conf)}`} style={{ width: `${q.conf}%` }} />
+                </div>
+                <ConfidenceBadge value={q.conf} />
+              </div>
+            </div>
+            {q.missing.length > 0 && (
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {q.missing.map((m) => (
+                  <MissingFieldBadge key={m} field={m} />
+                ))}
+              </div>
+            )}
             <div className="mt-3 flex items-center gap-1.5">
               <ApproveAction />
               <EditAction />
