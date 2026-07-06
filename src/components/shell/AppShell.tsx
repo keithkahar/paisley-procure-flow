@@ -100,7 +100,7 @@ export default function AppShell() {
                   placeholder="Search RFQs, suppliers, orders…"
                   onBlur={(e) => { if (!e.currentTarget.value) setSearchOpen(false); }}
                   onKeyDown={(e) => { if (e.key === "Escape") setSearchOpen(false); }}
-                  className="h-9 w-full rounded-full border border-border bg-surface-muted pl-4 pr-9 text-caption text-foreground placeholder:text-muted-foreground/70 outline-none focus:border-primary/30 focus:bg-surface focus:ring-2 focus:ring-primary/15"
+                  className="h-9 w-full rounded-full border border-border bg-surface-muted pl-4 pr-9 text-caption text-foreground placeholder:text-muted-foreground/70 outline-none focus:border-primary/40 focus:bg-surface"
                 />
               </div>
               <button
