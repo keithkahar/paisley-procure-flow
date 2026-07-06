@@ -28,23 +28,23 @@ export default function AppShell() {
         <IconRail />
       </aside>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer — right side, 50% viewport width */}
       {mobileOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
           <div className="absolute inset-0 bg-foreground/40" onClick={() => setMobileOpen(false)} />
-          <aside className="absolute inset-y-0 left-0 flex w-72 flex-col bg-rail text-rail-foreground shadow-lg">
-            <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
+          <aside className="absolute inset-y-0 right-0 flex w-1/2 min-w-[220px] flex-col bg-rail text-rail-foreground shadow-lg">
+            <div className="flex items-center justify-between border-b border-white/10 px-3 py-2.5">
               <BrandMark variant="mark" />
               <button
                 aria-label="Close menu"
                 onClick={() => setMobileOpen(false)}
                 className="rounded-md p-1.5 text-white/70 hover:bg-white/10"
               >
-                <X className="h-5 w-5" />
+                <X className="h-4 w-4" />
               </button>
             </div>
-            <nav className="flex-1 overflow-y-auto px-3 py-3">
-              <ul className="space-y-1">
+            <nav className="flex-1 overflow-y-auto px-2 py-2">
+              <ul className="space-y-0.5">
                 {NAV.map((item) => (
                   <li key={item.to}>
                     <NavLink
@@ -52,15 +52,15 @@ export default function AppShell() {
                       onClick={() => setMobileOpen(false)}
                       className={({ isActive }) =>
                         cn(
-                          "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium",
+                          "flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] font-medium",
                           isActive
                             ? "bg-white text-primary shadow-sm"
-                            : "text-white/80 hover:bg-white/10",
+                            : "text-white/85 hover:bg-white/10",
                         )
                       }
                     >
-                      <item.icon className="h-4 w-4" />
-                      <span>{item.full}</span>
+                      <item.icon className="h-4 w-4 shrink-0" />
+                      <span className="truncate">{item.full}</span>
                     </NavLink>
                   </li>
                 ))}
