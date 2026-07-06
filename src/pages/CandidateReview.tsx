@@ -57,7 +57,7 @@ export default function CandidateReview() {
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="font-mono text-mono text-muted-foreground">{s.id}</span>
                   <SupplierTypeBadge type={s.type} />
-                  <StatusBadge tone="muted">{s.cat}</StatusBadge>
+                  <span className="badge-soft ring-1 ring-inset bg-surface text-muted-foreground ring-border">{s.cat}</span>
                   <ConfidenceBadge value={s.conf} />
                 </div>
                 <h4 className="mt-2 font-display text-subtitle font-semibold leading-snug">{s.name}</h4>

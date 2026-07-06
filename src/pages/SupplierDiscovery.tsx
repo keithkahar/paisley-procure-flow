@@ -86,8 +86,8 @@ export default function SupplierDiscovery() {
 
             <div className="mt-auto flex items-center justify-between gap-2 border-t border-border/60 pt-3">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="badge-soft ring-1 ring-inset bg-surface text-muted-foreground ring-border">{s.cat}</span>
                 <SupplierTypeBadge type={s.type} />
+                <span className="badge-soft ring-1 ring-inset bg-surface text-muted-foreground ring-border">{s.cat}</span>
               </div>
               <Button size="sm" variant="outline">Add to review</Button>
             </div>
