@@ -42,10 +42,10 @@ export default function QuoteReview() {
       {/* Table on desktop */}
       <div className="card-surface hidden overflow-hidden md:block">
         <table className="w-full text-body">
-          <thead className="bg-surface-muted text-muted-foreground">
+          <thead className="bg-surface-muted">
             <tr>
               {["Quote", "Supplier / Item", "Price", "MOQ", "Lead", "Basis", "Validity", "Confidence", "Actions"].map((h) => (
-                <th key={h} className="px-4 py-2.5 text-left font-medium">{h}</th>
+                <th key={h} className="px-4 py-2.5 text-left text-label uppercase text-muted-foreground">{h}</th>
               ))}
             </tr>
           </thead>
