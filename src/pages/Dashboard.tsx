@@ -54,7 +54,7 @@ export default function Dashboard() {
     <div className="space-y-6">
       {/* Top: today's date as page anchor */}
       <div className="flex items-center justify-between">
-        <h1 className="font-display text-display font-semibold tracking-tight text-foreground">
+        <h1 className="font-display text-[24px] leading-tight tracking-tight font-bold text-foreground md:text-display">
           {formatToday()}
         </h1>
       </div>
