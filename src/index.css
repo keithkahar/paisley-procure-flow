@@ -31,6 +31,13 @@
     --gold-foreground: 28 30% 22%;
     --gold-soft: 38 70% 88%;
 
+    /* Violet accent — confidence-only, distinct from type and risk */
+    --violet: 258 55% 55%;
+    --violet-foreground: 0 0% 100%;
+    --violet-soft: 258 60% 92%;
+    --violet-strong: 258 70% 45%;
+    --violet-muted: 258 20% 55%;
+
     --secondary: 218 28% 94%;
     --secondary-foreground: 220 40% 18%;
 
