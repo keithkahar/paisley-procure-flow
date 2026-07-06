@@ -171,7 +171,10 @@ export type StatusTone =
   | "danger"
   | "muted"
   | "gold"
-  | "info";
+  | "info"
+  | "violet-strong"
+  | "violet"
+  | "violet-muted";
 
 export function StatusBadge({
   tone = "muted",
@@ -195,6 +198,9 @@ export function StatusBadge({
     danger:  "bg-destructive-soft text-destructive ring-destructive/20",
     muted:   "bg-muted text-muted-foreground ring-border",
     gold:    "bg-gold-soft text-gold-foreground ring-gold/30",
+    "violet-strong": "bg-violet-soft text-violet-strong ring-violet/20",
+    violet:          "bg-violet-soft text-violet ring-violet/20",
+    "violet-muted":  "bg-violet-soft text-violet-muted ring-violet/20",
   };
   const dotMap: Record<StatusTone, string> = {
     primary: "bg-primary",
@@ -204,6 +210,9 @@ export function StatusBadge({
     danger:  "bg-destructive",
     muted:   "bg-muted-foreground",
     gold:    "bg-gold",
+    "violet-strong": "bg-violet-strong",
+    violet:          "bg-violet",
+    "violet-muted":  "bg-violet-muted",
   };
 
   return (
@@ -254,12 +263,12 @@ export function PriorityBadge({ level }: { level: PriorityLevel }) {
   return <StatusBadge tone={tone} dot>{label}</StatusBadge>;
 }
 
-// --- Confidence (0-100) ---
+// --- Confidence (0-100) — violet-only palette, distinct from type (primary/gold) and risk (success/warning/danger) ---
 export function confidenceTone(value: number): { tone: StatusTone; label: string } {
-  if (value >= 90) return { tone: "success", label: "High" };
-  if (value >= 75) return { tone: "primary", label: "Good" };
-  if (value >= 60) return { tone: "warning", label: "Fair" };
-  return { tone: "danger", label: "Low" };
+  if (value >= 90) return { tone: "violet-strong", label: "High" };
+  if (value >= 75) return { tone: "violet",          label: "Good" };
+  if (value >= 60) return { tone: "violet-muted",    label: "Fair" };
+  return { tone: "violet-muted", label: "Low" };
 }
 export function ConfidenceBadge({ value, showLabel = false }: { value: number; showLabel?: boolean }) {
   const { tone, label } = confidenceTone(value);

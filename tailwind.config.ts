@@ -49,6 +49,13 @@ export default {
           foreground: "hsl(var(--gold-foreground))",
           soft: "hsl(var(--gold-soft))",
         },
+        violet: {
+          DEFAULT: "hsl(var(--violet))",
+          foreground: "hsl(var(--violet-foreground))",
+          soft: "hsl(var(--violet-soft))",
+          strong: "hsl(var(--violet-strong))",
+          muted: "hsl(var(--violet-muted))",
+        },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
