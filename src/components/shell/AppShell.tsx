@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { Bell, Menu, X } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Bell, Menu, X, Search } from "lucide-react";
 import { IconRail, useActiveNav, BrandMark, NAV } from "./Navigation";
 import { NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
