@@ -68,7 +68,7 @@ export default function PurchaseIntake() {
       </div>
 
       {/* Helper strip — replaces the oversized right sidebar */}
-      <div className="mb-5 flex flex-col gap-2 rounded-xl border border-primary/15 bg-primary-soft/50 px-4 py-3 md:flex-row md:items-center md:justify-between">
+      <div className="mb-5 flex flex-col gap-2 rounded-xl border border-primary/20 bg-primary-soft px-4 py-3 md:flex-row md:items-center md:justify-between">
         <div className="flex items-start gap-2.5 md:items-center">
           <Info className="mt-0.5 h-4 w-4 shrink-0 text-primary md:mt-0" />
           <p className="text-caption text-foreground/85">
