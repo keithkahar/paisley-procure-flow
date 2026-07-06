@@ -1,6 +1,6 @@
 import { PageHeader, KpiTile, WorkflowBadge, RefBadge, MissingFieldBadge, ApproveAction, EditAction, PreviewAction, type WorkflowState } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
-import { Info, Mail, Send } from "lucide-react";
+import { Info, Mail, Send, Pencil } from "lucide-react";
 
 const emails: Array<{
   id: string; rfq: string; supplier: string; item: string; subject: string;
