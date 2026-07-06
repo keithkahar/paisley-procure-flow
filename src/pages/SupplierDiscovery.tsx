@@ -25,7 +25,7 @@ export default function SupplierDiscovery() {
     <>
       <PageHeader
         eyebrow="Step 2 of 8"
-        title="Supplier discovery"
+        title="Supplier Discovery"
         description="Search across verified libraries and generate a ranked candidate list for each RFQ item."
         actions={
           <>

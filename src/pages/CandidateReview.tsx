@@ -13,7 +13,7 @@ export default function CandidateReview() {
     <>
       <PageHeader
         eyebrow="Step 3 of 8"
-        title="Candidate review"
+        title="Candidate Review"
         description="Human approval gate before suppliers move to first contact. Approve, reject, or edit each candidate."
         actions={<Button size="sm" variant="outline">Batch approve safe candidates</Button>}
       />
