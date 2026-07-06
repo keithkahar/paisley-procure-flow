@@ -24,10 +24,10 @@ export const NAV: {
   icon: LucideIcon;
   step: number | null;
 }[] = [
-  { to: "/dashboard", label: "Today", full: "Dashboard", icon: LayoutDashboard, step: null },
+  { to: "/dashboard", label: "Today", full: "Dashboard", icon: LayoutGrid, step: null },
   { to: "/intake", label: "Intake", full: "Purchase Intake", icon: Inbox, step: 1 },
   { to: "/discovery", label: "Discovery", full: "Supplier Discovery", icon: Search, step: 2 },
-  { to: "/candidates", label: "Review", full: "Candidate Review", icon: UserCheck, step: 3 },
+  { to: "/candidates", label: "Review", full: "Candidate Review", icon: UserRoundCheck, step: 3 },
   { to: "/first-contact", label: "Contact", full: "First Contact", icon: MailPlus, step: 4 },
   { to: "/rfq", label: "RFQ", full: "RFQ Rounds", icon: FileSpreadsheet, step: 5 },
   { to: "/quote-review", label: "Quotes", full: "Quote Review", icon: ClipboardCheck, step: 6 },
