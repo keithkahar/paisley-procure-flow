@@ -198,6 +198,9 @@ export function StatusBadge({
     danger:  "bg-destructive-soft text-destructive ring-destructive/20",
     muted:   "bg-muted text-muted-foreground ring-border",
     gold:    "bg-gold-soft text-gold-foreground ring-gold/30",
+    "violet-strong": "bg-violet-soft text-violet-strong ring-violet/20",
+    violet:          "bg-violet-soft text-violet ring-violet/20",
+    "violet-muted":  "bg-violet-soft text-violet-muted ring-violet/20",
   };
   const dotMap: Record<StatusTone, string> = {
     primary: "bg-primary",
@@ -207,6 +210,9 @@ export function StatusBadge({
     danger:  "bg-destructive",
     muted:   "bg-muted-foreground",
     gold:    "bg-gold",
+    "violet-strong": "bg-violet-strong",
+    violet:          "bg-violet",
+    "violet-muted":  "bg-violet-muted",
   };
 
   return (
