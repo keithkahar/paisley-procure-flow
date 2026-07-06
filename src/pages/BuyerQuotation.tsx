@@ -140,7 +140,7 @@ export default function BuyerQuotation() {
           </Card>
         </div>
 
-        <div className="space-y-4">
+        <div className="min-w-0 space-y-4">
           <Card>
             <div className="section-title mb-3">Global profit settings</div>
             <label className="block">
