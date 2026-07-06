@@ -282,7 +282,7 @@ export type WorkflowState =
   | "rejected";
 
 const WORKFLOW_MAP: Record<WorkflowState, { tone: StatusTone; label: string; dot: boolean }> = {
-  draft:          { tone: "violet-muted", label: "Draft",             dot: true  },
+  draft:          { tone: "muted",   label: "Draft",             dot: true  },
   pending:        { tone: "warning", label: "Awaiting approval", dot: true  },
   sent:           { tone: "violet",  label: "Sent",              dot: true  },
   in_progress:    { tone: "primary", label: "In progress",       dot: true  },
