@@ -52,26 +52,35 @@ export default function RFQ() {
       <div className="mb-6 grid gap-5 lg:grid-cols-3">
         <Card className="lg:col-span-2">
           <div className="section-title mb-3">Cost components (per unit)</div>
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-            {[
-              ["Supplier unit price", "$ 4.20"],
-              ["China local cost", "$ 0.35"],
-              ["International freight", "$ 0.62"],
-              ["Destination delivery", "$ 0.28"],
-              ["Duty / Tax", "$ 0.54"],
-              ["Buffer", "$ 0.20"],
-              ["Profit rate", "22%"],
-              ["Buyer landed price", "$ 7.83"],
-            ].map(([k, v], i) => (
-              <div key={k} className="rounded-lg border border-border bg-surface-muted p-3">
-                <div className="text-label uppercase text-muted-foreground">{k}</div>
-                <div className={"mt-1 font-display text-subtitle font-bold " + (i === 7 ? "text-primary" : "text-foreground")}>{v}</div>
+          <div className="rounded-xl border border-border bg-surface-muted p-4">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+              {[
+                ["Supplier", "$ 4.20"],
+                ["China local", "$ 0.35"],
+                ["Int'l freight", "$ 0.62"],
+                ["Destination", "$ 0.28"],
+                ["Duty / Tax", "$ 0.54"],
+                ["Buffer", "$ 0.20"],
+                ["Profit", "22%"],
+              ].map(([k, v], i, arr) => (
+                <div key={k} className="flex items-center gap-4">
+                  <div>
+                    <div className="text-label uppercase text-muted-foreground">{k}</div>
+                    <div className="mt-0.5 font-display text-subtitle font-bold text-foreground">{v}</div>
+                  </div>
+                  {i < arr.length - 1 && <span className="text-muted-foreground/50">+</span>}
+                </div>
+              ))}
+              <span className="ml-auto text-muted-foreground/60">=</span>
+              <div className="rounded-lg bg-surface px-4 py-2 ring-1 ring-primary/25">
+                <div className="text-label uppercase text-muted-foreground">Buyer landed</div>
+                <div className="mt-0.5 font-display text-subtitle font-bold text-primary">$ 7.83</div>
               </div>
-            ))}
+            </div>
           </div>
         </Card>
         <Card>
-          {/* Delivery basis — inline segmented style */}
+          
           <div className="flex items-center gap-3 rounded-full bg-surface-muted p-1 pl-3">
             <span className="shrink-0 text-label uppercase text-muted-foreground">Delivery</span>
             <div className="flex flex-1 flex-wrap gap-1">
@@ -116,7 +125,7 @@ export default function RFQ() {
               <div>
                 <div className="flex items-center gap-2">
                   <RefBadge>{it.rfq}</RefBadge>
-                  <span className="text-caption text-muted-foreground">{it.basis}</span>
+                  <span className="badge-soft ring-1 ring-inset bg-surface text-muted-foreground ring-border">{it.basis}</span>
                 </div>
                 <h4 className="mt-1 font-display text-subtitle font-semibold">{it.item}</h4>
               </div>
@@ -158,7 +167,7 @@ export default function RFQ() {
                           <span className={`inline-block h-2.5 w-2.5 rounded-full ${dot(r)}`} />
                         </td>
                       ))}
-                      <td className="whitespace-nowrap px-4 py-2.5 text-right font-mono text-mono text-foreground">
+                      <td className="whitespace-nowrap px-4 py-2.5 text-right font-display text-body font-bold text-foreground">
                         {s.latest}
                       </td>
                       <td className="px-4 py-2.5 text-right">
