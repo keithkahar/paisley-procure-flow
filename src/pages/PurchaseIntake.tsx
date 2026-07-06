@@ -111,8 +111,7 @@ export default function PurchaseIntake() {
               {/* Middle: missing fields inline (only when present) */}
               {l.missing.length > 0 && (
                 <div className="min-w-0 md:max-w-[360px] md:flex-1">
-                  <div className="text-label uppercase text-muted-foreground/80">Missing</div>
-                  <div className="mt-1.5 flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap items-center gap-1.5">
                     {l.missing.map((m) => (
                       <MissingFieldBadge key={m} field={m} />
                     ))}
