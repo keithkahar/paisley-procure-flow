@@ -61,7 +61,8 @@ export default function Dashboard() {
 
       {/* Row 1: two sparkline KPIs (left, stacked) + donut (right) */}
       <div className="grid gap-5 lg:grid-cols-5">
-        <div className="lg:col-span-2 space-y-5">
+        <div className="lg:col-span-2 flex flex-col gap-5">
+
           <SparkKpi
             label="Active RFQs"
             value="42"
