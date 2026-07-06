@@ -79,8 +79,7 @@ export default function PurchaseIntake() {
         </div>
 
         <Card>
-          <div className="mb-2 flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-primary" />
+          <div className="mb-2">
             <div className="section-title">Required intake fields</div>
           </div>
           <ul className="mt-2 space-y-2 text-body">
