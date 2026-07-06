@@ -85,8 +85,8 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
         aria-label="Log out"
         className="mt-2 flex flex-col items-center gap-[1px] rounded-xl px-3 py-2 text-[11px] font-semibold text-white transition-colors hover:text-white"
       >
-        <span className="flex h-10 w-10 items-center justify-center rounded-xl text-white">
-          <ArrowLeftOnRectangleIcon className="h-[18px] w-[18px]" />
+        <span className="flex h-8 w-8 items-center justify-center rounded-lg text-white">
+          <ArrowLeftOnRectangleIcon className="h-5 w-5 shrink-0" />
         </span>
         <span className="text-[11px] leading-tight">Logout</span>
       </button>
