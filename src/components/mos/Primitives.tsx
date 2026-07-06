@@ -314,12 +314,25 @@ export function WorkflowBadge({
   dot?: boolean;
 }) {
   const cfg = WORKFLOW_MAP[state];
+  const showDot = dot ?? cfg.dot;
+  const text = label ?? cfg.label;
+  // Draft uses a bespoke teal-slate tone so it's clearly distinct from
+  // Sent (violet), RFQ (blue), and neutral muted gray used elsewhere.
+  if (state === "draft") {
+    return (
+      <span className="badge-soft ring-1 ring-inset bg-teal-50 text-teal-700 ring-teal-300/60">
+        {showDot && <span className="h-1.5 w-1.5 rounded-full bg-teal-500" />}
+        {text}
+      </span>
+    );
+  }
   return (
-    <StatusBadge tone={cfg.tone} dot={dot ?? cfg.dot}>
-      {label ?? cfg.label}
+    <StatusBadge tone={cfg.tone} dot={showDot}>
+      {text}
     </StatusBadge>
   );
 }
+
 
 // --- Domain identity tags ---
 export function SupplierTypeBadge({ type }: { type: "Factory" | "Trader" | string }) {
