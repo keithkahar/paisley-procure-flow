@@ -61,7 +61,7 @@ export default function FirstContact() {
                   To: {e.supplier} <span className="divider-dot" /> {e.item}
                 </div>
               </div>
-              <div className="hidden min-w-0 md:flex md:w-[280px] md:shrink-0 md:justify-center">
+              <div className="hidden min-w-0 md:flex md:flex-1 md:justify-center">
                 <div className="flex flex-wrap items-center justify-center gap-1.5">
                   {e.missing.map((m) => (
                     <MissingFieldBadge key={m} field={m} />
