@@ -248,7 +248,7 @@ export function confidenceTone(value: number): { tone: StatusTone; label: string
   if (value >= 75) return { tone: "warning", label: "Good" };
   return { tone: "danger", label: "Fair" };
 }
-export function ConfidenceBadge({ value, showLabel = false }: { value: number; showLabel?: boolean }) {
+export function ConfidenceBadge({ value, showLabel = true }: { value: number; showLabel?: boolean }) {
   const { tone, label } = confidenceTone(value);
   return (
     <StatusBadge tone={tone}>
