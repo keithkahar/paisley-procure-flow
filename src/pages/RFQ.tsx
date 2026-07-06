@@ -80,7 +80,7 @@ export default function RFQ() {
           </div>
         </Card>
         <Card>
-          {/* Delivery basis — inline segmented style */}
+          
           <div className="flex items-center gap-3 rounded-full bg-surface-muted p-1 pl-3">
             <span className="shrink-0 text-label uppercase text-muted-foreground">Delivery</span>
             <div className="flex flex-1 flex-wrap gap-1">
