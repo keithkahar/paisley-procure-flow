@@ -114,10 +114,10 @@ export default function QuoteReview() {
               <StatusBadge tone="muted">{q.validity}</StatusBadge>
               <ConfidenceBadge value={q.conf} />
             </div>
-            <div className="mt-3 flex gap-2">
-              <Button size="sm" className="flex-1">Approve</Button>
-              <Button size="sm" variant="outline">Edit</Button>
-              <Button size="sm" variant="ghost" className="text-destructive">Reject</Button>
+            <div className="mt-3 flex items-center gap-1.5">
+              <ApproveAction />
+              <EditAction />
+              <RejectAction />
             </div>
           </article>
         ))}
