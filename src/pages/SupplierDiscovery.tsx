@@ -88,7 +88,7 @@ export default function SupplierDiscovery() {
               </div>
             </div>
 
-            <div className="mt-2 flex items-center justify-between gap-2 border-t border-border/60 pt-2">
+            <div className="mt-auto flex items-center justify-between gap-2 border-t border-border/60 pt-3">
               <span className="text-caption text-muted-foreground">{s.cat}</span>
               <Button size="sm" variant="outline"><Plus className="mr-1 h-3.5 w-3.5" /> Add to review</Button>
             </div>
