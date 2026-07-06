@@ -1,6 +1,6 @@
 import { PageHeader, KpiTile, Card, WorkflowBadge, RefBadge, DeliveryBasisBadge, type WorkflowState } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Circle } from "lucide-react";
+import { Check } from "lucide-react";
 
 const orders: Array<{
   id: string; project: string; buyer: string; suppliers: string[];
