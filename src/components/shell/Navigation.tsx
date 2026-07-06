@@ -106,14 +106,12 @@ export function BrandMark({ variant = "wordmark" }: { variant?: "mark" | "wordma
     <img
       src={wordmarkUrl}
       alt="Paisley MOS"
-      className={
-        variant === "wordmark"
-          ? "h-11 w-auto object-contain md:h-14 lg:h-16"
-          : "h-9 w-auto object-contain"
-      }
+      style={{ height: variant === "wordmark" ? "var(--logo-h)" : "var(--logo-mark-h)" }}
+      className="w-auto object-contain"
     />
   );
 }
+
 
 export function useActiveNav() {
   const { pathname } = useLocation();
