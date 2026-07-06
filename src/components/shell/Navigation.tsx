@@ -74,7 +74,7 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
                       strokeWidth={1.5}
                     />
                   </span>
-                  <span className="text-caption leading-tight">
+                  <span className="text-[11px] leading-tight">
                     {item.label}
                   </span>
                 </>
