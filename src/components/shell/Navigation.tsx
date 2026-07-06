@@ -89,7 +89,7 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
       <button
         type="button"
         aria-label="Log out"
-        className="mt-4 flex flex-col items-center gap-1 rounded-xl px-3 py-2.5 text-caption font-medium text-white/70 transition-colors hover:text-white"
+        className="mt-4 flex flex-col items-center gap-[3px] rounded-xl px-3 py-2.5 text-caption font-semibold text-white transition-colors hover:text-white"
       >
         <span className="flex h-10 w-10 items-center justify-center rounded-xl text-white">
           <LogOut className="h-[18px] w-[18px]" strokeWidth={2.25} />
