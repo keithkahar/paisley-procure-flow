@@ -25,7 +25,7 @@ export default function SupplierDiscovery() {
     <>
       <PageHeader
         title="Supplier Discovery"
-        description="Search across verified libraries and generate a ranked candidate list for each RFQ item."
+        description="Step 2 of 8"
         actions={
           <>
             <Button variant="outline" size="sm">Discovery settings</Button>
