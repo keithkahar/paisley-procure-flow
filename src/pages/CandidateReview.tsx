@@ -58,10 +58,10 @@ export default function CandidateReview() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center gap-1.5 md:shrink-0">
-                <ApproveAction />
-                <EditAction />
-                <RejectAction />
+              <div className="flex flex-wrap items-center gap-2 md:shrink-0">
+                <Button size="sm">Approve</Button>
+                <Button size="sm" variant="outline">Edit</Button>
+                <Button size="sm" variant="outline" className="text-destructive hover:bg-destructive/10 hover:text-destructive">Reject</Button>
               </div>
             </div>
           </article>
