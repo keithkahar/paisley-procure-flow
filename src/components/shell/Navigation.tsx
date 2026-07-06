@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import type { ComponentType, SVGProps } from "react";
 import {
   Squares2X2Icon,
   InboxIcon,
@@ -20,7 +22,7 @@ export const NAV: {
   to: string;
   label: string;
   full: string;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
   step: number | null;
 }[] = [
   { to: "/dashboard", label: "Today", full: "Dashboard", icon: Squares2X2Icon, step: null },
@@ -36,6 +38,15 @@ export const NAV: {
 ];
 
 export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
+  const { pathname } = useLocation();
+  const [instantPath, setInstantPath] = useState<string | null>(null);
+
+  useEffect(() => {
+    setInstantPath(null);
+  }, [pathname]);
+
+  const visualPath = instantPath ?? pathname;
+
   return (
     <nav aria-label="Primary" className="flex h-full flex-col items-center pt-[var(--topbar-h)] pb-4">
       <ul
@@ -46,23 +57,30 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
           <li key={item.to} className="w-full">
             <NavLink
               to={item.to}
+              onPointerDown={() => setInstantPath(item.to)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") setInstantPath(item.to);
+              }}
               onClick={onNavigate}
               end
-              className={({ isActive }) =>
+              className={() =>
                 cn(
                   "group relative flex flex-col items-center gap-1 py-2 text-[11px] font-semibold tracking-tight transition-colors",
-                  isActive
+                  visualPath === item.to
                     ? "rail-tab-active"
                     : "text-white hover:text-white",
                 )
               }
             >
-              {({ isActive }) => (
+              {() => {
+                const isVisuallyActive = visualPath === item.to;
+
+                return (
                 <>
                     <span
                       className={cn(
                         "flex h-8 w-8 items-center justify-center rounded-lg transition-colors",
-                        isActive ? "text-foreground" : "text-white",
+                        isVisuallyActive ? "text-foreground" : "text-white",
                       )}
                     >
                       <item.icon className="h-5 w-5 shrink-0" />
@@ -71,7 +89,8 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
                     {item.label}
                   </span>
                 </>
-              )}
+                );
+              }}
             </NavLink>
           </li>
         ))}
