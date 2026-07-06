@@ -224,7 +224,7 @@
   }
 
   .rail-tab-track {
-    --rail-tab-h: 56px;
+    --rail-tab-h: 72px;
     position: relative;
     contain: layout paint;
   }
