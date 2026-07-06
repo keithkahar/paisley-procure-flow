@@ -1,6 +1,6 @@
-import { PageHeader, Card, RefBadge, DeliveryBasisBadge, Chip } from "@/components/mos/Primitives";
+import { PageHeader, Card, RefBadge, IconAction } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
-import { Calculator, Plus } from "lucide-react";
+import { Calculator, Plus, ArrowRight } from "lucide-react";
 
 const items = [
   {
@@ -8,9 +8,9 @@ const items = [
     item: "M8 SS316 shackles",
     basis: "FOB Ningbo",
     suppliers: [
-      { id: "SUP-CN-0081", name: "Ningbo Ocean Fittings", rounds: ["sent", "replied", "sent", "replied", "-", "-"] },
-      { id: "SUP-CN-0082", name: "Xiamen Bluewave", rounds: ["sent", "replied", "sent", "-", "-", "-"] },
-      { id: "SUP-CN-0083", name: "Guangzhou Harbor", rounds: ["sent", "-", "-", "-", "-", "-"] },
+      { id: "SUP-CN-0081", name: "Ningbo Ocean Fittings", latest: "$ 4.20 / pc", rounds: ["sent", "replied", "sent", "replied", "-", "-"] },
+      { id: "SUP-CN-0082", name: "Xiamen Bluewave",       latest: "$ 4.45 / pc", rounds: ["sent", "replied", "sent", "overdue", "-", "-"] },
+      { id: "SUP-CN-0083", name: "Guangzhou Harbor",      latest: "—",           rounds: ["sent", "overdue", "-", "-", "-", "-"] },
     ],
   },
   {
@@ -18,14 +18,22 @@ const items = [
     item: "LED navigation kits 12V IP67",
     basis: "CIF Gothenburg",
     suppliers: [
-      { id: "SUP-CN-0085", name: "Shenzhen Boya", rounds: ["sent", "replied", "sent", "replied", "sent", "replied"] },
-      { id: "SUP-CN-0091", name: "Zhuhai Marine LED", rounds: ["sent", "replied", "sent", "-", "-", "-"] },
+      { id: "SUP-CN-0085", name: "Shenzhen Boya",     latest: "$ 26.10 / pc", rounds: ["sent", "replied", "sent", "replied", "sent", "replied"] },
+      { id: "SUP-CN-0091", name: "Zhuhai Marine LED", latest: "$ 27.80 / pc", rounds: ["sent", "replied", "sent", "overdue", "-", "-"] },
     ],
   },
 ];
 
 const dot = (s: string) =>
-  s === "sent" ? "bg-primary" : s === "replied" ? "bg-success" : "bg-border-strong";
+  s === "sent"
+    ? "bg-primary"
+    : s === "replied"
+    ? "bg-success"
+    : s === "overdue"
+    ? "bg-destructive"
+    : "bg-border-strong";
+
+const deliveryOptions = ["EXW", "FOB", "CIF", "DAP", "DDP", "Delivered", "Other"];
 
 export default function RFQ() {
   return (
@@ -55,7 +63,7 @@ export default function RFQ() {
               ["Profit rate", "22%"],
               ["Buyer landed price", "$ 7.83"],
             ].map(([k, v], i) => (
-              <div key={k} className={"rounded-lg border border-border p-3 " + (i === 7 ? "bg-primary-soft border-primary/20" : "bg-surface-muted")}>
+              <div key={k} className="rounded-lg border border-border bg-surface-muted p-3">
                 <div className="text-label uppercase text-muted-foreground">{k}</div>
                 <div className={"mt-1 font-display text-subtitle font-bold " + (i === 7 ? "text-primary" : "text-foreground")}>{v}</div>
               </div>
@@ -63,15 +71,40 @@ export default function RFQ() {
           </div>
         </Card>
         <Card>
-          <div className="section-title mb-3">Delivery basis</div>
-          <div className="flex flex-wrap gap-1.5">
-            {["EXW", "FOB", "CIF", "DAP", "DDP", "Delivered", "Other"].map((t, i) => (
-              <Chip key={t} active={i === 1}>{t}</Chip>
-            ))}
+          {/* Delivery basis — inline segmented style */}
+          <div className="flex items-center gap-3 rounded-full bg-surface-muted p-1 pl-3">
+            <span className="shrink-0 text-label uppercase text-muted-foreground">Delivery</span>
+            <div className="flex flex-1 flex-wrap gap-1">
+              {deliveryOptions.map((t) => {
+                const active = t === "FOB";
+                return (
+                  <button
+                    key={t}
+                    type="button"
+                    className={
+                      "rounded-full px-2.5 py-1 text-caption font-medium transition-colors " +
+                      (active
+                        ? "bg-surface text-foreground shadow-sm"
+                        : "text-muted-foreground hover:text-foreground")
+                    }
+                  >
+                    {t}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-          <div className="mt-4 section-title mb-2">Port / Warehouse</div>
-          <div className="text-body text-foreground/85">
-            FOB Ningbo Beilun · Backup FOB Shanghai Yangshan
+
+          {/* Emails sent / Replies received stats */}
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            <div className="rounded-lg border border-border p-3">
+              <div className="text-label uppercase text-muted-foreground">Emails sent</div>
+              <div className="mt-1 font-display text-subtitle font-bold text-foreground">20</div>
+            </div>
+            <div className="rounded-lg border border-border p-3">
+              <div className="text-label uppercase text-muted-foreground">Replies received</div>
+              <div className="mt-1 font-display text-subtitle font-bold text-foreground">7</div>
+            </div>
           </div>
         </Card>
       </div>
@@ -79,15 +112,22 @@ export default function RFQ() {
       <div className="space-y-4">
         {items.map((it) => (
           <div key={it.rfq} className="card-surface overflow-hidden">
-            <div className="flex flex-col gap-2 border-b border-border p-4 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col gap-3 border-b border-border p-4 md:flex-row md:items-center md:justify-between">
               <div>
                 <div className="flex items-center gap-2">
                   <RefBadge>{it.rfq}</RefBadge>
-                  <DeliveryBasisBadge>{it.basis}</DeliveryBasisBadge>
+                  <span className="text-caption text-muted-foreground">{it.basis}</span>
                 </div>
                 <h4 className="mt-1 font-display text-subtitle font-semibold">{it.item}</h4>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
+                {/* Legend */}
+                <div className="hidden items-center gap-3 text-caption text-muted-foreground md:flex">
+                  <LegendDot className="bg-primary" label="Sent" />
+                  <LegendDot className="bg-success" label="Replied" />
+                  <LegendDot className="bg-destructive" label="Overdue" />
+                  <LegendDot className="bg-border-strong" label="Empty" />
+                </div>
                 <Button size="sm" variant="outline">Add supplier</Button>
                 <Button size="sm">Send next round</Button>
               </div>
@@ -102,6 +142,7 @@ export default function RFQ() {
                     {["1st Email", "1st Reply", "2nd Email", "2nd Reply", "3rd Email", "3rd Reply"].map((h) => (
                       <th key={h} className="px-3 py-2 text-center text-label uppercase text-muted-foreground">{h}</th>
                     ))}
+                    <th className="px-4 py-2 text-right text-label uppercase text-muted-foreground">Latest quote</th>
                     <th className="px-4 py-2 text-right text-label uppercase text-muted-foreground">Action</th>
                   </tr>
                 </thead>
@@ -117,8 +158,13 @@ export default function RFQ() {
                           <span className={`inline-block h-2.5 w-2.5 rounded-full ${dot(r)}`} />
                         </td>
                       ))}
+                      <td className="whitespace-nowrap px-4 py-2.5 text-right font-mono text-mono text-foreground">
+                        {s.latest}
+                      </td>
                       <td className="px-4 py-2.5 text-right">
-                        <Button size="sm" variant="ghost">Details</Button>
+                        <div className="inline-flex">
+                          <IconAction icon={ArrowRight} label="Details" tone="outline" />
+                        </div>
                       </td>
                     </tr>
                   ))}
@@ -130,13 +176,19 @@ export default function RFQ() {
                 const roundLabels = ["1st Email", "1st Reply", "2nd Email", "2nd Reply", "3rd Email", "3rd Reply"];
                 return (
                   <div key={s.id} className="p-3">
-                    <div className="flex items-center justify-between">
-                      <div>
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="min-w-0">
                         <div className="text-label uppercase text-muted-foreground">Supplier</div>
                         <div className="mt-0.5 font-medium text-foreground text-body">{s.name}</div>
                         <div className="font-mono text-mono text-muted-foreground">{s.id}</div>
                       </div>
-                      <Button size="sm" variant="ghost">Details</Button>
+                      <div className="flex items-center gap-3">
+                        <div className="text-right">
+                          <div className="text-label uppercase text-muted-foreground">Latest</div>
+                          <div className="font-mono text-mono text-foreground">{s.latest}</div>
+                        </div>
+                        <IconAction icon={ArrowRight} label="Details" tone="outline" />
+                      </div>
                     </div>
                     <div className="mt-3 grid grid-cols-3 gap-2">
                       {s.rounds.map((r, i) => (
@@ -154,5 +206,14 @@ export default function RFQ() {
         ))}
       </div>
     </>
+  );
+}
+
+function LegendDot({ className, label }: { className: string; label: string }) {
+  return (
+    <span className="inline-flex items-center gap-1.5">
+      <span className={`inline-block h-2 w-2 rounded-full ${className}`} />
+      {label}
+    </span>
   );
 }
