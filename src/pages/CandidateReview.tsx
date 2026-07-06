@@ -1,6 +1,5 @@
-import { PageHeader, StatusBadge, KpiTile, SupplierTypeBadge, ApproveAction, EditAction, RejectAction } from "@/components/mos/Primitives";
+import { PageHeader, StatusBadge, KpiTile, SupplierTypeBadge } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
-import { ShieldAlert, MapPin, Factory, CheckCheck } from "lucide-react";
 
 const queue = [
   { id: "SUP-CN-0081", name: "Ningbo Ocean Fittings Co., Ltd", type: "Factory", addr: "No. 128 Zhenhai Rd, Ningbo, Zhejiang, CN", cat: "Marine hardware", export: "12 yrs", contact: "Full", risks: ["No ISO 9001 certificate listed"] },
