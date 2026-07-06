@@ -1,6 +1,6 @@
 import { PageHeader, KpiTile, Card, WorkflowBadge, MissingFieldBadge, type WorkflowState } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
-import { AlertCircle, Inbox, Upload, Sparkles, ArrowRight } from "lucide-react";
+import { AlertCircle, Inbox, Upload, ArrowRight } from "lucide-react";
 
 const lists: Array<{
   id: string;
