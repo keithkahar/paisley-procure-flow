@@ -231,7 +231,6 @@
 
   /* Single moving active shape — avoids rebuilding concave pseudo-elements on every route change */
   .rail-tab-indicator {
-    position: relative;
     position: absolute;
     top: 0;
     left: 0;
@@ -244,7 +243,7 @@
     pointer-events: none;
     will-change: transform;
     backface-visibility: hidden;
-    transition: transform 150ms cubic-bezier(0.2, 0, 0, 1);
+    transition: transform 115ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .rail-tab-current {
