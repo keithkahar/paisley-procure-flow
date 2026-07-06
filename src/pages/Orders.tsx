@@ -1,6 +1,6 @@
 import { PageHeader, KpiTile, Card, WorkflowBadge, RefBadge, DeliveryBasisBadge, type WorkflowState } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
+import { Check, Plus } from "lucide-react";
 
 const orders: Array<{
   id: string; project: string; buyer: string; suppliers: string[];
@@ -28,7 +28,7 @@ export default function Orders() {
       <PageHeader
         title="Orders"
         description="Step 8 of 8"
-        actions={<Button size="sm">New order</Button>}
+        actions={<Button size="sm" className="h-9 leading-none box-border border border-transparent"><Plus className="mr-1.5 h-4 w-4" /> New order</Button>}
       />
 
       <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4">

@@ -1,6 +1,6 @@
 import { PageHeader, StatusBadge, KpiTile, SupplierTypeBadge, ApproveAction, EditAction, RejectAction } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
-import { ShieldAlert, MapPin, Factory } from "lucide-react";
+import { ShieldAlert, MapPin, Factory, CheckCheck } from "lucide-react";
 
 const queue = [
   { id: "SUP-CN-0081", name: "Ningbo Ocean Fittings Co., Ltd", type: "Factory", addr: "No. 128 Zhenhai Rd, Ningbo, Zhejiang, CN", cat: "Marine hardware", export: "12 yrs", contact: "Full", risks: ["No ISO 9001 certificate listed"] },
@@ -14,7 +14,7 @@ export default function CandidateReview() {
       <PageHeader
         title="Candidate Review"
         description="Step 3 of 8"
-        actions={<Button size="sm" variant="outline">Batch approve safe candidates</Button>}
+        actions={<Button size="sm" variant="outline" className="h-9 leading-none box-border"><CheckCheck className="mr-1.5 h-4 w-4" /> Batch approve safe candidates</Button>}
       />
 
       <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4">
