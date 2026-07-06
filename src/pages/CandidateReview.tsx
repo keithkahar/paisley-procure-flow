@@ -28,9 +28,6 @@ export default function CandidateReview() {
           <article key={s.id} className="card-surface p-4 md:p-5">
             <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
               <div className="flex items-start gap-3 md:gap-4 min-w-0">
-                <div className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary md:flex">
-                  <Factory className="h-5 w-5" />
-                </div>
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="font-mono text-mono text-muted-foreground">{s.id}</span>
