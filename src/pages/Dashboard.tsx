@@ -59,9 +59,9 @@ export default function Dashboard() {
         </h1>
       </div>
 
-      {/* Row 1: two sparkline KPIs (left, stacked) + donut (right) */}
-      <div className="grid gap-5 lg:grid-cols-5">
-        <div className="lg:col-span-2 flex flex-col gap-5">
+      {/* Row 1: two sparkline KPIs (left, stacked) + donut (right) — equal widths */}
+      <div className="grid gap-5 lg:grid-cols-2">
+        <div className="flex flex-col gap-5">
 
           <SparkKpi
             label="Active RFQs"
@@ -83,7 +83,7 @@ export default function Dashboard() {
           />
         </div>
 
-        <div className="lg:col-span-3 rounded-2xl border border-border/70 bg-surface p-6 shadow-[var(--shadow-sm)]">
+        <div className="rounded-2xl border border-border/70 bg-surface p-6 shadow-[var(--shadow-sm)]">
           <div className="text-label uppercase text-muted-foreground">
             Pipeline status
           </div>
