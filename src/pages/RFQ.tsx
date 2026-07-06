@@ -129,7 +129,7 @@ export default function RFQ() {
                           <span className={`inline-block h-2.5 w-2.5 rounded-full ${dot(r)}`} />
                         </td>
                       ))}
-                      <td className="whitespace-nowrap px-4 py-2.5 text-right font-display text-body font-bold text-foreground">
+                      <td className="whitespace-nowrap px-4 py-2.5 text-right font-medium text-foreground">
                         {s.latest}
                       </td>
                       <td className="px-4 py-2.5 text-right">
