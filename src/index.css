@@ -213,13 +213,14 @@
   /* Active nav tab — white pill juts right past rail edge; rail wraps around it above/below */
   .rail-tab-active {
     position: relative;
-    background: hsl(var(--surface));
+    background: hsl(var(--surface-sunken));
     color: hsl(var(--primary));
-    border-radius: 22px;
-    box-shadow: 0 10px 24px -10px hsl(214 99% 15% / 0.4);
-    margin-right: -20px;
-    padding-right: 14px;
-    padding-left: 2px;
+    border-radius: 999px 0 0 999px;
+    box-shadow: none;
+    margin-left: 6px;
+    margin-right: -1px;
+    padding-left: 0;
+    padding-right: 0;
     z-index: 2;
   }
   .rail-tab-active::before,
@@ -227,26 +228,20 @@
     content: "";
     position: absolute;
     right: 0;
-    width: 22px;
-    height: 22px;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
     pointer-events: none;
-    z-index: -1;
+    background: transparent;
+    z-index: 1;
   }
   .rail-tab-active::before {
-    top: -22px;
-    background: radial-gradient(
-      circle 22px at 0 100%,
-      transparent 22px,
-      hsl(var(--rail)) 22.5px
-    );
+    top: -34px;
+    box-shadow: 20px 20px 0 0 hsl(var(--surface-sunken));
   }
   .rail-tab-active::after {
-    bottom: -22px;
-    background: radial-gradient(
-      circle 22px at 0 0,
-      transparent 22px,
-      hsl(var(--rail)) 22.5px
-    );
+    bottom: -34px;
+    box-shadow: 20px -20px 0 0 hsl(var(--surface-sunken));
   }
   .scroll-thin::-webkit-scrollbar { width: 8px; height: 8px; }
   .scroll-thin::-webkit-scrollbar-thumb {
