@@ -53,7 +53,7 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
                   "group relative flex flex-col items-center gap-1 py-2 text-[11px] font-semibold tracking-tight transition-colors",
                   isActive
                     ? "rail-tab-active"
-                    : "mx-3 rounded-xl text-white hover:text-white",
+                    : "text-white hover:text-white",
                 )
               }
             >
@@ -61,10 +61,8 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
                 <>
                     <span
                       className={cn(
-                        "flex h-8 w-8 items-center justify-center rounded-lg transition-all",
-                        isActive
-                          ? "text-foreground"
-                          : "text-white",
+                        "flex h-8 w-8 items-center justify-center rounded-lg transition-colors",
+                        isActive ? "text-foreground" : "text-white",
                       )}
                     >
                       <item.icon className="h-5 w-5 shrink-0" />
