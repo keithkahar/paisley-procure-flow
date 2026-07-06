@@ -45,8 +45,8 @@ export default function CandidateReview() {
                   </div>
                   {s.risks.length > 0 && (
                     <div className="mt-3 rounded-lg border border-warning/30 bg-warning-soft/50 p-3">
-                      <div className="flex items-center gap-1.5 text-label uppercase text-warning-foreground/80">
-                        <ShieldAlert className="h-3.5 w-3.5" /> Verification notes
+                      <div className="text-label uppercase text-warning-foreground/80">
+                        Verification notes
                       </div>
                       <ul className="mt-1.5 space-y-0.5 text-caption text-foreground/85">
                         {s.risks.map((r) => (
