@@ -66,7 +66,7 @@ export default function AppShell() {
       {/* Main column */}
       <div className="flex min-w-0 flex-1 flex-col">
         {/* Top bar — logo left, notifications + avatar right. Clean, no greeting text, no redundant search. */}
-        <header className="sticky top-0 z-30 flex h-20 items-center gap-4 border-b border-border bg-surface/85 px-4 backdrop-blur md:h-24 md:px-10">
+        <header className="sticky top-0 z-30 flex h-[var(--topbar-h)] items-center gap-4 border-b border-border bg-surface/85 px-[var(--topbar-px)] backdrop-blur">
           <button
             className="rounded-md p-2 text-foreground hover:bg-muted md:hidden"
             onClick={() => setMobileOpen(true)}
