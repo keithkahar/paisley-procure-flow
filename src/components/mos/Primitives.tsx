@@ -229,23 +229,6 @@ export function StatusBadge({
  * instead of choosing tone= manually.
  * ============================================================ */
 
-// --- Risk ---
-export type RiskLevel = "high" | "unknown";
-const RISK_MAP: Record<RiskLevel, { tone: StatusTone; label: string }> = {
-  high:    { tone: "danger",  label: "High risk" },
-  unknown: { tone: "muted",   label: "Risk unknown" },
-};
-export function normalizeRisk(v: string | RiskLevel | undefined): RiskLevel {
-  const s = (v ?? "").toString().toLowerCase();
-  if (s.startsWith("high")) return "high";
-  return "unknown";
-}
-export function RiskBadge({ level, compact = false }: { level: string | RiskLevel; compact?: boolean }) {
-  const key = normalizeRisk(level);
-  const { tone, label } = RISK_MAP[key];
-  return <StatusBadge tone={tone} dot>{compact ? label.replace(" risk", "") : label}</StatusBadge>;
-}
-
 // --- Priority ---
 export type PriorityLevel = "low" | "normal" | "high" | "urgent";
 const PRIORITY_MAP: Record<PriorityLevel, { tone: StatusTone; label: string }> = {
