@@ -74,9 +74,10 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
                       strokeWidth={2.25}
                     />
                   </span>
-                  <span className="leading-tight">
+                  <span className="text-caption leading-tight">
                     {item.label}
                   </span>
+
                 </>
               )}
             </NavLink>
@@ -94,7 +95,7 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
         <span className="flex h-10 w-10 items-center justify-center rounded-xl text-white">
           <LogOut className="h-[18px] w-[18px]" strokeWidth={2.25} />
         </span>
-        <span>Logout</span>
+        <span className="text-caption leading-tight">Logout</span>
       </button>
     </nav>
   );
