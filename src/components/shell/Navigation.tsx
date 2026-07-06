@@ -74,9 +74,10 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
                       strokeWidth={2.25}
                     />
                   </span>
-                  <span className="leading-tight">
+                  <span className="text-caption leading-tight">
                     {item.label}
                   </span>
+
                 </>
               )}
             </NavLink>
