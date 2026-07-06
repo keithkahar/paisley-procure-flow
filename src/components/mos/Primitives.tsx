@@ -263,12 +263,11 @@ export function PriorityBadge({ level }: { level: PriorityLevel }) {
   return <StatusBadge tone={tone} dot>{label}</StatusBadge>;
 }
 
-// --- Confidence (0-100) — violet-only palette, distinct from type (primary/gold) and risk (success/warning/danger) ---
+// --- Confidence (0-100) — High=green, Good=orange, Fair=red. No "Low" tier. ---
 export function confidenceTone(value: number): { tone: StatusTone; label: string } {
-  if (value >= 90) return { tone: "violet-strong", label: "High" };
-  if (value >= 75) return { tone: "violet",          label: "Good" };
-  if (value >= 60) return { tone: "violet-muted",    label: "Fair" };
-  return { tone: "violet-muted", label: "Low" };
+  if (value >= 90) return { tone: "success", label: "High" };
+  if (value >= 75) return { tone: "warning", label: "Good" };
+  return { tone: "danger", label: "Fair" };
 }
 export function ConfidenceBadge({ value, showLabel = false }: { value: number; showLabel?: boolean }) {
   const { tone, label } = confidenceTone(value);
@@ -341,9 +340,17 @@ export function WorkflowBadge({
 
 // --- Domain identity tags ---
 export function SupplierTypeBadge({ type }: { type: "Factory" | "Trader" | string }) {
-  // Factory = primary (verified manufacturer), Trader = gold (intermediary — needs care)
-  const tone: StatusTone = type === "Factory" ? "primary" : type === "Trader" ? "gold" : "muted";
-  return <StatusBadge tone={tone}>{type}</StatusBadge>;
+  // Factory = filled dark gray (solid, established manufacturer)
+  // Trader  = outlined light gray (intermediary — visually lighter)
+  const cls =
+    type === "Factory"
+      ? "bg-foreground/85 text-background ring-foreground/10"
+      : type === "Trader"
+      ? "bg-surface text-muted-foreground ring-border"
+      : "bg-muted text-muted-foreground ring-border";
+  return (
+    <span className={cn("badge-soft ring-1 ring-inset", cls)}>{type}</span>
+  );
 }
 
 export function DeliveryBasisBadge({ children }: { children: ReactNode }) {
