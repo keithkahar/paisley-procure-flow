@@ -1,7 +1,7 @@
 import { PageHeader, SupplierTypeBadge, Chip } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, MapPin, Globe, ShieldCheck, Plus } from "lucide-react";
+import { Search, MapPin, Globe, ShieldCheck } from "lucide-react";
 
 const libs = [
   { name: "Alibaba Verified", results: 214 },
@@ -70,13 +70,9 @@ export default function SupplierDiscovery() {
           <article key={s.id} className="card-surface flex h-[216px] flex-col p-3.5 md:p-4">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-mono text-mono text-muted-foreground">{s.id}</span>
-                  <SupplierTypeBadge type={s.type} />
-                </div>
+                <span className="font-mono text-mono text-muted-foreground">{s.id}</span>
                 <h4 className="mt-3 line-clamp-1 font-display text-subtitle font-semibold leading-snug">{s.name}</h4>
               </div>
-              
             </div>
 
             <div className="mt-3 h-[57px] overflow-hidden text-caption text-muted-foreground">
@@ -88,8 +84,11 @@ export default function SupplierDiscovery() {
             </div>
 
             <div className="mt-auto flex items-center justify-between gap-2 border-t border-border/60 pt-3">
-              <span className="text-caption text-muted-foreground">{s.cat}</span>
-              <Button size="sm" variant="outline"><Plus className="mr-1 h-3.5 w-3.5" /> Add to review</Button>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="badge-soft ring-1 ring-inset bg-surface text-muted-foreground ring-border">{s.cat}</span>
+                <SupplierTypeBadge type={s.type} />
+              </div>
+              <Button size="sm" variant="outline">Add to review</Button>
             </div>
           </article>
         ))}
