@@ -59,16 +59,16 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
             >
               {({ isActive }) => (
                 <>
-                  <span
-                    className={cn(
-                      "flex h-10 w-10 items-center justify-center rounded-xl transition-all",
-                      isActive
-                        ? "text-foreground"
-                        : "text-white",
-                    )}
-                  >
-                    <item.icon className="h-[18px] w-[18px]" />
-                  </span>
+                    <span
+                      className={cn(
+                        "flex h-8 w-8 items-center justify-center rounded-lg transition-all",
+                        isActive
+                          ? "text-foreground"
+                          : "text-white",
+                      )}
+                    >
+                      <item.icon className="h-5 w-5 shrink-0" />
+                    </span>
                   <span className="text-[11px] leading-tight">
                     {item.label}
                   </span>
