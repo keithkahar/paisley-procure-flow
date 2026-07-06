@@ -1,9 +1,9 @@
 import { NavLink, useLocation } from "react-router-dom";
 import {
-  LayoutDashboard,
+  LayoutGrid,
   Inbox,
   Search,
-  UserCheck,
+  UserRoundCheck,
   MailPlus,
   FileSpreadsheet,
   ClipboardCheck,
@@ -24,10 +24,10 @@ export const NAV: {
   icon: LucideIcon;
   step: number | null;
 }[] = [
-  { to: "/dashboard", label: "Today", full: "Dashboard", icon: LayoutDashboard, step: null },
+  { to: "/dashboard", label: "Today", full: "Dashboard", icon: LayoutGrid, step: null },
   { to: "/intake", label: "Intake", full: "Purchase Intake", icon: Inbox, step: 1 },
   { to: "/discovery", label: "Discovery", full: "Supplier Discovery", icon: Search, step: 2 },
-  { to: "/candidates", label: "Review", full: "Candidate Review", icon: UserCheck, step: 3 },
+  { to: "/candidates", label: "Review", full: "Candidate Review", icon: UserRoundCheck, step: 3 },
   { to: "/first-contact", label: "Contact", full: "First Contact", icon: MailPlus, step: 4 },
   { to: "/rfq", label: "RFQ", full: "RFQ Rounds", icon: FileSpreadsheet, step: 5 },
   { to: "/quote-review", label: "Quotes", full: "Quote Review", icon: ClipboardCheck, step: 6 },
@@ -51,7 +51,7 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
               end
               className={({ isActive }) =>
                 cn(
-                  "group relative flex flex-col items-center gap-[2px] py-2 text-caption font-semibold tracking-tight transition-colors",
+                  "group relative flex flex-col items-center gap-[1px] py-2 text-[11px] font-semibold tracking-tight transition-colors",
                   isActive
                     ? "rail-tab-active"
                     : "mx-3 rounded-xl text-white hover:text-white",
@@ -70,10 +70,11 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
                   >
                     <item.icon
                       className="h-[18px] w-[18px]"
-                      strokeWidth={2.25}
+                      fill="currentColor"
+                      strokeWidth={1.5}
                     />
                   </span>
-                  <span className="text-caption leading-tight">
+                  <span className="text-[11px] leading-tight">
                     {item.label}
                   </span>
                 </>
@@ -87,12 +88,12 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
       <button
         type="button"
         aria-label="Log out"
-        className="mt-2 flex flex-col items-center gap-[2px] rounded-xl px-3 py-2 text-caption font-semibold text-white transition-colors hover:text-white"
+        className="mt-2 flex flex-col items-center gap-[1px] rounded-xl px-3 py-2 text-[11px] font-semibold text-white transition-colors hover:text-white"
       >
         <span className="flex h-10 w-10 items-center justify-center rounded-xl text-white">
-          <LogOut className="h-[18px] w-[18px]" strokeWidth={2.25} />
+          <LogOut className="h-[18px] w-[18px]" fill="currentColor" strokeWidth={1.5} />
         </span>
-        <span className="text-caption leading-tight">Logout</span>
+        <span className="text-[11px] leading-tight">Logout</span>
       </button>
     </nav>
   );
