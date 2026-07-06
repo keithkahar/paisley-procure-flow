@@ -76,7 +76,7 @@ export default function SupplierDiscovery() {
                 </div>
                 <h4 className="mt-3 line-clamp-1 font-display text-subtitle font-semibold leading-snug">{s.name}</h4>
               </div>
-              <ConfidenceBadge value={s.conf} showLabel />
+              
             </div>
 
             <div className="mt-3 h-[57px] overflow-hidden text-caption text-muted-foreground">
