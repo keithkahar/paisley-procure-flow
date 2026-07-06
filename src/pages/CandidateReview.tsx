@@ -13,7 +13,7 @@ export default function CandidateReview() {
       <PageHeader
         title="Candidate Review"
         description="Step 3 of 8"
-        actions={<Button size="sm" variant="outline" className="h-9 leading-none box-border"><CheckCheck className="mr-1.5 h-4 w-4" /> Batch approve safe candidates</Button>}
+        actions={<Button size="sm" variant="outline" className="h-9 leading-none box-border">Batch approve safe candidates</Button>}
       />
 
       <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4">
