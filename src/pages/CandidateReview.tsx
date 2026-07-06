@@ -1,6 +1,6 @@
-import { PageHeader, StatusBadge, SupplierTypeBadge, ConfidenceBadge, ApproveAction, EditAction, RejectAction } from "@/components/mos/Primitives";
+import { PageHeader, StatusBadge, SupplierTypeBadge, ConfidenceBadge, MissingFieldBadge, ApproveAction, EditAction, RejectAction } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
-import { CheckCheck, AlertTriangle } from "lucide-react";
+import { CheckCheck } from "lucide-react";
 
 const kpis = [
   { label: "In review", value: 12, hint: "candidates" },
@@ -53,37 +53,28 @@ export default function CandidateReview() {
           >
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
               {/* Left: identity */}
-              <div className="flex items-start gap-4 min-w-0 md:flex-1">
-                <ConfidenceBadge value={s.conf} />
-                <div className="min-w-0 flex-1">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="font-mono text-mono text-muted-foreground">{s.id}</span>
-                    <SupplierTypeBadge type={s.type} />
-                    <StatusBadge tone="muted">{s.cat}</StatusBadge>
-                  </div>
-                  <h4 className="mt-1.5 font-display text-subtitle font-semibold leading-snug">{s.name}</h4>
-                  <div className="mt-0.5 text-caption text-muted-foreground">{s.addr}</div>
-
-                  {/* Inline metrics row */}
-                  <dl className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-caption">
-                    <InlineMetric label="Export" value={s.export} />
-                    <InlineMetric label="Contact" value={s.contact} />
-                    <InlineMetric label="Match" value={s.match} />
-                  </dl>
-
-                  {s.risks.length > 0 && (
-                    <div className="mt-3 flex items-start gap-2 text-caption text-warning-foreground">
-                      <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-warning" />
-                      <div className="text-foreground/80">
-                        {s.risks.join(" · ")}
-                      </div>
-                    </div>
-                  )}
+              <div className="min-w-0 md:flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="font-mono text-mono text-muted-foreground">{s.id}</span>
+                  <SupplierTypeBadge type={s.type} />
+                  <StatusBadge tone="muted">{s.cat}</StatusBadge>
+                  <ConfidenceBadge value={s.conf} />
                 </div>
+                <h4 className="mt-2 font-display text-subtitle font-semibold leading-snug">{s.name}</h4>
+                <div className="mt-0.5 text-caption text-muted-foreground">{s.addr}</div>
+
+                {/* Inline metrics row */}
+                <dl className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-caption">
+                  <InlineMetric label="Export" value={s.export} />
+                  <InlineMetric label="Contact" value={s.contact} />
+                </dl>
               </div>
 
-              {/* Right: icon actions */}
+              {/* Right: missing pill + icon actions */}
               <div className="flex items-center gap-2 md:shrink-0 md:self-center">
+                {s.risks.length > 0 && (
+                  <MissingFieldBadge field={s.risks[0]} />
+                )}
                 <ApproveAction />
                 <EditAction />
                 <RejectAction />
