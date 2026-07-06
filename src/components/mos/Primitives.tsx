@@ -71,7 +71,7 @@ export function RejectAction(props: { onClick?: MouseEventHandler<HTMLButtonElem
   return <IconAction icon={X} tone="destructive" label={props.label ?? "Reject"} {...props} />;
 }
 export function PreviewAction(props: { onClick?: MouseEventHandler<HTMLButtonElement>; disabled?: boolean; label?: string }) {
-  return <IconAction icon={Eye} tone="ghost" label={props.label ?? "Preview"} {...props} />;
+  return <IconAction icon={Eye} tone="outline" label={props.label ?? "Preview"} {...props} />;
 }
 
 /* ============================================================
