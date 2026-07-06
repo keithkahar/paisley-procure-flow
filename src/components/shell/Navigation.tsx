@@ -38,12 +38,11 @@ export const NAV: {
 
 export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
   return (
-    <nav aria-label="Primary" className="flex h-full flex-col items-center py-6">
-      {/* Top spacer — brand appears in top bar */}
-      <div className="mb-6 h-2" aria-hidden />
-
-
-      <ul className="flex flex-1 flex-col items-stretch gap-1.5 w-full">
+    <nav aria-label="Primary" className="flex h-full flex-col items-center py-4">
+      <ul
+        className="flex flex-1 flex-col items-stretch gap-0 w-full overflow-y-auto"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
         {NAV.map((item) => (
           <li key={item.to} className="w-full">
             <NavLink
@@ -52,7 +51,7 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
               end
               className={({ isActive }) =>
                 cn(
-                  "group relative flex flex-col items-center gap-[2px] py-3 text-caption font-semibold tracking-tight transition-colors",
+                  "group relative flex flex-col items-center gap-[2px] py-2 text-caption font-semibold tracking-tight transition-colors",
                   isActive
                     ? "rail-tab-active"
                     : "mx-3 rounded-xl text-white hover:text-white",
@@ -77,7 +76,6 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
                   <span className="text-caption leading-tight">
                     {item.label}
                   </span>
-
                 </>
               )}
             </NavLink>
@@ -85,12 +83,11 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
         ))}
       </ul>
 
-
       {/* Logout replaces avatar */}
       <button
         type="button"
         aria-label="Log out"
-        className="mt-4 flex flex-col items-center gap-[2px] rounded-xl px-3 py-2.5 text-caption font-semibold text-white transition-colors hover:text-white"
+        className="mt-2 flex flex-col items-center gap-[2px] rounded-xl px-3 py-2 text-caption font-semibold text-white transition-colors hover:text-white"
       >
         <span className="flex h-10 w-10 items-center justify-center rounded-xl text-white">
           <LogOut className="h-[18px] w-[18px]" strokeWidth={2.25} />
