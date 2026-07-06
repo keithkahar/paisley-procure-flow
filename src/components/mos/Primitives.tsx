@@ -96,17 +96,18 @@ export function PageHeader({
 }) {
   return (
     <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-      <div className="min-w-0">
-        {eyebrow && <div className="mb-1.5 text-eyebrow text-primary">{eyebrow}</div>}
+      <div className="min-w-0 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        {eyebrow && <div className="mb-1.5 w-full text-eyebrow text-primary">{eyebrow}</div>}
         <h1 className="font-display text-[24px] leading-tight tracking-tight font-bold text-foreground md:text-display">{title}</h1>
         {description && (
-          <p className="mt-2 max-w-2xl text-body text-muted-foreground">
+          <p className="text-body text-muted-foreground">
             {description}
           </p>
         )}
       </div>
       {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
     </div>
+
   );
 }
 
@@ -283,6 +284,7 @@ export type WorkflowState =
 
 const WORKFLOW_MAP: Record<WorkflowState, { tone: StatusTone; label: string; dot: boolean }> = {
   draft:          { tone: "muted",   label: "Draft",             dot: true  },
+
   pending:        { tone: "warning", label: "Awaiting approval", dot: true  },
   sent:           { tone: "violet",  label: "Sent",              dot: true  },
   in_progress:    { tone: "primary", label: "In progress",       dot: true  },
@@ -312,12 +314,25 @@ export function WorkflowBadge({
   dot?: boolean;
 }) {
   const cfg = WORKFLOW_MAP[state];
+  const showDot = dot ?? cfg.dot;
+  const text = label ?? cfg.label;
+  // Draft uses a bespoke teal-slate tone so it's clearly distinct from
+  // Sent (violet), RFQ (blue), and neutral muted gray used elsewhere.
+  if (state === "draft") {
+    return (
+      <span className="badge-soft ring-1 ring-inset bg-teal-50 text-teal-700 ring-teal-300/60">
+        {showDot && <span className="h-1.5 w-1.5 rounded-full bg-teal-500" />}
+        {text}
+      </span>
+    );
+  }
   return (
-    <StatusBadge tone={cfg.tone} dot={dot ?? cfg.dot}>
-      {label ?? cfg.label}
+    <StatusBadge tone={cfg.tone} dot={showDot}>
+      {text}
     </StatusBadge>
   );
 }
+
 
 // --- Domain identity tags ---
 export function SupplierTypeBadge({ type }: { type: "Factory" | "Trader" | string }) {

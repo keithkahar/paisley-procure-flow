@@ -109,13 +109,14 @@ export default function PurchaseIntake() {
               </div>
 
               {/* Middle: missing fields inline — always rendered so cards align */}
-              <div className="hidden min-w-0 md:flex md:flex-1 md:justify-center">
-                <div className="flex flex-wrap items-center justify-center gap-1.5">
+              <div className="hidden min-w-0 md:flex md:flex-1 md:justify-end">
+                <div className="flex flex-wrap items-center justify-end gap-1.5">
                   {l.missing.map((m) => (
                     <MissingFieldBadge key={m} field={m} />
                   ))}
                 </div>
               </div>
+
 
               {/* Right: actions */}
               <div className="flex flex-wrap items-center gap-2 md:shrink-0">
