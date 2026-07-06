@@ -1,6 +1,6 @@
-import { PageHeader, StatusBadge, KpiTile, SupplierTypeBadge } from "@/components/mos/Primitives";
+import { PageHeader, StatusBadge, KpiTile, SupplierTypeBadge, ApproveAction, EditAction, RejectAction } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
-import { Check, X, Pencil, ShieldAlert, MapPin, Factory } from "lucide-react";
+import { ShieldAlert, MapPin, Factory } from "lucide-react";
 
 const queue = [
   { id: "SUP-CN-0081", name: "Ningbo Ocean Fittings Co., Ltd", type: "Factory", addr: "No. 128 Zhenhai Rd, Ningbo, Zhejiang, CN", cat: "Marine hardware", export: "12 yrs", contact: "Full", risks: ["No ISO 9001 certificate listed"] },
@@ -63,12 +63,10 @@ export default function CandidateReview() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center gap-2 md:shrink-0">
-                <Button size="sm"><Check className="mr-1 h-3.5 w-3.5" /> Approve</Button>
-                <Button size="sm" variant="outline"><Pencil className="mr-1 h-3.5 w-3.5" /> Edit</Button>
-                <Button size="sm" variant="ghost" className="text-destructive hover:bg-destructive-soft hover:text-destructive">
-                  <X className="mr-1 h-3.5 w-3.5" /> Reject
-                </Button>
+              <div className="flex flex-wrap items-center gap-1.5 md:shrink-0">
+                <ApproveAction />
+                <EditAction />
+                <RejectAction />
               </div>
             </div>
           </article>

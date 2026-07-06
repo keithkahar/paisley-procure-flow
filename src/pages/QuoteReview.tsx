@@ -1,4 +1,4 @@
-import { PageHeader, StatusBadge, KpiTile, ConfidenceBadge, DeliveryBasisBadge, MissingFieldBadge, confidenceTone, Chip } from "@/components/mos/Primitives";
+import { PageHeader, StatusBadge, KpiTile, ConfidenceBadge, DeliveryBasisBadge, MissingFieldBadge, confidenceTone, Chip, ApproveAction, EditAction, RejectAction } from "@/components/mos/Primitives";
 
 const CONF_BAR: Record<string, string> = {
   success: "bg-success",
@@ -11,7 +11,7 @@ const CONF_BAR: Record<string, string> = {
 };
 const confBar = (v: number) => CONF_BAR[confidenceTone(v).tone];
 import { Button } from "@/components/ui/button";
-import { Check, X, Pencil, ClipboardCheck } from "lucide-react";
+import { ClipboardCheck } from "lucide-react";
 
 const quotes = [
   { id: "Q-2038", supplier: "Shenzhen Boya Electronics", item: "LED nav kit 12V IP67", price: "$ 6.20", moq: 300, lead: "22 d", currency: "USD", basis: "FOB Shenzhen", validity: "30 d", conf: 92, missing: [] },
@@ -81,10 +81,10 @@ export default function QuoteReview() {
                   </div>
                 </td>
                 <td className="px-4 py-3">
-                  <div className="flex items-center gap-1">
-                    <Button size="sm" className="h-8 px-2"><Check className="h-3.5 w-3.5" /></Button>
-                    <Button size="sm" variant="outline" className="h-8 px-2"><Pencil className="h-3.5 w-3.5" /></Button>
-                    <Button size="sm" variant="ghost" className="h-8 px-2 text-destructive hover:bg-destructive-soft"><X className="h-3.5 w-3.5" /></Button>
+                  <div className="flex items-center gap-1.5">
+                    <ApproveAction />
+                    <EditAction />
+                    <RejectAction />
                   </div>
                 </td>
               </tr>
@@ -114,10 +114,10 @@ export default function QuoteReview() {
               <StatusBadge tone="muted">{q.validity}</StatusBadge>
               <ConfidenceBadge value={q.conf} />
             </div>
-            <div className="mt-3 flex gap-2">
-              <Button size="sm" className="flex-1">Approve</Button>
-              <Button size="sm" variant="outline">Edit</Button>
-              <Button size="sm" variant="ghost" className="text-destructive">Reject</Button>
+            <div className="mt-3 flex items-center gap-1.5">
+              <ApproveAction />
+              <EditAction />
+              <RejectAction />
             </div>
           </article>
         ))}

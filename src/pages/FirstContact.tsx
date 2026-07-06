@@ -1,6 +1,6 @@
-import { PageHeader, KpiTile, WorkflowBadge, RefBadge, MissingFieldBadge, type WorkflowState } from "@/components/mos/Primitives";
+import { PageHeader, KpiTile, WorkflowBadge, RefBadge, MissingFieldBadge, ApproveAction, EditAction, PreviewAction, type WorkflowState } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
-import { Mail, Send, Pencil, Check } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 
 const emails: Array<{
   id: string; rfq: string; supplier: string; item: string; subject: string;
@@ -65,10 +65,10 @@ export default function FirstContact() {
                   </div>
                 )}
               </div>
-              <div className="flex flex-wrap items-center gap-2 md:shrink-0">
-                <Button size="sm"><Check className="mr-1 h-3.5 w-3.5" /> Approve</Button>
-                <Button size="sm" variant="outline"><Pencil className="mr-1 h-3.5 w-3.5" /> Edit draft</Button>
-                <Button size="sm" variant="ghost">Preview</Button>
+              <div className="flex flex-wrap items-center gap-1.5 md:shrink-0">
+                <ApproveAction />
+                <EditAction label="Edit draft" />
+                <PreviewAction />
               </div>
             </div>
           </article>
