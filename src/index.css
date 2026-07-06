@@ -214,7 +214,7 @@
   .rail-tab-active {
     position: relative;
     background: hsl(var(--surface-sunken));
-    color: hsl(var(--primary));
+    color: hsl(var(--foreground));
     border-radius: 999px 0 0 999px;
     box-shadow: none;
     margin-left: 6px;
