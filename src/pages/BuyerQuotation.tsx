@@ -15,9 +15,8 @@ export default function BuyerQuotation() {
   return (
     <>
       <PageHeader
-        eyebrow="Step 7 of 8"
         title="Buyer Quotation"
-        description="Generate buyer-facing quotation from approved supplier quotes. Internal costs and margins stay hidden from the buyer."
+        description="Step 7 of 8"
         actions={
           <>
             <Button size="sm" variant="outline"><Eye className="mr-1.5 h-4 w-4" /> Buyer preview</Button>
