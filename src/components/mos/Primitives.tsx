@@ -363,13 +363,14 @@ export function Chip({
       type="button"
       onClick={onClick}
       className={cn(
-        "inline-flex items-center rounded-full border px-3 py-1.5 text-caption font-medium transition-colors",
+        "inline-flex items-center rounded-full border px-3 py-1 text-label font-medium leading-5 transition-colors",
         active
           ? "border-primary bg-primary text-primary-foreground"
           : "border-border bg-surface text-foreground hover:border-border-strong hover:bg-surface-muted",
         className,
       )}
     >
+
       {children}
     </button>
   );
