@@ -47,13 +47,13 @@ export default function BuyerQuotation() {
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-body">
-                  <thead className="text-muted-foreground">
+                  <thead>
                     <tr>
-                      <th className="py-2 pr-3 text-left font-medium">Item</th>
-                      <th className="py-2 pr-3 text-right font-medium">Cost</th>
-                      <th className="py-2 pr-3 text-right font-medium">Qty</th>
-                      <th className="py-2 pr-3 text-right font-medium">Margin</th>
-                      <th className="py-2 pl-3 text-right font-medium">Buyer unit</th>
+                      <th className="py-2 pr-3 text-left text-label uppercase text-muted-foreground">Item</th>
+                      <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Cost</th>
+                      <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Qty</th>
+                      <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Margin</th>
+                      <th className="py-2 pl-3 text-right text-label uppercase text-muted-foreground">Buyer unit</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -100,12 +100,12 @@ export default function BuyerQuotation() {
                 </div>
               </div>
               <table className="w-full text-body">
-                <thead className="text-muted-foreground border-b border-border">
+                <thead className="border-b border-border">
                   <tr>
-                    <th className="py-2 text-left font-medium">Description</th>
-                    <th className="py-2 text-right font-medium">Qty</th>
-                    <th className="py-2 text-right font-medium">Unit</th>
-                    <th className="py-2 text-right font-medium">Total</th>
+                    <th className="py-2 text-left text-label uppercase text-muted-foreground">Description</th>
+                    <th className="py-2 text-right text-label uppercase text-muted-foreground">Qty</th>
+                    <th className="py-2 text-right text-label uppercase text-muted-foreground">Unit</th>
+                    <th className="py-2 text-right text-label uppercase text-muted-foreground">Total</th>
                   </tr>
                 </thead>
                 <tbody>
