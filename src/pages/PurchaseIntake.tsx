@@ -41,8 +41,8 @@ export default function PurchaseIntake() {
         description="Step 1 of 8"
         actions={
           <>
-            <Button variant="outline" size="sm"><Upload className="mr-1.5 h-4 w-4" /> Import CSV</Button>
-            <Button size="sm"><Inbox className="mr-1.5 h-4 w-4" /> New intake</Button>
+            <Button variant="outline" size="sm" className="h-9 leading-none box-border"><Upload className="mr-1.5 h-4 w-4" /> Import CSV</Button>
+            <Button size="sm" className="h-9 leading-none box-border border border-transparent"><Inbox className="mr-1.5 h-4 w-4" /> New intake</Button>
           </>
         }
       />

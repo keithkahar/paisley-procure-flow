@@ -19,9 +19,9 @@ export default function BuyerQuotation() {
         description="Step 7 of 8"
         actions={
           <>
-            <Button size="sm" variant="outline"><Eye className="mr-1.5 h-4 w-4" /> Buyer preview</Button>
-            <Button size="sm" variant="outline"><FileDown className="mr-1.5 h-4 w-4" /> Export PDF</Button>
-            <Button size="sm"><Send className="mr-1.5 h-4 w-4" /> Send for approval</Button>
+            <Button size="sm" variant="outline" className="h-9 leading-none box-border"><Eye className="mr-1.5 h-4 w-4" /> Buyer preview</Button>
+            <Button size="sm" variant="outline" className="h-9 leading-none box-border"><FileDown className="mr-1.5 h-4 w-4" /> Export PDF</Button>
+            <Button size="sm" className="h-9 leading-none box-border border border-transparent"><Send className="mr-1.5 h-4 w-4" /> Send for approval</Button>
           </>
         }
       />
