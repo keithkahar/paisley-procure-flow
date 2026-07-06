@@ -33,7 +33,7 @@ const dot = (s: string) =>
     ? "bg-destructive"
     : "bg-border-strong";
 
-const deliveryOptions = ["EXW", "FOB", "CIF", "DAP", "DDP", "Delivered", "Other"];
+
 
 export default function RFQ() {
   return (
