@@ -256,8 +256,8 @@
     content: "";
     position: absolute;
     right: 0;
-    width: 34px;
-    height: 34px;
+    width: 40px;
+    height: 40px;
     border-radius: 999px;
     pointer-events: none;
     background: transparent;
@@ -266,11 +266,11 @@
     backface-visibility: hidden;
   }
   .rail-tab-indicator::before {
-    top: -34px;
+    top: -40px;
     box-shadow: 20px 20px 0 0 hsl(var(--surface-sunken));
   }
   .rail-tab-indicator::after {
-    bottom: -34px;
+    bottom: -40px;
     box-shadow: 20px -20px 0 0 hsl(var(--surface-sunken));
   }
 
