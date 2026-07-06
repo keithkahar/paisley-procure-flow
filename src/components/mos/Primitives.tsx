@@ -230,17 +230,13 @@ export function StatusBadge({
  * ============================================================ */
 
 // --- Risk ---
-export type RiskLevel = "low" | "medium" | "high" | "unknown";
+export type RiskLevel = "high" | "unknown";
 const RISK_MAP: Record<RiskLevel, { tone: StatusTone; label: string }> = {
-  low:     { tone: "success", label: "Low risk" },
-  medium:  { tone: "warning", label: "Medium risk" },
   high:    { tone: "danger",  label: "High risk" },
   unknown: { tone: "muted",   label: "Risk unknown" },
 };
 export function normalizeRisk(v: string | RiskLevel | undefined): RiskLevel {
   const s = (v ?? "").toString().toLowerCase();
-  if (s.startsWith("low")) return "low";
-  if (s.startsWith("med")) return "medium";
   if (s.startsWith("high")) return "high";
   return "unknown";
 }
