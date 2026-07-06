@@ -125,7 +125,7 @@ export default function RFQ() {
               <div>
                 <div className="flex items-center gap-2">
                   <RefBadge>{it.rfq}</RefBadge>
-                  <span className="text-caption text-muted-foreground">{it.basis}</span>
+                  <span className="badge-soft ring-1 ring-inset bg-surface text-muted-foreground ring-border">{it.basis}</span>
                 </div>
                 <h4 className="mt-1 font-display text-subtitle font-semibold">{it.item}</h4>
               </div>
