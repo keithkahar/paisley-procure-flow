@@ -242,32 +242,22 @@
     content: "";
     position: absolute;
     right: 0;
-    width: 20px;
-    height: 20px;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
     pointer-events: none;
+    background: transparent;
     z-index: 1;
-    /* GPU-composited for crisp anti-aliased curve, no subpixel jitter */
-    transform: translateZ(0);
-    backface-visibility: hidden;
   }
   .rail-tab-active::before {
-    top: -20px;
-    background: radial-gradient(
-      circle at top right,
-      transparent 0,
-      transparent 20px,
-      hsl(var(--surface-sunken)) 20.5px
-    );
+    top: -34px;
+    box-shadow: 20px 20px 0 0 hsl(var(--surface-sunken));
   }
   .rail-tab-active::after {
-    bottom: -20px;
-    background: radial-gradient(
-      circle at bottom right,
-      transparent 0,
-      transparent 20px,
-      hsl(var(--surface-sunken)) 20.5px
-    );
+    bottom: -34px;
+    box-shadow: 20px -20px 0 0 hsl(var(--surface-sunken));
   }
+
 
 
 
