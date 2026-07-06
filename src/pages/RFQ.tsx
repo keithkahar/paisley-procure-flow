@@ -104,7 +104,6 @@ export default function RFQ() {
             </div>
           </div>
 
-          {/* Emails sent / Replies received stats */}
           <div className="mt-4 grid grid-cols-2 gap-3">
             <div className="rounded-lg border border-border p-3">
               <div className="text-label uppercase text-muted-foreground">Emails sent</div>
@@ -141,7 +140,6 @@ export default function RFQ() {
               </div>
             </div>
 
-            {/* Table for md+, cards for mobile */}
             <div className="hidden md:block">
               <table className="w-full text-body">
                 <thead className="bg-surface-muted">
