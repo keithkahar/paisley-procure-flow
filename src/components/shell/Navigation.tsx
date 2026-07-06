@@ -46,15 +46,24 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
   }, [pathname]);
 
   const visualPath = instantPath ?? pathname;
+  const activeIndex = Math.max(
+    0,
+    NAV.findIndex((item) => visualPath === item.to || visualPath.startsWith(`${item.to}/`)),
+  );
 
   return (
     <nav aria-label="Primary" className="flex h-full flex-col items-center pt-[var(--topbar-h)] pb-4">
       <ul
-        className="flex flex-1 flex-col items-stretch gap-0 w-full overflow-y-auto"
+        className="rail-tab-track flex flex-1 flex-col items-stretch gap-0 w-full overflow-y-auto"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
+        <span
+          aria-hidden="true"
+          className="rail-tab-indicator"
+          style={{ transform: `translate3d(0, calc(${activeIndex} * var(--rail-tab-h)), 0)` }}
+        />
         {NAV.map((item) => (
-          <li key={item.to} className="w-full">
+          <li key={item.to} className="relative z-[2] w-full">
             <NavLink
               to={item.to}
               onPointerDown={() => setInstantPath(item.to)}
@@ -65,9 +74,9 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
               end
               className={() =>
                 cn(
-                  "group relative flex flex-col items-center gap-1 py-2 text-[11px] font-semibold tracking-tight transition-colors",
+                  "group relative flex h-[var(--rail-tab-h)] flex-col items-center justify-center gap-1 text-[11px] font-semibold tracking-tight transition-colors",
                   visualPath === item.to
-                    ? "rail-tab-active"
+                    ? "rail-tab-current"
                     : "text-white hover:text-white",
                 )
               }
