@@ -96,7 +96,7 @@ export function PageHeader({
   return (
     <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
       <div className="min-w-0">
-        <h1 className="font-display text-[22px] leading-tight tracking-tight font-bold text-foreground md:text-display">{title}</h1>
+        <h1 className="font-display text-[24px] leading-tight tracking-tight font-bold text-foreground md:text-display">{title}</h1>
         {description && (
           <p className="mt-2 max-w-2xl text-body text-muted-foreground">
             {description}
