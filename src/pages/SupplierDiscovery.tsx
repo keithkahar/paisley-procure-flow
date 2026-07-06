@@ -73,17 +73,17 @@ export default function SupplierDiscovery() {
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="font-mono text-mono text-muted-foreground">{s.id}</span>
                   <SupplierTypeBadge type={s.type} />
+                  <RiskBadge level={s.risk} compact />
                 </div>
                 <h4 className="mt-1 font-display text-subtitle font-semibold leading-snug">{s.name}</h4>
               </div>
               <ConfidenceBadge value={s.conf} showLabel />
             </div>
 
-            <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-caption text-muted-foreground">
+            <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-caption text-muted-foreground">
               <div className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" /> {s.city}</div>
               <div className="flex items-center gap-1"><Globe className="h-3.5 w-3.5" /> {s.site}</div>
               <div className="flex items-center gap-1"><ShieldCheck className="h-3.5 w-3.5" /> {s.contact}</div>
-              <RiskBadge level={s.risk} compact />
             </div>
 
             <div className="mt-3 flex items-center justify-between gap-2 border-t border-border/60 pt-2.5">
