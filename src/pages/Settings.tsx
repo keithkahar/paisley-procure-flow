@@ -41,9 +41,9 @@ export default function Settings() {
             <div className="section-title mb-1.5">Aliases</div>
             <ul className="space-y-1.5">
               {aliases.map((a) => (
-                <li key={a.alias} className="flex items-center justify-between text-body">
-                  <span className="font-mono">{a.alias}</span>
-                  <span className="text-muted-foreground">→ {a.forwards}</span>
+                <li key={a.alias} className="flex flex-col gap-0.5 text-body sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                  <span className="truncate font-mono">{a.alias}</span>
+                  <span className="truncate text-muted-foreground">→ {a.forwards}</span>
                 </li>
               ))}
             </ul>
