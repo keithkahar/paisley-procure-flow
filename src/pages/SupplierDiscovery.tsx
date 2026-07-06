@@ -67,7 +67,7 @@ export default function SupplierDiscovery() {
 
       <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
         {suppliers.map((s) => (
-          <article key={s.id} className="card-surface flex h-[260px] flex-col p-3.5 md:p-4">
+          <article key={s.id} className="card-surface flex h-[216px] flex-col p-3.5 md:p-4">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
@@ -75,20 +75,20 @@ export default function SupplierDiscovery() {
                   <SupplierTypeBadge type={s.type} />
                   <RiskBadge level={s.risk} compact />
                 </div>
-                <h4 className="mt-1 line-clamp-1 font-display text-subtitle font-semibold leading-snug">{s.name}</h4>
+                <h4 className="mt-3 line-clamp-1 font-display text-subtitle font-semibold leading-snug">{s.name}</h4>
               </div>
               <ConfidenceBadge value={s.conf} showLabel />
             </div>
 
-            <div className="mt-2 min-h-0 flex-1 overflow-hidden text-caption text-muted-foreground">
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+            <div className="mt-3 h-[57px] overflow-hidden text-caption text-muted-foreground">
+              <div className="flex flex-wrap items-start gap-x-2 gap-y-1">
                 <div className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" /> {s.city}</div>
                 <div className="flex items-center gap-1"><Globe className="h-3.5 w-3.5" /> {s.site}</div>
                 <div className="flex items-center gap-1"><ShieldCheck className="h-3.5 w-3.5" /> {s.contact}</div>
               </div>
             </div>
 
-            <div className="flex items-center justify-between gap-2 border-t border-border/60 pt-2.5">
+            <div className="mt-2 flex items-center justify-between gap-2 border-t border-border/60 pt-2">
               <span className="text-caption text-muted-foreground">{s.cat}</span>
               <Button size="sm" variant="outline"><Plus className="mr-1 h-3.5 w-3.5" /> Add to review</Button>
             </div>
