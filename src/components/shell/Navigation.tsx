@@ -37,7 +37,7 @@ export const NAV: {
 
 export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
   return (
-    <nav aria-label="Primary" className="flex h-full flex-col items-center py-4">
+    <nav aria-label="Primary" className="flex h-full flex-col items-center pt-[var(--topbar-h)] pb-4">
       <ul
         className="flex flex-1 flex-col items-stretch gap-0 w-full overflow-y-auto"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
