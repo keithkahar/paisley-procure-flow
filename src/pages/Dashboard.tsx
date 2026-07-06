@@ -253,11 +253,12 @@ function SparkKpi({
 }) {
   const id = label.replace(/\s+/g, "-");
   return (
-    <div className="rounded-2xl border border-border/70 bg-surface p-5 shadow-[var(--shadow-sm)]">
+    <div className="flex-1 flex flex-col justify-between rounded-2xl border border-border/70 bg-surface p-5 shadow-[var(--shadow-sm)]">
       <div className="text-label uppercase text-muted-foreground">
         {label}
       </div>
       <div className="mt-3 flex items-end justify-between gap-4">
+
         <div className="h-[54px] flex-1">
           <ResponsiveContainer>
             <AreaChart data={data} margin={{ top: 6, right: 0, left: 0, bottom: 0 }}>
