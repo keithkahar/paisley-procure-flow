@@ -47,13 +47,13 @@ export default function BuyerQuotation() {
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-body">
-                  <thead className="text-muted-foreground">
+                  <thead>
                     <tr>
-                      <th className="py-2 pr-3 text-left font-medium">Item</th>
-                      <th className="py-2 pr-3 text-right font-medium">Cost</th>
-                      <th className="py-2 pr-3 text-right font-medium">Qty</th>
-                      <th className="py-2 pr-3 text-right font-medium">Margin</th>
-                      <th className="py-2 pl-3 text-right font-medium">Buyer unit</th>
+                      <th className="py-2 pr-3 text-left text-label uppercase text-muted-foreground">Item</th>
+                      <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Cost</th>
+                      <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Qty</th>
+                      <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Margin</th>
+                      <th className="py-2 pl-3 text-right text-label uppercase text-muted-foreground">Buyer unit</th>
                     </tr>
                   </thead>
                   <tbody>
