@@ -217,7 +217,7 @@
     color: hsl(var(--foreground));
     border-radius: 999px 0 0 999px;
     box-shadow: none;
-    margin-left: 6px;
+    margin-left: 0;
     margin-right: -1px;
     padding-left: 0;
     padding-right: 0;

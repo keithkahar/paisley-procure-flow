@@ -18,7 +18,7 @@ export default function FirstContact() {
     <>
       <PageHeader
         eyebrow="Step 4 of 8"
-        title="First contact"
+        title="First Contact"
         description="Combined product inquiry and light supplier background request. Never sent as a cold investigation email."
         actions={
           <>

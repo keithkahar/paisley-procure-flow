@@ -21,7 +21,7 @@ export default function PurchaseIntake() {
     <>
       <PageHeader
         eyebrow="Step 1 of 8"
-        title="Purchase intake"
+        title="Purchase Intake"
         description="Ingest buyer purchase lists, capture missing information, and hand off to supplier discovery."
         actions={
           <>

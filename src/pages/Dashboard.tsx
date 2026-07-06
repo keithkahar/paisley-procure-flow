@@ -13,10 +13,10 @@ import { Slider } from "@/components/ui/slider";
 
 function formatToday() {
   const d = new Date();
-  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const mo = months[d.getMonth()];
   const dd = String(d.getDate()).padStart(2, "0");
-  const yy = String(d.getFullYear()).slice(-2);
-  return `${mm}-${dd}-${yy}`;
+  return `${mo} ${dd} ${d.getFullYear()}`;
 }
 
 /* ----------------------------- mock data ----------------------------- */
@@ -61,7 +61,8 @@ export default function Dashboard() {
 
       {/* Row 1: two sparkline KPIs (left, stacked) + donut (right) */}
       <div className="grid gap-5 lg:grid-cols-5">
-        <div className="lg:col-span-2 space-y-5">
+        <div className="lg:col-span-2 flex flex-col gap-5">
+
           <SparkKpi
             label="Active RFQs"
             value="42"
@@ -252,11 +253,12 @@ function SparkKpi({
 }) {
   const id = label.replace(/\s+/g, "-");
   return (
-    <div className="rounded-2xl border border-border/70 bg-surface p-5 shadow-[var(--shadow-sm)]">
+    <div className="flex-1 flex flex-col justify-between rounded-2xl border border-border/70 bg-surface p-5 shadow-[var(--shadow-sm)]">
       <div className="text-label uppercase text-muted-foreground">
         {label}
       </div>
       <div className="mt-3 flex items-end justify-between gap-4">
+
         <div className="h-[54px] flex-1">
           <ResponsiveContainer>
             <AreaChart data={data} margin={{ top: 6, right: 0, left: 0, bottom: 0 }}>

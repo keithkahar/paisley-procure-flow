@@ -25,7 +25,7 @@ export default function SupplierDiscovery() {
     <>
       <PageHeader
         eyebrow="Step 2 of 8"
-        title="Supplier discovery"
+        title="Supplier Discovery"
         description="Search across verified libraries and generate a ranked candidate list for each RFQ item."
         actions={
           <>
@@ -55,7 +55,7 @@ export default function SupplierDiscovery() {
         <div className="flex flex-col gap-3 md:flex-row md:items-center">
           <div className="relative flex-1">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input placeholder="Search item, category, HS code, region…" className="h-10 pl-9" />
+            <Input placeholder="Search item, category, HS code, region…" className="h-10 pl-9 rounded-full" />
           </div>
           <div className="flex flex-wrap gap-1.5">
             {cats.map((c, i) => (

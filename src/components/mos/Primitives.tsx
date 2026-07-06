@@ -367,7 +367,7 @@ export function Chip({
       type="button"
       onClick={onClick}
       className={cn(
-        "inline-flex items-center rounded-full border px-3 py-1 text-label font-medium leading-5 transition-colors",
+        "inline-flex items-center rounded-full border px-2.5 py-1 text-[12px] font-medium leading-4 tracking-normal normal-case transition-colors",
         active
           ? "border-primary bg-primary text-primary-foreground"
           : "border-border bg-surface text-foreground hover:border-border-strong hover:bg-surface-muted",
