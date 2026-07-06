@@ -96,13 +96,13 @@ export default function RFQ() {
             {/* Table for md+, cards for mobile */}
             <div className="hidden md:block">
               <table className="w-full text-body">
-                <thead className="bg-surface-muted text-muted-foreground">
+                <thead className="bg-surface-muted">
                   <tr>
-                    <th className="px-4 py-2 text-left font-medium">Supplier</th>
+                    <th className="px-4 py-2 text-left text-label uppercase text-muted-foreground">Supplier</th>
                     {["1st Email", "1st Reply", "2nd Email", "2nd Reply", "3rd Email", "3rd Reply"].map((h) => (
-                      <th key={h} className="px-3 py-2 text-center font-medium">{h}</th>
+                      <th key={h} className="px-3 py-2 text-center text-label uppercase text-muted-foreground">{h}</th>
                     ))}
-                    <th className="px-4 py-2 text-right font-medium">Action</th>
+                    <th className="px-4 py-2 text-right text-label uppercase text-muted-foreground">Action</th>
                   </tr>
                 </thead>
                 <tbody>
