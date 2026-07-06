@@ -235,27 +235,41 @@
     padding-left: 0;
     padding-right: 0;
     z-index: 2;
+    transition: background-color 220ms ease, color 220ms ease;
   }
   .rail-tab-active::before,
   .rail-tab-active::after {
     content: "";
     position: absolute;
     right: 0;
-    width: 34px;
-    height: 34px;
-    border-radius: 999px;
+    width: 20px;
+    height: 20px;
     pointer-events: none;
-    background: transparent;
     z-index: 1;
+    /* GPU-composited for crisp anti-aliased curve, no subpixel jitter */
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
   .rail-tab-active::before {
-    top: -34px;
-    box-shadow: 20px 20px 0 0 hsl(var(--surface-sunken));
+    top: -20px;
+    background: radial-gradient(
+      circle at top right,
+      transparent 0,
+      transparent 20px,
+      hsl(var(--surface-sunken)) 20.5px
+    );
   }
   .rail-tab-active::after {
-    bottom: -34px;
-    box-shadow: 20px -20px 0 0 hsl(var(--surface-sunken));
+    bottom: -20px;
+    background: radial-gradient(
+      circle at bottom right,
+      transparent 0,
+      transparent 20px,
+      hsl(var(--surface-sunken)) 20.5px
+    );
   }
+
+
 
 
   .scroll-thin::-webkit-scrollbar { width: 8px; height: 8px; }
