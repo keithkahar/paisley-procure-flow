@@ -28,8 +28,8 @@ export default function SupplierDiscovery() {
         description="Step 2 of 8"
         actions={
           <>
-            <Button variant="outline" size="sm">Discovery settings</Button>
-            <Button size="sm">Generate candidates</Button>
+            <Button variant="outline" size="sm" className="h-9 leading-none box-border"><Settings2 className="mr-1.5 h-4 w-4" /> Discovery settings</Button>
+            <Button size="sm" className="h-9 leading-none box-border border border-transparent"><Sparkles className="mr-1.5 h-4 w-4" /> Generate candidates</Button>
           </>
         }
       />
