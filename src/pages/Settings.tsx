@@ -81,9 +81,9 @@ export default function Settings() {
               ["Packaging", "18%"],
               ["Buffer", "3%"],
             ].map(([k, v]) => (
-              <div key={k} className="flex items-center justify-between rounded-md border border-border px-3 py-2 text-body">
+              <div key={k} className="flex h-11 items-center justify-between rounded-md border border-border px-3 text-body">
                 <span>{k}</span>
-                <Input defaultValue={v as string} className="h-8 w-20 text-right" />
+                <Input defaultValue={v as string} className="h-7 w-20 text-right" />
               </div>
             ))}
           </div>
