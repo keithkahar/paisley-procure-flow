@@ -41,9 +41,9 @@ export default function Settings() {
             <div className="section-title mb-1.5">Aliases</div>
             <ul className="space-y-1.5">
               {aliases.map((a) => (
-                <li key={a.alias} className="flex items-center justify-between text-body">
-                  <span className="font-mono">{a.alias}</span>
-                  <span className="text-muted-foreground">→ {a.forwards}</span>
+                <li key={a.alias} className="flex flex-col gap-0.5 text-body sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                  <span className="truncate font-mono">{a.alias}</span>
+                  <span className="truncate text-muted-foreground">→ {a.forwards}</span>
                 </li>
               ))}
             </ul>
@@ -62,7 +62,7 @@ export default function Settings() {
               ["Rotterdam", "NL"],
               ["Felixstowe", "UK"],
             ].map(([n, c]) => (
-              <div key={n} className="flex items-center justify-between flex h-11 items-center rounded-md border border-border px-3">
+              <div key={n} className="flex h-11 items-center justify-between rounded-md border border-border px-3">
                 <span>{n}</span>
                 <span className="text-caption text-muted-foreground">{c}</span>
               </div>
@@ -101,7 +101,7 @@ export default function Settings() {
         <SettingsCard icon={<FileText className="h-4 w-4" />} title="Email templates" desc="Templates for each workflow stage.">
           <ul className="space-y-1.5 text-body">
             {["First contact — combined inquiry + background", "RFQ round 1 / 2 / 3", "Quote clarification", "Buyer quotation cover email", "Order confirmation", "Shipment notification"].map((t) => (
-              <li key={t} className="flex items-center justify-between flex h-11 items-center rounded-md border border-border px-3">
+              <li key={t} className="flex h-11 items-center justify-between rounded-md border border-border px-3">
                 <span>{t}</span>
                 <Button size="sm" variant="ghost">Edit</Button>
               </li>
@@ -121,7 +121,7 @@ export default function Settings() {
         <SettingsCard icon={<Library className="h-4 w-4" />} title="Supplier sourcing library" desc="Connected sources for discovery.">
           <ul className="space-y-1.5 text-body">
             {["Alibaba Verified", "Made-in-China", "Global Sources", "Internal supplier CRM", "Historical order suppliers"].map((s) => (
-              <li key={s} className="flex items-center justify-between flex h-11 items-center rounded-md border border-border px-3">
+              <li key={s} className="flex h-11 items-center justify-between rounded-md border border-border px-3">
                 <span>{s}</span>
                 <WorkflowBadge state="connected" />
               </li>
