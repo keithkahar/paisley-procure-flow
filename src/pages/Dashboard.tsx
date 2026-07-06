@@ -52,18 +52,11 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-6">
-      {/* Top: search bar row (kept subtle to match template feel) */}
+      {/* Top: today's date as page anchor */}
       <div className="flex items-center justify-between">
-        <h1 className="font-display text-title font-semibold tracking-tight text-foreground">
-          Dashboard
+        <h1 className="font-display text-display font-semibold tracking-tight text-foreground">
+          {formatToday()}
         </h1>
-        <div className="relative hidden md:block">
-          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <input
-            placeholder="Search RFQs, suppliers, orders…"
-            className="h-11 w-[380px] rounded-full border border-transparent bg-surface-muted pl-11 pr-4 text-body text-foreground placeholder:text-muted-foreground/70 outline-none focus:border-primary/30 focus:bg-surface focus:ring-2 focus:ring-primary/15"
-          />
-        </div>
       </div>
 
       {/* Row 1: two sparkline KPIs (left, stacked) + donut (right) */}
