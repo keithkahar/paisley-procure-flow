@@ -21,8 +21,8 @@ export default function FirstContact() {
         description="Step 4 of 8"
         actions={
           <>
-            <Button size="sm" variant="outline"><Pencil className="mr-1.5 h-4 w-4" /> Edit template</Button>
-            <Button size="sm"><Send className="mr-1.5 h-4 w-4" /> Send approved batch</Button>
+            <Button size="sm" variant="outline" className="h-9 leading-none box-border"><Pencil className="mr-1.5 h-4 w-4" /> Edit template</Button>
+            <Button size="sm" className="h-9 leading-none box-border border border-transparent"><Send className="mr-1.5 h-4 w-4" /> Send approved batch</Button>
           </>
         }
       />
