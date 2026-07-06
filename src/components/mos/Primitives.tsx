@@ -171,7 +171,10 @@ export type StatusTone =
   | "danger"
   | "muted"
   | "gold"
-  | "info";
+  | "info"
+  | "violet-strong"
+  | "violet"
+  | "violet-muted";
 
 export function StatusBadge({
   tone = "muted",
