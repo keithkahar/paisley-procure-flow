@@ -188,9 +188,10 @@
 
   /* ============ MISC ============ */
   .badge-soft {
-    @apply inline-flex items-center gap-1 rounded-sm px-2 py-0.5 text-label normal-case;
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-label font-medium normal-case leading-5;
     letter-spacing: 0;
   }
+
   .divider-dot::before {
     content: "•";
     @apply mx-2 text-border-strong;
