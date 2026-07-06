@@ -83,11 +83,12 @@ export function PreviewAction(props: { onClick?: MouseEventHandler<HTMLButtonEle
 /* --------- Page-level ---------- */
 
 export function PageHeader({
+  eyebrow,
   title,
   description,
   actions,
 }: {
-  eyebrow?: string; // deprecated, ignored
+  eyebrow?: string;
   title: string;
   description?: string;
   actions?: ReactNode;
@@ -96,6 +97,7 @@ export function PageHeader({
   return (
     <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
       <div className="min-w-0">
+        {eyebrow && <div className="mb-1.5 text-eyebrow text-primary">{eyebrow}</div>}
         <h1 className="font-display text-[24px] leading-tight tracking-tight font-bold text-foreground md:text-display">{title}</h1>
         {description && (
           <p className="mt-2 max-w-2xl text-body text-muted-foreground">
@@ -335,7 +337,11 @@ export function RefBadge({ children }: { children: ReactNode }) {
 }
 
 export function MissingFieldBadge({ field }: { field: string }) {
-  return <StatusBadge tone="warning">Missing: {field}</StatusBadge>;
+  return (
+    <span className="badge-soft border border-dashed border-border bg-surface text-muted-foreground">
+      Missing: {field}
+    </span>
+  );
 }
 
 export function Chip({
@@ -384,10 +390,10 @@ export function KpiTile({
   tone?: "primary" | "warning" | "success" | "muted";
 }) {
   return (
-    <div className="kpi-tile flex h-full min-h-[96px] flex-col justify-between md:min-h-[128px]">
+    <div className="kpi-tile flex h-full min-h-[84px] flex-col md:min-h-[96px]">
       <div className="text-eyebrow line-clamp-2">{label}</div>
-      <div className="mt-2 flex flex-col gap-1 md:mt-3">
-        <div className="font-display text-[22px] font-semibold leading-none tracking-tight text-foreground md:text-display">
+      <div className="mt-1.5 flex flex-col gap-1">
+        <div className="font-display text-[22px] font-semibold leading-none tracking-tight text-foreground md:text-[28px]">
           {value}
         </div>
         {(hint || delta) && (

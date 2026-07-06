@@ -1,6 +1,6 @@
 import { PageHeader, KpiTile, WorkflowBadge, RefBadge, MissingFieldBadge, ApproveAction, EditAction, PreviewAction, type WorkflowState } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
-import { Mail, Send } from "lucide-react";
+import { Info, Mail, Send } from "lucide-react";
 
 const emails: Array<{
   id: string; rfq: string; supplier: string; item: string; subject: string;
@@ -28,12 +28,17 @@ export default function FirstContact() {
         }
       />
 
-      <div className="mb-4 rounded-xl border border-primary/20 bg-primary-soft p-4">
-        <div className="text-label uppercase text-primary">Rule</div>
-        <p className="mt-1 text-body text-foreground/85">
-          First email must combine a <strong>real product inquiry</strong> and a <strong>light background request</strong>
-          (factory type, main product line, export markets). It should read like an inquiry from a real buyer's agency, not a compliance survey.
-        </p>
+      <div className="mb-4 flex items-start gap-3 rounded-xl border border-primary/20 bg-primary-soft p-4">
+        <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
+          <Info className="h-3.5 w-3.5" strokeWidth={2.5} />
+        </div>
+        <div className="min-w-0">
+          <div className="text-label uppercase text-primary">Rule</div>
+          <p className="mt-1 text-body text-foreground/85">
+            First email must combine a <strong>real product inquiry</strong> and a <strong>light background request</strong>
+            (factory type, main product line, export markets). It should read like an inquiry from a real buyer's agency, not a compliance survey.
+          </p>
+        </div>
       </div>
 
       <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -45,7 +50,7 @@ export default function FirstContact() {
 
       <div className="space-y-3">
         {emails.map((e) => (
-          <article key={e.id} className="card-surface p-4 md:p-5">
+          <article key={e.id} className="card-surface p-3.5 md:p-4">
             <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
@@ -65,7 +70,7 @@ export default function FirstContact() {
                   </div>
                 )}
               </div>
-              <div className="flex flex-wrap items-center gap-1.5 md:shrink-0">
+              <div className="flex flex-wrap items-center gap-1 rounded-lg border border-border bg-surface-muted p-1 md:shrink-0">
                 <ApproveAction />
                 <EditAction label="Edit draft" />
                 <PreviewAction />
