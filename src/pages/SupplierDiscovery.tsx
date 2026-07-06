@@ -1,7 +1,7 @@
 import { PageHeader, SupplierTypeBadge, ConfidenceBadge, Chip } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, MapPin, Globe, ShieldCheck, Settings2, Sparkles } from "lucide-react";
+import { Search, MapPin, Globe, ShieldCheck, Settings2, Zap } from "lucide-react";
 
 const libs = [
   { name: "Alibaba Verified", results: 214 },
@@ -29,7 +29,7 @@ export default function SupplierDiscovery() {
         actions={
           <>
             <Button variant="outline" size="sm" className="h-9 leading-none box-border"><Settings2 className="mr-1.5 h-4 w-4" /> Discovery settings</Button>
-            <Button size="sm" className="h-9 leading-none box-border border border-transparent"><Sparkles className="mr-1.5 h-4 w-4" /> Generate candidates</Button>
+            <Button size="sm" className="h-9 leading-none box-border border border-transparent"><Zap className="mr-1.5 h-4 w-4" /> Generate candidates</Button>
           </>
         }
       />
