@@ -1,6 +1,6 @@
-import { PageHeader, StatusBadge, SupplierTypeBadge, ConfidenceBadge, ApproveAction, EditAction, RejectAction } from "@/components/mos/Primitives";
+import { PageHeader, StatusBadge, SupplierTypeBadge, ConfidenceBadge, MissingFieldBadge, ApproveAction, EditAction, RejectAction } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
-import { CheckCheck, AlertTriangle } from "lucide-react";
+import { CheckCheck } from "lucide-react";
 
 const kpis = [
   { label: "In review", value: 12, hint: "candidates" },
