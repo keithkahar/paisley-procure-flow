@@ -17,7 +17,7 @@ export default function AppShell() {
   return (
     <div className="flex min-h-screen w-full bg-surface-sunken text-foreground">
       {/* Desktop left icon rail */}
-      <aside className="sticky top-0 hidden h-screen w-[96px] shrink-0 bg-rail md:block">
+      <aside className="sticky top-0 hidden h-screen w-[var(--rail-w)] shrink-0 bg-rail md:block">
         <IconRail />
       </aside>
 
