@@ -242,25 +242,33 @@
     content: "";
     position: absolute;
     right: 0;
-    width: 44px;
-    height: 44px;
+    width: 20px;
+    height: 20px;
     pointer-events: none;
-    background: transparent;
     z-index: 1;
-    /* GPU compositing → crisper anti-aliased curve, no jitter */
+    /* GPU-composited for crisp anti-aliased curve, no subpixel jitter */
     transform: translateZ(0);
     backface-visibility: hidden;
   }
   .rail-tab-active::before {
-    top: -44px;
-    border-bottom-right-radius: 44px;
-    box-shadow: 0 22px 0 0 hsl(var(--surface-sunken));
+    top: -20px;
+    background: radial-gradient(
+      circle at top right,
+      transparent 0,
+      transparent 20px,
+      hsl(var(--surface-sunken)) 20.5px
+    );
   }
   .rail-tab-active::after {
-    bottom: -44px;
-    border-top-right-radius: 44px;
-    box-shadow: 0 -22px 0 0 hsl(var(--surface-sunken));
+    bottom: -20px;
+    background: radial-gradient(
+      circle at bottom right,
+      transparent 0,
+      transparent 20px,
+      hsl(var(--surface-sunken)) 20.5px
+    );
   }
+
 
 
 
