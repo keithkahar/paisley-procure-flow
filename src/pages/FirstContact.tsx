@@ -17,12 +17,11 @@ export default function FirstContact() {
   return (
     <>
       <PageHeader
-        eyebrow="Step 4 of 8"
         title="First Contact"
-        description="Combined product inquiry and light supplier background request. Never sent as a cold investigation email."
+        description="Step 4 of 8"
         actions={
           <>
-            <Button size="sm" variant="outline">Edit template</Button>
+            <Button size="sm" variant="outline"><Pencil className="mr-1.5 h-4 w-4" /> Edit template</Button>
             <Button size="sm"><Send className="mr-1.5 h-4 w-4" /> Send approved batch</Button>
           </>
         }
@@ -33,8 +32,7 @@ export default function FirstContact() {
           <Info className="h-3.5 w-3.5" strokeWidth={2.5} />
         </div>
         <div className="min-w-0">
-          <div className="text-label uppercase text-primary">Rule</div>
-          <p className="mt-1 text-body text-foreground/85">
+          <p className="text-body text-foreground/85">
             First email must combine a <strong>real product inquiry</strong> and a <strong>light background request</strong>
             (factory type, main product line, export markets). It should read like an inquiry from a real buyer's agency, not a compliance survey.
           </p>
