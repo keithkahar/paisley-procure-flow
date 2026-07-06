@@ -1,6 +1,6 @@
-import { PageHeader, KpiTile, WorkflowBadge, RefBadge, MissingFieldBadge, ApproveAction, EditAction, PreviewAction, type WorkflowState } from "@/components/mos/Primitives";
+import { PageHeader, WorkflowBadge, RefBadge, MissingFieldBadge, ApproveAction, EditAction, PreviewAction, type WorkflowState } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
-import { Info, Mail, Send, Pencil } from "lucide-react";
+import { Info, Mail, Send, Pencil, Clock3, CheckCircle2, Inbox } from "lucide-react";
 
 const emails: Array<{
   id: string; rfq: string; supplier: string; item: string; subject: string;
@@ -11,6 +11,13 @@ const emails: Array<{
   { id: "FC-2203", rfq: "RFQ-014", supplier: "Shenzhen Boya Electronics", item: "LED navigation light kit, 12V, IP67", subject: "Inquiry: LED nav light kits + company profile",            state: "sent",           missing: [] },
   { id: "FC-2204", rfq: "RFQ-014", supplier: "Qingdao Steel Rig",         item: "3\" bronze ball valve",               subject: "Inquiry: bronze ball valves — spec + capability",          state: "replied",        missing: [] },
   { id: "FC-2205", rfq: "RFQ-016", supplier: "Guangzhou Harbor Trading",  item: "Marine deck cleats, cast aluminum",   subject: "Inquiry: aluminum deck cleats — please confirm factory",   state: "needs_followup", missing: ["Factory address"] },
+];
+
+const kpis = [
+  { label: "In queue",          value: "14", icon: Inbox,        tone: "text-primary" },
+  { label: "Awaiting approval", value: "5",  icon: Clock3,       tone: "text-warning" },
+  { label: "Sent (24h)",        value: "22", icon: Send,         tone: "text-primary" },
+  { label: "Replied",           value: "9",  icon: CheckCircle2, tone: "text-success" },
 ];
 
 export default function FirstContact() {
@@ -27,7 +34,27 @@ export default function FirstContact() {
         }
       />
 
-      <div className="mb-4 flex items-start gap-3 rounded-xl border border-primary/20 bg-primary-soft p-4">
+      {/* Compact horizontal KPI strip — matches Purchase Intake rhythm */}
+      <div className="mb-4 grid grid-cols-2 gap-3 md:grid-cols-4">
+        {kpis.map((k) => (
+          <div key={k.label} className="card-surface flex items-center gap-3 px-4 py-3">
+            <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-muted ${k.tone}`}>
+              <k.icon className="h-4 w-4" strokeWidth={2.25} />
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="truncate text-caption text-muted-foreground">{k.label}</div>
+              <div className="flex items-baseline gap-1.5">
+                <span className="font-display text-[20px] font-semibold leading-none tracking-tight text-foreground tabular-nums">
+                  {k.value}
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Note banner sits below the KPI strip, mirroring Purchase Intake */}
+      <div className="mb-6 flex items-start gap-3 rounded-xl border border-primary/20 bg-primary-soft p-4">
         <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
           <Info className="h-3.5 w-3.5" strokeWidth={2.5} />
         </div>
@@ -37,13 +64,6 @@ export default function FirstContact() {
             (factory type, main product line, export markets). It should read like an inquiry from a real buyer's agency, not a compliance survey.
           </p>
         </div>
-      </div>
-
-      <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4">
-        <KpiTile label="In queue" value={14} icon={<Mail className="h-4 w-4" />} />
-        <KpiTile label="Awaiting approval" value={5} tone="warning" />
-        <KpiTile label="Sent (24h)" value={22} tone="primary" />
-        <KpiTile label="Replied" value={9} tone="success" />
       </div>
 
       <div className="space-y-3">
@@ -61,8 +81,8 @@ export default function FirstContact() {
                   To: {e.supplier} <span className="divider-dot" /> {e.item}
                 </div>
               </div>
-              <div className="hidden min-w-0 md:flex md:flex-1 md:justify-center">
-                <div className="flex flex-wrap items-center justify-center gap-1.5">
+              <div className="hidden min-w-0 md:flex md:flex-1 md:justify-end">
+                <div className="flex flex-wrap items-center justify-end gap-1.5">
                   {e.missing.map((m) => (
                     <MissingFieldBadge key={m} field={m} />
                   ))}
@@ -80,3 +100,4 @@ export default function FirstContact() {
     </>
   );
 }
+
