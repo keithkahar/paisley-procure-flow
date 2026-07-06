@@ -210,38 +210,42 @@
     margin-right: -1px;
   }
 
-  /* Active nav tab — white pill sitting inside the rail with concave notches above/below */
+  /* Active nav tab — white pill juts right past rail edge; rail wraps around it above/below */
   .rail-tab-active {
     position: relative;
     background: hsl(var(--surface));
     color: hsl(var(--primary));
-    border-radius: 20px;
-    box-shadow: 0 8px 20px -8px hsl(214 99% 15% / 0.35);
-    z-index: 1;
+    border-radius: 22px;
+    box-shadow: 0 10px 24px -10px hsl(214 99% 15% / 0.4);
+    margin-right: -20px;
+    padding-right: 14px;
+    padding-left: 2px;
+    z-index: 2;
   }
   .rail-tab-active::before,
   .rail-tab-active::after {
     content: "";
     position: absolute;
     right: 0;
-    width: 14px;
-    height: 14px;
+    width: 22px;
+    height: 22px;
     pointer-events: none;
+    z-index: -1;
   }
   .rail-tab-active::before {
-    top: -14px;
+    top: -22px;
     background: radial-gradient(
-      circle 14px at 0 100%,
-      hsl(var(--surface)) 14px,
-      hsl(var(--rail)) 14.5px
+      circle 22px at 0 100%,
+      transparent 22px,
+      hsl(var(--rail)) 22.5px
     );
   }
   .rail-tab-active::after {
-    bottom: -14px;
+    bottom: -22px;
     background: radial-gradient(
-      circle 14px at 0 0,
-      hsl(var(--surface)) 14px,
-      hsl(var(--rail)) 14.5px
+      circle 22px at 0 0,
+      transparent 22px,
+      hsl(var(--rail)) 22.5px
     );
   }
   .scroll-thin::-webkit-scrollbar { width: 8px; height: 8px; }
