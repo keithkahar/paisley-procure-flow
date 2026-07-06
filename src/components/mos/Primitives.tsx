@@ -71,7 +71,7 @@ export function RejectAction(props: { onClick?: MouseEventHandler<HTMLButtonElem
   return <IconAction icon={X} tone="destructive" label={props.label ?? "Reject"} {...props} />;
 }
 export function PreviewAction(props: { onClick?: MouseEventHandler<HTMLButtonElement>; disabled?: boolean; label?: string }) {
-  return <IconAction icon={Eye} tone="ghost" label={props.label ?? "Preview"} {...props} />;
+  return <IconAction icon={Eye} tone="outline" label={props.label ?? "Preview"} {...props} />;
 }
 
 /* ============================================================
@@ -96,7 +96,7 @@ export function PageHeader({
   return (
     <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
       <div className="min-w-0">
-        <h1 className="font-display text-display text-foreground">{title}</h1>
+        <h1 className="font-display text-title md:text-display text-foreground">{title}</h1>
         {description && (
           <p className="mt-2 max-w-2xl text-body text-muted-foreground">
             {description}
@@ -397,16 +397,18 @@ export function KpiTile({
   tone?: "primary" | "warning" | "success" | "muted";
 }) {
   return (
-    <div className="kpi-tile">
+    <div className="kpi-tile flex h-full flex-col justify-between">
       <div className="text-eyebrow">{label}</div>
-      <div className="mt-3 font-display text-display font-semibold leading-none tracking-tight text-foreground">
-        {value}
-      </div>
-      {(delta || hint) && (
-        <div className="mt-3 flex items-center gap-2 text-caption text-muted-foreground">
-          {delta && <span className="font-medium text-success">{delta}</span>}
-          {hint && <span>{hint}</span>}
+      <div className="mt-3 flex items-baseline gap-2">
+        <div className="font-display text-display font-semibold leading-none tracking-tight text-foreground">
+          {value}
         </div>
+        {hint && (
+          <span className="text-caption text-muted-foreground">{hint}</span>
+        )}
+      </div>
+      {delta && (
+        <div className="mt-3 text-caption font-medium text-success">{delta}</div>
       )}
     </div>
   );
