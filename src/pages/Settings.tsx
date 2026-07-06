@@ -162,7 +162,7 @@ function SettingsCard({ icon, title, desc, children }: { icon: ReactNode; title:
 
 function RowLine({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div className="flex items-center justify-between rounded-md border border-border px-3 py-2">
+    <div className="flex h-11 items-center justify-between rounded-md border border-border px-3">
       <span className="text-muted-foreground">{label}</span>
       <span className="font-medium">{children}</span>
     </div>
