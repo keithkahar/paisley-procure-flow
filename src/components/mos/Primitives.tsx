@@ -296,7 +296,7 @@ const WORKFLOW_MAP: Record<WorkflowState, { tone: StatusTone; label: string; dot
   human:          { tone: "warning", label: "Human",             dot: false },
   needs_info:     { tone: "warning", label: "Needs info",        dot: true  },
   needs_edit:     { tone: "warning", label: "Needs edit",        dot: true  },
-  needs_followup: { tone: "warning", label: "Needs follow-up",   dot: true  },
+  needs_followup: { tone: "danger",  label: "Needs follow-up",   dot: true  },
   hidden:         { tone: "danger",  label: "Hidden from buyer", dot: false },
   visible:        { tone: "success", label: "Visible to buyer",  dot: false },
   blocked:        { tone: "danger",  label: "Blocked",           dot: true  },
