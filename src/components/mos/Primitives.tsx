@@ -397,16 +397,18 @@ export function KpiTile({
   tone?: "primary" | "warning" | "success" | "muted";
 }) {
   return (
-    <div className="kpi-tile">
+    <div className="kpi-tile flex h-full flex-col justify-between">
       <div className="text-eyebrow">{label}</div>
-      <div className="mt-3 font-display text-display font-semibold leading-none tracking-tight text-foreground">
-        {value}
-      </div>
-      {(delta || hint) && (
-        <div className="mt-3 flex items-center gap-2 text-caption text-muted-foreground">
-          {delta && <span className="font-medium text-success">{delta}</span>}
-          {hint && <span>{hint}</span>}
+      <div className="mt-3 flex items-baseline gap-2">
+        <div className="font-display text-display font-semibold leading-none tracking-tight text-foreground">
+          {value}
         </div>
+        {hint && (
+          <span className="text-caption text-muted-foreground">{hint}</span>
+        )}
+      </div>
+      {delta && (
+        <div className="mt-3 text-caption font-medium text-success">{delta}</div>
       )}
     </div>
   );
