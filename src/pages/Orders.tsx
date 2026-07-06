@@ -26,9 +26,8 @@ export default function Orders() {
   return (
     <>
       <PageHeader
-        eyebrow="Step 8 of 8"
         title="Orders"
-        description="Accepted quotations converted into orders. Milestones adapt to the chosen delivery basis."
+        description="Step 8 of 8"
         actions={<Button size="sm">New order</Button>}
       />
 
