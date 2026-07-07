@@ -1,4 +1,5 @@
 import { PageHeader, WorkflowBadge, RefBadge, MissingFieldBadge, ApproveAction, EditAction, PreviewAction, type WorkflowState } from "@/components/mos/Primitives";
+import { HeaderSearch } from "@/components/mos/HeaderSearch";
 import { Button } from "@/components/ui/button";
 import { Info, Mail, Send, Pencil, Clock3, CheckCircle2, Inbox } from "lucide-react";
 
