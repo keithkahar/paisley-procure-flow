@@ -1,4 +1,5 @@
 import { PageHeader, StatusBadge, SupplierTypeBadge, ConfidenceBadge, MissingFieldBadge, ApproveAction, EditAction, RejectAction } from "@/components/mos/Primitives";
+import { HeaderSearch } from "@/components/mos/HeaderSearch";
 import { Button } from "@/components/ui/button";
 import { CheckCheck } from "lucide-react";
 
