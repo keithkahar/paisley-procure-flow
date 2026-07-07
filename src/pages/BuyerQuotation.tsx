@@ -65,14 +65,14 @@ export default function BuyerQuotation() {
                             <div className="whitespace-nowrap font-medium">{l.item}</div>
                             <div className="whitespace-nowrap text-caption text-muted-foreground">{l.supplier}</div>
                           </td>
-                          <td className="whitespace-nowrap py-2 pr-3 text-right">${l.cost.toFixed(2)}</td>
-                          <td className="whitespace-nowrap py-2 pr-3 text-right">{l.qty}</td>
+                          <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">${l.cost.toFixed(2)}</td>
+                          <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">{l.qty}</td>
                           <td className="whitespace-nowrap py-2 pr-3 text-right">
-                            <span className={l.override ? "text-primary font-semibold" : "text-muted-foreground"}>
+                            <span className={l.override ? "font-mono text-mono text-foreground" : "font-mono text-mono text-muted-foreground"}>
                               {(rate * 100).toFixed(0)}%{l.override ? " · override" : ""}
                             </span>
                           </td>
-                          <td className="whitespace-nowrap py-2 pl-3 text-right font-display font-semibold">${buyer.toFixed(2)}</td>
+                          <td className="whitespace-nowrap py-2 pl-3 text-right font-mono text-mono text-foreground">${buyer.toFixed(2)}</td>
                         </tr>
                       );
                     })}
@@ -90,8 +90,8 @@ export default function BuyerQuotation() {
             <div className="rounded-lg bg-surface-sunken p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
-                  <div className="font-display text-lg font-bold">Quotation Q-2041</div>
-                  <div className="text-caption text-muted-foreground">To: Nordic Marine AB · CIF Gothenburg · EUR</div>
+                  <div className="text-label uppercase text-muted-foreground font-mono text-mono">Quotation Q-2041</div>
+                  <div className="mt-1 text-caption text-muted-foreground">To: Nordic Marine AB · CIF Gothenburg · EUR</div>
                 </div>
                 <div className="text-right">
                   <div className="text-label uppercase text-muted-foreground">Prepared by</div>
@@ -100,7 +100,7 @@ export default function BuyerQuotation() {
               </div>
               <div className="-mx-1 overflow-x-auto">
               <table className="w-full min-w-[480px] text-body">
-                <thead className="border-b border-border">
+                <thead>
                   <tr>
                     <th className="py-2 text-left text-label uppercase text-muted-foreground">Description</th>
                     <th className="py-2 text-right text-label uppercase text-muted-foreground">Qty</th>
@@ -113,19 +113,19 @@ export default function BuyerQuotation() {
                     const rate = (l.override ?? globalRate * 100) / 100;
                     const buyer = l.cost / (1 - rate);
                     return (
-                      <tr key={l.item} className="border-b border-border/60">
+                      <tr key={l.item} className="border-t border-border/60">
                         <td className="whitespace-nowrap py-2.5">{l.item}</td>
-                        <td className="whitespace-nowrap py-2.5 text-right">{l.qty}</td>
-                        <td className="whitespace-nowrap py-2.5 text-right">€ {(buyer * 0.92).toFixed(2)}</td>
-                        <td className="whitespace-nowrap py-2.5 text-right font-semibold">€ {(buyer * 0.92 * l.qty).toFixed(2)}</td>
+                        <td className="whitespace-nowrap py-2.5 text-right font-mono text-mono">{l.qty}</td>
+                        <td className="whitespace-nowrap py-2.5 text-right font-mono text-mono">€ {(buyer * 0.92).toFixed(2)}</td>
+                        <td className="whitespace-nowrap py-2.5 text-right font-mono text-mono text-foreground">€ {(buyer * 0.92 * l.qty).toFixed(2)}</td>
                       </tr>
                     );
                   })}
                 </tbody>
                 <tfoot>
-                  <tr>
-                    <td colSpan={3} className="py-3 text-right font-semibold">Total (EUR)</td>
-                    <td className="whitespace-nowrap py-3 text-right font-display text-lg font-bold text-primary">
+                  <tr className="border-t border-border">
+                    <td colSpan={3} className="py-3 text-right text-label uppercase text-muted-foreground">Total (EUR)</td>
+                    <td className="whitespace-nowrap py-3 text-right font-mono text-mono text-foreground font-semibold">
                       € {lines.reduce((acc, l) => {
                         const rate = (l.override ?? globalRate * 100) / 100;
                         return acc + (l.cost / (1 - rate)) * 0.92 * l.qty;
