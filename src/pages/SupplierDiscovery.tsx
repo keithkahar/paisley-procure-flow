@@ -25,7 +25,7 @@ export default function SupplierDiscovery() {
     <>
       <PageHeader
         title="Supplier Discovery"
-        description="Step 2 of 8"
+        description="2/8"
         actions={
           <>
             <Button variant="outline" size="sm" className="h-9 leading-none box-border"><Settings2 className="mr-1.5 h-4 w-4" /> Discovery settings</Button>

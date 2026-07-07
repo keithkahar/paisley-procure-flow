@@ -38,7 +38,7 @@ export default function Orders() {
     <>
       <PageHeader
         title="Orders"
-        description="Step 8 of 8"
+        description="8/8"
         actions={<Button size="sm" className="h-9 leading-none box-border border border-transparent"><Plus className="mr-1.5 h-4 w-4" /> New order</Button>}
       />
 
