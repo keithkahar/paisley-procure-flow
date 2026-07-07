@@ -4,6 +4,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 import {
   UserCircleIcon,
   Cog6ToothIcon,
@@ -25,10 +26,14 @@ export function UserMenu({
   trigger,
   side = "top",
   align = "start",
+  contentClassName,
+  sideOffset = 8,
 }: {
   trigger: ReactNode;
   side?: "top" | "right" | "bottom" | "left";
   align?: "start" | "center" | "end";
+  contentClassName?: string;
+  sideOffset?: number;
 }) {
   const items: Item[] = [
     { icon: AtSymbolIcon, label: "keithknowai@gmail.com" },
@@ -63,8 +68,8 @@ export function UserMenu({
       <PopoverContent
         side={side}
         align={align}
-        sideOffset={8}
-        className="w-64 p-1.5"
+        sideOffset={sideOffset}
+        className={cn("w-64 p-1.5", contentClassName)}
       >
         <div className="py-1">
           {items.map((i) => <Row key={i.label} item={i} />)}
