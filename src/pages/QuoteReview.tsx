@@ -1,15 +1,5 @@
-import { PageHeader, StatusBadge, KpiTile, ConfidenceBadge, DeliveryBasisBadge, MissingFieldBadge, confidenceTone, Chip, ApproveAction, EditAction, RejectAction } from "@/components/mos/Primitives";
+import { PageHeader, KpiTile, ConfidenceBadge, DeliveryBasisBadge, MissingFieldBadge, Chip, ApproveAction, EditAction, RejectAction } from "@/components/mos/Primitives";
 
-const CONF_BAR: Record<string, string> = {
-  success: "bg-success",
-  primary: "bg-primary",
-  warning: "bg-warning",
-  danger:  "bg-destructive",
-  muted:   "bg-muted-foreground",
-  gold:    "bg-gold",
-  info:    "bg-primary",
-};
-const confBar = (v: number) => CONF_BAR[confidenceTone(v).tone];
 import { Button } from "@/components/ui/button";
 import { ClipboardCheck } from "lucide-react";
 
