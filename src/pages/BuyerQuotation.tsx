@@ -26,86 +26,66 @@ export default function BuyerQuotation() {
         }
       />
 
-      <div className="grid gap-5 lg:grid-cols-3">
-        <div className="min-w-0 lg:col-span-2 space-y-4">
-          <Card>
-            <div className="mb-3 flex items-center justify-between">
-              <div>
-                <div className="text-label uppercase text-muted-foreground font-mono text-mono">Quotation Q-2041</div>
-                <h3 className="mt-1 font-display text-subtitle font-semibold">Nordic Marine AB — Project PH-004</h3>
-                <div className="text-caption text-muted-foreground">CIF Gothenburg · EUR · Valid 30 days</div>
-              </div>
-              <WorkflowBadge state="draft" />
-            </div>
+      {/* Top settings strip — 3 compact cards */}
+      <div className="mb-6 grid gap-4 lg:grid-cols-3">
+        <Card>
+          <div className="section-title mb-3">Global profit settings</div>
+          <label className="block">
+            <span className="text-caption text-muted-foreground">Default rate (all categories)</span>
+            <Input defaultValue="22" className="mt-1 h-9" />
+          </label>
+          <div className="mt-3 space-y-2">
+            <RateRow label="Marine hardware" value="22%" />
+            <RateRow label="Electronics" value="28%" />
+            <RateRow label="Valves & fittings" value="20%" />
+            <RateRow label="Packaging" value="18%" />
+          </div>
+        </Card>
+        <Card>
+          <div className="section-title mb-3">Currency</div>
+          <div className="text-body space-y-1.5">
+            <div className="flex justify-between"><span>USD → EUR</span><span className="font-mono text-mono text-foreground">0.9200</span></div>
+            <div className="flex justify-between"><span>CNY → USD</span><span className="font-mono text-mono text-foreground">0.1380</span></div>
+            <div className="flex justify-between"><span>Locked at</span><span className="text-caption text-muted-foreground">Today, 09:12</span></div>
+          </div>
+        </Card>
+        <Card>
+          <div className="section-title mb-3">Delivery basis</div>
+          <div className="flex flex-wrap gap-1.5">
+            {["EXW", "FOB", "CIF", "DAP", "DDP"].map((t) => (
+              <Chip key={t} active={t === "CIF"}>{t}</Chip>
+            ))}
+          </div>
+        </Card>
+      </div>
 
-            {/* Internal cost builder — hidden from buyer */}
-            <div className="rounded-lg bg-surface-muted p-3">
-              <div className="mb-2 flex items-center justify-between">
-                <div className="text-label uppercase text-muted-foreground">Internal cost builder</div>
-                <WorkflowBadge state="hidden" />
-              </div>
-              <div className="-mx-1 overflow-x-auto">
-                <table className="w-full min-w-[520px] text-body">
-                  <thead>
-                    <tr>
-                      <th className="py-2 pr-3 text-left text-label uppercase text-muted-foreground">Item</th>
-                      <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Cost</th>
-                      <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Qty</th>
-                      <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Margin</th>
-                      <th className="py-2 pl-3 text-right text-label uppercase text-muted-foreground">Buyer unit</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {lines.map((l) => {
-                      const rate = (l.override ?? globalRate * 100) / 100;
-                      const buyer = l.cost / (1 - rate);
-                      return (
-                        <tr key={l.item} className="border-t border-border/60">
-                          <td className="py-2 pr-3">
-                            <div className="whitespace-nowrap font-medium">{l.item}</div>
-                            <div className="whitespace-nowrap text-caption text-muted-foreground">{l.supplier}</div>
-                          </td>
-                          <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">${l.cost.toFixed(2)}</td>
-                          <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">{l.qty}</td>
-                          <td className="whitespace-nowrap py-2 pr-3 text-right">
-                            <span className={l.override ? "font-mono text-mono text-foreground" : "font-mono text-mono text-muted-foreground"}>
-                              {(rate * 100).toFixed(0)}%{l.override ? " · override" : ""}
-                            </span>
-                          </td>
-                          <td className="whitespace-nowrap py-2 pl-3 text-right font-mono text-mono text-foreground">${buyer.toFixed(2)}</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </Card>
+      {/* Unified quotation card — internal cost + buyer preview side by side */}
+      <Card>
+        <div className="mb-4 flex items-start justify-between gap-4">
+          <div>
+            <div className="text-label uppercase text-muted-foreground font-mono text-mono">Quotation Q-2041</div>
+            <h3 className="mt-1 font-display text-subtitle font-semibold">Nordic Marine AB — Project PH-004</h3>
+            <div className="text-caption text-muted-foreground">CIF Gothenburg · EUR · Valid 30 days</div>
+          </div>
+          <WorkflowBadge state="draft" />
+        </div>
 
-          <Card>
-            <div className="mb-3 flex items-center justify-between">
-              <div className="section-title">Buyer-facing preview</div>
-              <WorkflowBadge state="visible" />
+        <div className="grid gap-4 lg:grid-cols-2">
+          {/* Internal cost builder */}
+          <div className="rounded-lg bg-surface-muted p-3">
+            <div className="mb-2 flex items-center justify-between">
+              <div className="text-label uppercase text-muted-foreground">Internal cost builder</div>
+              <WorkflowBadge state="hidden" />
             </div>
-            <div className="rounded-lg bg-surface-sunken p-4">
-              <div className="mb-4 flex items-center justify-between">
-                <div>
-                  <div className="text-label uppercase text-muted-foreground font-mono text-mono">Quotation Q-2041</div>
-                  <div className="mt-1 text-caption text-muted-foreground">To: Nordic Marine AB · CIF Gothenburg · EUR</div>
-                </div>
-                <div className="text-right">
-                  <div className="text-label uppercase text-muted-foreground">Prepared by</div>
-                  <div className="text-body font-semibold">Paisley Sourcing</div>
-                </div>
-              </div>
-              <div className="-mx-1 overflow-x-auto">
-              <table className="w-full min-w-[480px] text-body">
+            <div className="-mx-1 overflow-x-auto">
+              <table className="w-full min-w-[420px] text-body">
                 <thead>
                   <tr>
-                    <th className="py-2 text-left text-label uppercase text-muted-foreground">Description</th>
-                    <th className="py-2 text-right text-label uppercase text-muted-foreground">Qty</th>
-                    <th className="py-2 text-right text-label uppercase text-muted-foreground">Unit</th>
-                    <th className="py-2 text-right text-label uppercase text-muted-foreground">Total</th>
+                    <th className="py-2 pr-3 text-left text-label uppercase text-muted-foreground">Item</th>
+                    <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Cost</th>
+                    <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Qty</th>
+                    <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Margin</th>
+                    <th className="py-2 pl-3 text-right text-label uppercase text-muted-foreground">Buyer unit</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -114,18 +94,60 @@ export default function BuyerQuotation() {
                     const buyer = l.cost / (1 - rate);
                     return (
                       <tr key={l.item} className="border-t border-border/60">
-                        <td className="whitespace-nowrap py-2.5">{l.item}</td>
-                        <td className="whitespace-nowrap py-2.5 text-right font-mono text-mono">{l.qty}</td>
-                        <td className="whitespace-nowrap py-2.5 text-right font-mono text-mono">€ {(buyer * 0.92).toFixed(2)}</td>
-                        <td className="whitespace-nowrap py-2.5 text-right font-mono text-mono text-foreground">€ {(buyer * 0.92 * l.qty).toFixed(2)}</td>
+                        <td className="py-2 pr-3">
+                          <div className="whitespace-nowrap font-medium">{l.item}</div>
+                          <div className="whitespace-nowrap text-caption text-muted-foreground">{l.supplier}</div>
+                        </td>
+                        <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">${l.cost.toFixed(2)}</td>
+                        <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">{l.qty}</td>
+                        <td className="whitespace-nowrap py-2 pr-3 text-right">
+                          <span className={l.override ? "font-mono text-mono text-foreground" : "font-mono text-mono text-muted-foreground"}>
+                            {(rate * 100).toFixed(0)}%{l.override ? " · override" : ""}
+                          </span>
+                        </td>
+                        <td className="whitespace-nowrap py-2 pl-3 text-right font-mono text-mono text-foreground">${buyer.toFixed(2)}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Buyer-facing preview */}
+          <div className="rounded-lg bg-surface-sunken p-3">
+            <div className="mb-2 flex items-center justify-between">
+              <div className="text-label uppercase text-muted-foreground">Buyer-facing preview</div>
+              <WorkflowBadge state="visible" />
+            </div>
+            <div className="-mx-1 overflow-x-auto">
+              <table className="w-full min-w-[380px] text-body">
+                <thead>
+                  <tr>
+                    <th className="py-2 pr-3 text-left text-label uppercase text-muted-foreground">Description</th>
+                    <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Qty</th>
+                    <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Unit</th>
+                    <th className="py-2 pl-3 text-right text-label uppercase text-muted-foreground">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {lines.map((l) => {
+                    const rate = (l.override ?? globalRate * 100) / 100;
+                    const buyer = l.cost / (1 - rate);
+                    return (
+                      <tr key={l.item} className="border-t border-border/60">
+                        <td className="whitespace-nowrap py-2 pr-3">{l.item}</td>
+                        <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">{l.qty}</td>
+                        <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">€ {(buyer * 0.92).toFixed(2)}</td>
+                        <td className="whitespace-nowrap py-2 pl-3 text-right font-mono text-mono text-foreground">€ {(buyer * 0.92 * l.qty).toFixed(2)}</td>
                       </tr>
                     );
                   })}
                 </tbody>
                 <tfoot>
                   <tr className="border-t border-border">
-                    <td colSpan={3} className="py-3 text-right text-label uppercase text-muted-foreground">Total (EUR)</td>
-                    <td className="whitespace-nowrap py-3 text-right font-mono text-mono text-foreground font-semibold">
+                    <td colSpan={3} className="py-3 pr-3 text-right text-label uppercase text-muted-foreground">Total (EUR)</td>
+                    <td className="whitespace-nowrap py-3 pl-3 text-right font-mono text-mono text-foreground font-semibold">
                       € {lines.reduce((acc, l) => {
                         const rate = (l.override ?? globalRate * 100) / 100;
                         return acc + (l.cost / (1 - rate)) * 0.92 * l.qty;
@@ -134,43 +156,10 @@ export default function BuyerQuotation() {
                   </tr>
                 </tfoot>
               </table>
-              </div>
             </div>
-          </Card>
+          </div>
         </div>
-
-        <div className="min-w-0 space-y-4">
-          <Card>
-            <div className="section-title mb-3">Global profit settings</div>
-            <label className="block">
-              <span className="text-caption text-muted-foreground">Default rate (all categories)</span>
-              <Input defaultValue="22" className="mt-1 h-9" />
-            </label>
-            <div className="mt-3 space-y-2">
-              <RateRow label="Marine hardware" value="22%" />
-              <RateRow label="Electronics" value="28%" />
-              <RateRow label="Valves & fittings" value="20%" />
-              <RateRow label="Packaging" value="18%" />
-            </div>
-          </Card>
-          <Card>
-            <div className="section-title mb-3">Currency</div>
-            <div className="text-body space-y-1.5">
-              <div className="flex justify-between"><span>USD → EUR</span><span className="font-mono text-mono text-foreground">0.9200</span></div>
-              <div className="flex justify-between"><span>CNY → USD</span><span className="font-mono text-mono text-foreground">0.1380</span></div>
-              <div className="flex justify-between"><span>Locked at</span><span className="text-caption text-muted-foreground">Today, 09:12</span></div>
-            </div>
-          </Card>
-          <Card>
-            <div className="section-title mb-3">Delivery basis</div>
-            <div className="flex flex-wrap gap-1.5">
-              {["EXW", "FOB", "CIF", "DAP", "DDP"].map((t) => (
-                <Chip key={t} active={t === "CIF"}>{t}</Chip>
-              ))}
-            </div>
-          </Card>
-        </div>
-      </div>
+      </Card>
     </>
   );
 }
