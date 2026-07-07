@@ -8,10 +8,9 @@ import {
   UserCircleIcon,
   Cog6ToothIcon,
   PaperAirplaneIcon,
-  ChartBarIcon,
+  StarIcon,
   ArrowLeftOnRectangleIcon,
   AtSymbolIcon,
-  IdentificationIcon,
 } from "@heroicons/react/24/outline";
 
 type Item = {
@@ -33,15 +32,14 @@ export function UserMenu({
 }) {
   const items: Item[] = [
     { icon: AtSymbolIcon, label: "keithknowai@gmail.com" },
-    { icon: IdentificationIcon, label: "Personal account" },
   ];
   const items2: Item[] = [
     { icon: UserCircleIcon, label: "Profile" },
     { icon: Cog6ToothIcon, label: "Settings", shortcut: "⌘," },
     { icon: PaperAirplaneIcon, label: "Invite friends" },
+    { icon: StarIcon, label: "Membership" },
   ];
   const items3: Item[] = [
-    { icon: ChartBarIcon, label: "Usage" },
     { icon: ArrowLeftOnRectangleIcon, label: "Log out" },
   ];
 
