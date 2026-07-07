@@ -1,4 +1,5 @@
 import { PageHeader, KpiTile, ConfidenceBadge, DeliveryBasisBadge, MissingFieldBadge, Chip, ApproveAction, EditAction, RejectAction } from "@/components/mos/Primitives";
+import { HeaderSearch } from "@/components/mos/HeaderSearch";
 
 import { Button } from "@/components/ui/button";
 import { ClipboardCheck } from "lucide-react";
