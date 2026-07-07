@@ -73,14 +73,14 @@ export default function BuyerQuotation() {
         {/* Unified quotation table */}
         <div className="-mx-1 overflow-x-auto">
           <table className="w-full min-w-[640px] text-body">
-            <thead>
+            <thead className="bg-surface-muted">
               <tr>
-                <th className="py-2 pr-3 text-left text-label uppercase text-muted-foreground">Item</th>
-                <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Cost</th>
-                <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Margin</th>
-                <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Qty</th>
-                <th className="py-2 px-3 text-right text-label uppercase text-destructive">Buyer</th>
-                <th className="py-2 pl-3 pr-3 text-right text-label uppercase text-destructive">Total</th>
+                <th className="px-4 py-2 text-left text-label uppercase text-muted-foreground">Item</th>
+                <th className="px-4 py-2 text-right text-label uppercase text-muted-foreground">Cost</th>
+                <th className="px-4 py-2 text-right text-label uppercase text-muted-foreground">Margin</th>
+                <th className="px-4 py-2 text-right text-label uppercase text-muted-foreground">Qty</th>
+                <th className="px-4 py-2 text-right text-label uppercase text-destructive">Buyer</th>
+                <th className="px-4 py-2 text-right text-label uppercase text-destructive">Total</th>
               </tr>
             </thead>
             <tbody>
@@ -91,19 +91,19 @@ export default function BuyerQuotation() {
                 const totalEur = unitEur * l.qty;
                 return (
                   <tr key={l.item} className="border-t border-border/60">
-                    <td className="py-2 pr-3">
-                      <div className="whitespace-nowrap font-medium">{l.item}</div>
+                    <td className="px-4 py-2.5">
+                      <div className="whitespace-nowrap font-medium text-foreground">{l.item}</div>
                       <div className="whitespace-nowrap text-caption text-muted-foreground">{l.supplier}</div>
                     </td>
-                    <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">${l.cost.toFixed(2)}</td>
-                    <td className="whitespace-nowrap py-2 pr-3 text-right">
-                      <span className={l.override ? "font-mono text-mono text-foreground" : "font-mono text-mono text-muted-foreground"}>
+                    <td className="whitespace-nowrap px-4 py-2.5 text-right font-medium text-foreground">${l.cost.toFixed(2)}</td>
+                    <td className="whitespace-nowrap px-4 py-2.5 text-right">
+                      <span className={l.override ? "font-medium text-foreground" : "text-muted-foreground"}>
                         {(rate * 100).toFixed(0)}%{l.override ? " · override" : ""}
                       </span>
                     </td>
-                    <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">{l.qty}</td>
-                    <td className="whitespace-nowrap py-2 px-3 text-right font-mono text-mono text-foreground">€ {unitEur.toFixed(2)}</td>
-                    <td className="whitespace-nowrap py-2 pl-3 pr-3 text-right font-mono text-mono text-foreground">€ {totalEur.toFixed(2)}</td>
+                    <td className="whitespace-nowrap px-4 py-2.5 text-right font-medium text-foreground">{l.qty}</td>
+                    <td className="whitespace-nowrap px-4 py-2.5 text-right font-medium text-foreground">€ {unitEur.toFixed(2)}</td>
+                    <td className="whitespace-nowrap px-4 py-2.5 text-right font-medium text-foreground">€ {totalEur.toFixed(2)}</td>
                   </tr>
                 );
               })}
@@ -111,7 +111,7 @@ export default function BuyerQuotation() {
             <tfoot>
               <tr className="border-t border-border">
                 <td colSpan={5} />
-                <td className="whitespace-nowrap py-3 pl-3 pr-3 text-right font-mono text-mono text-foreground font-semibold">
+                <td className="whitespace-nowrap px-4 py-3 text-right font-semibold text-foreground">
                   € {lines.reduce((acc, l) => {
                     const rate = (l.override ?? globalRate * 100) / 100;
                     return acc + (l.cost / (1 - rate)) * 0.92 * l.qty;
@@ -120,6 +120,7 @@ export default function BuyerQuotation() {
               </tr>
             </tfoot>
           </table>
+
         </div>
 
       </Card>
