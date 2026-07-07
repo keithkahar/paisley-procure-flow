@@ -156,9 +156,9 @@ export default function BuyerQuotation() {
           <Card>
             <div className="section-title mb-3">Currency</div>
             <div className="text-body space-y-1.5">
-              <div className="flex justify-between"><span>USD → EUR</span><span className="font-medium">0.9200</span></div>
-              <div className="flex justify-between"><span>CNY → USD</span><span className="font-medium">0.1380</span></div>
-              <div className="flex justify-between"><span>Locked at</span><span className="text-muted-foreground">Today, 09:12</span></div>
+              <div className="flex justify-between"><span>USD → EUR</span><span className="font-mono text-mono text-foreground">0.9200</span></div>
+              <div className="flex justify-between"><span>CNY → USD</span><span className="font-mono text-mono text-foreground">0.1380</span></div>
+              <div className="flex justify-between"><span>Locked at</span><span className="text-caption text-muted-foreground">Today, 09:12</span></div>
             </div>
           </Card>
           <Card>
