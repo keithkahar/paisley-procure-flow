@@ -145,17 +145,17 @@ export default function Settings() {
         {/* --------- Channels --------- */}
         <TabsContent value="channels" className="mt-0">
           <SectionCard
-            title="Mailboxes"
+            title="Mailbox"
             desc="Dedicated inboxes per workflow stage."
-            status={<StatusBadge tone="success" dot>All active</StatusBadge>}
           >
             <ul className="divide-y divide-border rounded-lg border border-border">
               {mailboxes.map((m) => (
-                <li key={m.addr} className="flex items-center justify-between px-4 py-3">
+                <li key={m.addr} className="flex items-center justify-between gap-3 px-4 py-3">
                   <div className="min-w-0">
                     <IdText>{m.addr}</IdText>
                     <div className="mt-0.5 text-caption text-muted-foreground">{m.purpose}</div>
                   </div>
+                  <StatusBadge tone="success" dot>Active</StatusBadge>
                 </li>
               ))}
             </ul>
