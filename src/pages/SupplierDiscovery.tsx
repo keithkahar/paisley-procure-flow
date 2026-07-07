@@ -29,6 +29,7 @@ export default function SupplierDiscovery() {
         description="2/8"
         actions={
           <>
+            <HeaderSearch placeholder="Search suppliers…" />
             <Button variant="outline" size="sm" className="h-9 leading-none box-border"><Settings2 className="mr-1.5 h-4 w-4" /> Discovery settings</Button>
             <Button size="sm" className="h-9 leading-none box-border border border-transparent"><Zap className="mr-1.5 h-4 w-4" /> Generate candidates</Button>
           </>
