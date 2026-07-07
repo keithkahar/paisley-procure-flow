@@ -37,11 +37,8 @@ export default function FirstContact() {
       {/* Compact horizontal KPI strip — matches Purchase Intake rhythm */}
       <div className="mb-4 grid grid-cols-2 gap-3 md:grid-cols-4">
         {kpis.map((k) => (
-          <div key={k.label} className="card-surface flex items-center gap-3 px-4 py-3">
-            <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-muted ${k.tone}`}>
-              <k.icon className="h-4 w-4" strokeWidth={2.25} />
-            </div>
-            <div className="min-w-0 flex-1">
+          <div key={k.label} className="card-surface px-4 py-3">
+            <div className="min-w-0">
               <div className="truncate text-caption text-muted-foreground">{k.label}</div>
               <div className="flex items-baseline gap-1.5">
                 <span className="font-display text-[20px] font-semibold leading-none tracking-tight text-foreground tabular-nums">
@@ -50,6 +47,7 @@ export default function FirstContact() {
               </div>
             </div>
           </div>
+
         ))}
       </div>
 
