@@ -220,20 +220,6 @@ export default function Settings() {
                 <span className="font-mono text-body tabular-nums text-muted-foreground">3%</span>
               </li>
             </ul>
-
-            <div className="mb-2 text-eyebrow text-muted-foreground">By category</div>
-            <ul className="divide-y divide-border">
-              {categoryMargins.map(([k, v]) => (
-                <li key={k} className="flex items-center justify-between py-2.5">
-                  <span className="text-body">{k}</span>
-                  <span className="font-mono text-body tabular-nums">{v}</span>
-                </li>
-              ))}
-              <li className="flex items-center justify-between py-2.5">
-                <span className="text-body text-muted-foreground">Buffer</span>
-                <span className="font-mono text-body tabular-nums text-muted-foreground">3%</span>
-              </li>
-            </ul>
           </SectionCard>
 
           <SectionCard title="Currency settings" desc="Base currency, rate source and lock policy.">
