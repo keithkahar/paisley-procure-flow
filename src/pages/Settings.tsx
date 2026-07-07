@@ -66,12 +66,13 @@ const sources = [
   "Historical order suppliers",
 ];
 
+// Palette matches the dashboard donut: deep blue → bright blue → mid gray → light gray → pale gray
 const ratingWeights: Array<{ label: string; pct: number; color: string }> = [
-  { label: "On-time delivery",              pct: 30, color: "bg-primary" },
-  { label: "Quote accuracy",                pct: 25, color: "bg-success" },
-  { label: "Quality (inspection pass)",     pct: 20, color: "bg-violet" },
-  { label: "Response speed",                pct: 15, color: "bg-warning" },
-  { label: "Communication clarity",         pct: 10, color: "bg-gold" },
+  { label: "On-time delivery",              pct: 30, color: "bg-[hsl(224_76%_38%)]" },
+  { label: "Quote accuracy",                pct: 25, color: "bg-[hsl(217_91%_60%)]" },
+  { label: "Quality (inspection pass)",     pct: 20, color: "bg-[hsl(220_13%_65%)]" },
+  { label: "Response speed",                pct: 15, color: "bg-[hsl(220_13%_78%)]" },
+  { label: "Communication clarity",         pct: 10, color: "bg-[hsl(220_14%_88%)]" },
 ];
 
 /* ---------- shared shells ---------- */
