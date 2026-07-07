@@ -51,7 +51,7 @@ function OrderProgress({ stage }: { stage: number }) {
                   className={cn(
                     "h-2 flex-1 rounded-full transition-colors",
                     done || current ? "bg-primary" : "bg-border",
-                    current && "ring-2 ring-primary ring-offset-2 ring-offset-background",
+                    current && "ring-2 ring-primary ring-offset-2 ring-offset-card",
                   )}
                   aria-label={m}
                 />
