@@ -65,14 +65,14 @@ export default function BuyerQuotation() {
                             <div className="whitespace-nowrap font-medium">{l.item}</div>
                             <div className="whitespace-nowrap text-caption text-muted-foreground">{l.supplier}</div>
                           </td>
-                          <td className="whitespace-nowrap py-2 pr-3 text-right">${l.cost.toFixed(2)}</td>
-                          <td className="whitespace-nowrap py-2 pr-3 text-right">{l.qty}</td>
+                          <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">${l.cost.toFixed(2)}</td>
+                          <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">{l.qty}</td>
                           <td className="whitespace-nowrap py-2 pr-3 text-right">
-                            <span className={l.override ? "text-primary font-semibold" : "text-muted-foreground"}>
+                            <span className={l.override ? "font-mono text-mono text-foreground" : "font-mono text-mono text-muted-foreground"}>
                               {(rate * 100).toFixed(0)}%{l.override ? " · override" : ""}
                             </span>
                           </td>
-                          <td className="whitespace-nowrap py-2 pl-3 text-right font-display font-semibold">${buyer.toFixed(2)}</td>
+                          <td className="whitespace-nowrap py-2 pl-3 text-right font-mono text-mono text-foreground">${buyer.toFixed(2)}</td>
                         </tr>
                       );
                     })}
