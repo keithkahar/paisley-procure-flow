@@ -1,4 +1,5 @@
 import { PageHeader, WorkflowBadge, RefBadge, MissingFieldBadge, ApproveAction, EditAction, PreviewAction, type WorkflowState } from "@/components/mos/Primitives";
+import { HeaderSearch } from "@/components/mos/HeaderSearch";
 import { Button } from "@/components/ui/button";
 import { Info, Mail, Send, Pencil, Clock3, CheckCircle2, Inbox } from "lucide-react";
 
@@ -28,6 +29,7 @@ export default function FirstContact() {
         description="4/8"
         actions={
           <>
+            <HeaderSearch placeholder="Search emails…" />
             <Button size="sm" variant="outline" className="h-9 leading-none box-border"><Pencil className="mr-1.5 h-4 w-4" /> Edit template</Button>
             <Button size="sm" className="h-9 leading-none box-border border border-transparent"><Send className="mr-1.5 h-4 w-4" /> Send approved batch</Button>
           </>

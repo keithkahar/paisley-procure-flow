@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { PageHeader, KpiTile, WorkflowBadge, RefBadge, DeliveryBasisBadge, IdText, type WorkflowState } from "@/components/mos/Primitives";
+import { HeaderSearch } from "@/components/mos/HeaderSearch";
 import { Button } from "@/components/ui/button";
 import { Plus, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -39,7 +40,12 @@ export default function Orders() {
       <PageHeader
         title="Orders"
         description="8/8"
-        actions={<Button size="sm" className="h-9 leading-none box-border border border-transparent"><Plus className="mr-1.5 h-4 w-4" /> New order</Button>}
+        actions={
+          <>
+            <HeaderSearch placeholder="Search orders…" />
+            <Button size="sm" className="h-9 leading-none box-border border border-transparent"><Plus className="mr-1.5 h-4 w-4" /> New order</Button>
+          </>
+        }
       />
 
       <div className="mb-6 grid grid-cols-2 gap-4 md:grid-cols-4">

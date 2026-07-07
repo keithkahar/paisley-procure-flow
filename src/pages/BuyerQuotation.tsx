@@ -1,4 +1,5 @@
 import { PageHeader, Card, WorkflowBadge, DeliveryBasisBadge, StatusBadge, KpiTile, IdText, RefBadge } from "@/components/mos/Primitives";
+import { HeaderSearch } from "@/components/mos/HeaderSearch";
 import { Button } from "@/components/ui/button";
 import { FileDown, Send, Eye } from "lucide-react";
 
@@ -18,6 +19,7 @@ export default function BuyerQuotation() {
         description="7/8"
         actions={
           <>
+            <HeaderSearch placeholder="Search quotations…" />
             <Button size="sm" variant="outline" className="h-9 leading-none box-border"><Eye className="mr-1.5 h-4 w-4" /> Buyer preview</Button>
             <Button size="sm" variant="outline" className="h-9 leading-none box-border"><FileDown className="mr-1.5 h-4 w-4" /> Export PDF</Button>
             <Button size="sm" className="h-9 leading-none box-border border border-transparent"><Send className="mr-1.5 h-4 w-4" /> Send for approval</Button>

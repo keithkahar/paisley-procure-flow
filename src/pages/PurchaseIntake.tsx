@@ -1,4 +1,5 @@
 import { PageHeader, Card, WorkflowBadge, MissingFieldBadge, type WorkflowState } from "@/components/mos/Primitives";
+import { HeaderSearch } from "@/components/mos/HeaderSearch";
 import { Button } from "@/components/ui/button";
 import { AlertCircle, Inbox, Upload, ArrowRight, CheckCircle2, Clock, Info } from "lucide-react";
 
@@ -41,6 +42,7 @@ export default function PurchaseIntake() {
         description="1/8"
         actions={
           <>
+            <HeaderSearch placeholder="Search intakes…" />
             <Button variant="outline" size="sm" className="h-9 leading-none box-border"><Upload className="mr-1.5 h-4 w-4" /> Import CSV</Button>
             <Button size="sm" className="h-9 leading-none box-border border border-transparent"><Inbox className="mr-1.5 h-4 w-4" /> New intake</Button>
           </>

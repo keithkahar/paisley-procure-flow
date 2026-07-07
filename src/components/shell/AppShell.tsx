@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
-import { Menu, X, Search } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 import { IconRail, useActiveNav, BrandMark, NAV } from "./Navigation";
 import { UserMenu } from "./UserMenu";
 import { NavLink } from "react-router-dom";
@@ -10,17 +10,10 @@ export default function AppShell() {
   const active = useActiveNav();
   const { pathname } = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setMobileOpen(false);
-    setSearchOpen(false);
   }, [pathname]);
-
-  useEffect(() => {
-    if (searchOpen) searchInputRef.current?.focus();
-  }, [searchOpen]);
 
   return (
     <div className="flex min-h-screen w-full bg-surface-sunken text-foreground">
@@ -79,36 +72,6 @@ export default function AppShell() {
           </div>
 
           <div className="ml-auto flex items-center gap-2">
-            {/* Expanding search — icon collapses into a pill input on click */}
-            <div className="flex items-center">
-              <div
-                className={cn(
-                  "relative overflow-hidden transition-[width,opacity] duration-200 ease-out",
-                  searchOpen ? "w-[180px] md:w-[320px] opacity-100 mr-1" : "w-0 opacity-0",
-                )}
-              >
-                <input
-                  ref={searchInputRef}
-                  placeholder="Search RFQs, suppliers, orders…"
-                  onBlur={(e) => { if (!e.currentTarget.value) setSearchOpen(false); }}
-                  onKeyDown={(e) => { if (e.key === "Escape") setSearchOpen(false); }}
-                  className="h-9 w-full rounded-full border border-border bg-surface-muted pl-4 pr-9 text-caption text-foreground placeholder:text-muted-foreground/70 outline-none focus:border-primary/40 focus:bg-surface"
-                />
-              </div>
-              <button
-                aria-label="Search"
-                onClick={() => setSearchOpen((v) => !v)}
-                className={cn(
-                  "inline-flex h-9 w-9 items-center justify-center rounded-full transition-colors",
-                  searchOpen
-                    ? "bg-primary-soft text-primary"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground",
-                )}
-              >
-                <Search className="h-[18px] w-[18px]" strokeWidth={2} />
-              </button>
-            </div>
-
             {/* Mobile menu button — right side */}
             <button
               className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground md:hidden"
