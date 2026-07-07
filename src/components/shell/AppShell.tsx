@@ -127,6 +127,24 @@ export default function AppShell() {
           </div>
         </main>
       </div>
+
+      {/* Mobile floating user menu — bottom right */}
+      <div className="fixed bottom-4 right-4 z-40 md:hidden">
+        <UserMenu
+          side="top"
+          align="end"
+          trigger={
+            <button
+              type="button"
+              aria-label="Open account menu"
+              className="relative flex h-12 w-12 items-center justify-center rounded-full bg-[hsl(14_90%_58%)] text-[13px] font-semibold text-white shadow-lg ring-2 ring-white"
+            >
+              KE
+              <span className="absolute right-0.5 top-0.5 h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-white" />
+            </button>
+          }
+        />
+      </div>
     </div>
   );
 }
