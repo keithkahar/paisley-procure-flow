@@ -177,7 +177,15 @@ export default function Settings() {
 
         {/* --------- Masters --------- */}
         <TabsContent value="masters" className="mt-0">
-          <SectionCard title="Port / Warehouse master" desc="Canonical origin and destination points.">
+          <SectionCard
+            title="Port / Warehouse master"
+            desc="Canonical origin and destination points."
+            headerActions={
+              <Button variant="outline" size="sm" className="h-8">
+                <Plus className="mr-1.5 h-3.5 w-3.5" /> Add location
+              </Button>
+            }
+          >
             <div className="grid grid-cols-2 gap-x-6 gap-y-1 md:grid-cols-3">
               {ports.map((p) => (
                 <div key={p.name} className="flex items-center justify-between py-2">
@@ -188,9 +196,6 @@ export default function Settings() {
                   <span className="text-caption text-muted-foreground">{p.country}</span>
                 </div>
               ))}
-            </div>
-            <div className="mt-4">
-              <Button variant="outline" size="sm">Add location</Button>
             </div>
           </SectionCard>
         </TabsContent>
