@@ -52,7 +52,7 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
   );
 
   return (
-    <nav aria-label="Primary" className="flex h-full flex-col items-center pt-[var(--topbar-h)] pb-4">
+    <nav aria-label="Primary" className="flex h-full flex-col pt-[var(--topbar-h)] pb-4">
       <ul
         className="rail-tab-track flex flex-1 flex-col items-stretch gap-0 w-full overflow-y-auto"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
@@ -74,7 +74,7 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
               end
               className={() =>
                 cn(
-                  "group relative flex h-[var(--rail-tab-h)] flex-col items-center justify-center gap-0.5 text-[11px] font-semibold tracking-tight transition-colors",
+                  "group relative flex h-[var(--rail-tab-h)] flex-row items-center gap-3 pl-5 pr-4 text-[13px] font-semibold tracking-tight transition-colors",
                   visualPath === item.to
                     ? "rail-tab-current"
                     : "text-white hover:text-white",
@@ -88,14 +88,14 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
                 <>
                     <span
                       className={cn(
-                        "flex h-8 w-8 items-center justify-center rounded-lg transition-colors",
+                        "flex h-6 w-6 items-center justify-center transition-colors",
                         isVisuallyActive ? "text-foreground" : "text-white",
                       )}
                     >
                       <item.icon className="h-5 w-5 shrink-0" />
                     </span>
-                  <span className="text-[11px] leading-tight">
-                    {item.label}
+                  <span className="truncate leading-tight">
+                    {item.full}
                   </span>
                 </>
                 );
@@ -109,12 +109,12 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
       <button
         type="button"
         aria-label="Log out"
-        className="mt-2 flex flex-col items-center gap-0.5 rounded-xl px-3 py-2 text-[11px] font-semibold text-white transition-colors hover:text-white"
+        className="mt-2 flex flex-row items-center gap-3 pl-5 pr-4 h-[var(--rail-tab-h)] text-[13px] font-semibold text-white transition-colors hover:text-white"
       >
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg text-white">
+        <span className="flex h-6 w-6 items-center justify-center text-white">
           <ArrowLeftOnRectangleIcon className="h-5 w-5 shrink-0" />
         </span>
-        <span className="text-[11px] leading-tight">Logout</span>
+        <span className="leading-tight">Logout</span>
       </button>
     </nav>
   );
