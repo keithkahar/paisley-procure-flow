@@ -1,4 +1,4 @@
-import { PageHeader, Card, RefBadge, IconAction } from "@/components/mos/Primitives";
+import { PageHeader, KpiTile, RefBadge, IconAction } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { Calculator, Plus, ArrowRight } from "lucide-react";
 
@@ -62,24 +62,13 @@ export default function RFQ() {
             ["Profit", "22%", false],
             ["Buyer landed", "$ 7.83", true],
           ].map(([k, v, highlight]) => (
-            <div
-              key={k as string}
-              className="flex min-h-[84px] flex-col rounded-xl border border-border bg-surface p-4 shadow-sm md:min-h-[96px]"
-            >
-              <div className="text-eyebrow line-clamp-2">{k}</div>
-              <div
-                className={
-                  "mt-1.5 font-display text-[22px] font-semibold leading-none tracking-tight " +
-                  (highlight ? "text-primary" : "text-foreground")
-                }
-              >
-                {v}
-              </div>
-
+            <div key={k as string} className={highlight ? "[&_.kpi-tile]:ring-1 [&_.kpi-tile]:ring-primary/25 [&_.kpi-tile_.font-display]:text-primary" : ""}>
+              <KpiTile label={k as string} value={v as string} />
             </div>
           ))}
         </div>
       </div>
+
 
 
 
