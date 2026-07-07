@@ -12,9 +12,9 @@ import {
   ReceiptPercentIcon,
   CubeIcon,
   Cog6ToothIcon,
-  ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/solid";
 import { cn } from "@/lib/utils";
+import { UserMenu } from "./UserMenu";
 import logoAsset from "@/assets/paisley-mos-logo.png.asset.json";
 const wordmarkUrl = logoAsset.url;
 
@@ -105,17 +105,32 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
         ))}
       </ul>
 
-      {/* Logout replaces avatar */}
-      <button
-        type="button"
-        aria-label="Log out"
-        className="mt-2 flex flex-row items-center gap-3 pl-5 pr-4 h-[var(--rail-tab-h)] text-[13px] font-semibold text-white transition-colors hover:text-white"
-      >
-        <span className="flex h-6 w-6 items-center justify-center text-white">
-          <ArrowLeftOnRectangleIcon className="h-5 w-5 shrink-0" />
-        </span>
-        <span className="leading-tight">Logout</span>
-      </button>
+      {/* User menu — divider + avatar/name/plan */}
+      <div className="mt-2 border-t border-white/15 pt-2 px-2">
+        <UserMenu
+          side="right"
+          align="end"
+          trigger={
+            <button
+              type="button"
+              aria-label="Open account menu"
+              className="flex w-full items-center gap-3 rounded-lg px-2 py-2 text-left transition-colors hover:bg-white/10"
+            >
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[hsl(14_90%_58%)] text-[12px] font-semibold text-white">
+                KE
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block truncate text-[13px] font-semibold text-white leading-tight">
+                  Keith
+                </span>
+                <span className="block truncate text-[11px] text-white/60 leading-tight">
+                  Pro
+                </span>
+              </span>
+            </button>
+          }
+        />
+      </div>
     </nav>
   );
 }

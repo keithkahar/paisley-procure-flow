@@ -15,7 +15,7 @@ export default function BuyerQuotation() {
     <>
       <PageHeader
         title="Buyer Quotation"
-        description="Step 7 of 8"
+        description="7/8"
         actions={
           <>
             <Button size="sm" variant="outline" className="h-9 leading-none box-border"><Eye className="mr-1.5 h-4 w-4" /> Buyer preview</Button>

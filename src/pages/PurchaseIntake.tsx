@@ -38,7 +38,7 @@ export default function PurchaseIntake() {
     <>
       <PageHeader
         title="Purchase Intake"
-        description="Step 1 of 8"
+        description="1/8"
         actions={
           <>
             <Button variant="outline" size="sm" className="h-9 leading-none box-border"><Upload className="mr-1.5 h-4 w-4" /> Import CSV</Button>

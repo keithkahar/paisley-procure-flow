@@ -1,7 +1,8 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import { Bell, Menu, X, Search } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 import { IconRail, useActiveNav, BrandMark, NAV } from "./Navigation";
+import { UserMenu } from "./UserMenu";
 import { NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
@@ -108,15 +109,7 @@ export default function AppShell() {
               </button>
             </div>
 
-            <button
-              aria-label="Notifications"
-              className="relative inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground"
-            >
-              <Bell className="h-[18px] w-[18px]" strokeWidth={2} />
-              <span className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-primary" />
-            </button>
-
-            {/* Mobile menu button — right side, after bell */}
+            {/* Mobile menu button — right side */}
             <button
               className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground md:hidden"
               onClick={() => setMobileOpen(true)}
@@ -124,12 +117,6 @@ export default function AppShell() {
             >
               <Menu className="h-[18px] w-[18px]" />
             </button>
-
-            <div className="ml-1 hidden md:flex items-center">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-brand text-caption font-semibold text-primary-foreground ring-2 ring-white shadow-sm">
-                LK
-              </div>
-            </div>
           </div>
         </header>
 
@@ -139,6 +126,24 @@ export default function AppShell() {
             <Outlet context={{ active }} />
           </div>
         </main>
+      </div>
+
+      {/* Mobile floating user menu — bottom right */}
+      <div className="fixed bottom-4 right-4 z-40 md:hidden">
+        <UserMenu
+          side="top"
+          align="end"
+          trigger={
+            <button
+              type="button"
+              aria-label="Open account menu"
+              className="relative flex h-12 w-12 items-center justify-center rounded-full bg-[hsl(14_90%_58%)] text-[13px] font-semibold text-white shadow-lg ring-2 ring-white"
+            >
+              KE
+              <span className="absolute right-0.5 top-0.5 h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-white" />
+            </button>
+          }
+        />
       </div>
     </div>
   );

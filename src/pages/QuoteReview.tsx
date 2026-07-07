@@ -17,7 +17,7 @@ export default function QuoteReview() {
     <>
       <PageHeader
         title="Quote Review"
-        description="Step 6 of 8"
+        description="6/8"
         actions={<Button size="sm" variant="outline" className="h-9 leading-none box-border"><ClipboardCheck className="mr-1.5 h-4 w-4" /> Approval rules</Button>}
       />
 

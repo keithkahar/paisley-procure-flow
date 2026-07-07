@@ -25,7 +25,7 @@ export default function FirstContact() {
     <>
       <PageHeader
         title="First Contact"
-        description="Step 4 of 8"
+        description="4/8"
         actions={
           <>
             <Button size="sm" variant="outline" className="h-9 leading-none box-border"><Pencil className="mr-1.5 h-4 w-4" /> Edit template</Button>
