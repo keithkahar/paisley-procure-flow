@@ -87,7 +87,7 @@ export default function BuyerQuotation() {
               <div className="section-title">Buyer-facing preview</div>
               <WorkflowBadge state="visible" />
             </div>
-            <div className="rounded-lg border border-border p-4">
+            <div className="rounded-lg bg-surface-sunken p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
                   <div className="font-display text-lg font-bold">Quotation Q-2041</div>
