@@ -47,11 +47,12 @@ export default function BuyerQuotation() {
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
               <span className="flex items-center"><IdText>Q-2041</IdText></span>
+              <RefBadge>PH-004</RefBadge>
               <DeliveryBasisBadge>CIF Gothenburg</DeliveryBasisBadge>
               <DeliveryBasisBadge>EUR</DeliveryBasisBadge>
               <span className="text-caption text-muted-foreground">Valid to Aug 7 2026</span>
             </div>
-            <h3 className="mt-1 font-display text-subtitle font-semibold">Nordic Marine AB — Project PH-004</h3>
+            <h3 className="mt-1 font-display text-subtitle font-semibold">Nordic Marine AB</h3>
           </div>
           <WorkflowBadge state="draft" />
         </div>
