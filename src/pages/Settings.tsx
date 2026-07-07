@@ -204,16 +204,22 @@ export default function Settings() {
         {/* --------- Pricing & Currency --------- */}
         <TabsContent value="pricing" className="mt-0 space-y-5">
           <SectionCard title="Pricing settings" desc="Default margins and buffers by category.">
-            {/* Global default sits apart — it's a fallback, not a category */}
-            <div className="mb-4 flex items-center justify-between rounded-lg border border-border bg-surface-muted px-4 py-3">
-              <div>
-                <div className="text-body font-medium text-foreground">Global default</div>
-                <div className="text-caption text-muted-foreground">
-                  Fallback when a category has no margin set.
-                </div>
-              </div>
-              <span className="font-mono text-body font-semibold tabular-nums">22%</span>
-            </div>
+            <ul className="divide-y divide-border">
+              <li className="flex items-center justify-between py-2.5">
+                <span className="text-body">Global default</span>
+                <span className="font-mono text-body font-semibold tabular-nums text-primary">22%</span>
+              </li>
+              {categoryMargins.map(([k, v]) => (
+                <li key={k} className="flex items-center justify-between py-2.5">
+                  <span className="text-body">{k}</span>
+                  <span className="font-mono text-body tabular-nums">{v}</span>
+                </li>
+              ))}
+              <li className="flex items-center justify-between py-2.5">
+                <span className="text-body text-muted-foreground">Buffer</span>
+                <span className="font-mono text-body tabular-nums text-muted-foreground">3%</span>
+              </li>
+            </ul>
 
             <div className="mb-2 text-eyebrow text-muted-foreground">By category</div>
             <ul className="divide-y divide-border">
