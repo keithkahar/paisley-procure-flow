@@ -1,4 +1,5 @@
 import { PageHeader, KpiTile, RefBadge, IconAction, DeliveryBasisBadge } from "@/components/mos/Primitives";
+import { HeaderSearch } from "@/components/mos/HeaderSearch";
 import { Button } from "@/components/ui/button";
 import { Calculator, Plus, ArrowRight } from "lucide-react";
 
