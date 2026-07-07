@@ -60,18 +60,22 @@ export default function BuyerQuotation() {
       </div>
 
       {/* Unified quotation card — internal cost + buyer preview side by side */}
-      <Card>
-        <div className="mb-4 flex items-start justify-between gap-4">
-          <div>
-            <div className="text-label uppercase text-muted-foreground font-mono text-mono">Q-2041</div>
+      <Card padded={false}>
+        <div className="flex items-start justify-between gap-4 p-6 pb-4">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-label uppercase text-muted-foreground font-mono text-mono">Q-2041</span>
+              <DeliveryBasisBadge>CIF Gothenburg</DeliveryBasisBadge>
+              <DeliveryBasisBadge>EUR</DeliveryBasisBadge>
+              <span className="text-caption text-muted-foreground">Valid till Aug 7 2026</span>
+            </div>
             <h3 className="mt-1 font-display text-subtitle font-semibold">Nordic Marine AB — Project PH-004</h3>
-            <div className="text-caption text-muted-foreground">CIF Gothenburg · EUR · Valid 30 days</div>
           </div>
           <WorkflowBadge state="draft" />
         </div>
 
         {/* Unified quotation table */}
-        <div className="-mx-1 overflow-x-auto">
+        <div className="overflow-x-auto">
           <table className="w-full min-w-[640px] text-body">
             <thead className="bg-surface-muted">
               <tr>
@@ -97,8 +101,9 @@ export default function BuyerQuotation() {
                     </td>
                     <td className="whitespace-nowrap px-4 py-2.5 text-right font-medium text-foreground">${l.cost.toFixed(2)}</td>
                     <td className="whitespace-nowrap px-4 py-2.5 text-right">
-                      <span className={l.override ? "font-medium text-foreground" : "text-muted-foreground"}>
-                        {(rate * 100).toFixed(0)}%{l.override ? " · override" : ""}
+                      <span className="inline-flex items-center gap-1.5 font-medium text-foreground">
+                        {l.override && <StatusBadge tone="muted">override</StatusBadge>}
+                        {(rate * 100).toFixed(0)}%
                       </span>
                     </td>
                     <td className="whitespace-nowrap px-4 py-2.5 text-right font-medium text-foreground">{l.qty}</td>
@@ -120,8 +125,8 @@ export default function BuyerQuotation() {
               </tr>
             </tfoot>
           </table>
-
         </div>
+
 
       </Card>
     </>
