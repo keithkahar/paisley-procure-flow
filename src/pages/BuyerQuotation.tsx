@@ -1,4 +1,4 @@
-import { PageHeader, Card, WorkflowBadge, Chip } from "@/components/mos/Primitives";
+import { PageHeader, Card, WorkflowBadge, Chip, DeliveryBasisBadge, StatusBadge } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FileDown, Send, Eye } from "lucide-react";
