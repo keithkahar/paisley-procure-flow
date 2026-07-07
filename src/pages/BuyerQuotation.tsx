@@ -1,6 +1,5 @@
-import { PageHeader, Card, WorkflowBadge, Chip, DeliveryBasisBadge, StatusBadge } from "@/components/mos/Primitives";
+import { PageHeader, Card, WorkflowBadge, DeliveryBasisBadge, StatusBadge, KpiTile } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { FileDown, Send, Eye } from "lucide-react";
 
 const lines = [
@@ -26,40 +25,23 @@ export default function BuyerQuotation() {
         }
       />
 
-      {/* Top settings strip — 3 compact cards */}
-      <div className="mb-6 grid gap-4 lg:grid-cols-3">
-        <Card>
-          <div className="section-title mb-3">Global profit settings</div>
-          <label className="block">
-            <span className="text-caption text-muted-foreground">Default rate (all categories)</span>
-            <Input defaultValue="22" className="mt-1 h-9" />
-          </label>
-          <div className="mt-3 space-y-2">
-            <RateRow label="Marine hardware" value="22%" />
-            <RateRow label="Electronics" value="28%" />
-            <RateRow label="Valves & fittings" value="20%" />
-            <RateRow label="Packaging" value="18%" />
-          </div>
-        </Card>
-        <Card>
-          <div className="section-title mb-3">Currency</div>
-          <div className="text-body space-y-1.5">
-            <div className="flex justify-between"><span>USD → EUR</span><span className="font-mono text-mono text-foreground">0.9200</span></div>
-            <div className="flex justify-between"><span>CNY → USD</span><span className="font-mono text-mono text-foreground">0.1380</span></div>
-            <div className="flex justify-between"><span>Locked at</span><span className="text-caption text-muted-foreground">Today, 09:12</span></div>
-          </div>
-        </Card>
-        <Card>
-          <div className="section-title mb-3">Delivery basis</div>
-          <div className="flex flex-wrap gap-1.5">
-            {["EXW", "FOB", "CIF", "DAP", "DDP"].map((t) => (
-              <Chip key={t} active={t === "CIF"}>{t}</Chip>
-            ))}
-          </div>
-        </Card>
+      {/* Global profit settings — 5 KPI tiles */}
+      <div className="mb-4 grid gap-4 grid-cols-2 md:grid-cols-5">
+        <KpiTile label="Default rate" value="22%" hint="all categories" />
+        <KpiTile label="Marine hardware" value="22%" />
+        <KpiTile label="Electronics" value="28%" />
+        <KpiTile label="Valves & fittings" value="20%" />
+        <KpiTile label="Packaging" value="18%" />
       </div>
 
-      {/* Unified quotation card — internal cost + buyer preview side by side */}
+      {/* Currency — 3 KPI tiles */}
+      <div className="mb-6 grid gap-4 grid-cols-1 md:grid-cols-3">
+        <KpiTile label="USD → EUR" value="0.9200" hint="Locked today 09:12" />
+        <KpiTile label="CNY → USD" value="0.1380" hint="Locked today 09:12" />
+        <KpiTile label="CNY → EUR" value="0.1270" hint="Locked today 09:12" />
+      </div>
+
+      {/* Unified quotation card */}
       <Card padded={false}>
         <div className="flex items-start justify-between gap-4 p-6 pb-4">
           <div className="min-w-0">
@@ -67,7 +49,7 @@ export default function BuyerQuotation() {
               <span className="text-label uppercase text-muted-foreground font-mono text-mono">Q-2041</span>
               <DeliveryBasisBadge>CIF Gothenburg</DeliveryBasisBadge>
               <DeliveryBasisBadge>EUR</DeliveryBasisBadge>
-              <span className="text-caption text-muted-foreground">Valid till Aug 7 2026</span>
+              <span className="text-caption text-muted-foreground">Valid to Aug 7 2026</span>
             </div>
             <h3 className="mt-1 font-display text-subtitle font-semibold">Nordic Marine AB — Project PH-004</h3>
           </div>
