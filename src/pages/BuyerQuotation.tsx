@@ -179,7 +179,7 @@ function RateRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between text-body">
       <span className="text-foreground/85">{label}</span>
-      <span className="font-semibold text-primary">{value}</span>
+      <span className="font-mono text-mono text-foreground">{value}</span>
     </div>
   );
 }
