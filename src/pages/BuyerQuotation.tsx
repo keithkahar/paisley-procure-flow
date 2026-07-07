@@ -1,4 +1,5 @@
 import { PageHeader, Card, WorkflowBadge, DeliveryBasisBadge, StatusBadge, KpiTile, IdText, RefBadge } from "@/components/mos/Primitives";
+import { HeaderSearch } from "@/components/mos/HeaderSearch";
 import { Button } from "@/components/ui/button";
 import { FileDown, Send, Eye } from "lucide-react";
 
