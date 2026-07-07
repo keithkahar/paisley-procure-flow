@@ -23,9 +23,12 @@ export default function CandidateReview() {
         title="Candidate Review"
         description="3/8"
         actions={
-          <Button size="sm" className="h-9 leading-none box-border">
-            <CheckCheck className="mr-1.5 h-4 w-4" /> Batch approve safe candidates
-          </Button>
+          <>
+            <HeaderSearch placeholder="Search candidates…" />
+            <Button size="sm" className="h-9 leading-none box-border">
+              <CheckCheck className="mr-1.5 h-4 w-4" /> Batch approve safe candidates
+            </Button>
+          </>
         }
       />
 
