@@ -134,7 +134,7 @@ export default function QuoteReview() {
         ))}
       </div>
 
-      <div className="mt-6 rounded-xl border border-border bg-surface p-4">
+      <div className="card-surface mt-6 p-4">
         <div className="section-title mb-2">Reject reasons</div>
         <div className="flex flex-wrap gap-1.5">
           {rejectReasons.map((r) => (
