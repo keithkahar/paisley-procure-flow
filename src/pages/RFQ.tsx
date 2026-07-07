@@ -44,6 +44,7 @@ export default function RFQ() {
         description="5/8"
         actions={
           <>
+            <HeaderSearch placeholder="Search RFQs…" />
             <Button size="sm" variant="outline" className="h-9 leading-none box-border"><Calculator className="mr-1.5 h-4 w-4" /> Cost model</Button>
             <Button size="sm" className="h-9 leading-none box-border border border-transparent"><Plus className="mr-1.5 h-4 w-4" /> New RFQ</Button>
           </>
