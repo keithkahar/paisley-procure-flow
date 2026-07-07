@@ -31,7 +31,7 @@ export default function BuyerQuotation() {
           <Card>
             <div className="mb-3 flex items-center justify-between">
               <div>
-                <div className="section-title">Quotation Q-2041</div>
+                <div className="text-label uppercase text-muted-foreground font-mono text-mono">Quotation Q-2041</div>
                 <h3 className="mt-1 font-display text-subtitle font-semibold">Nordic Marine AB — Project PH-004</h3>
                 <div className="text-caption text-muted-foreground">CIF Gothenburg · EUR · Valid 30 days</div>
               </div>
@@ -39,7 +39,7 @@ export default function BuyerQuotation() {
             </div>
 
             {/* Internal cost builder — hidden from buyer */}
-            <div className="rounded-lg border border-border bg-surface-muted p-3">
+            <div className="rounded-lg bg-surface-muted p-3">
               <div className="mb-2 flex items-center justify-between">
                 <div className="text-label uppercase text-muted-foreground">Internal cost builder</div>
                 <WorkflowBadge state="hidden" />
