@@ -405,7 +405,7 @@ export function KpiTile({
   tone?: "primary" | "warning" | "success" | "muted";
 }) {
   return (
-    <div className="kpi-tile flex h-full min-h-[84px] flex-col md:min-h-[96px]">
+    <div className="kpi-tile flex h-[72px] flex-col">
       <div className="text-eyebrow line-clamp-2">{label}</div>
       <div className="mt-1.5 flex flex-col gap-1">
         <div className="font-display text-[22px] font-semibold leading-none tracking-tight text-foreground md:text-[28px]">

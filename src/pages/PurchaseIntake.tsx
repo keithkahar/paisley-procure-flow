@@ -50,7 +50,7 @@ export default function PurchaseIntake() {
       {/* Compact horizontal KPI strip */}
       <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4">
         {kpis.map((k) => (
-          <div key={k.label} className="card-surface px-4 py-3">
+          <div key={k.label} className="card-surface flex h-[72px] flex-col justify-center px-4 py-3">
             <div className="min-w-0">
               <div className="truncate text-caption text-muted-foreground">{k.label}</div>
               <div className="flex items-baseline gap-1.5">

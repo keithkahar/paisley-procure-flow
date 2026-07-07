@@ -31,7 +31,7 @@ export default function CandidateReview() {
       {/* Compact KPI strip — matches Supplier Discovery height */}
       <div className="mb-5 grid grid-cols-2 gap-3 md:grid-cols-4">
         {kpis.map((k) => (
-          <div key={k.label} className="card-surface flex items-center justify-between gap-3 px-4 py-3">
+          <div key={k.label} className="card-surface flex h-[72px] items-center justify-between gap-3 px-4 py-3">
             <div className="min-w-0 flex-1">
               <div className="truncate text-caption text-muted-foreground">{k.label}</div>
               <div className="flex items-baseline gap-1.5">
