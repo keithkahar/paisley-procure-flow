@@ -400,46 +400,20 @@ export function KpiTile({
   value,
   delta,
   hint,
-  icon,
-  tone,
 }: {
   label: string;
   value: string | number;
   delta?: string;
   hint?: string;
+  // legacy props — kept for API compatibility
   icon?: ReactNode;
   tone?: "primary" | "warning" | "success" | "muted";
 }) {
-  const toneBorder: Record<NonNullable<typeof tone>, string> = {
-    primary: "border-primary",
-    warning: "border-warning",
-    success: "border-success",
-    muted: "border-border",
-  };
-  const toneText: Record<NonNullable<typeof tone>, string> = {
-    primary: "text-primary",
-    warning: "text-warning",
-    success: "text-success",
-    muted: "text-muted-foreground",
-  };
   return (
-    <div
-      className={cn(
-        "kpi-tile flex h-[72px] flex-col justify-center",
-        tone && `border-l-4 ${toneBorder[tone]} pl-3`,
-      )}
-    >
-      <div className="flex items-center gap-2">
-        {icon && <span className="text-muted-foreground">{icon}</span>}
-        <div className="truncate text-caption text-muted-foreground">{label}</div>
-      </div>
+    <div className="kpi-tile flex h-[72px] flex-col justify-center">
+      <div className="truncate text-caption text-muted-foreground">{label}</div>
       <div className="mt-1 flex items-baseline gap-1.5">
-        <span
-          className={cn(
-            "font-display text-[20px] font-semibold leading-none tracking-tight tabular-nums",
-            tone ? toneText[tone] : "text-foreground",
-          )}
-        >
+        <span className="font-display text-[20px] font-semibold leading-none tracking-tight text-foreground tabular-nums">
           {value}
         </span>
         {(hint || delta) && (
