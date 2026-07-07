@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { PageHeader, KpiTile, WorkflowBadge, RefBadge, DeliveryBasisBadge, IdText, type WorkflowState } from "@/components/mos/Primitives";
+import { HeaderSearch } from "@/components/mos/HeaderSearch";
 import { Button } from "@/components/ui/button";
 import { Plus, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
