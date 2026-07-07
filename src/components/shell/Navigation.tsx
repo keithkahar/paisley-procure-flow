@@ -107,16 +107,16 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
 
       {/* User menu — divider + avatar/name/plan */}
       <div className="mt-2 border-t border-white/15 pt-2 px-2">
-        <UserMenu
-          side="right"
-          align="end"
+          <UserMenu
+          side="top"
+          align="start"
           trigger={
             <button
               type="button"
               aria-label="Open account menu"
               className="flex w-full items-center gap-3 rounded-lg px-2 py-2 text-left transition-colors hover:bg-white/10"
             >
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[hsl(14_90%_58%)] text-[12px] font-semibold text-white">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[12px] font-semibold text-foreground">
                 KE
               </span>
               <span className="min-w-0 flex-1">

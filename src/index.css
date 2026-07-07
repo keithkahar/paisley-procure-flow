@@ -94,7 +94,7 @@
     --topbar-px: 12px;
     --logo-h: 34px;
     --logo-mark-h: 26px;
-    --rail-w: 200px;
+    --rail-w: 224px;
   }
 
   @media (min-width: 768px) {
