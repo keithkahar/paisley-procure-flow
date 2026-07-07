@@ -37,14 +37,14 @@ export default function SupplierDiscovery() {
       {/* Compact horizontal KPI strip — no redundant Active badge */}
       <div className="mb-5 grid grid-cols-2 gap-3 md:grid-cols-4">
         {libs.map((l) => (
-          <div key={l.name} className="card-surface flex items-center justify-between gap-3 px-4 py-3">
+          <div key={l.name} className="card-surface flex h-[72px] items-center justify-between gap-3 border-0 px-4 py-3">
             <div className="min-w-0 flex-1">
               <div className="truncate text-caption text-muted-foreground">{l.name}</div>
               <div className="flex items-baseline gap-1.5">
                 <span className="font-display text-[20px] font-semibold leading-none tracking-tight text-foreground tabular-nums">
                   {l.results}
                 </span>
-                <span className="truncate text-[11px] text-muted-foreground">matches this week</span>
+                <span className="truncate text-caption text-muted-foreground">matches this week</span>
               </div>
             </div>
           </div>
