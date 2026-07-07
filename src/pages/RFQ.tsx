@@ -1,4 +1,4 @@
-import { PageHeader, KpiTile, RefBadge, IconAction } from "@/components/mos/Primitives";
+import { PageHeader, KpiTile, RefBadge, IconAction, DeliveryBasisBadge } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { Calculator, Plus, ArrowRight } from "lucide-react";
 
@@ -79,7 +79,7 @@ export default function RFQ() {
               <div>
                 <div className="flex items-center gap-2">
                   <RefBadge>{it.rfq}</RefBadge>
-                  <span className="badge-soft ring-1 ring-inset bg-surface text-muted-foreground ring-border">{it.basis}</span>
+                  <DeliveryBasisBadge>{it.basis}</DeliveryBasisBadge>
                 </div>
                 <h4 className="mt-1 font-display text-subtitle font-semibold">{it.item}</h4>
               </div>

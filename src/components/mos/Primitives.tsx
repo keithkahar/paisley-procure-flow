@@ -342,8 +342,13 @@ export function SupplierTypeBadge({ type }: { type: "Factory" | "Trader" | strin
 }
 
 export function DeliveryBasisBadge({ children }: { children: ReactNode }) {
-  // Delivery basis (EXW/FOB/CIF/DAP/DDP + location) — always gold to signal logistics dimension.
-  return <StatusBadge tone="gold">{children}</StatusBadge>;
+  // Delivery basis (EXW/FOB/CIF/DAP/DDP + location) — slate tone reserved for
+  // logistics dimension; distinct from every semantic status color.
+  return (
+    <span className="badge-soft ring-1 ring-inset bg-slate-100 text-slate-700 ring-slate-300/60">
+      {children}
+    </span>
+  );
 }
 
 export function RefBadge({ children }: { children: ReactNode }) {

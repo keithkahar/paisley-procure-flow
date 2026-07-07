@@ -1,15 +1,5 @@
-import { PageHeader, StatusBadge, KpiTile, ConfidenceBadge, DeliveryBasisBadge, MissingFieldBadge, confidenceTone, Chip, ApproveAction, EditAction, RejectAction } from "@/components/mos/Primitives";
+import { PageHeader, KpiTile, ConfidenceBadge, DeliveryBasisBadge, MissingFieldBadge, Chip, ApproveAction, EditAction, RejectAction } from "@/components/mos/Primitives";
 
-const CONF_BAR: Record<string, string> = {
-  success: "bg-success",
-  primary: "bg-primary",
-  warning: "bg-warning",
-  danger:  "bg-destructive",
-  muted:   "bg-muted-foreground",
-  gold:    "bg-gold",
-  info:    "bg-primary",
-};
-const confBar = (v: number) => CONF_BAR[confidenceTone(v).tone];
 import { Button } from "@/components/ui/button";
 import { ClipboardCheck } from "lucide-react";
 
@@ -72,12 +62,7 @@ export default function QuoteReview() {
                 <td className="px-4 py-3"><DeliveryBasisBadge>{q.basis}</DeliveryBasisBadge></td>
                 <td className="px-4 py-3">{q.validity}</td>
                 <td className="px-4 py-3">
-                  <div className="flex items-center gap-2">
-                    <div className="h-1.5 w-20 overflow-hidden rounded-full bg-border">
-                      <div className={`h-full rounded-full ${confBar(q.conf)}`} style={{ width: `${q.conf}%` }} />
-                    </div>
-                    <ConfidenceBadge value={q.conf} />
-                  </div>
+                  <ConfidenceBadge value={q.conf} />
                 </td>
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-1.5">
@@ -129,10 +114,7 @@ export default function QuoteReview() {
             </div>
             <div className="mt-3">
               <div className="text-label uppercase text-muted-foreground">Confidence</div>
-              <div className="mt-1 flex items-center gap-2">
-                <div className="h-1.5 w-24 overflow-hidden rounded-full bg-border">
-                  <div className={`h-full rounded-full ${confBar(q.conf)}`} style={{ width: `${q.conf}%` }} />
-                </div>
+              <div className="mt-1">
                 <ConfidenceBadge value={q.conf} />
               </div>
             </div>
@@ -152,7 +134,7 @@ export default function QuoteReview() {
         ))}
       </div>
 
-      <div className="mt-6 rounded-xl border border-border bg-surface p-4">
+      <div className="card-surface mt-6 p-4">
         <div className="section-title mb-2">Reject reasons</div>
         <div className="flex flex-wrap gap-1.5">
           {rejectReasons.map((r) => (
