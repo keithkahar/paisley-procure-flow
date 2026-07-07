@@ -69,7 +69,7 @@ export default function RFQ() {
               <div className="text-eyebrow line-clamp-2">{k}</div>
               <div
                 className={
-                  "mt-1.5 font-display text-[22px] font-semibold leading-none tracking-tight md:text-[28px] " +
+                  "mt-1.5 font-display text-[22px] font-semibold leading-none tracking-tight " +
                   (highlight ? "text-primary" : "text-foreground")
                 }
               >
