@@ -25,10 +25,14 @@ export function UserMenu({
   trigger,
   side = "top",
   align = "start",
+  contentClassName,
+  sideOffset = 8,
 }: {
   trigger: ReactNode;
   side?: "top" | "right" | "bottom" | "left";
   align?: "start" | "center" | "end";
+  contentClassName?: string;
+  sideOffset?: number;
 }) {
   const items: Item[] = [
     { icon: AtSymbolIcon, label: "keithknowai@gmail.com" },
