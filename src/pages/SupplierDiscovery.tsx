@@ -1,4 +1,5 @@
 import { PageHeader, SupplierTypeBadge, ConfidenceBadge, Chip } from "@/components/mos/Primitives";
+import { HeaderSearch } from "@/components/mos/HeaderSearch";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, MapPin, Globe, ShieldCheck, Settings2, Zap } from "lucide-react";
