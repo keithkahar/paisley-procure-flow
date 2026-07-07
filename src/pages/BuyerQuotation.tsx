@@ -1,4 +1,4 @@
-import { PageHeader, Card, WorkflowBadge, DeliveryBasisBadge, StatusBadge, KpiTile } from "@/components/mos/Primitives";
+import { PageHeader, Card, WorkflowBadge, DeliveryBasisBadge, StatusBadge, KpiTile, IdText } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { FileDown, Send, Eye } from "lucide-react";
 
@@ -46,7 +46,7 @@ export default function BuyerQuotation() {
         <div className="flex items-start justify-between gap-4 p-6 pb-4">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-label uppercase text-muted-foreground font-mono text-mono">Q-2041</span>
+              <span className="flex items-center"><IdText>Q-2041</IdText></span>
               <DeliveryBasisBadge>CIF Gothenburg</DeliveryBasisBadge>
               <DeliveryBasisBadge>EUR</DeliveryBasisBadge>
               <span className="text-caption text-muted-foreground">Valid to Aug 7 2026</span>

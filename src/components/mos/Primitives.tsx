@@ -165,6 +165,19 @@ export function Mono({ children, className }: { children: ReactNode; className?:
   );
 }
 
+/**
+ * IdText — the single sanctioned styling for any domain identifier
+ * (order id, supplier id, quote id, RFQ id, project reference).
+ * Ensures every code across pages reads with identical font, size, weight, and tone.
+ */
+export function IdText({ children, className }: { children: ReactNode; className?: string }) {
+  return (
+    <span className={cn("font-mono text-mono font-semibold text-foreground", className)}>
+      {children}
+    </span>
+  );
+}
+
 /* --------- Status / chip primitives ---------- */
 
 export type StatusTone =
