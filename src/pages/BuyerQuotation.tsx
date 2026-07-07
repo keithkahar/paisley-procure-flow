@@ -63,21 +63,11 @@ export default function BuyerQuotation() {
       <Card>
         <div className="mb-4 flex items-start justify-between gap-4">
           <div>
-            <div className="text-label uppercase text-muted-foreground font-mono text-mono">Quotation Q-2041</div>
+            <div className="text-label uppercase text-muted-foreground font-mono text-mono">Q-2041</div>
             <h3 className="mt-1 font-display text-subtitle font-semibold">Nordic Marine AB — Project PH-004</h3>
             <div className="text-caption text-muted-foreground">CIF Gothenburg · EUR · Valid 30 days</div>
           </div>
           <WorkflowBadge state="draft" />
-        </div>
-
-        {/* Legend */}
-        <div className="mb-3 flex flex-wrap items-center gap-2 text-caption text-muted-foreground">
-          <span>Column visibility:</span>
-          <WorkflowBadge state="hidden" />
-          <span>Cost · Margin</span>
-          <span className="text-border">·</span>
-          <WorkflowBadge state="visible" />
-          <span>Unit · Total</span>
         </div>
 
         {/* Unified quotation table */}
@@ -89,18 +79,8 @@ export default function BuyerQuotation() {
                 <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Cost</th>
                 <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Margin</th>
                 <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Qty</th>
-                <th className="bg-surface-sunken py-2 px-3 text-right text-label uppercase text-muted-foreground first:rounded-tl-lg">
-                  <div className="flex items-center justify-end gap-1.5">
-                    <span>Unit</span>
-                    <WorkflowBadge state="visible" />
-                  </div>
-                </th>
-                <th className="bg-surface-sunken py-2 pl-3 pr-3 text-right text-label uppercase text-muted-foreground rounded-tr-lg">
-                  <div className="flex items-center justify-end gap-1.5">
-                    <span>Total</span>
-                    <WorkflowBadge state="visible" />
-                  </div>
-                </th>
+                <th className="py-2 px-3 text-right text-label uppercase text-destructive">Buyer</th>
+                <th className="py-2 pl-3 pr-3 text-right text-label uppercase text-destructive">Total</th>
               </tr>
             </thead>
             <tbody>
@@ -122,17 +102,16 @@ export default function BuyerQuotation() {
                       </span>
                     </td>
                     <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">{l.qty}</td>
-                    <td className="whitespace-nowrap bg-surface-sunken py-2 px-3 text-right font-mono text-mono text-foreground">€ {unitEur.toFixed(2)}</td>
-                    <td className="whitespace-nowrap bg-surface-sunken py-2 pl-3 pr-3 text-right font-mono text-mono text-foreground">€ {totalEur.toFixed(2)}</td>
+                    <td className="whitespace-nowrap py-2 px-3 text-right font-mono text-mono text-foreground">€ {unitEur.toFixed(2)}</td>
+                    <td className="whitespace-nowrap py-2 pl-3 pr-3 text-right font-mono text-mono text-foreground">€ {totalEur.toFixed(2)}</td>
                   </tr>
                 );
               })}
             </tbody>
             <tfoot>
               <tr className="border-t border-border">
-                <td colSpan={4} className="py-3 pr-3 text-right text-label uppercase text-muted-foreground">Total (EUR)</td>
-                <td className="bg-surface-sunken" />
-                <td className="whitespace-nowrap bg-surface-sunken py-3 pl-3 pr-3 text-right font-mono text-mono text-foreground font-semibold rounded-b-lg">
+                <td colSpan={5} />
+                <td className="whitespace-nowrap py-3 pl-3 pr-3 text-right font-mono text-mono text-foreground font-semibold">
                   € {lines.reduce((acc, l) => {
                     const rate = (l.override ?? globalRate * 100) / 100;
                     return acc + (l.cost / (1 - rate)) * 0.92 * l.qty;
@@ -142,6 +121,7 @@ export default function BuyerQuotation() {
             </tfoot>
           </table>
         </div>
+
       </Card>
     </>
   );
