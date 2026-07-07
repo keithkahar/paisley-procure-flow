@@ -107,9 +107,11 @@ export function IconRail({ onNavigate }: { onNavigate?: () => void }) {
 
       {/* User menu — divider + avatar/name/plan */}
       <div className="mt-2 border-t border-white/15 pt-2 px-2">
-          <UserMenu
+        <UserMenu
           side="top"
           align="start"
+          sideOffset={6}
+          contentClassName="w-[calc(var(--rail-w)-16px)] rounded-2xl"
           trigger={
             <button
               type="button"
