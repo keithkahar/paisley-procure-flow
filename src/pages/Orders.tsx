@@ -34,12 +34,16 @@ const milestones = [
 ];
 
 function OrderProgress({ stage }: { stage: number }) {
+  const finished = stage >= milestones.length;
+  const completed = Math.min(stage, milestones.length);
+  const currentIdx = finished ? milestones.length - 1 : stage;
+
   return (
     <div>
       <div className="flex items-center gap-1.5">
         {milestones.map((m, i) => {
-          const done = i < stage;
-          const current = i === stage;
+          const done = i < completed;
+          const current = i === currentIdx && !finished;
           return (
             <Tooltip key={m}>
               <TooltipTrigger asChild>
@@ -61,10 +65,14 @@ function OrderProgress({ stage }: { stage: number }) {
       </div>
       <div className="mt-2.5 flex items-center justify-between text-caption">
         <span className="text-muted-foreground">
-          Current: <span className="font-medium text-foreground">{milestones[stage]}</span>
+          {finished ? (
+            <>Completed: <span className="font-medium text-foreground">Order closeout</span></>
+          ) : (
+            <>Current: <span className="font-medium text-foreground">{milestones[currentIdx]}</span></>
+          )}
         </span>
         <span className="text-muted-foreground">
-          Step {stage + 1} of {milestones.length}
+          Step {finished ? milestones.length : stage + 1} of {milestones.length}
         </span>
       </div>
     </div>
