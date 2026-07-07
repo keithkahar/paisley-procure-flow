@@ -64,7 +64,7 @@ export default function RFQ() {
           ].map(([k, v, highlight]) => (
             <div
               key={k as string}
-              className="rounded-xl border border-border bg-surface p-4 shadow-sm"
+              className="flex min-h-[84px] flex-col rounded-xl border border-border bg-surface p-4 shadow-sm md:min-h-[96px]"
             >
               <div className="text-eyebrow line-clamp-2">{k}</div>
               <div
