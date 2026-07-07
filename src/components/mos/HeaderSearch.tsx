@@ -31,10 +31,10 @@ export function HeaderSearch({ placeholder = "Search…" }: { placeholder?: stri
         aria-label="Search"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "inline-flex h-9 w-9 items-center justify-center rounded-full transition-colors",
+          "inline-flex h-9 w-9 items-center justify-center rounded-full border border-border transition-colors",
           open
-            ? "bg-primary-soft text-primary"
-            : "text-muted-foreground hover:bg-muted hover:text-foreground",
+            ? "bg-primary-soft text-primary border-primary/30"
+            : "bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground",
         )}
       >
         <Search className="h-[18px] w-[18px]" strokeWidth={2} />
