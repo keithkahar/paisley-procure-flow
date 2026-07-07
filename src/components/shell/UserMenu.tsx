@@ -67,8 +67,8 @@ export function UserMenu({
       <PopoverContent
         side={side}
         align={align}
-        sideOffset={8}
-        className="w-64 p-1.5"
+        sideOffset={sideOffset}
+        className={cn("w-64 p-1.5", contentClassName)}
       >
         <div className="py-1">
           {items.map((i) => <Row key={i.label} item={i} />)}
