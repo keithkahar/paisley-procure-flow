@@ -114,10 +114,7 @@ export default function QuoteReview() {
             </div>
             <div className="mt-3">
               <div className="text-label uppercase text-muted-foreground">Confidence</div>
-              <div className="mt-1 flex items-center gap-2">
-                <div className="h-1.5 w-24 overflow-hidden rounded-full bg-border">
-                  <div className={`h-full rounded-full ${confBar(q.conf)}`} style={{ width: `${q.conf}%` }} />
-                </div>
+              <div className="mt-1">
                 <ConfidenceBadge value={q.conf} />
               </div>
             </div>
