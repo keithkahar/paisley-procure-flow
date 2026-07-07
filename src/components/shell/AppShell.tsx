@@ -109,15 +109,7 @@ export default function AppShell() {
               </button>
             </div>
 
-            <button
-              aria-label="Notifications"
-              className="relative inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground"
-            >
-              <Bell className="h-[18px] w-[18px]" strokeWidth={2} />
-              <span className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-primary" />
-            </button>
-
-            {/* Mobile menu button — right side, after bell */}
+            {/* Mobile menu button — right side */}
             <button
               className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground md:hidden"
               onClick={() => setMobileOpen(true)}
@@ -125,12 +117,6 @@ export default function AppShell() {
             >
               <Menu className="h-[18px] w-[18px]" />
             </button>
-
-            <div className="ml-1 hidden md:flex items-center">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-brand text-caption font-semibold text-primary-foreground ring-2 ring-white shadow-sm">
-                LK
-              </div>
-            </div>
           </div>
         </header>
 
