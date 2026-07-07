@@ -1,7 +1,7 @@
 import { PageHeader, Card, WorkflowBadge, IdText, StatusBadge } from "@/components/mos/Primitives";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Pencil } from "lucide-react";
+import { Pencil, Plus } from "lucide-react";
 import type { ReactNode } from "react";
 
 /* ---------- data ---------- */
