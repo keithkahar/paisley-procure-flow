@@ -31,7 +31,7 @@ export default function BuyerQuotation() {
           <Card>
             <div className="mb-3 flex items-center justify-between">
               <div>
-                <div className="section-title">Quotation Q-2041</div>
+                <div className="text-label uppercase text-muted-foreground font-mono text-mono">Quotation Q-2041</div>
                 <h3 className="mt-1 font-display text-subtitle font-semibold">Nordic Marine AB — Project PH-004</h3>
                 <div className="text-caption text-muted-foreground">CIF Gothenburg · EUR · Valid 30 days</div>
               </div>
@@ -39,7 +39,7 @@ export default function BuyerQuotation() {
             </div>
 
             {/* Internal cost builder — hidden from buyer */}
-            <div className="rounded-lg border border-border bg-surface-muted p-3">
+            <div className="rounded-lg bg-surface-muted p-3">
               <div className="mb-2 flex items-center justify-between">
                 <div className="text-label uppercase text-muted-foreground">Internal cost builder</div>
                 <WorkflowBadge state="hidden" />
@@ -87,7 +87,7 @@ export default function BuyerQuotation() {
               <div className="section-title">Buyer-facing preview</div>
               <WorkflowBadge state="visible" />
             </div>
-            <div className="rounded-lg border border-border p-4">
+            <div className="rounded-lg bg-surface-sunken p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
                   <div className="font-display text-lg font-bold">Quotation Q-2041</div>
@@ -156,9 +156,9 @@ export default function BuyerQuotation() {
           <Card>
             <div className="section-title mb-3">Currency</div>
             <div className="text-body space-y-1.5">
-              <div className="flex justify-between"><span>USD → EUR</span><span className="font-medium">0.9200</span></div>
-              <div className="flex justify-between"><span>CNY → USD</span><span className="font-medium">0.1380</span></div>
-              <div className="flex justify-between"><span>Locked at</span><span className="text-muted-foreground">Today, 09:12</span></div>
+              <div className="flex justify-between"><span>USD → EUR</span><span className="font-mono text-mono text-foreground">0.9200</span></div>
+              <div className="flex justify-between"><span>CNY → USD</span><span className="font-mono text-mono text-foreground">0.1380</span></div>
+              <div className="flex justify-between"><span>Locked at</span><span className="text-caption text-muted-foreground">Today, 09:12</span></div>
             </div>
           </Card>
           <Card>
@@ -179,7 +179,7 @@ function RateRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between text-body">
       <span className="text-foreground/85">{label}</span>
-      <span className="font-semibold text-primary">{value}</span>
+      <span className="font-mono text-mono text-foreground">{value}</span>
     </div>
   );
 }
