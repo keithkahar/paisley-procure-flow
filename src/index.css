@@ -94,7 +94,7 @@
     --topbar-px: 12px;
     --logo-h: 34px;
     --logo-mark-h: 26px;
-    --rail-w: 96px;
+    --rail-w: 208px;
   }
 
   @media (min-width: 768px) {
@@ -224,7 +224,7 @@
   }
 
   .rail-tab-track {
-    --rail-tab-h: 64px;
+    --rail-tab-h: 52px;
     position: relative;
     contain: layout paint;
   }
