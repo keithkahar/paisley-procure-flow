@@ -12,9 +12,9 @@ import {
   ReceiptPercentIcon,
   CubeIcon,
   Cog6ToothIcon,
-  ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/solid";
 import { cn } from "@/lib/utils";
+import { UserMenu } from "./UserMenu";
 import logoAsset from "@/assets/paisley-mos-logo.png.asset.json";
 const wordmarkUrl = logoAsset.url;
 
