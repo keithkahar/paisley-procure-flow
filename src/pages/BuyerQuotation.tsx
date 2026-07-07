@@ -27,11 +27,11 @@ export default function BuyerQuotation() {
 
       {/* Global profit settings — 5 KPI tiles */}
       <div className="mb-4 grid gap-4 grid-cols-2 md:grid-cols-5">
-        <KpiTile label="Default rate" value="22%" hint="all categories" />
         <KpiTile label="Marine hardware" value="22%" />
         <KpiTile label="Electronics" value="28%" />
         <KpiTile label="Valves & fittings" value="20%" />
         <KpiTile label="Packaging" value="18%" />
+        <KpiTile label="Default rate" value="22%" hint="all categories" />
       </div>
 
       {/* Currency — 3 KPI tiles */}
