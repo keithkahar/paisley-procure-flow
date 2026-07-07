@@ -66,12 +66,13 @@ const sources = [
   "Historical order suppliers",
 ];
 
+// Palette matches the dashboard donut: deep blue → bright blue → mid gray → light gray → pale gray
 const ratingWeights: Array<{ label: string; pct: number; color: string }> = [
-  { label: "On-time delivery",              pct: 30, color: "bg-primary" },
-  { label: "Quote accuracy",                pct: 25, color: "bg-success" },
-  { label: "Quality (inspection pass)",     pct: 20, color: "bg-violet" },
-  { label: "Response speed",                pct: 15, color: "bg-warning" },
-  { label: "Communication clarity",         pct: 10, color: "bg-gold" },
+  { label: "On-time delivery",              pct: 30, color: "bg-[hsl(224_76%_38%)]" },
+  { label: "Quote accuracy",                pct: 25, color: "bg-[hsl(217_91%_60%)]" },
+  { label: "Quality (inspection pass)",     pct: 20, color: "bg-[hsl(220_13%_65%)]" },
+  { label: "Response speed",                pct: 15, color: "bg-[hsl(220_13%_78%)]" },
+  { label: "Communication clarity",         pct: 10, color: "bg-[hsl(220_14%_88%)]" },
 ];
 
 /* ---------- shared shells ---------- */
@@ -144,17 +145,17 @@ export default function Settings() {
         {/* --------- Channels --------- */}
         <TabsContent value="channels" className="mt-0">
           <SectionCard
-            title="Mailboxes"
+            title="Mailbox"
             desc="Dedicated inboxes per workflow stage."
-            status={<StatusBadge tone="success" dot>All active</StatusBadge>}
           >
             <ul className="divide-y divide-border rounded-lg border border-border">
               {mailboxes.map((m) => (
-                <li key={m.addr} className="flex items-center justify-between px-4 py-3">
+                <li key={m.addr} className="flex items-center justify-between gap-3 px-4 py-3">
                   <div className="min-w-0">
                     <IdText>{m.addr}</IdText>
                     <div className="mt-0.5 text-caption text-muted-foreground">{m.purpose}</div>
                   </div>
+                  <StatusBadge tone="success" dot>Active</StatusBadge>
                 </li>
               ))}
             </ul>
@@ -203,19 +204,11 @@ export default function Settings() {
         {/* --------- Pricing & Currency --------- */}
         <TabsContent value="pricing" className="mt-0 space-y-5">
           <SectionCard title="Pricing settings" desc="Default margins and buffers by category.">
-            {/* Global default sits apart — it's a fallback, not a category */}
-            <div className="mb-4 flex items-center justify-between rounded-lg border border-border bg-surface-muted px-4 py-3">
-              <div>
-                <div className="text-body font-medium text-foreground">Global default</div>
-                <div className="text-caption text-muted-foreground">
-                  Fallback when a category has no margin set.
-                </div>
-              </div>
-              <span className="font-mono text-body font-semibold tabular-nums">22%</span>
-            </div>
-
-            <div className="mb-2 text-eyebrow text-muted-foreground">By category</div>
             <ul className="divide-y divide-border">
+              <li className="flex items-center justify-between py-2.5">
+                <span className="text-body">Global default</span>
+                <span className="font-mono text-body font-semibold tabular-nums text-primary">22%</span>
+              </li>
               {categoryMargins.map(([k, v]) => (
                 <li key={k} className="flex items-center justify-between py-2.5">
                   <span className="text-body">{k}</span>
