@@ -172,7 +172,7 @@ export function Mono({ children, className }: { children: ReactNode; className?:
  */
 export function IdText({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <span className={cn("font-mono text-mono font-semibold text-foreground", className)}>
+    <span className={cn("font-mono text-mono text-muted-foreground", className)}>
       {children}
     </span>
   );
