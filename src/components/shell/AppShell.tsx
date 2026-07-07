@@ -67,9 +67,9 @@ export default function AppShell() {
       <div className="flex min-w-0 flex-1 flex-col">
         {/* Top bar — logo left, notifications + avatar right. Clean, no greeting text, no redundant search. */}
         <header className="sticky top-0 z-30 flex h-[var(--topbar-h)] items-center gap-4 border-b border-border bg-surface/85 px-[var(--topbar-px)] backdrop-blur">
-          <div className="flex min-w-0 items-baseline gap-3">
+          <div className="flex min-w-0 items-end gap-3">
             <BrandMark variant="wordmark" />
-            <span className="hidden -translate-y-[9.5px] scale-[0.6] origin-top text-[28px] font-extralight leading-none tracking-tight text-foreground/90 md:block whitespace-nowrap">
+            <span className="hidden scale-[0.6] origin-bottom-left text-[28px] font-extralight leading-none tracking-tight text-foreground/90 md:block whitespace-nowrap">
               Mission Operating System for China Sourcing
             </span>
           </div>
