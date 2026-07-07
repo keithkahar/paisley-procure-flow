@@ -10,17 +10,10 @@ export default function AppShell() {
   const active = useActiveNav();
   const { pathname } = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setMobileOpen(false);
-    setSearchOpen(false);
   }, [pathname]);
-
-  useEffect(() => {
-    if (searchOpen) searchInputRef.current?.focus();
-  }, [searchOpen]);
 
   return (
     <div className="flex min-h-screen w-full bg-surface-sunken text-foreground">
