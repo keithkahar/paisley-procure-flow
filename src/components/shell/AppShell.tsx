@@ -33,7 +33,7 @@ export default function AppShell() {
         <div className="fixed inset-0 z-50 md:hidden">
           <div className="absolute inset-0 bg-foreground/40" onClick={() => setMobileOpen(false)} />
           <aside className="absolute inset-y-0 right-0 flex w-[50vw] flex-col bg-rail text-rail-foreground shadow-lg">
-            <div className="flex items-center justify-end border-b border-white/10 px-3 py-2.5">
+            <div className="flex items-center justify-end px-3 py-2.5">
               <button
                 aria-label="Close menu"
                 onClick={() => setMobileOpen(false)}
