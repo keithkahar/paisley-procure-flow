@@ -66,15 +66,16 @@ export default function RFQ() {
               key={k as string}
               className="rounded-xl border border-border bg-surface p-4 shadow-sm"
             >
-              <div className="text-body text-muted-foreground">{k}</div>
+              <div className="text-eyebrow line-clamp-2">{k}</div>
               <div
                 className={
-                  "mt-2 font-display text-[22px] font-semibold leading-none tracking-tight " +
+                  "mt-1.5 font-display text-[22px] font-semibold leading-none tracking-tight md:text-[28px] " +
                   (highlight ? "text-primary" : "text-foreground")
                 }
               >
                 {v}
               </div>
+
             </div>
           ))}
         </div>
