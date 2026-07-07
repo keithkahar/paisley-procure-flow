@@ -70,99 +70,83 @@ export default function BuyerQuotation() {
           <WorkflowBadge state="draft" />
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-2">
-          {/* Internal cost builder */}
-          <div className="rounded-lg bg-surface-muted p-3">
-            <div className="mb-2 flex items-center justify-between">
-              <div className="text-label uppercase text-muted-foreground">Internal cost builder</div>
-              <WorkflowBadge state="hidden" />
-            </div>
-            <div className="-mx-1 overflow-x-auto">
-              <table className="w-full min-w-[420px] text-body">
-                <thead>
-                  <tr>
-                    <th className="py-2 pr-3 text-left text-label uppercase text-muted-foreground">Item</th>
-                    <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Cost</th>
-                    <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Qty</th>
-                    <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Margin</th>
-                    <th className="py-2 pl-3 text-right text-label uppercase text-muted-foreground">Buyer unit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {lines.map((l) => {
-                    const rate = (l.override ?? globalRate * 100) / 100;
-                    const buyer = l.cost / (1 - rate);
-                    return (
-                      <tr key={l.item} className="border-t border-border/60">
-                        <td className="py-2 pr-3">
-                          <div className="whitespace-nowrap font-medium">{l.item}</div>
-                          <div className="whitespace-nowrap text-caption text-muted-foreground">{l.supplier}</div>
-                        </td>
-                        <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">${l.cost.toFixed(2)}</td>
-                        <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">{l.qty}</td>
-                        <td className="whitespace-nowrap py-2 pr-3 text-right">
-                          <span className={l.override ? "font-mono text-mono text-foreground" : "font-mono text-mono text-muted-foreground"}>
-                            {(rate * 100).toFixed(0)}%{l.override ? " · override" : ""}
-                          </span>
-                        </td>
-                        <td className="whitespace-nowrap py-2 pl-3 text-right font-mono text-mono text-foreground">${buyer.toFixed(2)}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
+        {/* Legend */}
+        <div className="mb-3 flex flex-wrap items-center gap-2 text-caption text-muted-foreground">
+          <span>Column visibility:</span>
+          <WorkflowBadge state="hidden" />
+          <span>Cost · Margin</span>
+          <span className="text-border">·</span>
+          <WorkflowBadge state="visible" />
+          <span>Unit · Total</span>
+        </div>
 
-          {/* Buyer-facing preview */}
-          <div className="rounded-lg bg-surface-sunken p-3">
-            <div className="mb-2 flex items-center justify-between">
-              <div className="text-label uppercase text-muted-foreground">Buyer-facing preview</div>
-              <WorkflowBadge state="visible" />
-            </div>
-            <div className="-mx-1 overflow-x-auto">
-              <table className="w-full min-w-[380px] text-body">
-                <thead>
-                  <tr>
-                    <th className="py-2 pr-3 text-left text-label uppercase text-muted-foreground">Description</th>
-                    <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Qty</th>
-                    <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Unit</th>
-                    <th className="py-2 pl-3 text-right text-label uppercase text-muted-foreground">Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {lines.map((l) => {
-                    const rate = (l.override ?? globalRate * 100) / 100;
-                    const buyer = l.cost / (1 - rate);
-                    return (
-                      <tr key={l.item} className="border-t border-border/60">
-                        <td className="whitespace-nowrap py-2 pr-3">{l.item}</td>
-                        <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">{l.qty}</td>
-                        <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">€ {(buyer * 0.92).toFixed(2)}</td>
-                        <td className="whitespace-nowrap py-2 pl-3 text-right font-mono text-mono text-foreground">€ {(buyer * 0.92 * l.qty).toFixed(2)}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-                <tfoot>
-                  <tr className="border-t border-border">
-                    <td colSpan={3} className="py-3 pr-3 text-right text-label uppercase text-muted-foreground">Total (EUR)</td>
-                    <td className="whitespace-nowrap py-3 pl-3 text-right font-mono text-mono text-foreground font-semibold">
-                      € {lines.reduce((acc, l) => {
-                        const rate = (l.override ?? globalRate * 100) / 100;
-                        return acc + (l.cost / (1 - rate)) * 0.92 * l.qty;
-                      }, 0).toFixed(2)}
+        {/* Unified quotation table */}
+        <div className="-mx-1 overflow-x-auto">
+          <table className="w-full min-w-[640px] text-body">
+            <thead>
+              <tr>
+                <th className="py-2 pr-3 text-left text-label uppercase text-muted-foreground">Item</th>
+                <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Cost</th>
+                <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Margin</th>
+                <th className="py-2 pr-3 text-right text-label uppercase text-muted-foreground">Qty</th>
+                <th className="bg-surface-sunken py-2 px-3 text-right text-label uppercase text-muted-foreground first:rounded-tl-lg">
+                  <div className="flex items-center justify-end gap-1.5">
+                    <span>Unit</span>
+                    <WorkflowBadge state="visible" />
+                  </div>
+                </th>
+                <th className="bg-surface-sunken py-2 pl-3 pr-3 text-right text-label uppercase text-muted-foreground rounded-tr-lg">
+                  <div className="flex items-center justify-end gap-1.5">
+                    <span>Total</span>
+                    <WorkflowBadge state="visible" />
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {lines.map((l) => {
+                const rate = (l.override ?? globalRate * 100) / 100;
+                const unitUsd = l.cost / (1 - rate);
+                const unitEur = unitUsd * 0.92;
+                const totalEur = unitEur * l.qty;
+                return (
+                  <tr key={l.item} className="border-t border-border/60">
+                    <td className="py-2 pr-3">
+                      <div className="whitespace-nowrap font-medium">{l.item}</div>
+                      <div className="whitespace-nowrap text-caption text-muted-foreground">{l.supplier}</div>
                     </td>
+                    <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">${l.cost.toFixed(2)}</td>
+                    <td className="whitespace-nowrap py-2 pr-3 text-right">
+                      <span className={l.override ? "font-mono text-mono text-foreground" : "font-mono text-mono text-muted-foreground"}>
+                        {(rate * 100).toFixed(0)}%{l.override ? " · override" : ""}
+                      </span>
+                    </td>
+                    <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-mono">{l.qty}</td>
+                    <td className="whitespace-nowrap bg-surface-sunken py-2 px-3 text-right font-mono text-mono text-foreground">€ {unitEur.toFixed(2)}</td>
+                    <td className="whitespace-nowrap bg-surface-sunken py-2 pl-3 pr-3 text-right font-mono text-mono text-foreground">€ {totalEur.toFixed(2)}</td>
                   </tr>
-                </tfoot>
-              </table>
-            </div>
-          </div>
+                );
+              })}
+            </tbody>
+            <tfoot>
+              <tr className="border-t border-border">
+                <td colSpan={4} className="py-3 pr-3 text-right text-label uppercase text-muted-foreground">Total (EUR)</td>
+                <td className="bg-surface-sunken" />
+                <td className="whitespace-nowrap bg-surface-sunken py-3 pl-3 pr-3 text-right font-mono text-mono text-foreground font-semibold rounded-b-lg">
+                  € {lines.reduce((acc, l) => {
+                    const rate = (l.override ?? globalRate * 100) / 100;
+                    return acc + (l.cost / (1 - rate)) * 0.92 * l.qty;
+                  }, 0).toFixed(2)}
+                </td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </Card>
     </>
   );
 }
+
 
 function RateRow({ label, value }: { label: string; value: string }) {
   return (
