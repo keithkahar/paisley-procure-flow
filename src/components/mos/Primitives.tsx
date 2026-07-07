@@ -412,7 +412,7 @@ export function KpiTile({
           {value}
         </span>
         {(hint || delta) && (
-          <span className="truncate text-[11px] text-muted-foreground">
+          <span className="truncate text-caption text-muted-foreground">
             {delta && <span className="font-medium text-success">{delta}</span>}
             {hint}
           </span>
