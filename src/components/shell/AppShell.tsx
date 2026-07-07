@@ -69,7 +69,7 @@ export default function AppShell() {
         <header className="sticky top-0 z-30 flex h-[var(--topbar-h)] items-center gap-4 border-b border-border bg-surface/85 px-[var(--topbar-px)] backdrop-blur">
           <div className="flex min-w-0 items-end gap-3">
             <BrandMark variant="wordmark" />
-            <span className="hidden -translate-y-[8px] scale-[0.622] origin-bottom-left text-[28px] font-[160] leading-none tracking-tight text-foreground/90 md:block whitespace-nowrap">
+            <span className="hidden -translate-y-[7.5px] scale-[0.622] origin-bottom-left text-[28px] font-[160] leading-none tracking-tight text-foreground/90 md:block whitespace-nowrap">
               Mission Operating System for China Sourcing
             </span>
           </div>
