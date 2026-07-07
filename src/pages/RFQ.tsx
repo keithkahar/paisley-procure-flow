@@ -50,42 +50,36 @@ export default function RFQ() {
       />
 
       <div className="mb-6">
-        <Card>
-          <div className="section-title mb-3">Cost components (per unit)</div>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
-            {[
-              ["Supplier", "$ 4.20", false],
-              ["China local", "$ 0.35", false],
-              ["Int'l freight", "$ 0.62", false],
-              ["Destination", "$ 0.28", false],
-              ["Duty / Tax", "$ 0.54", false],
-              ["Buffer", "$ 0.20", false],
-              ["Profit", "22%", false],
-              ["Buyer landed", "$ 7.83", true],
-            ].map(([k, v, highlight]) => (
+        <div className="section-title mb-3">Cost components (per unit)</div>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
+          {[
+            ["Supplier", "$ 4.20", false],
+            ["China local", "$ 0.35", false],
+            ["Int'l freight", "$ 0.62", false],
+            ["Destination", "$ 0.28", false],
+            ["Duty / Tax", "$ 0.54", false],
+            ["Buffer", "$ 0.20", false],
+            ["Profit", "22%", false],
+            ["Buyer landed", "$ 7.83", true],
+          ].map(([k, v, highlight]) => (
+            <div
+              key={k as string}
+              className="rounded-xl border border-border bg-surface p-4 shadow-sm"
+            >
+              <div className="text-body text-muted-foreground">{k}</div>
               <div
-                key={k as string}
                 className={
-                  "rounded-lg border p-3 " +
-                  (highlight
-                    ? "border-primary/25 bg-surface ring-1 ring-primary/25"
-                    : "border-border bg-surface-muted")
+                  "mt-2 font-display text-[22px] font-semibold leading-none tracking-tight " +
+                  (highlight ? "text-primary" : "text-foreground")
                 }
               >
-                <div className="text-label uppercase text-muted-foreground">{k}</div>
-                <div
-                  className={
-                    "mt-1 font-display text-subtitle font-bold " +
-                    (highlight ? "text-primary" : "text-foreground")
-                  }
-                >
-                  {v}
-                </div>
+                {v}
               </div>
-            ))}
-          </div>
-        </Card>
+            </div>
+          ))}
+        </div>
       </div>
+
 
 
       <div className="space-y-4">
