@@ -81,12 +81,14 @@ function SectionCard({
   desc,
   status,
   onEdit,
+  headerActions,
   children,
 }: {
   title: string;
   desc?: string;
   status?: ReactNode;
   onEdit?: () => void;
+  headerActions?: ReactNode;
   children: ReactNode;
 }) {
   return (
@@ -99,9 +101,12 @@ function SectionCard({
           </div>
           {desc && <p className="mt-0.5 text-caption text-muted-foreground">{desc}</p>}
         </div>
-        <Button size="sm" variant="outline" onClick={onEdit} className="h-8 shrink-0">
-          <Pencil className="mr-1.5 h-3.5 w-3.5" /> Edit
-        </Button>
+        <div className="flex shrink-0 items-center gap-2">
+          {headerActions}
+          <Button size="sm" variant="outline" onClick={onEdit} className="h-8">
+            <Pencil className="mr-1.5 h-3.5 w-3.5" /> Edit
+          </Button>
+        </div>
       </div>
       {children}
     </Card>
@@ -113,11 +118,9 @@ function SectionCard({
 export default function Settings() {
   return (
     <>
-      <PageHeader
-        eyebrow="Configuration"
-        title="Settings"
-        description="Operational configuration for mailboxes, ports, pricing, currency, templates, approval rules, and rating."
-      />
+      <PageHeader title="Settings" />
+
+
 
       <Tabs defaultValue="channels" className="w-full">
         <TabsList className="mb-6 flex h-auto flex-wrap justify-start gap-1 bg-transparent p-0">
